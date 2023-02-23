@@ -10,6 +10,7 @@ import com.fithnity.entity.User;
 import com.fithnity.services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,16 +45,20 @@ public class SignupController implements Initializable {
     @FXML
     private Button signup;
     @FXML
-    private TextField nom_text;
+    private TextField firstname_text;
     @FXML
-    private TextField prenom_text;
+    private TextField lastname_text;
     @FXML
     private TextField email_text;
     @FXML
     private PasswordField password_text;
     @FXML
     private Hyperlink login;
-    
+    @FXML
+    private ImageView logo1;
+    @FXML
+    private PasswordField confirm_password_text;
+    ServiceUser Us = ServiceUser.getInstance();
     
 
     /**
@@ -66,8 +71,9 @@ public class SignupController implements Initializable {
 
     @FXML
     private void signup(ActionEvent event) {
-        User u = new User(nom_text.getText(), prenom_text.getText(), email_text.getText(), password_text.getText());
-            ServiceUser Us = ServiceUser.getInstance();
+        if(validateInputs()==true){
+        User u = new User(firstname_text.getText(), lastname_text.getText(), email_text.getText(), password_text.getText());
+            
             Us.insert(u);
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -75,10 +81,12 @@ public class SignupController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Your account has been created successfully!");
         alert.show();
-        nom_text.setText("");
-        prenom_text.setText("");
+        firstname_text.setText("");
+        lastname_text.setText("");
         email_text.setText("");
         password_text.setText("");
+        confirm_password_text.setText("");
+    }
     }
 
     @FXML
@@ -106,5 +114,111 @@ public class SignupController implements Initializable {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+   
     
-}
+    public boolean validateInputs() {
+    
+        if (firstname_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Firstname!");
+            alert.show();
+            return false;
+        }
+
+        if (!firstname_text.getText().matches("[a-zA-Z]+")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid Firstname! Only alphabetic characters are allowed.");
+            alert.show();
+            return false;
+        }
+
+        if (lastname_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Lastname!");
+            alert.show();
+            return false;
+        }
+
+        if (!lastname_text.getText().matches("[a-zA-Z]+")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid Lastname! Only alphabetic characters are allowed.");
+            alert.show();
+            return false;
+        }
+
+        if (email_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Email!");
+            alert.show();
+            return false;
+        }
+
+        if (!email_text.getText().matches("[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,6}")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid Email!");
+            alert.show();
+            return false;
+        }
+
+        if(Us.verif_email(email_text.getText())==false){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Email Already Used!");
+            alert.show();
+            return false;
+
+        }
+
+        if (password_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Password!");
+            alert.show();
+            return false;
+        }
+
+        if (!password_text.getText().matches("^(?=.*[0-9]).{8,}$")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Password should be at least 8 characters and contain at least one digit [0-9] only!");
+            alert.show();
+            return false;
+        }
+
+        if (confirm_password_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Password!");
+            alert.show();
+            return false;
+        }
+
+        if (!password_text.getText().equals(confirm_password_text.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Passwords do not match!");
+            alert.show();
+            return false;
+        }
+
+        return true;
+       }
+    
+    }
