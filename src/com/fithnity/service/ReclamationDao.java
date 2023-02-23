@@ -49,7 +49,7 @@ public class ReclamationDao implements Idao<Reclamation>{
 
     @Override
     public void insert(Reclamation o) {
-        String req="insert into Reclamation (nom,prenom) values ('"+o.getNom()+"','"+o.getPrenom()+"')";
+        String req="insert into Reclamation (nom,prenom,email,numTel,message) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -100,6 +100,10 @@ public class ReclamationDao implements Idao<Reclamation>{
                 p.setId(rs.getInt(1));
                 p.setNom(rs.getString("nom"));
                 p.setPrenom(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setNumTel(rs.getInt(5));
+                p.setMessage(rs.getString(6));
+              //  p.setDate(rs.getDate(7));
                 list.add(p);
             }
             
@@ -120,6 +124,10 @@ public class ReclamationDao implements Idao<Reclamation>{
                 p.setId(rs.getInt(1));
                 p.setNom(rs.getString("nom"));
                 p.setPrenom(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setNumTel(rs.getInt(5));
+                p.setMessage(rs.getString(6));
+              //  p.setDate(rs.getDate(7));
                 list.add(p);
             }
             
@@ -136,9 +144,12 @@ public class ReclamationDao implements Idao<Reclamation>{
             rs=st.executeQuery(req);
            // while(rs.next()){
             rs.next();
-                p.setId(rs.getInt("id"));
+                p.setId(rs.getInt(1));
                 p.setNom(rs.getString("nom"));
-                p.setPrenom(rs.getString("prenom"));
+                p.setPrenom(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setNumTel(rs.getInt(5));
+                p.setMessage(rs.getString(6));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ReclamationDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,7 +159,7 @@ public class ReclamationDao implements Idao<Reclamation>{
 
     @Override
     public boolean update(Reclamation p) {
-        String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"' WHERE id = "+p.getId();
+        String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
         
         try {
             if (st.executeUpdate(qry) > 0) {

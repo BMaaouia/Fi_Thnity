@@ -6,18 +6,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.fithnity.controller.AfficherPersonneController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AfficherPersonneController">
    <children>
       <ListView fx:id="listviewP" layoutX="32.0" layoutY="24.0" prefHeight="200.0" prefWidth="553.0" />
       <Button fx:id="retourr" layoutX="14.0" layoutY="356.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="103.0" text="retour" />
       <Button fx:id="btn_delete" layoutX="473.0" layoutY="356.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="109.0" text="Delete" />
-      <TextField fx:id="txt_nom" layoutX="137.0" layoutY="252.0" />
-      <TextField fx:id="txt_prenom" layoutX="137.0" layoutY="289.0" />
-      <Label layoutX="77.0" layoutY="246.0" text="nom" />
-      <Label layoutX="66.0" layoutY="289.0" text="prenom" />
-      <Button fx:id="retour" layoutX="458.0" layoutY="250.0" mnemonicParsing="false" onAction="#rafraichir" text="Rafraichir" />
+      <TextField fx:id="txt_nom" layoutX="68.0" layoutY="235.0" />
+      <TextField fx:id="txt_prenom" layoutX="71.0" layoutY="277.0" />
+      <Label layoutX="8.0" layoutY="240.0" text="nom" />
+      <Label layoutY="277.0" text="prenom" />
+      <Button fx:id="retour" layoutX="131.0" layoutY="356.0" mnemonicParsing="false" onAction="#rafraichir" text="Rafraichir" />
       <Button fx:id="btnn" layoutX="238.0" layoutY="356.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="103.0" text="ajouter" />
       <Button fx:id="modif2" layoutX="355.0" layoutY="356.0" mnemonicParsing="false" onAction="#modifier" text="modifier" />
+      <TextField fx:id="txt_email" layoutX="361.0" layoutY="235.0" />
+      <TextField fx:id="txt_tel" layoutX="361.0" layoutY="277.0" />
+      <Label layoutX="301.0" layoutY="240.0" text="email" />
+      <Label layoutX="309.0" layoutY="282.0" text="Tel" />
+      <TextField fx:id="txt_message" layoutX="364.0" layoutY="316.0" />
+      <Label layoutX="290.0" layoutY="321.0" text="message" />
    </children>
 </AnchorPane>

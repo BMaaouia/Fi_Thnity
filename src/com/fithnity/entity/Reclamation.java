@@ -5,8 +5,10 @@
  */
 package com.fithnity.entity;
 
+import java.sql.Date;
 import java.util.Objects;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
@@ -18,6 +20,10 @@ public class Reclamation {
     private SimpleIntegerProperty id;
     private SimpleStringProperty nom;
     private SimpleStringProperty prenom;
+    private SimpleIntegerProperty numTel;
+     private SimpleStringProperty email;
+      private SimpleStringProperty message;
+//private SimpleObjectProperty <Date> date ;
 
     public Reclamation() {
     }
@@ -26,12 +32,34 @@ public class Reclamation {
         this.id = new SimpleIntegerProperty(id);
     }
     
-    public Reclamation(int id, String nom, String prenom) {
+    public Reclamation(int id, String nom, String prenom,String email,int numTel,String message) {
         this.id = new SimpleIntegerProperty(id);
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
+        this.numTel = new SimpleIntegerProperty(numTel);
+        this.message = new SimpleStringProperty(message);
+        this.email = new SimpleStringProperty(email);
     }
 
+     public Reclamation( String nom, String prenom,String email,int numTel,String message) {
+       
+        this.nom = new SimpleStringProperty(nom);
+        this.prenom = new SimpleStringProperty(prenom);
+        this.numTel = new SimpleIntegerProperty(numTel);
+        this.message = new SimpleStringProperty(message);
+        this.email = new SimpleStringProperty(email);
+    }
+     
+      public Reclamation( String nom, String prenom, Date date,String email,int numTel,String message) {
+       
+        this.nom = new SimpleStringProperty(nom);
+        this.prenom = new SimpleStringProperty(prenom);
+        this.numTel = new SimpleIntegerProperty(numTel);
+        this.message = new SimpleStringProperty(message);
+        this.email = new SimpleStringProperty(email);
+        // this.date=new SimpleObjectProperty <Date> (date);
+    }
+    
     public Reclamation(String nom, String prenom) {
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
@@ -44,10 +72,42 @@ public class Reclamation {
         this.id = new SimpleIntegerProperty(id);
     }
 
+    public void setNumTel(int numTel) {
+        this.numTel =  new SimpleIntegerProperty(numTel);
+    }
+//    public void setDate(Date date) {
+//        this.date =  new SimpleObjectProperty(date);
+//    }
+
+    public void setEmail(String email) {
+        this.email = new SimpleStringProperty(email);
+    }
+
+    public void setMessage(String message) {
+        this.message = new SimpleStringProperty(message);
+    }
+
+    public int getNumTel() {
+        return numTel.get();
+    }
+    
+//      public Date getDate() {
+//        return date.get();
+//    }
+
+    public String getEmail() {
+        return email.get();
+    }
+
+    public String getMessage() {
+        return message.get();
+    }
+
     public String getNom() {
         return nom.get();
     }
 
+    
     public void setNom(String nom) {
         this.nom = new SimpleStringProperty(nom);
     }
@@ -55,8 +115,20 @@ public class Reclamation {
     public String getPrenom() {
         return prenom.get();
     }
+//    public SimpleObjectProperty getDateProperty(){
+//        return date;
+//    }
     public SimpleStringProperty getNomProperty(){
         return nom;
+    }
+    public SimpleStringProperty getEmailProperty(){
+        return email;
+    }
+    public SimpleStringProperty getMessageProperty(){
+        return message;
+    }
+    public SimpleIntegerProperty getNumTelProperty(){
+        return numTel;
     }
     public SimpleStringProperty getPrenomProperty(){
         return prenom;
@@ -67,7 +139,7 @@ public class Reclamation {
 
     @Override
     public String toString() {
-        return  " nom=" + nom.get() + "  ||  " + " prenom=" + prenom.get() ;
+        return  " nom=" + nom.get() + "  ||  " + " prenom=" + prenom.get() + "  ||  " + " email=" + email.get() + "  ||  " + " Tel=" + numTel.get() + "  ||  " + " message=" + message.get();
     }
 
     @Override

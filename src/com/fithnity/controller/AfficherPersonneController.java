@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,44 +61,30 @@ public class AfficherPersonneController implements Initializable {
      */
      @FXML
     private ListView<Reclamation> listviewP;
-    @FXML
-    private TableView<Reclamation> personsTable;
-    @FXML
-    private TableColumn<Reclamation,String> NomColonne;
-    @FXML
-    private TableColumn<Reclamation,String> PrenomColonne;
       @FXML
     private TextField txt_nom;
        @FXML
     private TextField txt_prenom;
-    @FXML
-    private Label idLabel;
-    @FXML
-    private Label nomLabel;
-    @FXML
-    private Label prenomLabel;
 
     private ListData listdata = new ListData();
    @FXML
     private Button retour;
      @FXML
     private Button btnn;
-     @FXML
-    private AnchorPane gestionReclamation;
       @FXML
     private Button modif2;
       
-    @FXML
-    private Button btn_pie;
     
     @FXML
     private Button btn_delete;
      @FXML
-    private Button btn_afficher;
-     @FXML
     private Button retourr;
        @FXML
-    private Button modif;
+    private TextField txt_email;
+    @FXML
+    private TextField txt_tel;
+    @FXML
+    private TextField txt_message;
 //    @FXML
 //    private TextField txt_id;
     @Override
@@ -123,7 +110,10 @@ listviewP.setItems(listdata.getPersons());
        
          current.getId();
         txt_nom.setText(current.getNom());
-        txt_prenom.setText(current.getPrenom());        
+        txt_prenom.setText(current.getPrenom());
+        txt_email.setText(current.getEmail());
+        txt_tel.setText(Integer.toString(current.getNumTel()));   
+txt_message.setText(current.getMessage());        
     });
             
     }
@@ -131,7 +121,9 @@ listviewP.setItems(listdata.getPersons());
 
      @FXML
     private void ajouter(ActionEvent event) throws IOException { 
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText());
+        if (Saisi() == true)
+        {
+	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), txt_message.getText());
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.insert(p);
         
@@ -140,10 +132,14 @@ listviewP.setItems(listdata.getPersons());
         alert.setHeaderText(null);
         alert.setContentText("Reclamation insérée avec succés!");
         alert.show();
+        
         txt_nom.setText("");
         txt_prenom.setText("");	
-		
+	 txt_email.setText("");
+        txt_tel.setText("");   
+txt_message.setText("");  	
 	}
+    }
     
     @FXML
     private void delete(ActionEvent event) throws IOException { 
@@ -168,6 +164,9 @@ listviewP.setItems(listdata.getPersons());
             p.setId(current.getId());
             p.setNom(txt_nom.getText());
             p.setPrenom(txt_prenom.getText());
+            p.setEmail(txt_email.getText());
+            p.setNumTel(Integer.parseInt(txt_tel.getText()));
+             p.setMessage(txt_message.getText());
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.update(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -176,7 +175,10 @@ listviewP.setItems(listdata.getPersons());
         alert.setContentText("Reclamation modifiée avec succés!");
         alert.show();
             txt_nom.setText("");
-        txt_prenom.setText("");
+        txt_prenom.setText("");	
+	 txt_email.setText("");
+        txt_tel.setText("");   
+txt_message.setText("");  
 		
 	}
    
@@ -196,8 +198,48 @@ listviewP.setItems(listdata.getPersons());
 		
 	}
     
+     public static void Alert(Alert.AlertType type, String title, String header, String text) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(text);
+        alert.showAndWait();
+
+    }
     
- 
+ private boolean Saisi() {  
+
+        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+            Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
+            return false;
+        } else {
+
+            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
+                return false;
+            }
+
+           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
+                return false;
+            }
+          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
+                return false;
+            }
+          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
+                return false;
+            }
+            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
+                return false;
+            }
+           
+        }
+        return true;
+         
+    }
      
        
 
