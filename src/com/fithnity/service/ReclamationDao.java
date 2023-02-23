@@ -49,7 +49,8 @@ public class ReclamationDao implements Idao<Reclamation>{
 
     @Override
     public void insert(Reclamation o) {
-        String req="insert into Reclamation (nom,prenom,email,numTel,message) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"')";
+        String req = "INSERT INTO Reclamation (nom, prenom, email, numTel, message, date) VALUES ('" + o.getNom() + "', '" + o.getPrenom() + "', '" + o.getEmail() + "', '" + o.getNumTel() + "', '" + o.getMessage() + "', '" + o.getDate() + "')";
+        //String req="insert into Reclamation (nom,prenom,email,numTel,message,date) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"','"+o.getDate()+"',')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -103,7 +104,7 @@ public class ReclamationDao implements Idao<Reclamation>{
                 p.setEmail(rs.getString(4));
                 p.setNumTel(rs.getInt(5));
                 p.setMessage(rs.getString(6));
-              //  p.setDate(rs.getDate(7));
+                p.setDate(rs.getDate(7));
                 list.add(p);
             }
             
@@ -127,7 +128,7 @@ public class ReclamationDao implements Idao<Reclamation>{
                 p.setEmail(rs.getString(4));
                 p.setNumTel(rs.getInt(5));
                 p.setMessage(rs.getString(6));
-              //  p.setDate(rs.getDate(7));
+                p.setDate(rs.getDate(7));
                 list.add(p);
             }
             

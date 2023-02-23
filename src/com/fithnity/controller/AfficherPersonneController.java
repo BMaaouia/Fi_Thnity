@@ -105,6 +105,7 @@ listviewP.setItems(listdata.getPersons());
 //        prenomLabel.setText(listdata.getPersons()
 //                .get(listviewP.getSelectionModel().getSelectedIndex())
 //                .getPrenom());
+ java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
         Reclamation current = listviewP.getSelectionModel().getSelectedItem();
         // txt_id.setText(Integer.toString(current.getId()));
        
@@ -114,6 +115,7 @@ listviewP.setItems(listdata.getPersons());
         txt_email.setText(current.getEmail());
         txt_tel.setText(Integer.toString(current.getNumTel()));   
 txt_message.setText(current.getMessage());        
+//current.getDate();
     });
             
     }
@@ -123,7 +125,8 @@ txt_message.setText(current.getMessage());
     private void ajouter(ActionEvent event) throws IOException { 
         if (Saisi() == true)
         {
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), txt_message.getText());
+            java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
+	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), txt_message.getText(),currentDate);
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.insert(p);
         
@@ -214,28 +217,28 @@ txt_message.setText("");
             return false;
         } else {
 
-            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
-                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
-                return false;
-            }
-
-           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
-                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
-                return false;
-            }
-          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
-                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
-                return false;
-            }
-          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
-                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
-                return false;
-            }
-            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
-                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
-                return false;
-            }
-           
+//            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
+//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
+//                return false;
+//            }
+//
+//           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
+//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
+//                return false;
+//            }
+//          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
+//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
+//                return false;
+//            }
+//          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
+//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
+//                return false;
+//            }
+//            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
+//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
+//                return false;
+//            }
+//           
         }
         return true;
          

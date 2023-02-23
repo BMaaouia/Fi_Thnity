@@ -23,7 +23,7 @@ public class Reclamation {
     private SimpleIntegerProperty numTel;
      private SimpleStringProperty email;
       private SimpleStringProperty message;
-//private SimpleObjectProperty <Date> date ;
+private SimpleObjectProperty <Date> date ;
 
     public Reclamation() {
     }
@@ -50,14 +50,14 @@ public class Reclamation {
         this.email = new SimpleStringProperty(email);
     }
      
-      public Reclamation( String nom, String prenom, Date date,String email,int numTel,String message) {
+      public Reclamation( String nom, String prenom,String email,int numTel,String message, Date date) {
        
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
         this.numTel = new SimpleIntegerProperty(numTel);
         this.message = new SimpleStringProperty(message);
         this.email = new SimpleStringProperty(email);
-        // this.date=new SimpleObjectProperty <Date> (date);
+         this.date=new SimpleObjectProperty <Date> (date);
     }
     
     public Reclamation(String nom, String prenom) {
@@ -75,9 +75,9 @@ public class Reclamation {
     public void setNumTel(int numTel) {
         this.numTel =  new SimpleIntegerProperty(numTel);
     }
-//    public void setDate(Date date) {
-//        this.date =  new SimpleObjectProperty(date);
-//    }
+  public void setDate(Date date) {
+       this.date =  new SimpleObjectProperty(date);
+  }
 
     public void setEmail(String email) {
         this.email = new SimpleStringProperty(email);
@@ -91,9 +91,9 @@ public class Reclamation {
         return numTel.get();
     }
     
-//      public Date getDate() {
-//        return date.get();
-//    }
+      public Date getDate() {
+       return date.get();
+   }
 
     public String getEmail() {
         return email.get();
@@ -132,6 +132,9 @@ public class Reclamation {
     }
     public SimpleStringProperty getPrenomProperty(){
         return prenom;
+    }
+    public SimpleObjectProperty getDateProperty(){
+        return date;
     }
     public void setPrenom(String prenom) {
         this.prenom = new SimpleStringProperty(prenom);
