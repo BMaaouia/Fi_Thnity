@@ -32,6 +32,8 @@ public class AcceuilController implements Initializable {
     private Button btn_add;
     @FXML
     private Button btn_display;
+    @FXML
+    private Button btn_display1;
     /**
      * Initializes the controller class.
      */
@@ -43,6 +45,22 @@ public class AcceuilController implements Initializable {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
+                // Give the controller access to the main app.
+//                AfficherPersonneController controller =loader.getController();
+//                controller.setListData(new ListData());
+                Scene scene = new Scene(page2);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+         btn_display1.setOnAction(event -> {
+            try {//FXMLLoader loader = new FXMLLoader();
+                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
 //                controller.setListData(new ListData());

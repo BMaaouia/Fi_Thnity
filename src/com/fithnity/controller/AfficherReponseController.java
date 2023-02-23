@@ -7,10 +7,10 @@ package com.fithnity.controller;
 
 
 
-
-
-import com.fithnity.service.ReclamationDao;
 import com.fithnity.entity.Reclamation;
+import com.fithnity.service.ReponseDao;
+import com.fithnity.entity.Reponse;
+import com.fithnity.service.ReclamationDao;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -45,57 +45,43 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
-//**********************************
-
-
-
 /**
  * FXML Controller class
  *
- * @author wiemhjiri
+ * @author MSI
  */
-public class AfficherPersonneController implements Initializable {
+public class AfficherReponseController implements Initializable {
 
+    @FXML
+    private ListView<Reponse> listviewR;
+    @FXML
+    private Button retourr;
+    @FXML
+    private Button btn_delete;
+    @FXML
+    private Button retour;
+    @FXML
+    private Button btnn;
+    @FXML
+    private Button modif2;
+    @FXML
+    private TextField txt_emailU;
+    @FXML
+    private TextField txt_messageR;
+    
+  private ListDataReponse listdata = new ListDataReponse();
     /**
      * Initializes the controller class.
      */
-     @FXML
-    private ListView<Reclamation> listviewP;
-      @FXML
-    private TextField txt_nom;
-       @FXML
-    private TextField txt_prenom;
-
-    private ListData listdata = new ListData();
-   @FXML
-    private Button retour;
-     @FXML
-    private Button btnn;
-      @FXML
-    private Button modif2;
-      
-    
-    @FXML
-    private Button btn_delete;
-     @FXML
-    private Button retourr;
-       @FXML
-    private TextField txt_email;
-    @FXML
-    private TextField txt_tel;
-    @FXML
-    private TextField txt_message;
-//    @FXML
-//    private TextField txt_id;
-    @Override
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-          ObservableList<Reclamation> data=FXCollections.observableArrayList();
+        
+          ObservableList<Reponse> data=FXCollections.observableArrayList();
   
-listviewP.setItems(listdata.getPersons()); 
+listviewR.setItems(listdata.getPersons()); 
          
  
-        listviewP.setOnMouseClicked(event->{
+        listviewR.setOnMouseClicked(event->{
 //        idLabel.setText(String.valueOf(listdata.getPersons()
 //                .get(listviewP.getSelectionModel().getSelectedIndex())
 //                .getId()));
@@ -106,16 +92,15 @@ listviewP.setItems(listdata.getPersons());
 //                .get(listviewP.getSelectionModel().getSelectedIndex())
 //                .getPrenom());
  java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-        Reclamation current = listviewP.getSelectionModel().getSelectedItem();
-        // txt_id.setText(Integer.toString(current.getId()));
+        Reponse current = listviewR.getSelectionModel().getSelectedItem();
+//         txt_id.setText(Integer.toString(current.getId()));
        
-         current.getId();
-        txt_nom.setText(current.getNom());
-        txt_prenom.setText(current.getPrenom());
-        txt_email.setText(current.getEmail());
-        txt_tel.setText(Integer.toString(current.getNumTel()));   
-txt_message.setText(current.getMessage());        
-
+         current.getIdReponse();
+       
+        txt_emailU.setText(current.getEmailUser());
+         
+txt_messageR.setText(current.getMessageR());        
+//current.getDate();
     });
             
     }
@@ -126,23 +111,19 @@ txt_message.setText(current.getMessage());
         if (Saisi() == true)
         {
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), txt_message.getText(),currentDate);
-            ReclamationDao pdao = ReclamationDao.getInstance();
+	 Reponse p = new Reponse(currentDate, txt_emailU.getText(), txt_messageR.getText());
+           ReponseDao pdao = ReponseDao.getInstance();
             pdao.insert(p);
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Reclamation insérée avec succés!");
+        alert.setContentText("Reponse insérée avec succés!");
         alert.show();
-        
-        txt_nom.setText("");
-        txt_prenom.setText("");	
-	 txt_email.setText("");
-        txt_tel.setText("");   
-txt_message.setText("");  
-//reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
+	 txt_emailU.setText("");
+        txt_messageR.setText("");  	
+        //reload
+        Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
     window.setScene(new Scene(root2));
 	}
@@ -150,50 +131,48 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
     
     @FXML
     private void delete(ActionEvent event) throws IOException { 
-		 ReclamationDao pdao = ReclamationDao.getInstance();
-     Reclamation selectedItem2 = listviewP.getSelectionModel().getSelectedItem();
+		 ReponseDao pdao = ReponseDao.getInstance();
+     Reponse selectedItem2 = listviewR.getSelectionModel().getSelectedItem();
   
-    listviewP.getItems().remove(selectedItem2);
+    listviewR.getItems().remove(selectedItem2);
       pdao.delete(selectedItem2);  
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Reclamation suprimée avec succés!");
+        alert.setContentText("Reponse suprimée avec succés!");
         alert.show();
 		
 	}
     
     @FXML
     private void modifier(ActionEvent event) throws IOException { 
-		 Reclamation current = listviewP.getSelectionModel().getSelectedItem();
-            Reclamation p = new Reclamation();
+		 Reponse current = listviewR.getSelectionModel().getSelectedItem();
+            Reponse p = new Reponse();
 //            p.setId(Integer.parseInt(txt_id.getText()));
-            p.setId(current.getId());
-            p.setNom(txt_nom.getText());
-            p.setPrenom(txt_prenom.getText());
-            p.setEmail(txt_email.getText());
-            p.setNumTel(Integer.parseInt(txt_tel.getText()));
-             p.setMessage(txt_message.getText());
-            ReclamationDao pdao = ReclamationDao.getInstance();
+            p.setIdReponse(current.getIdReponse());
+           
+            p.setEmailUser(txt_emailU.getText());
+          
+             p.setMessageR(txt_messageR.getText());
+            ReponseDao pdao = ReponseDao.getInstance();
             pdao.update(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Reclamation modifiée avec succés!");
+        alert.setContentText("Reponse modifiée avec succés!");
         alert.show();
-            txt_nom.setText("");
-        txt_prenom.setText("");	
-	 txt_email.setText("");
-        txt_tel.setText("");   
-txt_message.setText("");  
+        
+	 txt_emailU.setText("");
+          
+txt_messageR.setText("");  
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
     window.setScene(new Scene(root2));
 		
 	}
    
- 
+   
     
     @FXML
     private void back(ActionEvent event) throws IOException { 
@@ -214,7 +193,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
     
  private boolean Saisi() {  
 
-        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+        if ( txt_emailU.getText().isEmpty() || txt_messageR.getText().isEmpty()) {
             Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
             return false;
         } else {
@@ -232,15 +211,15 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
 //                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
 //                return false;
 //            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
+//          if (!Pattern.matches("[A-Za-z]*", txt_messageR.getText())) {
+//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le message de Reponse ! ");
 //                return false;
 //            }
 //            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
 //                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
 //                return false;
 //            }
-//           
+           
         }
         return true;
          

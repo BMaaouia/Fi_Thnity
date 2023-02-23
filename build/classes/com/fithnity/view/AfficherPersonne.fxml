@@ -15,7 +15,6 @@
       <TextField fx:id="txt_prenom" layoutX="71.0" layoutY="277.0" />
       <Label layoutX="8.0" layoutY="240.0" text="nom" />
       <Label layoutY="277.0" text="prenom" />
-      <Button fx:id="retour" layoutX="131.0" layoutY="356.0" mnemonicParsing="false" onAction="#rafraichir" text="Rafraichir" />
       <Button fx:id="btnn" layoutX="238.0" layoutY="356.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="103.0" text="ajouter" />
       <Button fx:id="modif2" layoutX="355.0" layoutY="356.0" mnemonicParsing="false" onAction="#modifier" text="modifier" />
       <TextField fx:id="txt_email" layoutX="361.0" layoutY="235.0" />

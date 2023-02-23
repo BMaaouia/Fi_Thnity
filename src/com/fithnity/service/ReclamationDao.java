@@ -151,6 +151,7 @@ public class ReclamationDao implements Idao<Reclamation>{
                 p.setEmail(rs.getString(4));
                 p.setNumTel(rs.getInt(5));
                 p.setMessage(rs.getString(6));
+                p.setDate(rs.getDate(7));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ReclamationDao.class.getName()).log(Level.SEVERE, null, ex);

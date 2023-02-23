@@ -142,7 +142,7 @@ private SimpleObjectProperty <Date> date ;
 
     @Override
     public String toString() {
-        return  " nom=" + nom.get() + "  ||  " + " prenom=" + prenom.get() + "  ||  " + " email=" + email.get() + "  ||  " + " Tel=" + numTel.get() + "  ||  " + " message=" + message.get();
+        return  " nom=" + nom.get() + "  ||  " + " prenom=" + prenom.get() + "  ||  " + " email=" + email.get() + "  ||  " + " Tel=" + numTel.get() + "  ||  " + " message=" + message.get() + "  ||  "+ ", date=" + date.get() + ' ';
     }
 
     @Override

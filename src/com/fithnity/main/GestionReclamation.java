@@ -6,6 +6,8 @@
 package com.fithnity.main;
 import com.fithnity.controller.AfficherPersonneController;
 import com.fithnity.controller.ListData;
+import com.fithnity.controller.AfficherReponseController;
+import com.fithnity.controller.ListDataReponse;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 /**
  *
@@ -37,6 +40,8 @@ public class GestionReclamation extends Application  {
         
         parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
         Scene scene = new Scene(parentPage);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
 

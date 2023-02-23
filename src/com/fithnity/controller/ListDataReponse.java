@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package com.fithnity.controller;
-import com.fithnity.service.ReclamationDao;
-import com.fithnity.entity.Reclamation;
+
+import com.fithnity.service.ReponseDao;
+import com.fithnity.entity.Reponse;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,22 +21,22 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author wiemhjiri
  */
-public class ListData {
+public class ListDataReponse {
     
      /**
      * The data as an observable list of Persons.
      */
     
-    private ObservableList<Reclamation> persons=FXCollections.observableArrayList();
+    private ObservableList<Reponse> persons=FXCollections.observableArrayList();
 
-    public ListData() {
+    public ListDataReponse() {
         
-        ReclamationDao pdao=ReclamationDao.getInstance();
+        ReponseDao pdao=ReponseDao.getInstance();
         persons= pdao.displayAll();
         System.out.println(persons);
     }
     
-    public ObservableList<Reclamation> getPersons(){
+    public ObservableList<Reponse> getPersons(){
         return persons;
     }
    
