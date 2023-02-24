@@ -55,7 +55,7 @@ public class ServiceSubscription implements SubscriptionInterface<Subscription> 
     public void delete(Subscription o) {
         String deleteQuery = "DELETE FROM subscription WHERE subscription_id ="+o.getSubscription_id();
         String updateQuery = "UPDATE user SET IsSubscribed = 0 WHERE user_id IN (SELECT user_id FROM user_subscription WHERE subscription_id =" + o.getSubscription_id() + ")";
-        String req="delete from subscription where subscription_id ="+o.getSubscription_id();
+        //String req="delete from subscription where subscription_id ="+o.getSubscription_id();
         Subscription s=displayById(o.getSubscription_id());
         
           if(s!=null)
@@ -143,7 +143,7 @@ public class ServiceSubscription implements SubscriptionInterface<Subscription> 
 
     @Override
     public boolean update(Subscription s) {
-        String qry = "UPDATE subscription SET subscription_type = '"+s.getSubscription_type()+"', subscription_img = '"+s.getSubscription_img()+"', subscription_price = '"+s.getSubscription_price()+"' WHERE subscription_id = "+s.getSubscription_id();
+        String qry = "UPDATE subscription SET subscription_type = '"+s.getSubscription_type()+"', subscription_price = '"+s.getSubscription_price()+"' WHERE subscription_id = "+s.getSubscription_id();
         
         try {
             if (st.executeUpdate(qry) > 0) {

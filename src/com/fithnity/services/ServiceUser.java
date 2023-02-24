@@ -214,13 +214,13 @@ public class ServiceUser implements UserInterface<User>{
     }
     
     public boolean verif_email(String email){
-        String qry = "SELECT COUNT(*) FROM user WHERE user_email = "+email;
+        String qry = "SELECT COUNT(*) FROM user WHERE user_email = '"+email+"'";
                 
                 try{
                 rs=st.executeQuery(qry);
                 rs.next();
                 int count = rs.getInt(1);
-                if(count==1){
+                if(count==0){
                     
                     return true;
                 }

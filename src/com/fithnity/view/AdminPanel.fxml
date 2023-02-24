@@ -96,5 +96,10 @@
          </children>
       </AnchorPane>
       <TilePane fx:id="tilepane_subscription" layoutX="292.0" layoutY="110.0" prefHeight="451.0" prefWidth="571.0" visible="false" />
+      <Button fx:id="logout" layoutX="778.0" layoutY="18.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Log Out" textFill="#f9f7dd">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

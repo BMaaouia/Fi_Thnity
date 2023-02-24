@@ -28,11 +28,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,7 +49,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
@@ -113,6 +119,8 @@ public class ProfileController implements Initializable {
     private Button cancel_subscription;
     @FXML
     private Button delete;
+    @FXML
+    private Button logout;
    
 
     
@@ -180,29 +188,29 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void save_update(ActionEvent event) {
-       
-       System.out.println(current);
-       current.setUser_firstname(firstname_text.getText());
-       current.setUser_lastname(lastname_text.getText());
-       current.setUser_email(email_text.getText());
-       current.setUser_password(password_text.getText());
-       
-       Su.update(current);
-       Alert alert = new Alert(Alert.AlertType.INFORMATION);
-       alert.setTitle("Information Dialog");
-       alert.setHeaderText(null);
-       alert.setContentText("Your Account has been updated!");
-       alert.show();
-       
-       user.setText("Welcome "+UserManager.getCurrentUser().getUser_firstname()+"!");
-       firstname_text.setDisable(true);
-       lastname_text.setDisable(true);
-       email_text.setDisable(true);
-       password_text.setDisable(true);
-       
-       save.setVisible(false);
-       update.setVisible(true);
-                
+       if(validateInputs()==true){
+            System.out.println(current);
+            current.setUser_firstname(firstname_text.getText());
+            current.setUser_lastname(lastname_text.getText());
+            current.setUser_email(email_text.getText());
+            current.setUser_password(password_text.getText());
+
+            Su.update(current);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Your Account has been updated!");
+            alert.show();
+
+            user.setText("Welcome "+UserManager.getCurrentUser().getUser_firstname()+"!");
+            firstname_text.setDisable(true);
+            lastname_text.setDisable(true);
+            email_text.setDisable(true);
+            password_text.setDisable(true);
+
+            save.setVisible(false);
+            update.setVisible(true);
+       }        
     }
 
     @FXML
@@ -303,12 +311,15 @@ public class ProfileController implements Initializable {
         
         UserSubscription a = SUS.displayById(current.getUser_id());
         Date start = a.getSubscription_start();
+        long currentTime = System.currentTimeMillis();
         Date end = a.getSubscription_end();
         
-        long tl = end.getTime() - start.getTime(); // time difference in milliseconds
+        long tl = end.getTime() - currentTime; // time difference in milliseconds
         long daysLeft = TimeUnit.DAYS.convert(tl, TimeUnit.MILLISECONDS); // convert to days
         
         time.setText("You have " +daysLeft+" days left in your "+a.getSubscription().getSubscription_type()+" Subscription");
+        
+        
         
         cancel_subscription.setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -323,23 +334,140 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void delete(ActionEvent event) {
-        Su.delete(current);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("Your Account has been deleted!");
-        alert.show();
-        try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to Delete this item?");
+        Optional<ButtonType> result = alert.showAndWait();
+                            
+        if (result.get() == ButtonType.OK){
+            Su.delete(current);
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+         }
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to Log Out?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Parent page1;
+            try {
+            page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-        } catch (IOException ex) {
-                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+            
+            } catch (IOException ex) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+        } 
+        
+        
     }
     
+    
+    
+    public boolean validateInputs() {
+    
+        if (firstname_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Firstname!");
+            alert.show();
+            return false;
+        }
+
+        if (!firstname_text.getText().matches("[a-zA-Z]+")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid Firstname! Only alphabetic characters are allowed.");
+            alert.show();
+            return false;
+        }
+
+        if (lastname_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Lastname!");
+            alert.show();
+            return false;
+        }
+
+        if (!lastname_text.getText().matches("[a-zA-Z]+")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid Lastname! Only alphabetic characters are allowed.");
+            alert.show();
+            return false;
+        }
+
+        if (email_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Email!");
+            alert.show();
+            return false;
+        }
+
+        if (!email_text.getText().matches("[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,6}")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid Email!");
+            alert.show();
+            return false;
+        }
+
+        if(Su.verif_email(email_text.getText())==false){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Email Already Used!");
+            alert.show();
+            return false;
+
+        }
+
+        if (password_text.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Password!");
+            alert.show();
+            return false;
+        }
+
+        if (!password_text.getText().matches("^(?=.*[0-9]).{8,}$")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Password should be at least 8 characters and contain at least one digit [0-9] only!");
+            alert.show();
+            return false;
+        }
+
+        return true;
+    }
 
     
 }

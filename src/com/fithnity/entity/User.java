@@ -126,7 +126,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "user_firstname=" + user_firstname + ", user_lastname=" + user_lastname + ", user_email=" + user_email + ", user_password=" + user_password + ", IsSubscribed=" + IsSubscribed + ", Admin=" + Admin + '}';
+        return "User = " + "user_firstname=" + user_firstname.get() + " || user_lastname=" + user_lastname.get() + " || user_email=" + user_email.get()  ;
     }
 
    
