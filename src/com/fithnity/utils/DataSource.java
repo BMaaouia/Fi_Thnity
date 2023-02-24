@@ -8,26 +8,25 @@ package com.fithnity.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author abdelazizmezri
+ * @author lenovo
  */
 public class DataSource {
     
-    private Connection cnx;
     private static DataSource instance;
     
+    private Connection cnx;
+    
     private final String USER = "root";
-    private final String PWD = "";
+    private final String PASSWORD = "";
     private final String URL = "jdbc:mysql://localhost:3306/fi_thnity";
 
     private DataSource() {
         try {
-            cnx = DriverManager.getConnection(URL, USER, PWD);
-            System.out.println("Connected !");
+            cnx = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("DB Connected !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
