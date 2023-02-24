@@ -438,7 +438,7 @@ public class ProfileController implements Initializable {
             return false;
         }
 
-        if(Su.verif_email(email_text.getText())==false){
+        if(Su.verif_email(email_text.getText())==false && !email_text.getText().equals(current.getUser_email())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText(null);
