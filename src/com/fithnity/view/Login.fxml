@@ -50,11 +50,6 @@
             <Glow level="0.38" />
          </effect>
       </Label>
-      <Label layoutX="498.0" layoutY="418.0" text="Forget password ?" underline="true">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
       <Button fx:id="login" layoutX="551.0" layoutY="477.0" mnemonicParsing="false" onAction="#login" prefHeight="34.0" prefWidth="119.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Login" textFill="#f9f7dd">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
@@ -68,6 +63,11 @@
       <Hyperlink fx:id="signup" layoutX="530.0" layoutY="540.0" onAction="#signup" prefHeight="29.0" prefWidth="178.0" text="Don't have an account ?" underline="true">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="498.0" layoutY="415.0" onAction="#forget_pass" text="Forget password?">
+         <font>
+            <Font size="11.0" />
          </font>
       </Hyperlink>
    </children>

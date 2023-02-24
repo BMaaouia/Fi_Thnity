@@ -48,6 +48,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -81,7 +82,7 @@ public class ProfileController implements Initializable {
     @FXML
     private Button update;
     @FXML
-    private PasswordField password_text;
+    private TextField password_text;
     @FXML
     private Button save;
     @FXML
@@ -108,6 +109,11 @@ public class ProfileController implements Initializable {
     private Text time;
     @FXML
     private AnchorPane check_Subscription_pane;
+    @FXML
+    private Button cancel_subscription;
+    @FXML
+    private Button delete;
+   
 
     
 
@@ -234,13 +240,15 @@ public class ProfileController implements Initializable {
                     ImageView imageView = new ImageView(image);
                     imageView.setFitHeight(150);
                     imageView.setFitWidth(150);
+   
                     Button btn = new Button("Subscribe");
                     btn.setId(Integer.toString(item.getSubscription_id()));
+                    btn.setStyle("-fx-background-color: black; -fx-background-radius: 20; -fx-font-family: \"Franklin Gothic Medium\";-fx-text-fill: #F9F7DD;");
 
-                    
-
-                    Label price = new Label(Integer.toString(item.getSubscription_price()));
+                    Label price = new Label(Integer.toString(item.getSubscription_price())+" DT");
                     Label type = new Label(item.getSubscription_type());
+                    price.setStyle("-fx-font-family: \"Franklin Gothic Medium\";");
+                    type.setStyle("-fx-font-family: \"Franklin Gothic Medium\";");
 
                     VBox vBox = new VBox();
                     vBox.getChildren().addAll(imageView,type,price,btn);
@@ -256,7 +264,7 @@ public class ProfileController implements Initializable {
                         long oneMonthInMillis = 30L * 24 * 60 * 60 * 1000;
                         long oneMonthLaterInMillis = currentTimeMillis + oneMonthInMillis;
 
-
+                          
                         java.sql.Date currentDate = new java.sql.Date(currentTimeMillis );
                         java.sql.Date oneMonthLaterDate = new java.sql.Date(oneMonthLaterInMillis);
 
@@ -300,8 +308,36 @@ public class ProfileController implements Initializable {
         long tl = end.getTime() - start.getTime(); // time difference in milliseconds
         long daysLeft = TimeUnit.DAYS.convert(tl, TimeUnit.MILLISECONDS); // convert to days
         
-        time.setText("You have " +daysLeft+" days in your "+a.getSubscription().getSubscription_type()+" Subscription");
+        time.setText("You have " +daysLeft+" days left in your "+a.getSubscription().getSubscription_type()+" Subscription");
+        
+        cancel_subscription.setOnAction(e -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("You can't cancel yet!");
+            alert.show();
+            
+        });
    
+    }
+
+    @FXML
+    private void delete(ActionEvent event) {
+        Su.delete(current);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Your Account has been deleted!");
+        alert.show();
+        try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
     
 

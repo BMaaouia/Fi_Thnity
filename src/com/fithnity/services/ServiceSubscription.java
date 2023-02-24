@@ -53,13 +53,16 @@ public class ServiceSubscription implements SubscriptionInterface<Subscription> 
 
     @Override
     public void delete(Subscription o) {
+        String deleteQuery = "DELETE FROM subscription WHERE subscription_id ="+o.getSubscription_id();
+        String updateQuery = "UPDATE user SET IsSubscribed = 0 WHERE user_id IN (SELECT user_id FROM user_subscription WHERE subscription_id =" + o.getSubscription_id() + ")";
         String req="delete from subscription where subscription_id ="+o.getSubscription_id();
         Subscription s=displayById(o.getSubscription_id());
         
           if(s!=null)
               try {
-           
-            st.executeUpdate(req);
+            st.executeUpdate(updateQuery);
+            st.executeUpdate(deleteQuery);
+            
              
         } catch (SQLException ex) {
             Logger.getLogger(ServiceSubscription.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,6 +121,9 @@ public class ServiceSubscription implements SubscriptionInterface<Subscription> 
     @Override
     public Subscription displayById(int id) {
            String req="select * from subscription where subscription_id ="+id;
+           
+           
+           
            Subscription s=new Subscription();
         try {
             rs=st.executeQuery(req);
@@ -125,8 +131,8 @@ public class ServiceSubscription implements SubscriptionInterface<Subscription> 
             rs.next();
                 s.setSubscription_id(rs.getInt(1));
                 s.setSubscription_type(rs.getString(2));
-              //  s.setSubscription_img(rs.getByte(3));
-                s.setSubscription_price(rs.getInt(3));
+                s.setSubscription_img(rs.getString(3));
+                s.setSubscription_price(rs.getInt(4));
                 
             //}  
         } catch (SQLException ex) {

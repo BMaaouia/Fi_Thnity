@@ -56,29 +56,36 @@ public class ServiceUser implements UserInterface<User>{
 
     @Override
     public void delete(User o) {
-        String req="delete from user where id="+o.getUser_id();
-        User p=displayById(o.getUser_id());
-        
-          if(p!=null)
-              try {
            
-            st.executeUpdate(req);
-             
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
-        }else System.out.println("n'existe pas");
+            String req1="delete from user where user_id="+o.getUser_id();
+        
+            String req="DELETE user, user_subscription"
+            +" FROM user "
+            + " LEFT JOIN user_subscription ON user.user_id = user_subscription.user_id "
+            + " WHERE user.user_id = '"+o.getUser_id()+"' AND user_subscription.user_id = '"+o.getUser_id()+"' AND user.isSubscribed = 1";
+
+
+            User p=displayById(o.getUser_id());
+
+              if(p!=null)
+                  try {
+                if(o.getIsSubscribed()==1){        
+                    st.executeUpdate(req);
+                }
+                else{
+                    st.executeUpdate(req1);  
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+            }else System.out.println("n'existe pas");
+        
+        
     }
     
 
     @Override
     public ObservableList<User> displayAll() {
-       // String req="SELECT user.*, subscription.* FROM user " +
-         //    "LEFT JOIN subscription ON user.subscription_id = subscription.subscription_id " ;
-        
-        
-        
-        
-        
+     
         String req="select * from user";
         ObservableList<User> list=FXCollections.observableArrayList();       
         
@@ -123,7 +130,7 @@ public class ServiceUser implements UserInterface<User>{
     }
     @Override
     public User displayById(int id) {
-           String req="select * from user where id ="+id;
+           String req="select * from user where user_id ="+id;
            User p=new User();
         try {
             rs=st.executeQuery(req);
@@ -134,6 +141,8 @@ public class ServiceUser implements UserInterface<User>{
                 p.setUser_lastname(rs.getString("user_lastname"));
                 p.setUser_email(rs.getString(4));
                 p.setUser_password(rs.getString(5));
+                p.setAdmin(rs.getInt(6));
+                p.setIsSubscribed(rs.getInt(7));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
@@ -202,6 +211,27 @@ public class ServiceUser implements UserInterface<User>{
         }
         
     return p;
+    }
+    
+    public boolean verif_email(String email){
+        String qry = "SELECT COUNT(*) FROM user WHERE user_email = "+email;
+                
+                try{
+                rs=st.executeQuery(qry);
+                rs.next();
+                int count = rs.getInt(1);
+                if(count==1){
+                    
+                    return true;
+                }
+                else{
+                    return false;
+                }
+                
+                }catch (SQLException ex) {
+                    Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return false;
     }
 
    

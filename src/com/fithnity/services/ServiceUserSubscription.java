@@ -165,6 +165,33 @@ public class ServiceUserSubscription implements UserSubscriptionInterface<UserSu
     }
     
     
+    public int GetNbUsers(int id) {
+        
+           String req = "SELECT COUNT(*) FROM user_subscription "
+           + "JOIN user ON user_subscription.user_id = user.user_id "
+           + "JOIN subscription ON user_subscription.subscription_id = subscription.subscription_id "
+           + "WHERE user_subscription.subscription_id =" + id;
+        
+           UserSubscription us=new UserSubscription();
+           User u = new User();
+           Subscription s=new Subscription();
+           int count=0 ;
+        try {
+            
+            rs=st.executeQuery(req);
+            rs.next();
+            count = rs.getInt(1);        
+           
+            return count;
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceSubscription.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return count;
+    }
+    
+    
 
    
 }

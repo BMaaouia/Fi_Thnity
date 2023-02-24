@@ -32,17 +32,17 @@
             <Glow level="0.38" />
          </effect>
       </Label>
-      <Button fx:id="signup" layoutX="275.0" layoutY="469.0" mnemonicParsing="false" onAction="#signup" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: #000000; -fx-background-radius: 15;" text="Sign Up" textFill="#f9f7dd">
+      <Button fx:id="signup" layoutX="265.0" layoutY="521.0" mnemonicParsing="false" onAction="#signup" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: #000000; -fx-background-radius: 15;" text="Sign Up" textFill="#f9f7dd">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="nom_text" layoutX="242.0" layoutY="214.0" prefHeight="40.0" prefWidth="182.0" style="-fx-background-radius: 20;">
+      <TextField fx:id="firstname_text" layoutX="242.0" layoutY="214.0" prefHeight="40.0" prefWidth="182.0" style="-fx-background-radius: 20;">
          <effect>
             <DropShadow />
          </effect>
       </TextField>
-      <TextField fx:id="prenom_text" layoutX="242.0" layoutY="279.0" prefHeight="40.0" prefWidth="182.0" style="-fx-background-radius: 20;">
+      <TextField fx:id="lastname_text" layoutX="242.0" layoutY="279.0" prefHeight="40.0" prefWidth="182.0" style="-fx-background-radius: 20;">
          <effect>
             <DropShadow />
          </effect>
@@ -53,6 +53,11 @@
          </effect>
       </TextField>
       <PasswordField fx:id="password_text" layoutX="240.0" layoutY="398.0" prefHeight="40.0" prefWidth="183.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </PasswordField>
+      <PasswordField fx:id="confirm_password_text" layoutX="242.0" layoutY="457.0" prefHeight="40.0" prefWidth="183.0" style="-fx-background-radius: 20;">
          <effect>
             <DropShadow />
          </effect>
@@ -73,12 +78,20 @@
             <Glow level="0.38" />
          </effect>
       </Label>
+      <Label layoutX="82.0" layoutY="464.0" prefHeight="27.0" prefWidth="149.0" text="ConfirmPassword :" textOverrun="CLIP">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+         <effect>
+            <Glow level="0.38" />
+         </effect>
+      </Label>
       <Text layoutX="69.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create An Account" wrappingWidth="547.66943359375">
          <font>
             <Font name="Franklin Gothic Medium Italic" size="54.0" />
          </font>
       </Text>
-      <Hyperlink fx:id="login" layoutX="242.0" layoutY="534.0" onAction="#login" text="Already have an account ?" underline="true" />
+      <Hyperlink fx:id="login" layoutX="222.0" layoutY="563.0" onAction="#login" text="Already have an account ?" underline="true" />
       <BorderPane layoutX="549.0" prefHeight="598.0" prefWidth="340.0" style="-fx-background-color: #BCBA95;">
          <top>
             <ImageView fx:id="logo1" fitHeight="386.0" fitWidth="340.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
