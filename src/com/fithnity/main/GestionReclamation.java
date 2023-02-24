@@ -36,7 +36,7 @@ public class GestionReclamation extends Application  {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Gestion Reclamation");
+        this.primaryStage.setTitle("Fi_Thnity");
         
         parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
         Scene scene = new Scene(parentPage);

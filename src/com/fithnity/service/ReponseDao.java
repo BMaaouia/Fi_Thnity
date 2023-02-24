@@ -47,7 +47,7 @@ public class ReponseDao implements Idao<Reponse>{
     @Override
     public void insert(Reponse o) {
        
-        String req = "INSERT INTO Reponse (dateReponse, emailUser, messageR,idReclamation) VALUES ('" +  o.getDateReponse() + "', '"  + o.getMessageR() + "', '" + o.getEmailUser() +"', '" + o.getReclamation().getId() + "')";
+        String req = "INSERT INTO Reponse (dateReponse, emailUser, messageR,idReclamation) VALUES ('" +  o.getDateReponse() + "', '"  + o.getEmailUser() + "', '" + o.getMessageR() +"', '" + o.getReclamation().getId() + "')";
         //String req="insert into Reclamation (nom,prenom,email,numTel,message,date) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"','"+o.getDate()+"',')";
         try {
             st.executeUpdate(req);

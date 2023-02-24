@@ -97,16 +97,16 @@ listviewRec.setItems(listdata2.getPersons());
 //                .get(listviewP.getSelectionModel().getSelectedIndex())
 //                .getPrenom());
  java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-//        Reponse current = listviewR.getSelectionModel().getSelectedItem();
+//      Reponse current = listviewR.getSelectionModel().getSelectedItem();
         Reclamation current2 = listviewRec.getSelectionModel().getSelectedItem(); //***********
         
 //         txt_id.setText(Integer.toString(current.getId()));
        
-         current2.getId();
+        // current.getIdReponse();
        
         txt_emailU.setText(current2.getEmail());
          
-txt_messageR.setText(current2.getMessage());        
+//txt_messageR.setText(current2.getMessage());        
 //current.getDate();
     });
             
@@ -212,27 +212,16 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
             return false;
         } else {
 
-//            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
-//                return false;
-//            }
-//
-//           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_messageR.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le message de Reponse ! ");
-//                return false;
-//            }
-//            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
-//                return false;
-//            }
+           
+        
+          if (!Pattern.matches("[A-Za-z]*", txt_messageR.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le message de Reponse ! ");
+                return false;
+            }
+            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_emailU.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
+                return false;
+            }
            
         }
         return true;

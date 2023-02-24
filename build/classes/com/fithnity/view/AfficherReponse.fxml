@@ -5,16 +5,20 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AfficherReponseController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: F9F7DD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AfficherReponseController">
    <children>
-      <Button fx:id="retourr" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="103.0" text="retour" />
-      <Button fx:id="btnn" layoutX="310.0" layoutY="346.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="103.0" text="ajouter" />
-      <TextField fx:id="txt_emailU" layoutX="268.0" layoutY="239.0" />
-      <Label layoutX="178.0" layoutY="244.0" prefHeight="21.0" prefWidth="76.0" text="emailUser" />
-      <TextField fx:id="txt_messageR" layoutX="268.0" layoutY="282.0" />
-      <Label layoutX="187.0" layoutY="287.0" text="message" />
-      <ListView fx:id="listviewRec" layoutX="38.0" layoutY="25.0" prefHeight="200.0" prefWidth="536.0" />
-      <Button fx:id="btn_reponse" layoutX="429.0" layoutY="347.0" mnemonicParsing="false" onAction="#goreponse" text="manipuler reponse" />
+      <Button fx:id="retourr" layoutX="22.0" layoutY="33.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="103.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="retour" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnn" layoutX="480.0" layoutY="519.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="103.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="ajouter" textFill="WHITE" />
+      <TextField fx:id="txt_emailU" disable="true" editable="false" layoutX="335.0" layoutY="362.0" />
+      <Label layoutX="245.0" layoutY="367.0" prefHeight="21.0" prefWidth="76.0" text="emailUser" />
+      <TextField fx:id="txt_messageR" layoutX="335.0" layoutY="405.0" />
+      <Label layoutX="254.0" layoutY="410.0" text="message" />
+      <ListView fx:id="listviewRec" layoutX="26.0" layoutY="100.0" prefHeight="246.0" prefWidth="750.0" />
+      <Button fx:id="btn_reponse" layoutX="615.0" layoutY="520.0" mnemonicParsing="false" onAction="#goreponse" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="manipuler reponse" textFill="WHITE" />
    </children>
 </AnchorPane>

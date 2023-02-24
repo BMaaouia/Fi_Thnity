@@ -42,6 +42,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
@@ -89,13 +90,13 @@ public class AfficherPersonneController implements Initializable {
 //    private TextField txt_id;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-          ObservableList<Reclamation> data=FXCollections.observableArrayList();
-  
+        // ************************************************************
+      
 listviewP.setItems(listdata.getPersons()); 
          
  
         listviewP.setOnMouseClicked(event->{
+            
 //        idLabel.setText(String.valueOf(listdata.getPersons()
 //                .get(listviewP.getSelectionModel().getSelectedIndex())
 //                .getId()));
@@ -165,6 +166,8 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
     
     @FXML
     private void modifier(ActionEvent event) throws IOException { 
+          if (Saisi() == true)
+        {
 		 Reclamation current = listviewP.getSelectionModel().getSelectedItem();
             Reclamation p = new Reclamation();
 //            p.setId(Integer.parseInt(txt_id.getText()));
@@ -190,11 +193,11 @@ txt_message.setText("");
 Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
     window.setScene(new Scene(root2));
-		
+        }	
 	}
+          
    
- 
-    
+   
     @FXML
     private void back(ActionEvent event) throws IOException { 
 		Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
@@ -219,28 +222,28 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
             return false;
         } else {
 
-//            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
-//                return false;
-//            }
-//
-//           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
-//                return false;
-//            }
-//            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
-//                return false;
-//            }
-//           
+            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
+                return false;
+            }
+
+           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
+                return false;
+            }
+          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
+                return false;
+            }
+          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
+                return false;
+            }
+            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
+                return false;
+            }
+           
         }
         return true;
          
