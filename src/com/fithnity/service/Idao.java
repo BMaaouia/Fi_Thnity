@@ -16,7 +16,9 @@ public interface Idao<T> {
     public void insert(T o);
     public void delete(T o);
     public List<T> displayAll();
+   //  public List<T> displayAll2();
     public T displayById(int id);
+  
     
     public boolean update(T os);
     

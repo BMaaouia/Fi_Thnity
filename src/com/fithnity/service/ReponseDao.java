@@ -46,7 +46,8 @@ public class ReponseDao implements Idao<Reponse>{
 
     @Override
     public void insert(Reponse o) {
-        String req = "INSERT INTO Reponse (dateReponse, emailUser, messageR) VALUES ('" +  o.getDateReponse() + "', '"  + o.getMessageR() + "', '" + o.getEmailUser() + "')";
+       
+        String req = "INSERT INTO Reponse (dateReponse, emailUser, messageR,idReclamation) VALUES ('" +  o.getDateReponse() + "', '"  + o.getMessageR() + "', '" + o.getEmailUser() +"', '" + o.getReclamation().getId() + "')";
         //String req="insert into Reclamation (nom,prenom,email,numTel,message,date) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"','"+o.getDate()+"',')";
         try {
             st.executeUpdate(req);
@@ -99,6 +100,7 @@ public class ReponseDao implements Idao<Reponse>{
                  p.setDateReponse(rs.getDate(2));
                 p.setEmailUser(rs.getString(3));
                 p.setMessageR(rs.getString(4));
+              //  p.setIdReclamation(rs.getInt(5));
                
                 list.add(p);
             }
@@ -108,9 +110,32 @@ public class ReponseDao implements Idao<Reponse>{
         }
         return list;
     }
+    
+    
 
     public List<Reponse> displayAllList() {
         String req="select * from Reponse";
+        List<Reponse> list=new ArrayList<>();
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                Reponse p=new Reponse();
+                 p.setIdReponse(rs.getInt(1)); 
+                 p.setDateReponse(rs.getDate(2));
+                p.setEmailUser(rs.getString(3));
+                p.setMessageR(rs.getString(4));
+               // p.setIdReclamation(rs.getInt(5));
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ReponseDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+     public List<Reponse> displayAllList2() {
+        String req="SELECT * FROM reponse INNER JOIN reclamation ON reponse.idReponse=reclamation.id";
         List<Reponse> list=new ArrayList<>();
         
         try {
@@ -129,6 +154,7 @@ public class ReponseDao implements Idao<Reponse>{
         }
         return list;
     }
+    
     @Override
     public Reponse displayById(int id) {
            String req="select * from Reponse where idReponse ="+id;
@@ -141,6 +167,7 @@ public class ReponseDao implements Idao<Reponse>{
                  p.setDateReponse(rs.getDate(2));
                 p.setEmailUser(rs.getString(3));
                 p.setMessageR(rs.getString(4));
+               // p.setIdReclamation(rs.getInt(5));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ReponseDao.class.getName()).log(Level.SEVERE, null, ex);

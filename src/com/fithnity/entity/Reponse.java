@@ -21,6 +21,8 @@ public class Reponse {
      private SimpleStringProperty emailUser;
       private SimpleStringProperty messageR;
 private SimpleObjectProperty <Date> dateReponse ;
+private SimpleObjectProperty <Reclamation> reclamation ;
+ 
 
     public Reponse() {
     }
@@ -35,8 +37,24 @@ private SimpleObjectProperty <Date> dateReponse ;
         this.emailUser = new SimpleStringProperty(emailUser);
          this.dateReponse=new SimpleObjectProperty <Date> (dateReponse);
     }
+    
+    public Reponse(int idReponse,Date dateReponse,String emailUser,String messageR, Reclamation reclamation) {
+        this.idReponse = new SimpleIntegerProperty(idReponse);
+        this.messageR = new SimpleStringProperty(messageR);
+        this.emailUser = new SimpleStringProperty(emailUser);
+         this.dateReponse=new SimpleObjectProperty <Date> (dateReponse);
+          this.reclamation = new SimpleObjectProperty<Reclamation>(reclamation);
+    }
+      public Reponse(Date dateReponse,String emailUser,String messageR, Reclamation reclamation) {
+      
+        this.messageR = new SimpleStringProperty(messageR);
+        this.emailUser = new SimpleStringProperty(emailUser);
+         this.dateReponse=new SimpleObjectProperty <Date> (dateReponse);
+          this.reclamation = new SimpleObjectProperty<Reclamation>(reclamation);
+    }
 
-     public Reponse( Date dateReponse,String emailUser,String messageR) {
+
+     public Reponse( String emailUser,String messageR,Date dateReponse) {
           this.dateReponse=new SimpleObjectProperty <Date> (dateReponse);
         this.emailUser = new SimpleStringProperty(emailUser);
          this.messageR = new SimpleStringProperty(messageR);
@@ -68,11 +86,22 @@ private SimpleObjectProperty <Date> dateReponse ;
         return idReponse.get();
     }
      
+      public Reclamation getReclamation() {
+        return reclamation.get();
+    }
 
+    public void setReclamation(Reclamation reclamation) {
+        this.reclamation = new SimpleObjectProperty<Reclamation>(reclamation);
+    }
+    
+     public SimpleObjectProperty<Reclamation> getSubscriptionProperty(){
+        return reclamation;
+    }
+    
     public void setIdReponse(int idReponse) {
         this.idReponse = new SimpleIntegerProperty(idReponse);
     }
-
+ 
     
     public SimpleStringProperty getEmailUserProperty(){
         return emailUser;

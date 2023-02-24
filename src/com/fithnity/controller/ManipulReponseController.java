@@ -45,25 +45,19 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+
 /**
  * FXML Controller class
  *
  * @author MSI
  */
-public class AfficherReponseController implements Initializable {
-
+public class ManipulReponseController implements Initializable {
     @FXML
     private ListView<Reponse> listviewR;
-    @FXML
-    private ListView<Reclamation> listviewRec;
+//    @FXML
+//    private ListView<Reclamation> listviewRec;
     @FXML
     private Button retourr;
-    @FXML
-    private Button btn_delete;
-    @FXML
-    private Button btnn;
-    @FXML
-    private Button modif2;
     @FXML
     private TextField txt_emailU;
     @FXML
@@ -72,8 +66,6 @@ public class AfficherReponseController implements Initializable {
   private ListDataReponse listdata = new ListDataReponse();
   
     private ListData listdata2 = new ListData();
-    @FXML
-    private Button btn_reponse;
     /**
      * Initializes the controller class.
      */
@@ -82,45 +74,32 @@ public class AfficherReponseController implements Initializable {
         
           ObservableList<Reponse> data=FXCollections.observableArrayList();
   
-//listviewR.setItems(listdata.getPersons()); 
-listviewRec.setItems(listdata2.getPersons()); 
+listviewR.setItems(listdata.getPersons()); 
+//listviewRec.setItems(listdata2.getPersons()); 
          
  
-        listviewRec.setOnMouseClicked(event->{
-//        idLabel.setText(String.valueOf(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getId()));
-//        nomLabel.setText(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getNom());
-//        prenomLabel.setText(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getPrenom());
+        listviewR.setOnMouseClicked(event->{
  java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-//        Reponse current = listviewR.getSelectionModel().getSelectedItem();
-        Reclamation current2 = listviewRec.getSelectionModel().getSelectedItem(); //***********
-        
-//         txt_id.setText(Integer.toString(current.getId()));
+        Reponse current = listviewR.getSelectionModel().getSelectedItem();
+      
+         current.getIdReponse();
        
-         current2.getId();
-       
-        txt_emailU.setText(current2.getEmail());
+        txt_emailU.setText(current.getEmailUser());
          
-txt_messageR.setText(current2.getMessage());        
+txt_messageR.setText(current.getMessageR());        
 //current.getDate();
     });
             
     }
 
-
-     @FXML
+@FXML
     private void ajouter(ActionEvent event) throws IOException { 
         if (Saisi() == true)
         {
-//              Reponse current = listviewR.getSelectionModel().getSelectedItem();
-              Reclamation current2 = listviewRec.getSelectionModel().getSelectedItem(); //***********
+              Reponse current = listviewR.getSelectionModel().getSelectedItem();
+            
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-	 Reponse p = new Reponse(currentDate, txt_emailU.getText(), txt_messageR.getText(),current2);
+	 Reponse p = new Reponse( txt_emailU.getText(), txt_messageR.getText(),currentDate);
            ReponseDao pdao = ReponseDao.getInstance();
             pdao.insert(p);
         
@@ -137,7 +116,6 @@ txt_messageR.setText(current2.getMessage());
     window.setScene(new Scene(root2));
 	}
     }
-    
     @FXML
     private void delete(ActionEvent event) throws IOException { 
 		 ReponseDao pdao = ReponseDao.getInstance();
@@ -152,9 +130,10 @@ txt_messageR.setText(current2.getMessage());
         alert.show();
 		
 	}
-    
     @FXML
     private void modifier(ActionEvent event) throws IOException { 
+          if (Saisi() == true)
+        {
 		 Reponse current = listviewR.getSelectionModel().getSelectedItem();
             Reponse p = new Reponse();
 //            p.setId(Integer.parseInt(txt_id.getText()));
@@ -175,22 +154,16 @@ txt_messageR.setText(current2.getMessage());
           
 txt_messageR.setText("");  
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/manipulReponse.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
     window.setScene(new Scene(root2));
-		
+        }
 	}
-    @FXML
-    private void goreponse(ActionEvent event) throws IOException {
-    
-     Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/manipulReponse.fxml"));
-    Stage window = (Stage) btn_reponse.getScene().getWindow();
-    window.setScene(new Scene(root3));
-    }
-       
+   
+   
     @FXML
     private void back(ActionEvent event) throws IOException { 
-		Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+		Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
     window.setScene(new Scene(root3));
 		
@@ -211,34 +184,25 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Affic
             Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
             return false;
         } else {
+ if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_emailU.getText())) {
+              Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
+                return false;
+            }
 
-//            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
-//                return false;
-//            }
-//
-//           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_messageR.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le message de Reponse ! ");
-//                return false;
-//            }
-//            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
-//                return false;
-//            }
+
+           
+          if (!Pattern.matches("[A-Za-z]*", txt_messageR.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
+                return false;
+            }
+          
+          
            
         }
         return true;
          
     }
-
-   
+     
+       
 
 }
