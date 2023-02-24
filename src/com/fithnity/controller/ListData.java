@@ -5,15 +5,21 @@
  */
 package com.fithnity.controller;
 
-
-import com.fithnity.entity.User;
-import com.fithnity.services.ServiceUser;
+import com.esprit.dao.BlogDao;
+import com.esprit.entity.Blog;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
-/** 
+
+
+/**
  *
- * @author Maaouia
+ * @author wiemhjiri
  */
 public class ListData {
     
@@ -21,25 +27,17 @@ public class ListData {
      * The data as an observable list of Persons.
      */
     
-    private ObservableList<User> users=FXCollections.observableArrayList();
+    private ObservableList<Blog> blogs=FXCollections.observableArrayList();
 
     public ListData() {
         
-        ServiceUser Su=ServiceUser.getInstance();
-        users= Su.displayAll();
-        System.out.println(users);
+        BlogDao pdao=BlogDao.getInstance();
+        blogs= pdao.displayAll();
+        System.out.println(blogs);
     }
     
-    public ObservableList<User> getUsers(){
-        return users;
-    }
-    
-    public int size() {
-        return users.size();
-    }
-    
-    public User get(int index) {
-        return users.get(index);
+    public ObservableList<Blog> getBlogs(){
+        return blogs;
     }
    
 }
