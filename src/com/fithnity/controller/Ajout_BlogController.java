@@ -5,8 +5,8 @@
  */
 package com.fithnity.controller;
 
-import com.esprit.dao.BlogDao;
-import com.esprit.entity.Blog;
+import com.fithnity.dao.BlogDao;
+import com.fithnityentity.Blog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

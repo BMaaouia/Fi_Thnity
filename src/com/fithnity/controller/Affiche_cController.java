@@ -5,11 +5,11 @@
  */
 package com.fithnity.controller;
 
-import com.esprit.dao.BlogDao;
+import com.fithnity.dao.BlogDao;
 import com.fithnity.controller.ListDatac;
-import com.esprit.dao.CommentDao;
-import com.esprit.entity.Blog;
-import com.esprit.entity.Comment;
+import com.fithnity.dao.CommentDao;
+import com.fithnityentity.Blog;
+import com.fithnityentity.Comment;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;

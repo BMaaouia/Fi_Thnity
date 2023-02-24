@@ -5,9 +5,9 @@
  */
 package com.fithnity.controller;
 
-import com.esprit.dao.BlogDao;
-import com.esprit.entity.Blog;
-import com.esprit.entity.Comment;
+import com.fithnity.dao.BlogDao;
+import com.fithnityentity.Blog;
+import com.fithnityentity.Comment;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;

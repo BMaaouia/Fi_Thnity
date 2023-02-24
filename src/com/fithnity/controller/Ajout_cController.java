@@ -5,10 +5,10 @@
  */
 package com.fithnity.controller;
 import javafx.scene.control.ListView;
-import com.esprit.dao.BlogDao;
-import com.esprit.dao.CommentDao;
-import com.esprit.entity.Blog;
-import com.esprit.entity.Comment;
+import com.fithnity.dao.BlogDao;
+import com.fithnity.dao.CommentDao;
+import com.fithnityentity.Blog;
+import com.fithnityentity.Comment;
 import java.awt.Button;
 import java.io.IOException;
 import java.net.URL;

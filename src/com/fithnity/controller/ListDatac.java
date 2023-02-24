@@ -6,9 +6,9 @@
 package com.fithnity.controller;
 
 
-import com.esprit.dao.BlogDao;
-import com.esprit.dao.CommentDao;
-import com.esprit.entity.Comment;
+import com.fithnity.dao.BlogDao;
+import com.fithnity.dao.CommentDao;
+import com.fithnityentity.Comment;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

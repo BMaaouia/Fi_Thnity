@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.esprit.dao;
+package com.fithnity.dao;
 
 
-import com.esprit.entity.Blog;
-import com.esprit.utils.ConnexionSingleton;
+import com.fithnityentity.Blog;
+import com.fithnityutils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

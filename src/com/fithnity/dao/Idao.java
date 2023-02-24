@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.esprit.dao;
+package com.fithnity.dao;
 
-import com.esprit.entity.Blog;
+import com.fithnityentity.Blog;
 import java.util.List;
 
 /**

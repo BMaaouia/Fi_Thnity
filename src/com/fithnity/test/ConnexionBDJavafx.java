@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.esprit.test;
+package com.fithnity.test;
 
 import com.fithnity.controller.ListData;
 import java.io.IOException;
