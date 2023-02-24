@@ -89,7 +89,7 @@ public class ProfileController implements Initializable {
     private Button update;
     @FXML
     private PasswordField password_text;
-    @FXML
+    @FXML     
     private Button save;
     @FXML
     private Button show_profile;
