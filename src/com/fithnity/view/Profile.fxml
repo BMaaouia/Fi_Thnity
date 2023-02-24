@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -21,7 +22,7 @@
          </font>
       </Text>
       <TilePane fx:id="Subscription_tilepane" layoutX="299.0" layoutY="73.0" prefHeight="470.0" prefWidth="557.0" visible="false" />
-      <AnchorPane fx:id="profile" layoutX="299.0" layoutY="99.0" prefHeight="454.0" prefWidth="547.0" visible="false">
+      <AnchorPane fx:id="profile" layoutX="299.0" layoutY="99.0" prefHeight="454.0" prefWidth="547.0">
          <children>
             <Button fx:id="update" layoutX="416.0" layoutY="229.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Edit Profile" textFill="#f9f7dd">
                <font>
@@ -42,11 +43,6 @@
                </effect>
             </TextField>
             <TextField fx:id="email_text" disable="true" layoutX="144.0" layoutY="246.0" prefHeight="51.0" prefWidth="210.0" style="-fx-background-radius: 20;">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextField>
-            <TextField fx:id="password_text" disable="true" layoutX="144.0" layoutY="319.0" prefHeight="51.0" prefWidth="210.0" style="-fx-background-radius: 20;">
                <effect>
                   <DropShadow />
                </effect>
@@ -87,6 +83,11 @@
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
             </Button>
+            <PasswordField fx:id="password_text" disable="true" layoutX="144.0" layoutY="320.0" prefHeight="51.0" prefWidth="210.0" style="-fx-background-radius: 20;">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </PasswordField>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="slider" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="598.0" prefWidth="255.0" style="-fx-background-color: #BCBA95;">
