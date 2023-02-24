@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="336.0" prefWidth="373.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="offre.demande.belahsan.views.DELETE_offreController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="346.0" prefWidth="372.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="10.0" prefHeight="242.0" prefWidth="228.0">
+               <children>
+                  <AnchorPane id="AnchorPane" layoutX="-27.0" layoutY="-4.0" prefHeight="439.0" prefWidth="429.0">
+                     <children>
+                        <ImageView fitHeight="443.0" fitWidth="484.0" layoutX="1.0" layoutY="-2.0" opacity="0.56" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="14.0" layoutY="80.0" prefHeight="30.0" prefWidth="122.0" text="ID Offre :" textFill="#7c1919">
+                           <font>
+                              <Font name="Arial Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="id_o_del" layoutX="88.0" layoutY="80.0" prefHeight="18.0" prefWidth="48.0" />
+                        <Button fx:id="btn_suppression_offre" layoutX="317.0" layoutY="73.0" mnemonicParsing="false" onAction="#DEL_offre" prefHeight="44.0" prefWidth="87.0" text="Valider">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="fx_retour_acceuil" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0" text="...">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

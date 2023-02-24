@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="offre.demande.belahsan.views.UPDATE_offreController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="383.0" prefWidth="379.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutY="6.0" prefHeight="377.0" prefWidth="374.0">
+               <children>
+                  <AnchorPane id="AnchorPane" layoutY="2.0" prefHeight="507.0" prefWidth="542.0">
+                     <children>
+                        <ImageView fitHeight="564.0" fitWidth="625.0" layoutX="-4.0" layoutY="-17.0" opacity="0.29" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="30.0" layoutY="186.0" prefHeight="30.0" prefWidth="110.0" text="ville :" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="140.0" prefHeight="30.0" prefWidth="110.0" text="secteur :" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="99.0" prefHeight="30.0" prefWidth="110.0" text="Metier  :" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="id_metier_up" layoutX="196.0" layoutY="99.0" />
+                        <TextField fx:id="id_sec_up" layoutX="196.0" layoutY="140.0" />
+                        <TextField fx:id="id_ville_up" layoutX="196.0" layoutY="186.0" prefHeight="31.0" prefWidth="187.0" />
+                        <Button fx:id="btn_modif_offre" layoutX="196.0" layoutY="428.0" mnemonicParsing="false" onAction="#update_offre" prefHeight="52.0" prefWidth="165.0" text="UPDATE">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="fx_retour_home" layoutX="-2.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0" text="...">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="30.0" layoutY="57.0" prefHeight="30.0" prefWidth="110.0" text="ID Offre :" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="id_off_up" layoutX="196.0" layoutY="57.0" />
+                        <Label layoutX="30.0" layoutY="232.0" prefHeight="30.0" prefWidth="165.0" text="Nombre de poste:" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="id_nbrposte_up" layoutX="196.0" layoutY="232.0" prefHeight="31.0" prefWidth="187.0" />
+                        <Label layoutX="30.0" layoutY="278.0" prefHeight="30.0" prefWidth="110.0" text="Voiture:" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="id_voiture_up" layoutX="196.0" layoutY="278.0" prefHeight="31.0" prefWidth="187.0" />
+                        <Label layoutX="30.0" layoutY="332.0" prefHeight="30.0" prefWidth="110.0" text="Duree:" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="382.0" prefHeight="30.0" prefWidth="110.0" text="Salaire :" textFill="#e10f0f">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="id_duree_up" layoutX="196.0" layoutY="332.0" />
+                        <TextField fx:id="id_salaire_up" layoutX="196.0" layoutY="382.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
