@@ -9,16 +9,15 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AfficheController">
    <children>
-      <Button fx:id="btn_supprimer" layoutX="462.0" layoutY="269.0" mnemonicParsing="false" onAction="#click" text="Suprimer" />
-      <Button fx:id="btn_afficher" layoutX="470.0" layoutY="184.0" mnemonicParsing="false" onAction="#show" text="Afficher" />
-      <Button fx:id="ajout" layoutX="511.0" layoutY="342.0" mnemonicParsing="false" onAction="#add" text="Ajout" />
-      <ListView fx:id="list_b" layoutX="31.0" layoutY="69.0" prefHeight="200.0" prefWidth="365.0" />
-      <Button fx:id="btn_modif" layoutX="362.0" layoutY="338.0" mnemonicParsing="false" onAction="#modifier2" text="modifier" />
-      <TextField fx:id="text_blog" layoutX="120.0" layoutY="311.0" />
-      <Text layoutX="154.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="64.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
-      <TextField fx:id="image_blog" layoutX="50.0" layoutY="362.0" />
+      <Button fx:id="btn_supprimer" layoutX="409.0" layoutY="61.0" mnemonicParsing="false" onAction="#click" text="Suprimer" />
+      <Button fx:id="btn_afficher" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" onAction="#show" text="Afficher" />
+      <Button fx:id="ajout" layoutX="530.0" layoutY="355.0" mnemonicParsing="false" onAction="#add" text="Ajout" />
+      <ListView fx:id="list_b" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="365.0" />
+      <Button fx:id="btn_modif" layoutX="249.0" layoutY="294.0" mnemonicParsing="false" onAction="#modifier2" text="modifier" />
+      <TextField fx:id="text_blog" layoutX="36.0" layoutY="266.0" />
+      <Text layoutX="38.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="38.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
+      <TextField fx:id="image_blog" layoutX="36.0" layoutY="342.0" />
       <ImageView fx:id="imageview" fitHeight="110.0" fitWidth="132.0" layoutX="437.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="upload" layoutX="462.0" layoutY="227.0" mnemonicParsing="false" onAction="#uploadImage" text="Upload" />
    </children>
 </AnchorPane>

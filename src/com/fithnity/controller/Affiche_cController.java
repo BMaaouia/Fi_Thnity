@@ -12,6 +12,7 @@ import com.esprit.entity.Blog;
 import com.esprit.entity.Comment;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -96,9 +98,40 @@ public class Affiche_cController implements Initializable {
                 System.out.println(selectedItem);
                  list_c.getItems().remove(selectedItem);
                  bdao.delete(selectedItem);
+                  if (list_c.getSelectionModel().getSelectedIndex() == -1) {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("No Selected Project");
+            alert1.setHeaderText("Error 403 !");
+            alert1.setContentText("Select a project to delete.");
+            ButtonType buttonTypeYes = new ButtonType("OK");
+            alert1.getButtonTypes().setAll(buttonTypeYes);
+            alert1.showAndWait();
+        } else {
+            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setTitle("Are you sure to delete?");
+            alert1.setHeaderText("Confirmation!");
+            alert1.setContentText("You're attempting to delete a project.");
+            ButtonType buttonTypeYes = new ButtonType("OK");
+            ButtonType buttonTypeNo = new ButtonType("Cancel");
+            alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            Optional<ButtonType> result = alert1.showAndWait();
+            if (alert1.getResult().getText().equals("OK")) {
+           
+                System.out.println(selectedItem);
+                 list_c.getItems().remove(selectedItem);
+                 bdao.delete(selectedItem);
+                
+            }
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information ");
+        alert.setHeaderText("Event delete");
+        alert.setContentText("Event deleted successfully!");
+        alert.showAndWait();
+        getEvents();
     
    
 }
+    }
 
     @FXML
     private void modifier1(ActionEvent event) throws IOException {
@@ -109,14 +142,26 @@ public class Affiche_cController implements Initializable {
             p.settext_comment(text_c.getText());
             
             
+            
+        
+             if (text_c.getText().isEmpty() ) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Champ(s) vide(s)");
+        alert.setContentText("Veuillez remplir tous les champs obligatoires");
+        alert.showAndWait();
+    }else{
+            
             CommentDao pdao = CommentDao.getInstance();
             pdao.update(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("comment modifiée avec succés!");
+        alert.setContentText("Comment modifiée avec succés!");
         alert.show();
             text_c.setText("");
+       
+            
         
 	 
 //reload
@@ -124,4 +169,14 @@ Parent root2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/affiche_
     Stage window = (Stage) btn_up.getScene().getWindow();
     window.setScene(new Scene(root2));
     }
-}
+    }
+  public void getEvents() {  
+
+        
+            // TODO
+    
+            list_c.setItems(listdatac.getComments());
+            ObservableList<Blog> data=FXCollections.observableArrayList();
+            
+
+  }}

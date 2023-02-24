@@ -158,12 +158,39 @@ public class AfficheController implements Initializable {
                 System.out.println(selectedItem);
                  list_b.getItems().remove(selectedItem);
                  bdao.delete(selectedItem);
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+   
+        if (list_b.getSelectionModel().getSelectedIndex() == -1) {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("No Selected Project");
+            alert1.setHeaderText("Error 403 !");
+            alert1.setContentText("Select a project to delete.");
+            ButtonType buttonTypeYes = new ButtonType("OK");
+            alert1.getButtonTypes().setAll(buttonTypeYes);
+            alert1.showAndWait();
+        } else {
+            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setTitle("Are you sure to delete?");
+            alert1.setHeaderText("Confirmation!");
+            alert1.setContentText("You're attempting to delete a project.");
+            ButtonType buttonTypeYes = new ButtonType("OK");
+            ButtonType buttonTypeNo = new ButtonType("Cancel");
+            alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            Optional<ButtonType> result = alert1.showAndWait();
+            if (alert1.getResult().getText().equals("OK")) {
+           
+                System.out.println(selectedItem);
+                 list_b.getItems().remove(selectedItem);
+                 bdao.delete(selectedItem);
+                
+            }
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information ");
         alert.setHeaderText("Event delete");
         alert.setContentText("Event deleted successfully!");
         alert.showAndWait();
         getEvents();
+
+        }
 
         
 
@@ -180,13 +207,23 @@ public class AfficheController implements Initializable {
   }
 
      @FXML
-    private void modifier2(ActionEvent event) throws IOException { 
+    private void modifier2(ActionEvent event) throws IOException  { 
 		 Blog current = list_b.getSelectionModel().getSelectedItem();
             Blog p = new Blog();
 //            p.setId(Integer.parseInt(txt_id.getText()));
             p.setId_blog(current.getId_blog());
             p.settext_blog(text_blog.getText());
             p.setimage_blog(image_blog.getText());
+             String text,image;
+        text=text_blog.getText();
+        image=image_blog.getText();
+             if (text.isEmpty() || image.isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Champ(s) vide(s)");
+        alert.setContentText("Veuillez remplir tous les champs obligatoires");
+        alert.showAndWait();
+    }else{
             
             BlogDao pdao = BlogDao.getInstance();
             pdao.update(p);
@@ -202,9 +239,11 @@ public class AfficheController implements Initializable {
 Parent root2 = FXMLLoader .load(getClass().getResource("/com/esprit/view/affiche.fxml"));
     Stage window = (Stage) btn_modif.getScene().getWindow();
     window.setScene(new Scene(root2));
-		
-		
-	}
+	
+        
+    
+    
+    }}
     @FXML
     private void uploadImage(ActionEvent event)throws FileNotFoundException, IOException  {
            Random rand = new Random();

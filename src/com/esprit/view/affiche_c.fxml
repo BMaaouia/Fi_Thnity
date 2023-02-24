@@ -9,9 +9,8 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.Affiche_cController">
    <children>
       <ListView fx:id="list_c" layoutX="14.0" layoutY="19.0" prefHeight="153.0" prefWidth="297.0" />
-      <Button fx:id="btn_dc" layoutX="457.0" layoutY="188.0" mnemonicParsing="false" onAction="#supprime" text="Supprimer" />
-      <Button fx:id="btn_ac" layoutX="466.0" layoutY="131.0" mnemonicParsing="false" text="Afficher" />
-      <Button fx:id="btn_adc" layoutX="467.0" layoutY="249.0" mnemonicParsing="false" onAction="#add" text="Ajouter" />
+      <Button fx:id="btn_dc" layoutX="353.0" layoutY="65.0" mnemonicParsing="false" onAction="#supprime" text="Supprimer" />
+      <Button fx:id="btn_adc" layoutX="510.0" layoutY="341.0" mnemonicParsing="false" onAction="#add" text="Ajouter" />
       <TextField fx:id="text_c" layoutX="116.0" layoutY="258.0" prefHeight="45.0" prefWidth="195.0" />
       <Text layoutX="14.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment" />
       <Button fx:id="btn_up" layoutX="356.0" layoutY="265.0" mnemonicParsing="false" onAction="#modifier1" text="Modifier" />

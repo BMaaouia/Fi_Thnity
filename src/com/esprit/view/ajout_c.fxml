@@ -12,6 +12,6 @@
       <TextField fx:id="text_c" layoutX="203.0" layoutY="176.0" prefHeight="70.0" prefWidth="195.0" />
       <Text layoutX="76.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment" />
       <Button fx:id="btn_c" layoutX="440.0" layoutY="211.0" mnemonicParsing="false" onAction="#add" text="Commenter" />
-      <Button fx:id="btn_c1" layoutX="440.0" layoutY="284.0" mnemonicParsing="false" onAction="#show" text="Afficher" />
+      <Button fx:id="btn_c1" layoutX="503.0" layoutY="347.0" mnemonicParsing="false" onAction="#show" text="Afficher" />
    </children>
 </AnchorPane>

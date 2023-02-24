@@ -10,6 +10,9 @@ import com.esprit.entity.Blog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,7 +64,7 @@ public class Ajout_BlogController implements Initializable {
     }
 
     @FXML
-    private void add(ActionEvent event) {
+    private void add(ActionEvent event) throws SQLException {
         
         String text,image;
         text=text_blog.getText();
@@ -86,14 +89,23 @@ public class Ajout_BlogController implements Initializable {
         alert.show();
         text_blog.setText("");
         image_blog.setText("");
-        
-       
-       /*  String path = b.getimage_blog();
+     } 
+ 
+ /*PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM blog WHERE text_blog = ?");
+ stmt.setString(1, text_blog);
+ ResultSet rs = stmt.executeQuery();
+if (rs.next() && rs.getInt(1) > 0) {
+    Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Erreur");
+    alert.setHeaderText("Produit déjà existant");
+    alert.setContentText("Le produit " + text_blog + " existe déjà dans la base de données");
+    alert.showAndWait();
+}
+    /*  String path = b.getimage_blog();
                File file=new File(path);
               Image img = new Image(file.toURI().toString());
                imageview.setImage(img);*/
-    }}
-
+         }   
     @FXML
     private void show(ActionEvent event) {
          try {

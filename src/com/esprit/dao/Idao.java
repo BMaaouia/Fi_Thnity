@@ -5,6 +5,7 @@
  */
 package com.esprit.dao;
 
+import com.esprit.entity.Blog;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public interface Idao<T> {
     public List<T> displayAll();
     public T displayByid_blog(int id_blog);
     public boolean update(T os);
+   
     
     
 }

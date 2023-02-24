@@ -7,11 +7,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.Ajout_BlogController">
    <children>
-      <Button fx:id="btn_add" layoutX="417.0" layoutY="278.0" mnemonicParsing="false" onAction="#add" text="Ajouter" />
-      <TextField fx:id="text_blog" layoutX="26.0" layoutY="136.0" />
-      <Text layoutX="60.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="48.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
-      <TextField fx:id="image_blog" layoutX="26.0" layoutY="228.0" />
-      <Button fx:id="affiche" layoutX="44.0" layoutY="342.0" mnemonicParsing="false" onAction="#show" text="Affiche" />
+      <Button fx:id="btn_add" layoutX="357.0" layoutY="182.0" mnemonicParsing="false" onAction="#add" text="Ajouter" />
+      <Text layoutX="94.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="text_blog" layoutX="60.0" layoutY="133.0" />
+      <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
+      <TextField fx:id="image_blog" layoutX="60.0" layoutY="225.0" />
+      <Button fx:id="affiche" layoutX="512.0" layoutY="345.0" mnemonicParsing="false" onAction="#show" text="Affiche" />
    </children>
 </AnchorPane>
