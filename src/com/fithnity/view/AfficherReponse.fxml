@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -14,9 +15,15 @@
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font></Button>
       <Button fx:id="btnn" layoutX="480.0" layoutY="519.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="103.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="ajouter" textFill="WHITE" />
-      <TextField fx:id="txt_emailU" disable="true" editable="false" layoutX="335.0" layoutY="362.0" />
+      <TextField fx:id="txt_emailU" disable="true" editable="false" layoutX="335.0" layoutY="362.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
       <Label layoutX="245.0" layoutY="367.0" prefHeight="21.0" prefWidth="76.0" text="emailUser" />
-      <TextField fx:id="txt_messageR" layoutX="335.0" layoutY="405.0" />
+      <TextField fx:id="txt_messageR" layoutX="335.0" layoutY="405.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
       <Label layoutX="254.0" layoutY="410.0" text="message" />
       <ListView fx:id="listviewRec" layoutX="26.0" layoutY="100.0" prefHeight="246.0" prefWidth="750.0" />
       <Button fx:id="btn_reponse" layoutX="615.0" layoutY="520.0" mnemonicParsing="false" onAction="#goreponse" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="manipuler reponse" textFill="WHITE" />

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -18,9 +19,17 @@
       </Button>
       <Button fx:id="btn_delete" layoutX="452.0" layoutY="482.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="Delete" textFill="#dddddd" />
       <Button fx:id="modif2" layoutX="333.0" layoutY="483.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="modifier" textFill="WHITE" />
-      <TextField fx:id="txt_emailU" disable="true" editable="false" layoutX="353.0" layoutY="368.0" />
+      <TextField fx:id="txt_emailU" disable="true" editable="false" layoutX="353.0" layoutY="368.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </TextField>
       <Label layoutX="263.0" layoutY="373.0" prefHeight="21.0" prefWidth="76.0" text="emailUser" />
-      <TextField fx:id="txt_messageR" layoutX="353.0" layoutY="411.0" />
+      <TextField fx:id="txt_messageR" layoutX="353.0" layoutY="411.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </TextField>
       <Label layoutX="272.0" layoutY="416.0" text="message" />
    </children>
 </AnchorPane>

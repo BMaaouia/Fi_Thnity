@@ -5,6 +5,8 @@
  */
 package com.fithnity.controller;
 
+import com.fithnity.service.ReclamationDao;
+import com.fithnity.entity.Reclamation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -27,29 +29,31 @@ import javafx.stage.Stage;
  *
  * @author MSI
  */
-public class AcceuilController implements Initializable {
- private AnchorPane rootLayout;
-    private Stage primaryStage;
-    @FXML
-    private Button btn_display;
-    @FXML
+public class reclamationbackController implements Initializable {
+@FXML
+    private ListView<Reclamation> listviewP;
     private Button btn_display1;
+    private Button btn_display;
     @FXML
     private Button btn_user;
     @FXML
     private Button btn_blog;
     @FXML
-    private Button btn_employe;
-    @FXML
     private Button btn_acceuil;
-    
+
+    private ListData listdata = new ListData();
+    @FXML
+    private Button btn_reponse;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        listviewP.setItems(listdata.getPersons());
         
-           btn_acceuil.setOnAction(event -> {
+        //**************************************************************************************
+        btn_acceuil.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
@@ -62,7 +66,7 @@ public class AcceuilController implements Initializable {
                 stage.show();
                   btn_acceuil.setStyle("-fx-background-color : #1620A1");
             btn_acceuil.toFront();
-           //  btn_blog.setStyle("-fx-background-color :  #05071F");
+             btn_blog.setStyle("-fx-background-color :  #05071F");
             } catch (IOException ex) {
                 Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -71,19 +75,19 @@ public class AcceuilController implements Initializable {
 //        btn_display.setOnAction(event -> {
 //            try {//FXMLLoader loader = new FXMLLoader();
 //                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-//                Parent page3 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
 //                // Give the controller access to the main app.
 ////                AfficherPersonneController controller =loader.getController();
 ////                controller.setListData(new ListData());
-//                Scene scene = new Scene(page3);
+//                Scene scene = new Scene(page2);
 //                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //                stage.setScene(scene);
 //                stage.show();
 //                  btn_display.setStyle("-fx-background-color : #1620A1");
 //            btn_display.toFront();
-//           //  btn_blog.setStyle("-fx-background-color :  #05071F");
+//             btn_blog.setStyle("-fx-background-color :  #05071F");
 //            } catch (IOException ex) {
-//                Logger.getLogger(AfficherPersonneController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        });
 //        
@@ -103,7 +107,7 @@ public class AcceuilController implements Initializable {
 //             btn_blog.setStyle("-fx-background-color :  #05071F");
 //             
 //            } catch (IOException ex) {
-//                Logger.getLogger(AfficherReponseController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        });
           btn_blog.setOnAction(event -> {
@@ -125,27 +129,28 @@ public class AcceuilController implements Initializable {
                 Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }
-    
-//    @FXML
+          
+          
+    }    
+
+//     @FXML
 //      public void handleClicks(ActionEvent actionEvent) {
 //        if (actionEvent.getSource() == btn_display) {
 //            btn_display.setStyle("-fx-background-color : #1620A1");
-//         //   btn_display.toFront();
+//            btn_display.toFront();
 //        }
 //        if (actionEvent.getSource() == btn_display1) {
 //            btn_display1.setStyle("-fx-background-color : #53639F");
-//         //  btn_display1.toFront();
+//           btn_display1.toFront();
 //        }
 //        if (actionEvent.getSource() == btn_user) {
 //            btn_user.setStyle("-fx-background-color : #02030A");
-//            btn_user.toFront();
+//            blogpane.setVisible(true);
 //        }
 //        if(actionEvent.getSource()==btn_blog)
 //        {
 //            btn_blog.setStyle("-fx-background-color : #464F67");
 //            btn_blog.toFront();
-//            
 //        }
 //         if(actionEvent.getSource()==btn_employe)
 //        {
@@ -153,6 +158,12 @@ public class AcceuilController implements Initializable {
 //            btn_employe.toFront();
 //        }
 //    }
-    }    
-    
 
+    @FXML
+    private void goreponse(ActionEvent event) throws IOException {
+    
+     Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreponseback.fxml"));
+    Stage window = (Stage) btn_reponse.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+}

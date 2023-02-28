@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -18,8 +19,14 @@
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font></Button>
-      <TextField fx:id="txt_nom" layoutX="168.0" layoutY="348.0" />
-      <TextField fx:id="txt_prenom" layoutX="171.0" layoutY="390.0" />
+      <TextField fx:id="txt_nom" layoutX="168.0" layoutY="348.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="txt_prenom" layoutX="171.0" layoutY="390.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
       <Label layoutX="108.0" layoutY="353.0" text="nom" />
       <Label layoutX="100.0" layoutY="390.0" text="prenom" />
       <Button fx:id="btnn" layoutX="398.0" layoutY="505.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="103.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="ajouter" textFill="WHITE">
@@ -30,11 +37,20 @@
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font></Button>
-      <TextField fx:id="txt_email" layoutX="461.0" layoutY="348.0" />
-      <TextField fx:id="txt_tel" layoutX="461.0" layoutY="390.0" />
+      <TextField fx:id="txt_email" layoutX="461.0" layoutY="348.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="txt_tel" layoutX="461.0" layoutY="390.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
       <Label layoutX="401.0" layoutY="353.0" text="email" />
       <Label layoutX="409.0" layoutY="395.0" text="Tel" />
-      <TextField fx:id="txt_message" layoutX="464.0" layoutY="429.0" />
+      <TextField fx:id="txt_message" layoutX="464.0" layoutY="429.0" style="-fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
       <Label layoutX="390.0" layoutY="434.0" text="message" />
    </children>
 </AnchorPane>
