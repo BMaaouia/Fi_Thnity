@@ -9,9 +9,12 @@ import com.fithnity.service.ReclamationDao;
 import com.fithnity.entity.Reclamation;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -44,12 +48,18 @@ public class reclamationbackController implements Initializable {
     private ListData listdata = new ListData();
     @FXML
     private Button btn_reponse;
+    @FXML
+    private TextField search;
+      ReclamationDao pdao = ReclamationDao.getInstance();
+//   List<Reclamation> r= pdao.rechercher(search.getText());
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        //  ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
         listviewP.setItems(listdata.getPersons());
         
         //**************************************************************************************
@@ -165,5 +175,15 @@ public class reclamationbackController implements Initializable {
      Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreponseback.fxml"));
     Stage window = (Stage) btn_reponse.getScene().getWindow();
     window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void chercher(ActionEvent event) {
+   
+//      ReclamationDao pdao = ReclamationDao.getInstance();
+//      List<Reclamation> r= pdao.rechercher(search.getText());
+//        ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
+//      
+     //reclamationsList.setItems(r);
     }
 }

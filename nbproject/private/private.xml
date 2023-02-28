@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/BlogController.java</file>
             <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css</file>
-            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/AfficherPersonne.fxml</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/main/GestionReclamation.java</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/reclamationbackController.java</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/service/Idao.java</file>
             <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/AcceuilController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/Acceuil.fxml</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/AjouterreclamationfrontController.java</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/acceuilfront.fxml</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/AcceuilfrontController.java</file>
+            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/service/ReclamationDao.java</file>
             <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/AfficherPersonneController.java</file>
-            <file>file:/C:/Users/MSI/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/blog.fxml</file>
         </group>
     </open-files>
 </project-private>

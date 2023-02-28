@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -157,6 +158,13 @@ public class ReclamationDao implements Idao<Reclamation>{
             Logger.getLogger(ReclamationDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     return p;
+    }
+ 
+        public List<Reclamation> rechercher(String email) {
+        List<Reclamation> produits = displayAllList().stream()
+                .filter(x-> x.getEmail().contains(email))
+                .collect(Collectors.toList());
+            return produits;       
     }
 
     @Override

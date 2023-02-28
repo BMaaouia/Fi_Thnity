@@ -8,6 +8,8 @@ import com.fithnity.controller.AfficherPersonneController;
 import com.fithnity.controller.ListData;
 import com.fithnity.controller.AfficherReponseController;
 import com.fithnity.controller.ListDataReponse;
+import com.fithnity.controller.AjouterreclamationfrontController;
+import com.fithnity.controller.AcceuilfrontController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +40,7 @@ public class GestionReclamation extends Application  {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Fi_Thnity");
         
-        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/acceuilfront.fxml"));
         Scene scene = new Scene(parentPage);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
