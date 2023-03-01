@@ -82,44 +82,7 @@ public class reclamationbackController implements Initializable {
             }
         });
 
-//        btn_display.setOnAction(event -> {
-//            try {//FXMLLoader loader = new FXMLLoader();
-//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
-//                // Give the controller access to the main app.
-////                AfficherPersonneController controller =loader.getController();
-////                controller.setListData(new ListData());
-//                Scene scene = new Scene(page2);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.show();
-//                  btn_display.setStyle("-fx-background-color : #1620A1");
-//            btn_display.toFront();
-//             btn_blog.setStyle("-fx-background-color :  #05071F");
-//            } catch (IOException ex) {
-//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
-//        
-//         btn_display1.setOnAction(event -> {
-//            try {//FXMLLoader loader = new FXMLLoader();
-//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
-//                // Give the controller access to the main app.
-////                AfficherPersonneController controller =loader.getController();
-////                controller.setListData(new ListData());
-//                Scene scene = new Scene(page2);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.show();
-//                  btn_display1.setStyle("-fx-background-color : #1620A1");
-//            btn_display1.toFront();
-//             btn_blog.setStyle("-fx-background-color :  #05071F");
-//             
-//            } catch (IOException ex) {
-//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
+
           btn_blog.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
