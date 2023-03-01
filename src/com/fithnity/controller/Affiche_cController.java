@@ -8,8 +8,8 @@ package com.fithnity.controller;
 import com.fithnity.dao.BlogDao;
 import com.fithnity.controller.ListDatac;
 import com.fithnity.dao.CommentDao;
-import com.fithnityentity.Blog;
-import com.fithnityentity.Comment;
+import com.fithnity.entity.Blog;
+import com.fithnity.entity.Comment;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -81,7 +81,7 @@ public class Affiche_cController implements Initializable {
     @FXML
     private void add(ActionEvent event) {
         try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/ajout_c.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -165,7 +165,7 @@ public class Affiche_cController implements Initializable {
         
 	 
 //reload
-Parent root2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/affiche_c.fxml"));
+Parent root2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
     Stage window = (Stage) btn_up.getScene().getWindow();
     window.setScene(new Scene(root2));
     }

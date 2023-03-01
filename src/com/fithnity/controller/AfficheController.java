@@ -6,8 +6,8 @@
 package com.fithnity.controller;
 
 import com.fithnity.dao.BlogDao;
-import com.fithnityentity.Blog;
-import com.fithnityentity.Comment;
+import com.fithnity.entity.Blog;
+import com.fithnity.entity.Comment;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -115,7 +115,7 @@ public class AfficheController implements Initializable {
     @FXML
     private void add(ActionEvent event) {
         try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/Ajout_Blog.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -236,7 +236,7 @@ public class AfficheController implements Initializable {
         image_blog.setText("");	
 	 
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/esprit/view/affiche.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
     Stage window = (Stage) btn_modif.getScene().getWindow();
     window.setScene(new Scene(root2));
 	

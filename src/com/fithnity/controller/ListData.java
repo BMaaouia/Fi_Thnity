@@ -6,7 +6,7 @@
 package com.fithnity.controller;
 
 import com.fithnity.dao.BlogDao;
-import com.fithnityentity.Blog;
+import com.fithnity.entity.Blog;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

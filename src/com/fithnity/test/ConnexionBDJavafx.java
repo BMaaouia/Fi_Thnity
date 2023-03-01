@@ -34,7 +34,7 @@ public class ConnexionBDJavafx extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Hello World");
         
-        parentPage = FXMLLoader.load(getClass().getResource("/com/esprit/view/ajout_c.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

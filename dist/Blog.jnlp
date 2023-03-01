@@ -8,12 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Blog.jar" size="236179" download="eager" />
+    <jar href="Blog.jar" size="126777" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Blog" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="com.esprit.test.ConnexionBDJavafx"  name="Blog" />
+  <jfx:javafx-desc  width="800" height="600" main-class="com.fithnity.test.ConnexionBDJavafx"  name="Blog" />
   <update check="always"/>
 </jnlp>

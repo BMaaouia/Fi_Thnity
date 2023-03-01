@@ -5,9 +5,9 @@
  */
 package com.fithnity.dao;
 
-import com.fithnityentity.Blog;
-import com.fithnityentity.Comment;
-import com.fithnityutils.ConnexionSingleton;
+import com.fithnity.entity.Blog;
+import com.fithnity.entity.Comment;
+import com.fithnity.utils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

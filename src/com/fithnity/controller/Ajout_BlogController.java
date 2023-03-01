@@ -6,7 +6,7 @@
 package com.fithnity.controller;
 
 import com.fithnity.dao.BlogDao;
-import com.fithnityentity.Blog;
+import com.fithnity.entity.Blog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -109,7 +109,7 @@ if (rs.next() && rs.getInt(1) > 0) {
     @FXML
     private void show(ActionEvent event) {
          try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/affiche.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

@@ -8,7 +8,7 @@ package com.fithnity.controller;
 
 import com.fithnity.dao.BlogDao;
 import com.fithnity.dao.CommentDao;
-import com.fithnityentity.Comment;
+import com.fithnity.entity.Comment;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

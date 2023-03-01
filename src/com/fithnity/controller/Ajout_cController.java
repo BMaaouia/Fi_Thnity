@@ -7,8 +7,8 @@ package com.fithnity.controller;
 import javafx.scene.control.ListView;
 import com.fithnity.dao.BlogDao;
 import com.fithnity.dao.CommentDao;
-import com.fithnityentity.Blog;
-import com.fithnityentity.Comment;
+import com.fithnity.entity.Blog;
+import com.fithnity.entity.Comment;
 import java.awt.Button;
 import java.io.IOException;
 import java.net.URL;
@@ -84,7 +84,7 @@ public class Ajout_cController implements Initializable {
     @FXML
     private void show(ActionEvent event) {
          try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/affiche_c.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

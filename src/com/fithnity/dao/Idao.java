@@ -5,7 +5,7 @@
  */
 package com.fithnity.dao;
 
-import com.fithnityentity.Blog;
+import com.fithnity.entity.Blog;
 import java.util.List;
 
 /**

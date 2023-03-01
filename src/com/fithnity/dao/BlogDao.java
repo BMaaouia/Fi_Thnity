@@ -6,8 +6,8 @@
 package com.fithnity.dao;
 
 
-import com.fithnityentity.Blog;
-import com.fithnityutils.ConnexionSingleton;
+import com.fithnity.entity.Blog;
+import com.fithnity.utils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
