@@ -9,12 +9,15 @@ import com.fithnity.service.ReclamationDao;
 import com.fithnity.entity.Reclamation;
 import java.io.IOException;
 import java.net.URL;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -51,7 +55,11 @@ public class reclamationbackController implements Initializable {
     @FXML
     private TextField search;
       ReclamationDao pdao = ReclamationDao.getInstance();
-//   List<Reclamation> r= pdao.rechercher(search.getText());
+    @FXML
+    private DatePicker dd;
+    @FXML
+    private DatePicker df;
+ //  List<Reclamation> r= pdao.rechercher(search.getText());
     /**
      * Initializes the controller class.
      */
@@ -102,35 +110,23 @@ public class reclamationbackController implements Initializable {
                 Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+          //*****************************search*****************************************************
+
+
+search.textProperty().addListener((observable, oldValue, newValue) -> {
+    ReclamationDao pdao = ReclamationDao.getInstance();
+    List<Reclamation> r = pdao.rechercher(newValue);
+    ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
+    listviewP.setItems(reclamationsList);
+});
+
+
+          //********************************************************************************
           
-          
+  
     }    
 
-//     @FXML
-//      public void handleClicks(ActionEvent actionEvent) {
-//        if (actionEvent.getSource() == btn_display) {
-//            btn_display.setStyle("-fx-background-color : #1620A1");
-//            btn_display.toFront();
-//        }
-//        if (actionEvent.getSource() == btn_display1) {
-//            btn_display1.setStyle("-fx-background-color : #53639F");
-//           btn_display1.toFront();
-//        }
-//        if (actionEvent.getSource() == btn_user) {
-//            btn_user.setStyle("-fx-background-color : #02030A");
-//            blogpane.setVisible(true);
-//        }
-//        if(actionEvent.getSource()==btn_blog)
-//        {
-//            btn_blog.setStyle("-fx-background-color : #464F67");
-//            btn_blog.toFront();
-//        }
-//         if(actionEvent.getSource()==btn_employe)
-//        {
-//            btn_employe.setStyle("-fx-background-color : #464F67");
-//            btn_employe.toFront();
-//        }
-//    }
+
 
     @FXML
     private void goreponse(ActionEvent event) throws IOException {
@@ -139,14 +135,21 @@ public class reclamationbackController implements Initializable {
     Stage window = (Stage) btn_reponse.getScene().getWindow();
     window.setScene(new Scene(root3));
     }
+    
+ @FXML
+private void Filtrer(ActionEvent event) throws IOException {
+    //EvenementService es = new EvenementService();
+    ObservableList<Reclamation> eventsList = FXCollections.observableArrayList();
+   // java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
+    ReclamationDao pdao = ReclamationDao.getInstance();
+    java.sql.Date startDate = java.sql.Date.valueOf(dd.getValue());
+    java.sql.Date endDate = java.sql.Date.valueOf(df.getValue());
+    List<Reclamation> filteredEvents = pdao.filtrerParDate(startDate, endDate);
+    eventsList.clear();
+    eventsList.addAll(filteredEvents);
+    listviewP.setItems(eventsList);
+}
 
-    @FXML
-    private void chercher(ActionEvent event) {
-   
-//      ReclamationDao pdao = ReclamationDao.getInstance();
-//      List<Reclamation> r= pdao.rechercher(search.getText());
-//        ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
-//      
-     //reclamationsList.setItems(r);
-    }
+  
+    
 }

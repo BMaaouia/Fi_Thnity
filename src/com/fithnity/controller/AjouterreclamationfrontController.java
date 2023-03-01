@@ -43,6 +43,13 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import javax.management.Notification;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
+
+
 //**********************************
 
 
@@ -220,6 +227,16 @@ txt_message.setText("");
 Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
     Stage window = (Stage) btnn.getScene().getWindow();
     window.setScene(new Scene(root2));
+    //*************
+    String title = "Done";
+        String message = "Reclamation created ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
+    
 	}
     }
     
@@ -235,6 +252,15 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         alert.setHeaderText(null);
         alert.setContentText("Reclamation suprimée avec succés!");
         alert.show();
+         String title = "Done";
+        String message = "Reclamation created ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
+    
 		
 	}
     
@@ -267,6 +293,15 @@ txt_message.setText("");
 Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
     Stage window = (Stage) modif2.getScene().getWindow();
     window.setScene(new Scene(root2));
+     String title = "Done";
+        String message = "Reclamation modified! ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
+    
         }	
 	}
           

@@ -11,6 +11,7 @@ package com.fithnity.service;
  */
 import com.fithnity.entity.Reclamation;
 import com.fithnity.utils.ConnexionSingleton;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -57,6 +58,7 @@ public class ReclamationDao implements Idao<Reclamation>{
         } catch (SQLException ex) {
             Logger.getLogger(ReclamationDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }   
 
     @Override
@@ -160,13 +162,32 @@ public class ReclamationDao implements Idao<Reclamation>{
     return p;
     }
  
-        public List<Reclamation> rechercher(String email) {
-        List<Reclamation> produits = displayAllList().stream()
-                .filter(x-> x.getEmail().contains(email))
-                .collect(Collectors.toList());
-            return produits;       
-    }
-
+//        public List<Reclamation> rechercher(String email,String nom,String prenom) {
+//        List<Reclamation> produits = displayAllList().stream()
+//                .filter(x-> x.getEmail().contains(email))
+//                .filter(x-> x.getNom().contains(nom))
+//                .filter(x-> x.getPrenom().contains(prenom))
+//                .collect(Collectors.toList());
+//            return produits;       
+//    }
+    
+  public List<Reclamation> rechercher(String recherche) {
+    List<Reclamation> produits = displayAllList().stream()
+            .filter(x -> 
+                x.getEmail().contains(recherche) ||
+                x.getNom().contains(recherche) ||
+                x.getPrenom().contains(recherche))
+            .collect(Collectors.toList());
+    return produits;       
+}
+  
+  public List<Reclamation> filtrerParDate(java.util.Date startDate, java.util.Date endDate) {
+    List<Reclamation> events = displayAllList().stream()
+            .filter(e -> e.getDate().compareTo(startDate) >= 0 && e.getDate().compareTo(endDate) <= 0)
+            .collect(Collectors.toList());
+    return events;
+}
+  
     @Override
     public boolean update(Reclamation p) {
         String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
@@ -181,6 +202,7 @@ public class ReclamationDao implements Idao<Reclamation>{
         }
         return false;
     }
+
 
     
     
