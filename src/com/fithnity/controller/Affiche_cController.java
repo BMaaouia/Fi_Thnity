@@ -53,8 +53,6 @@ public class Affiche_cController implements Initializable {
   
 
     @FXML
-    private Button btn_ac;
-    @FXML
     private Button btn_dc;
     @FXML
     private Button btn_adc;

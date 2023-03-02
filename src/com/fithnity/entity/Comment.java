@@ -17,6 +17,7 @@ public class Comment {
     private SimpleIntegerProperty id_comment;
     private SimpleStringProperty text_comment;
     private SimpleStringProperty nom_prenom;
+    private int id_Blog;
     
 
     public Comment() {
@@ -29,11 +30,21 @@ public class Comment {
         
     }
 
-    public Comment(String text_comment, String nom_prenom) {
+    public Comment(String text_comment, String nom_prenom,int id_Blog) {
         this.text_comment = new SimpleStringProperty(text_comment);
         this.nom_prenom = new SimpleStringProperty(nom_prenom);
-        
+        this.id_Blog = id_Blog;
     }
+
+    public int getId_Blog() {
+        return id_Blog;
+    }
+
+    public void setId_Blog(int id_Blog) {
+        this.id_Blog = id_Blog;
+    }
+    
+    
     public int getId_comment() {
         return id_comment.get();
     }

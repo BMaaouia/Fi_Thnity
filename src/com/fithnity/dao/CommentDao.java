@@ -42,7 +42,7 @@ public class CommentDao implements Idaoc<Comment>{
 
     @Override
     public void insert(Comment c) {
-       String req="insert into Comment (nom_prenom,text_comment) values ('"+c.getnom_prenom()+"','"+c.gettext_comment()+"')";
+       String req="insert into Comment (nom_prenom,text_comment,id_blog) values ('"+c.getnom_prenom()+"','"+c.gettext_comment()+"','"+c.getId_Blog()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -60,6 +60,7 @@ public class CommentDao implements Idaoc<Comment>{
                 p.setId_comment(rs.getInt(1));
                 p.setnom_prenom(rs.getString("nom_prenom"));
                 p.settext_comment(rs.getString(3));
+                p.setId_Blog(rs.getInt(4));
                 list.add(p);
             }
             
@@ -79,6 +80,7 @@ public class CommentDao implements Idaoc<Comment>{
                 p.setId_comment(rs.getInt(1));
                 p.setnom_prenom(rs.getString(2));
                 p.settext_comment(rs.getString(3));
+                p.setId_Blog(rs.getInt(4));
                 list.add(p);
             }
             
@@ -114,11 +116,15 @@ String req="select * from comment where id_comment ="+id_comment;
                 p.setId_comment(rs.getInt("id_comment"));
                 p.setnom_prenom(rs.getString("nom_prenom"));
                 p.settext_comment(rs.getString("text_comment"));
+                p.setId_Blog(rs.getInt(4));
+
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     return p;    }
+
+
     public boolean update(Comment p) {
         String qry = "UPDATE comment SET text_comment = '"+p.gettext_comment()+"' WHERE id_comment = "+p.getId_comment();
         
@@ -131,5 +137,28 @@ String req="select * from comment where id_comment ="+id_comment;
             Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+
+        public ObservableList<Comment> displayById_Blog(int id_blog)  {
+
+        String req="select * from comment where id_blog ="+id_blog;
+        ObservableList<Comment> list=FXCollections.observableArrayList();       
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                Comment p=new Comment();
+                p.setId_comment(rs.getInt(1));
+                p.setnom_prenom(rs.getString("nom_prenom"));
+                p.settext_comment(rs.getString(3));
+                p.setId_Blog(rs.getInt(4));
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 }

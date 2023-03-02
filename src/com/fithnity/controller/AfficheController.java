@@ -6,8 +6,11 @@
 package com.fithnity.controller;
 
 import com.fithnity.dao.BlogDao;
+import com.fithnity.dao.CommentDao;
 import com.fithnity.entity.Blog;
 import com.fithnity.entity.Comment;
+import com.fithnity.entity.Pdf;
+import com.itextpdf.text.DocumentException;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -67,6 +70,8 @@ public class AfficheController implements Initializable {
     private ListView<Blog> list_b;
     private ListData listdata = new ListData();
     ObservableList<Blog> data=FXCollections.observableArrayList();
+    private ListDatac listdatac = new ListDatac();
+    ObservableList<Comment> datac=FXCollections.observableArrayList();
     
   
 
@@ -79,14 +84,16 @@ public class AfficheController implements Initializable {
     
     
     BlogDao bdao = BlogDao.getInstance();
+    CommentDao bdaoC = CommentDao.getInstance();
     @FXML
     private Button btn_modif;
     @FXML
     private TextField text_blog;
     @FXML
     private TextField image_blog;
-    @FXML
     private ImageView imageview;
+    @FXML
+    private ListView<Comment> list_c;
     
     
 
@@ -96,19 +103,13 @@ public class AfficheController implements Initializable {
          // TODO
         
              list_b.setItems(listdata.getBlogs());
-            list_b.setOnMouseClicked(e->{Blog current = list_b.getSelectionModel().getSelectedItem();
-//     current.getId_blog();
-     text_blog.setText(current.gettext_blog());
-     image_blog.setText(current.getimage_blog());
-            });
-     
+
     }
 
     
 
     @FXML
     private void show(ActionEvent event) {
-        
         
     }
 
@@ -214,6 +215,7 @@ public class AfficheController implements Initializable {
             p.setId_blog(current.getId_blog());
             p.settext_blog(text_blog.getText());
             p.setimage_blog(image_blog.getText());
+
              String text,image;
         text=text_blog.getText();
         image=image_blog.getText();
@@ -244,7 +246,6 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affic
     
     
     }}
-    @FXML
     private void uploadImage(ActionEvent event)throws FileNotFoundException, IOException  {
            Random rand = new Random();
         int x = rand.nextInt(1000);
@@ -280,6 +281,32 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affic
 
         }
     }  
+
+    @FXML
+    private void Load_Comment(MouseEvent event) {
+        
+                 Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
+
+                text_blog.setText(selectedItem.gettext_blog());
+                image_blog.setText(selectedItem.getimage_blog());
+
+                     
+            list_c.setItems(bdaoC.displayById_Blog(selectedItem.getId_blog()));
+            datac=FXCollections.observableArrayList();
+
+    }
+
+    @FXML
+    private void PDFbtn(ActionEvent event) throws FileNotFoundException, SQLException, DocumentException {
+        Pdf p = new Pdf();
+        p.add("Blogs");
+        
+        
+    }
+
+   
+
+    
 }
 
 
