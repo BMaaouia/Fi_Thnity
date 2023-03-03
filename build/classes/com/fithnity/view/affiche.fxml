@@ -4,10 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="611.0" prefWidth="804.0" style="-fx-background-color: #f9f7DD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AfficheController">
+<AnchorPane id="AnchorPane" prefHeight="770.0" prefWidth="1092.0" style="-fx-background-color: #f9f7DD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AfficheController">
    <children>
       <Button fx:id="btn_supprimer" layoutX="409.0" layoutY="61.0" mnemonicParsing="false" onAction="#click" style="-fx-background-color: black; -fx-background-radius: 20;" text="Suprimer" textFill="#f2eaea" />
       <Button fx:id="btn_afficher" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" onAction="#show" style="-fx-background-color: black; -fx-background-radius: 20;" text="Afficher" textFill="#e8dddd" />
@@ -21,5 +22,6 @@
       <Label layoutX="34.0" layoutY="404.0" text="Commentaire" />
       <ListView fx:id="list_c" layoutX="35.0" layoutY="432.0" prefHeight="153.0" prefWidth="297.0" style="-fx-background-radius: 20;" />
       <Button layoutX="428.0" layoutY="183.0" mnemonicParsing="false" onAction="#PDFbtn" text="Pdf" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="544.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

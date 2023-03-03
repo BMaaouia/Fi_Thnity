@@ -75,6 +75,7 @@ public class Affiche_cController implements Initializable {
 //     current.getId_comment();
      
      text_c.setText(current.gettext_comment());
+     
             });
     }    
     @FXML

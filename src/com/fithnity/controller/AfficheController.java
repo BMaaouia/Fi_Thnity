@@ -103,6 +103,7 @@ public class AfficheController implements Initializable {
          // TODO
         
              list_b.setItems(listdata.getBlogs());
+             
 
     }
 

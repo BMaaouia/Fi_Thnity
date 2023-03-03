@@ -12,10 +12,12 @@ import com.fithnity.entity.Comment;
 import com.fithnity.entity.Pdf;
 import com.itextpdf.text.DocumentException;
 import java.awt.Button;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -26,14 +28,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -59,7 +72,6 @@ public class Ajout_cController implements Initializable {
     private javafx.scene.control.Button btn_c;
     @FXML
     private javafx.scene.control.Button btn_c1;
-    @FXML
     private ListView<Blog> list_b;
     @FXML
     private ListView<Comment> list_c;
@@ -70,6 +82,11 @@ public class Ajout_cController implements Initializable {
     private javafx.scene.control.Button btn_up;
     @FXML
     private javafx.scene.control.Button btn_modif;
+        @FXML
+    private GridPane gridProduit;
+    @FXML
+    private ScrollPane scroll_blog;
+    private Blog selectedBlog;
       /**
      * Initializes the controller class.
      *
@@ -80,9 +97,58 @@ public class Ajout_cController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-          list_b.setItems(listdata.getBlogs());
+         
+          try {
+            List<Blog> blogs = bdao.displayAllList();
+            int row = 0;
+            int column = 0;
+            for (int i = 0; i < blogs.size(); i++) {
+                //chargement dynamique d'une interface
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+                AnchorPane pane = new AnchorPane();
+                
+              
+                Blog blog = blogs.get(i);
+                String imagePath = blog.getimage_blog();
+              
+                FileInputStream input = new FileInputStream(imagePath);
+                Image image = new Image(input);
+                ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(150);
+                imageView.setFitWidth(150);
+                
+                Text blogText = new Text(blog.gettext_blog());
+                blogText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+                blogText.setWrappingWidth(150);
+                blogText.setTextAlignment(TextAlignment.CENTER);
 
-    }  
+                VBox vBox = new VBox(10);
+                vBox.getChildren().addAll(imageView, blogText);
+                vBox.setAlignment(Pos.CENTER);
+    
+                GridPane.setConstraints(vBox,column, row);
+                gridProduit.getChildren().addAll(vBox);
+             
+                    pane.getChildren().addAll(gridProduit);
+                    
+                    vBox.setOnMouseClicked(event -> {
+            // Set selected blog as a property of the VBox element
+            selectedBlog = blog;
+            // TODO: Add code to handle the selected blog
+                });
+                
+                column++;
+                if (column > 1) {
+                    column = 0;
+                    row++;
+                }
+            }
+        } catch ( IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }    
+
+      
     
       public void getEvents() {  
 
@@ -97,10 +163,11 @@ public class Ajout_cController implements Initializable {
 
      @FXML
     private void add(ActionEvent event)  throws SQLException {
+        
        String text,np;
         text=text_c.getText();
         np=text_n.getText();
-        Comment c = new Comment(text, np,Integer.valueOf(idblogselected.getText()));
+        Comment c = new Comment(text, np,Integer.valueOf(selectedBlog.getId_blog()));
         //Volet 1: Validation de champs de texte vides
         
  if (text.isEmpty() || np.isEmpty()) {
@@ -122,7 +189,7 @@ public class Ajout_cController implements Initializable {
         text_c.setText("");
         text_n.setText("");
     }
-             list_c.setItems(bdaoC.displayById_Blog(Integer.valueOf(idblogselected.getText())));
+             list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
 
     
@@ -141,13 +208,13 @@ public class Ajout_cController implements Initializable {
             }
     }
 
-    @FXML
     private void Load_Comment(MouseEvent event) {
         
-            Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
+            //Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
                      
-            idblogselected.setText(String.valueOf(selectedItem.getId_blog()));
-            list_c.setItems(bdaoC.displayById_Blog(selectedItem.getId_blog()));
+            //idblogselected.setText(String.valueOf(selectedItem.getId_blog()));
+            
+            list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
 
     }
@@ -203,7 +270,6 @@ public class Ajout_cController implements Initializable {
     }
 
 
-    @FXML
     private void SelectComment(MouseEvent event) {
                  Comment current = list_c.getSelectionModel().getSelectedItem();
                  text_c.setText(current.gettext_comment());
@@ -232,16 +298,24 @@ public class Ajout_cController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Comment modifiée avec succés!");
         alert.show();
-           text_c.setText("");  
-        getEvents();
-                    Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
-                     
-            idblogselected.setText(String.valueOf(selectedItem.getId_blog()));
-            list_c.setItems(bdaoC.displayById_Blog(selectedItem.getId_blog()));
-            datac=FXCollections.observableArrayList();
+        text_c.setText("");
+        text_n.setText("");  
+        //getEvents();
+        list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
+        datac=FXCollections.observableArrayList();
 
         
     }
     }
+
+    @FXML
+    private void load(MouseEvent event) {
+        list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
+            datac=FXCollections.observableArrayList();
+    }
+
+    
+
+    
     
 }
