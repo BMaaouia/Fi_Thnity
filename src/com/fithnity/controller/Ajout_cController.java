@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -63,6 +65,11 @@ public class Ajout_cController implements Initializable {
     private ListView<Comment> list_c;
     @FXML
     private Label idblogselected;
+    @FXML
+    private javafx.scene.control.Button btn_dc;
+    private javafx.scene.control.Button btn_up;
+    @FXML
+    private javafx.scene.control.Button btn_modif;
       /**
      * Initializes the controller class.
      *
@@ -152,4 +159,89 @@ public class Ajout_cController implements Initializable {
         
         
     }
+
+    @FXML
+    private void supprime(ActionEvent event) {
+         Comment selectedItem = list_c.getSelectionModel().getSelectedItem();
+
+                System.out.println(selectedItem);
+                 list_c.getItems().remove(selectedItem);
+                 bdaoC.delete(selectedItem);
+                  if (list_c.getSelectionModel().getSelectedIndex() == -1) {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("No Selected Project");
+            alert1.setHeaderText("Error 403 !");
+            alert1.setContentText("Select a project to delete.");
+            ButtonType buttonTypeYes = new ButtonType("OK");
+            alert1.getButtonTypes().setAll(buttonTypeYes);
+            alert1.showAndWait();
+        } else {
+            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setTitle("Are you sure to delete?");
+            alert1.setHeaderText("Confirmation!");
+            alert1.setContentText("You're attempting to delete a project.");
+            ButtonType buttonTypeYes = new ButtonType("OK");
+            ButtonType buttonTypeNo = new ButtonType("Cancel");
+            alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            Optional<ButtonType> result = alert1.showAndWait();
+            if (alert1.getResult().getText().equals("OK")) {
+           
+                System.out.println(selectedItem);
+                 list_c.getItems().remove(selectedItem);
+                 bdaoC.delete(selectedItem);
+                
+            }
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information ");
+        alert.setHeaderText("Event delete");
+        alert.setContentText("Event deleted successfully!");
+        alert.showAndWait();
+        getEvents();
+    
+  
+    }
+    }
+
+
+    @FXML
+    private void SelectComment(MouseEvent event) {
+                 Comment current = list_c.getSelectionModel().getSelectedItem();
+                 text_c.setText(current.gettext_comment());
+                 
+    }
+
+    @FXML
+    private void modif(ActionEvent event) throws IOException {
+                 Comment current = list_c.getSelectionModel().getSelectedItem();
+            Comment p = new Comment();
+//            p.setId(Integer.parseInt(txt_id.getText()));
+            p.setId_comment(current.getId_comment());
+            p.settext_comment(text_c.getText());
+            if (text_c.getText().isEmpty() ) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Champ(s) vide(s)");
+        alert.setContentText("Veuillez remplir tous les champs obligatoires");
+        alert.showAndWait();
+    }else{
+            
+            CommentDao pdao = CommentDao.getInstance();
+            pdao.update(p);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Comment modifiée avec succés!");
+        alert.show();
+           text_c.setText("");  
+        getEvents();
+                    Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
+                     
+            idblogselected.setText(String.valueOf(selectedItem.getId_blog()));
+            list_c.setItems(bdaoC.displayById_Blog(selectedItem.getId_blog()));
+            datac=FXCollections.observableArrayList();
+
+        
+    }
+    }
+    
 }

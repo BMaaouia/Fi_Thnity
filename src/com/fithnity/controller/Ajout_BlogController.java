@@ -29,6 +29,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -44,8 +45,12 @@ public class Ajout_BlogController implements Initializable {
     private Button affiche;
     @FXML
     private TextField text_blog;
-    @FXML
     private TextField image_blog;
+    @FXML
+    private Button btn_addi;
+    @FXML
+    private ImageView image;
+    Blog b = new Blog();
     
 
     /**
@@ -63,15 +68,92 @@ public class Ajout_BlogController implements Initializable {
         
     }
 
+//    @FXML
+//    private void add(ActionEvent event) throws SQLException {
+//        
+//        String text,image;
+//        text=text_blog.getText();
+//        image=image_blog.getText();
+//        Blog b = new Blog(text, image);
+//        //Volet 1: Validation de champs de texte vides
+// if (text.isEmpty() || image.isEmpty()) {
+//        Alert alert = new Alert(AlertType.ERROR);
+//        alert.setTitle("Erreur");
+//        alert.setHeaderText("Champ(s) vide(s)");
+//        alert.setContentText("Veuillez remplir tous les champs obligatoires");
+//        alert.showAndWait();
+//    } else {
+//        
+//            BlogDao pdao = BlogDao.getInstance();
+//            pdao.insert(b);
+//        
+//        Alert alert = new Alert(AlertType.INFORMATION);
+//        alert.setTitle("Information Dialog");
+//        alert.setHeaderText(null);
+//        alert.setContentText("Blog insérée avec succés!");
+//        alert.show();
+//        text_blog.setText("");
+//        image_blog.setText("");
+//     } 
+ 
+ 
+ 
+ 
+ 
+ /*PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM blog WHERE text_blog = ?");
+ stmt.setString(1, text_blog);
+ ResultSet rs = stmt.executeQuery();
+if (rs.next() && rs.getInt(1) > 0) {
+    Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Erreur");
+    alert.setHeaderText("Produit déjà existant");
+    alert.setContentText("Le produit " + text_blog + " existe déjà dans la base de données");
+    alert.showAndWait();
+}
+    /*  String path = b.getimage_blog();
+               File file=new File(path);
+              Image img = new Image(file.toURI().toString());
+               imageview.setImage(img);*/
+      //   }   
     @FXML
-    private void add(ActionEvent event) throws SQLException {
+    private void show(ActionEvent event) {
+         try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Ajout_BlogController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void add_image(ActionEvent event) {
         
-        String text,image;
-        text=text_blog.getText();
-        image=image_blog.getText();
-        Blog b = new Blog(text, image);
-        //Volet 1: Validation de champs de texte vides
- if (text.isEmpty() || image.isEmpty()) {
+        
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose File");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+        FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        fileChooser.getExtensionFilters().add(pngFilter);
+        File selectedFile = fileChooser.showOpenDialog(null);
+        
+        if (selectedFile != null) {
+           // 
+        Image img = new Image(selectedFile.toURI().toString());
+  
+                String selected =selectedFile.getAbsolutePath();
+                selected = selected.replace(File.separator, "/");
+                image.setImage(img);
+                btn_addi.setVisible(false);
+                b.setimage_blog(selected);         
+          
+       }
+        btn_add.setOnAction(e->{ 
+            b.settext_blog(text_blog.getText());
+             if (text_blog.getText().isEmpty() ) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText("Champ(s) vide(s)");
@@ -88,36 +170,19 @@ public class Ajout_BlogController implements Initializable {
         alert.setContentText("Blog insérée avec succés!");
         alert.show();
         text_blog.setText("");
-        image_blog.setText("");
-     } 
- 
- /*PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM blog WHERE text_blog = ?");
- stmt.setString(1, text_blog);
- ResultSet rs = stmt.executeQuery();
-if (rs.next() && rs.getInt(1) > 0) {
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Erreur");
-    alert.setHeaderText("Produit déjà existant");
-    alert.setContentText("Le produit " + text_blog + " existe déjà dans la base de données");
-    alert.showAndWait();
+        btn_addi.setVisible(true);
+        image.setImage(null);
+     }
+        });
+        
+
+          
+     
+        
+       
+         
+        
+                }
 }
-    /*  String path = b.getimage_blog();
-               File file=new File(path);
-              Image img = new Image(file.toURI().toString());
-               imageview.setImage(img);*/
-         }   
-    @FXML
-    private void show(ActionEvent event) {
-         try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(Ajout_BlogController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }
 
    
-}

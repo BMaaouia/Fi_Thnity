@@ -11,22 +11,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="972.0" style="-fx-background-color: #F9F7DD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.Ajout_cController">
    <children>
-      <Text layoutX="433.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et Prenom" />
-      <TextField fx:id="text_n" layoutX="570.0" layoutY="167.0" prefHeight="21.0" prefWidth="148.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="text_c" layoutX="568.0" layoutY="275.0" prefHeight="70.0" prefWidth="195.0" style="-fx-background-radius: 20;" />
-      <Text layoutX="441.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment" />
-      <Button fx:id="btn_c" layoutX="805.0" layoutY="310.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: black; -fx-background-radius: 20;" text="Commenter" textFill="#f5f4f4" />
-      <Button fx:id="btn_c1" layoutX="805.0" layoutY="365.0" mnemonicParsing="false" onAction="#show" style="-fx-background-color: black; -fx-background-radius: 20;" text="Afficher" textFill="#f5f4f4" />
-      <ImageView fitHeight="128.0" fitWidth="141.0" layoutX="798.0" layoutY="119.0">
+      <Text layoutX="46.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et Prenom" />
+      <TextField fx:id="text_n" layoutX="37.0" layoutY="382.0" prefHeight="21.0" prefWidth="148.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="text_c" layoutX="40.0" layoutY="453.0" prefHeight="70.0" prefWidth="195.0" style="-fx-background-radius: 20;" />
+      <Text layoutX="46.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment" />
+      <Button fx:id="btn_c" layoutX="257.0" layoutY="457.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: black; -fx-background-radius: 20;" text="Commenter" textFill="#f5f4f4" />
+      <Button fx:id="btn_c1" layoutX="897.0" layoutY="120.0" mnemonicParsing="false" onAction="#show" style="-fx-background-color: black; -fx-background-radius: 20;" text="Afficher" textFill="#f5f4f4" />
+      <ImageView fitHeight="128.0" fitWidth="141.0" layoutX="792.0" layoutY="12.0">
          <image>
             <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
          </image>
       </ImageView>
-      <ListView fx:id="list_b" layoutX="39.0" layoutY="135.0" onMouseClicked="#Load_Comment" prefHeight="200.0" prefWidth="365.0" style="-fx-background-radius: 20;" />
+      <ListView fx:id="list_b" layoutX="39.0" layoutY="135.0" onMouseClicked="#Load_Comment" prefHeight="200.0" prefWidth="434.0" style="-fx-background-radius: 20;" />
       <Label layoutX="46.0" layoutY="91.0" text="Blog" />
-      <ListView fx:id="list_c" layoutX="45.0" layoutY="442.0" prefHeight="153.0" prefWidth="297.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="46.0" layoutY="411.0" text="Commentaire" />
-      <Label fx:id="idblogselected" layoutX="456.0" layoutY="55.0" text="Label" />
-      <Button layoutX="820.0" layoutY="427.0" mnemonicParsing="false" onAction="#PDFbtn" text="Pdf" />
+      <ListView fx:id="list_c" layoutX="580.0" layoutY="453.0" onMouseClicked="#SelectComment" prefHeight="153.0" prefWidth="297.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="607.0" layoutY="414.0" text="Commentaire" />
+      <Label fx:id="idblogselected" layoutX="456.0" layoutY="55.0" visible="false" />
+      <Button layoutX="342.0" layoutY="351.0" mnemonicParsing="false" onAction="#PDFbtn" style="-fx-background-color: black; -fx-background-radius: 20;" text="Pdf" textFill="#f8f5f5" />
+      <Button fx:id="btn_dc" layoutX="724.0" layoutY="642.0" mnemonicParsing="false" onAction="#supprime" style="-fx-background-color: black; -fx-background-radius: 20;" text="Supprimer" textFill="#eeebeb" />
+      <Button fx:id="btn_modif" layoutX="257.0" layoutY="499.0" mnemonicParsing="false" onAction="#modif" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Modifier" textFill="#f5f4f4" />
    </children>
 </AnchorPane>
