@@ -162,11 +162,16 @@ public class LoginController implements Initializable {
 
     @FXML
     private void forget_pass(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("You can't solve that yet!");
-        alert.show();
+        try {  
+            Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Forget_Pass.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+             } 
+        catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
     

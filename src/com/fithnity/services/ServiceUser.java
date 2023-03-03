@@ -233,6 +233,20 @@ public class ServiceUser implements UserInterface<User>{
                 }
                 return false;
     }
+    
+    public boolean update_pass(String pass, String mail) {
+        String qry = "UPDATE user SET user_password = '"+pass+"' WHERE user_email = '"+mail+"'";
+        
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
    
     

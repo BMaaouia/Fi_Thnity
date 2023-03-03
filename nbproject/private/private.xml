@@ -8,13 +8,18 @@
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/view/AdminPanel.fxml</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/services/ServiceUser.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/test/Main.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/controller/Forget_PassController.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/services/ServiceSubscription.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/utils/DataSource.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/services/UserInterface.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/services/UserManager.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/controller/AdminPanelController.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/controller/SignupController.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/entity/Subscription.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/view/Forget_Pass.fxml</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/services/SubscriptionInterface.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/entity/User.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/nbproject/jfx-impl.xml</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/services/ServiceUserSubscription.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/controller/ProfileController.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/FiThnitiGit/Fi_Thnity/src/com/fithnity/entity/UserSubscription.java</file>
