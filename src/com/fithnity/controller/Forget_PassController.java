@@ -8,6 +8,8 @@ package com.fithnity.controller;
 import com.fithnity.services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -154,8 +156,8 @@ public class Forget_PassController implements Initializable {
                 save_pass.setOnAction(e1->{
                     //System.out.println(email_text.getText());
                     if(Validate_pass()==true){
-                    
-                        Us.update_pass(newpass_text.getText(), email_text.getText());
+                        String hashedPassword = hashPassword(newpass_text.getText());
+                        Us.update_pass(hashedPassword, email_text.getText());
                         
                         Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Information");
@@ -277,6 +279,22 @@ public Boolean Validate_pass(){
         return true;
 }
    
+
+private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Forget_PassController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
 
 }
