@@ -43,7 +43,7 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         // loadPage("CategorieInterface");
-        loadPage("/com/fithnity/view/affiche");
+        loadPage("/com/fithnity/view/ajout_c");
     }    
     
     private void loadPage(String page){          

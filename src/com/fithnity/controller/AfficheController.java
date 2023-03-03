@@ -247,41 +247,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affic
     
     
     }}
-    private void uploadImage(ActionEvent event)throws FileNotFoundException, IOException  {
-           Random rand = new Random();
-        int x = rand.nextInt(1000);
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Upload File Path");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-        File file = fileChooser.showOpenDialog(null);
-        String DBPath = "C:\\\\xampp\\\\htdocs\\\\imageP\\\\"  + x + ".jpg";
-        if (file != null) {
-            FileInputStream Fsource = new FileInputStream(file.getAbsolutePath());
-            FileOutputStream Fdestination = new FileOutputStream(DBPath);
-            BufferedInputStream bin = new BufferedInputStream(Fsource);
-            BufferedOutputStream bou = new BufferedOutputStream(Fdestination);
-            System.out.println(file.getAbsoluteFile());
-            String path=file.getAbsolutePath();
-            Image img = new Image(file.toURI().toString());
-            imageview.setImage(img);
-           /* File File1 = new File(DBPath);
-            Image img = new Image(File1.getAbsolutePath());
-            image_event.setImage(img);*/
-            image_blog.setText(DBPath);
-            int b = 0;
-            while (b != -1) {
-                b = bin.read();
-                bou.write(b);
-            }
-            bin.close();
-            bou.close();
-            
-        } else {
-            System.out.println("error");
-
-        }
-    }  
+    
 
     @FXML
     private void Load_Comment(MouseEvent event) {

@@ -114,12 +114,12 @@ public class Ajout_cController implements Initializable {
                 FileInputStream input = new FileInputStream(imagePath);
                 Image image = new Image(input);
                 ImageView imageView = new ImageView(image);
-                imageView.setFitHeight(150);
-                imageView.setFitWidth(150);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(200);
                 
                 Text blogText = new Text(blog.gettext_blog());
                 blogText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-                blogText.setWrappingWidth(150);
+                blogText.setWrappingWidth(200);
                 blogText.setTextAlignment(TextAlignment.CENTER);
 
                 VBox vBox = new VBox(10);

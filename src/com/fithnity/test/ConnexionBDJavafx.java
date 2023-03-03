@@ -32,7 +32,7 @@ public class ConnexionBDJavafx extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Hello World");
+        
         
         //parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
         parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Menu.fxml"));

@@ -83,7 +83,7 @@ public void add(String file) throws FileNotFoundException, SQLException, Documen
     my_pdf_report.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA, 12)));
 
     // Create the table
-    PdfPTable table = new PdfPTable(2);
+    PdfPTable table = new PdfPTable(1);
     table.setWidthPercentage(100);
     table.setHeaderRows(1);
 
@@ -91,13 +91,13 @@ public void add(String file) throws FileNotFoundException, SQLException, Documen
     Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
 
     // Add table headers
-    PdfPCell cell1 = new PdfPCell(new Phrase("Title", headerFont));
+    PdfPCell cell1 = new PdfPCell(new Phrase("Blog", headerFont));
     cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
     table.addCell(cell1);
 
-    PdfPCell cell2 = new PdfPCell(new Phrase("Image", headerFont));
-    cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
-    table.addCell(cell2);
+  //  PdfPCell cell2 = new PdfPCell(new Phrase("Image", headerFont));
+   // cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+   // table.addCell(cell2);
 
     // Define table data font
     Font dataFont = FontFactory.getFont(FontFactory.HELVETICA, 10);
@@ -106,12 +106,12 @@ public void add(String file) throws FileNotFoundException, SQLException, Documen
     ResultSet res = st.executeQuery("select * from Blog");
     while (res.next()) {
         String title1 = res.getString(2);
-        String image = res.getString(3);
+       // String image = res.getString(3);
 
         PdfPCell cellTitle = new PdfPCell(new Phrase(title1, dataFont));
-        PdfPCell cellImage = new PdfPCell(new Phrase(image, dataFont));
+       // PdfPCell cellImage = new PdfPCell(new Phrase(image, dataFont));
         table.addCell(cellTitle);
-        table.addCell(cellImage);
+      //  table.addCell(cellImage);
     }
 
     // Add the table to the PDF
