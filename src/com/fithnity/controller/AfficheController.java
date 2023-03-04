@@ -157,23 +157,23 @@ public class AfficheController implements Initializable {
   private void click(ActionEvent event) {
         Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
 
-                System.out.println(selectedItem);
-                 list_b.getItems().remove(selectedItem);
-                 bdao.delete(selectedItem);
-   
+              
         if (list_b.getSelectionModel().getSelectedIndex() == -1) {
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
-            alert1.setTitle("No Selected Project");
+            alert1.setTitle("No Selected Blog");
             alert1.setHeaderText("Error 403 !");
-            alert1.setContentText("Select a project to delete.");
+            alert1.setContentText("Select a blog to delete.");
             ButtonType buttonTypeYes = new ButtonType("OK");
             alert1.getButtonTypes().setAll(buttonTypeYes);
             alert1.showAndWait();
+            System.out.println(selectedItem);
+                 list_b.getItems().remove(selectedItem);
+                 bdao.delete(selectedItem);
         } else {
             Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Are you sure to delete?");
             alert1.setHeaderText("Confirmation!");
-            alert1.setContentText("You're attempting to delete a project.");
+            alert1.setContentText("You're attempting to delete a blog.");
             ButtonType buttonTypeYes = new ButtonType("OK");
             ButtonType buttonTypeNo = new ButtonType("Cancel");
             alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
@@ -187,8 +187,8 @@ public class AfficheController implements Initializable {
             }
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information ");
-        alert.setHeaderText("Event delete");
-        alert.setContentText("Event deleted successfully!");
+        
+        alert.setContentText("Blog deleted successfully!");
         alert.showAndWait();
         getEvents();
 

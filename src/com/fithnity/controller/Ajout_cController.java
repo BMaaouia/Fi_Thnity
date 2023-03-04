@@ -231,22 +231,23 @@ public class Ajout_cController implements Initializable {
     private void supprime(ActionEvent event) {
          Comment selectedItem = list_c.getSelectionModel().getSelectedItem();
 
-                System.out.println(selectedItem);
-                 list_c.getItems().remove(selectedItem);
-                 bdaoC.delete(selectedItem);
+                
                   if (list_c.getSelectionModel().getSelectedIndex() == -1) {
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
-            alert1.setTitle("No Selected Project");
+            alert1.setTitle("No Selected Comment");
             alert1.setHeaderText("Error 403 !");
-            alert1.setContentText("Select a project to delete.");
+            alert1.setContentText("Select a comment to delete.");
             ButtonType buttonTypeYes = new ButtonType("OK");
             alert1.getButtonTypes().setAll(buttonTypeYes);
             alert1.showAndWait();
+            System.out.println(selectedItem);
+                 list_c.getItems().remove(selectedItem);
+                 bdaoC.delete(selectedItem);
         } else {
             Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Are you sure to delete?");
             alert1.setHeaderText("Confirmation!");
-            alert1.setContentText("You're attempting to delete a project.");
+            alert1.setContentText("You're attempting to delete a comment.");
             ButtonType buttonTypeYes = new ButtonType("OK");
             ButtonType buttonTypeNo = new ButtonType("Cancel");
             alert1.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
@@ -260,8 +261,8 @@ public class Ajout_cController implements Initializable {
             }
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information ");
-        alert.setHeaderText("Event delete");
-        alert.setContentText("Event deleted successfully!");
+        
+        alert.setContentText("Comment deleted successfully!");
         alert.showAndWait();
         getEvents();
     

@@ -38,6 +38,6 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <ListView fx:id="list_c" layoutX="500.0" layoutY="519.0" onEditStart="#show" prefHeight="200.0" prefWidth="273.0" />
+      <ListView fx:id="list_c" layoutX="500.0" layoutY="519.0" onEditStart="#show" prefHeight="200.0" prefWidth="273.0" style="-fx-background-radius: 20;" />
    </children>
 </AnchorPane>
