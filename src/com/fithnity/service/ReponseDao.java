@@ -6,6 +6,7 @@
 package com.fithnity.service;
 
 //import com.fithnity.entity.Reclamation;
+import com.fithnity.entity.Reclamation;
 import com.fithnity.entity.Reponse;
 import com.fithnity.utils.ConnexionSingleton;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -191,8 +193,21 @@ public class ReponseDao implements Idao<Reponse>{
         return false;
     }
 
+      public List<Reponse> rechercher(String recherche) {
+    List<Reponse> produits1 = displayAllList().stream()
+            .filter(x -> 
+                x.getEmailUser().contains(recherche) ||
+                x.getMessageR().contains(recherche))
+            .collect(Collectors.toList());
+    return produits1;       
+}
     
-    
+    public List<Reponse> filtrerParDate(java.util.Date startDate, java.util.Date endDate) {
+    List<Reponse> events = displayAllList().stream()
+            .filter(e -> e.getDateReponse().compareTo(startDate) >= 0 && e.getDateReponse().compareTo(endDate) <= 0)
+            .collect(Collectors.toList());
+    return events;
+}
     
     
     

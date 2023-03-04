@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,6 +48,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
@@ -58,9 +60,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -91,6 +98,15 @@ public class MreponseController implements Initializable {
      private ListDataReponse listdata = new ListDataReponse();
   
     private ListData listdata2 = new ListData();
+    @FXML
+    private Pagination pagination;
+    private final int ITEMS_PER_PAGE = 5;
+    @FXML
+    private TextField search;
+    @FXML
+    private DatePicker dd;
+    @FXML
+    private DatePicker df;
 
     /**
      * Initializes the controller class.
@@ -98,7 +114,23 @@ public class MreponseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+               //*****************************search*****************************************************
+
+
+search.textProperty().addListener((observable, oldValue, newValue) -> {
+    ReponseDao pdao = ReponseDao.getInstance();
+    List<Reponse> r = pdao.rechercher(newValue);
+    ObservableList<Reponse> reclamationsList = FXCollections.observableArrayList(r);
+    
+    listviewR.setItems(reclamationsList);
+});
+
+
+          //********************************************************************************
+          
+        int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
+        pagination.setPageCount(pageCount);
+        pagination.setPageFactory(this::createPage);
         
         //**************************************************************************
               ObservableList<Reponse> data=FXCollections.observableArrayList();
@@ -211,6 +243,14 @@ txt_messageR.setText(current.getMessageR());
         alert.setHeaderText(null);
         alert.setContentText("Reponse suprimée avec succés!");
         alert.show();
+         String title = "Done";
+        String message = "Reponse Suprimée! ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
 		
 	}
     @FXML
@@ -232,6 +272,14 @@ txt_messageR.setText(current.getMessageR());
         alert.setHeaderText(null);
         alert.setContentText("Reponse modifiée avec succés!");
         alert.show();
+         String title = "Done";
+        String message = "Reponse modified! ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
         
 	 txt_emailU.setText("");
           
@@ -285,6 +333,25 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Mrepo
         return true;
          
     }
-     
-    
+ 
+ private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * ITEMS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, listdata.getPersons().size());
+        listviewR.setItems(FXCollections.observableArrayList(listdata.getPersons().subList(fromIndex, toIndex)));
+        return listviewR;
+    }
+
+    @FXML
+private void Filtrer(ActionEvent event) throws IOException {
+    //EvenementService es = new EvenementService();
+    ObservableList<Reponse> eventsList = FXCollections.observableArrayList();
+   // java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
+    ReponseDao pdao = ReponseDao.getInstance();
+    java.sql.Date startDate = java.sql.Date.valueOf(dd.getValue());
+    java.sql.Date endDate = java.sql.Date.valueOf(df.getValue());
+    List<Reponse> filteredEvents = pdao.filtrerParDate(startDate, endDate);
+    eventsList.clear();
+    eventsList.addAll(filteredEvents);
+    listviewR.setItems(eventsList);
+}
 }

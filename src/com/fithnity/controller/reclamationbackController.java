@@ -7,8 +7,12 @@ package com.fithnity.controller;
 
 import com.fithnity.service.ReclamationDao;
 import com.fithnity.entity.Reclamation;
+import com.fithnity.utils.Document_Creation;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +23,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,9 +33,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -59,6 +69,12 @@ public class reclamationbackController implements Initializable {
     private DatePicker dd;
     @FXML
     private DatePicker df;
+    @FXML
+    private Button pdf;
+    @FXML
+    private Pagination pagination;
+    private final int ITEMS_PER_PAGE = 5;
+    
  //  List<Reclamation> r= pdao.rechercher(search.getText());
     /**
      * Initializes the controller class.
@@ -66,6 +82,9 @@ public class reclamationbackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
+        pagination.setPageCount(pageCount);
+        pagination.setPageFactory(this::createPage);
         
         //  ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
         listviewP.setItems(listdata.getPersons());
@@ -150,6 +169,49 @@ private void Filtrer(ActionEvent event) throws IOException {
     listviewP.setItems(eventsList);
 }
 
-  
+    @FXML
+    private void handle(ActionEvent event) {
+        try {
+                  
+                                  Document_Creation dc = new Document_Creation();
+            					dc.generatePDF();
+            					File file = new File("my_docs.pdf");
+            					if (file.exists()) {
+            		                long startTime = System.currentTimeMillis();
+            		                Desktop.getDesktop().open(file);
+            		                long endTime = System.currentTimeMillis();
+            		                System.out.println("Total time taken to open file -> "+ file.getName() +" in "+ (endTime - startTime) +" ms");              
+            		            } else {
+            		                System.out.println("terereraaaa -> "+ file.getAbsolutePath());
+                                         String title = "Done";
+        String message = "PDF is SUCCEFYLY generated! ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
+            		            }
+            				} catch (IOException e) {
+            					// TODO Auto-generated catch block
+            					e.printStackTrace();
+            				} catch (SQLException ex) {
+                    System.out.println("erreur pdf");                                }
+    }
+
+   private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * ITEMS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, listdata.getPersons().size());
+        listviewP.setItems(FXCollections.observableArrayList(listdata.getPersons().subList(fromIndex, toIndex)));
+        return listviewP;
+    }
+
+    @FXML
+    private void goreponseback(Event event) throws IOException  {
+       Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreponseback.fxml"));
+    Stage window = (Stage) btn_reponse.getScene().getWindow();
+    window.setScene(new Scene(root3));
+        
+    }
     
 }

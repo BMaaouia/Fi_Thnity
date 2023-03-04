@@ -10,6 +10,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,7 +21,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -28,6 +34,8 @@ public class AcceuilfrontController implements Initializable {
 
     @FXML
     private Button btn_acceuil;
+    @FXML
+    private AnchorPane container;
 
     /**
      * Initializes the controller class.
@@ -35,19 +43,29 @@ public class AcceuilfrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           btn_acceuil.setOnAction(event -> {
-            try {//FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
-                // Give the controller access to the main app.
-//                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
-                Scene scene = new Scene(page2);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-                  btn_acceuil.setStyle("-fx-background-color : #1620A1");
-            btn_acceuil.toFront();
-           //  btn_blog.setStyle("-fx-background-color :  #05071F");
+            try {
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+//                Scene scene = new Scene(page2);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.show();
+              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+       
+        Scene scene = btn_acceuil.getScene();
+        root.translateXProperty().set(-scene.getWidth());
+
+        AnchorPane parentContainer = (AnchorPane) btn_acceuil.getScene().getRoot();
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(container);
+        });
+        timeline.play(); 
             } catch (IOException ex) {
                 Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -55,3 +73,4 @@ public class AcceuilfrontController implements Initializable {
     }    
     
 }
+///com/fithnity/view/Ajouterreclamationfront.fxml"

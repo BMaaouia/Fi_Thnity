@@ -45,6 +45,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -109,7 +113,15 @@ txt_messageR.setText(current.getMessageR());
         alert.setContentText("Reponse insérée avec succés!");
         alert.show();
 	 txt_emailU.setText("");
-        txt_messageR.setText("");  	
+        txt_messageR.setText("");  
+         String title = "Done";
+        String message = "Reponse Ajoutée!";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
         //reload
         Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
@@ -128,6 +140,14 @@ txt_messageR.setText(current.getMessageR());
         alert.setHeaderText(null);
         alert.setContentText("Reponse suprimée avec succés!");
         alert.show();
+         String title = "Done";
+        String message = "Reponse Deleted! ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
 		
 	}
     @FXML
@@ -149,6 +169,14 @@ txt_messageR.setText(current.getMessageR());
         alert.setHeaderText(null);
         alert.setContentText("Reponse modifiée avec succés!");
         alert.show();
+         String title = "Done";
+        String message = "Reponse Modifed! ";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type=AnimationType.POPUP;
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(1000));
         
 	 txt_emailU.setText("");
           

@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -190,8 +191,8 @@ public class ReclamationDao implements Idao<Reclamation>{
   
     @Override
     public boolean update(Reclamation p) {
-        String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
-        
+       // String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
+         String qry = "UPDATE Reclamation SET  email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
         try {
             if (st.executeUpdate(qry) > 0) {
                 return true;
@@ -203,10 +204,35 @@ public class ReclamationDao implements Idao<Reclamation>{
         return false;
     }
 
+  
+    public String bad_words(String badWord) {
 
+    List<String> badListW = Arrays.asList("zebi", "sorem","nayek","asba lik","zabour","9ahba","khahba","fuck","putin");
+    String[] words = badWord.split("\\s+");
+    StringBuilder sb = new StringBuilder();
+    for (String word : words) {
+        if (badListW.contains(word)) {
+            if (word.length() >= 1) {
+                StringBuilder result = new StringBuilder();
+                result.append(word.charAt(0));
+                for (int i = 0; i < word.length() - 2; ++i) {
+                    result.append("*");
+                }
+                result.append(word.charAt(word.length() - 1));
+                word = result.toString();
+                if (!word.isEmpty()) {
+                    System.out.println("ATTENTION !! Vous avez écrit un gros mot : " + result + " .C'est un avertissement ! Prière d'avoir un peu de respect ! Votre description sera envoyée comme suit :");
+                    System.out.println(badWord.replace(word, "****") + "****");
+                }
+            }
+        }
+        sb.append(word).append(" ");
+    }
+    return sb.toString().trim();
+}
     
-    
-    
+
+  
     
     
 }

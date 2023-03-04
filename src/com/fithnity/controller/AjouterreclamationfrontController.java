@@ -12,10 +12,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +35,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
@@ -39,6 +47,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
@@ -88,17 +97,43 @@ public class AjouterreclamationfrontController implements Initializable {
     private Button btn_blog;
     
       private ListData listdata = new ListData();
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Pagination pagination;
 
+    private final int ITEMS_PER_PAGE = 5;
+    @FXML
+    private TextField search;
+    @FXML
+    private DatePicker dd;
+    @FXML
+    private DatePicker df;
+    @FXML
+    private Button manipuler;
+    private Set<String> attributes = new HashSet<>();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//        int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
+//        pagination.setPageCount(pageCount);
+//        pagination.setPageFactory(this::createPage);
+//        //************************************
+//                
+//search.textProperty().addListener((observable, oldValue, newValue) -> {
+//    ReclamationDao pdao = ReclamationDao.getInstance();
+//    List<Reclamation> r = pdao.rechercher(newValue);
+//    ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
+//    listviewP.setItems(reclamationsList);
+//});
+        //***************
           btn_acceuil.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/acceuilfront.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
 //                controller.setListData(new ListData());
@@ -114,102 +149,53 @@ public class AjouterreclamationfrontController implements Initializable {
             }
         });
 
-//        btn_display.setOnAction(event -> {
-//            try {//FXMLLoader loader = new FXMLLoader();
-//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-//                Parent page3 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
-//                // Give the controller access to the main app.
-////                AfficherPersonneController controller =loader.getController();
-////                controller.setListData(new ListData());
-//                Scene scene = new Scene(page3);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.show();
-//                  btn_display.setStyle("-fx-background-color : #1620A1");
-//            btn_display.toFront();
-//           //  btn_blog.setStyle("-fx-background-color :  #05071F");
-//            } catch (IOException ex) {
-//                Logger.getLogger(AfficherPersonneController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
-//        
-//         btn_display1.setOnAction(event -> {
-//            try {//FXMLLoader loader = new FXMLLoader();
-//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
-//                // Give the controller access to the main app.
-////                AfficherPersonneController controller =loader.getController();
-////                controller.setListData(new ListData());
+//**********************
+ 
+  //      **************
+          btn_blog.setOnAction(event -> {
+            
+               
+             try {
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
 //                Scene scene = new Scene(page2);
 //                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //                stage.setScene(scene);
 //                stage.show();
-//                  btn_display1.setStyle("-fx-background-color : #1620A1");
-//            btn_display1.toFront();
-//             btn_blog.setStyle("-fx-background-color :  #05071F");
-//             
-//            } catch (IOException ex) {
-//                Logger.getLogger(AfficherReponseController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
-          btn_blog.setOnAction(event -> {
-            try {//FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
-                // Give the controller access to the main app.
-//                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
-                Scene scene = new Scene(page2);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-                  btn_blog.setStyle("-fx-background-color : #1620A1");
-            btn_blog.toFront();
-           //  btn_diplay.setStyle("-fx-background-color :  #05071F");
-            
+              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+       
+        Scene scene = btn_acceuil.getScene();
+        root.translateXProperty().set(-scene.getWidth());
+
+        AnchorPane parentContainer = (AnchorPane) btn_acceuil.getScene().getRoot();
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(container);
+        });
+        timeline.play();
             } catch (IOException ex) {
                 Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
           //********************************************************************************
         
-        listviewP.setItems(listdata.getPersons()); 
-         
- 
-        listviewP.setOnMouseClicked(event->{
-            
-//        idLabel.setText(String.valueOf(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getId()));
-//        nomLabel.setText(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getNom());
-//        prenomLabel.setText(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getPrenom());
- java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-        Reclamation current = listviewP.getSelectionModel().getSelectedItem();
-        // txt_id.setText(Integer.toString(current.getId()));
-       
-         current.getId();
-        txt_nom.setText(current.getNom());
-        txt_prenom.setText(current.getPrenom());
-        txt_email.setText(current.getEmail());
-        txt_tel.setText(Integer.toString(current.getNumTel()));   
-txt_message.setText(current.getMessage());        
-
-    });
-          
-        
+  
     }    
 
      @FXML
     private void ajouter(ActionEvent event) throws IOException { 
         if (Saisi() == true)
         {
+            
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), txt_message.getText(),currentDate);
-            ReclamationDao pdao = ReclamationDao.getInstance();
+             ReclamationDao pdao = ReclamationDao.getInstance();
+	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate);
+            
             pdao.insert(p);
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -236,7 +222,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         tray.setMessage(message);
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(1000));
-    
+    //************
 	}
     }
     
@@ -267,6 +253,8 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
     @FXML
     private void modifier(ActionEvent event) throws IOException { 
           if (Saisi() == true)
+        {
+            if (Saisi2(txt_nom.getText()) == true)
         {
 		 Reclamation current = listviewP.getSelectionModel().getSelectedItem();
             Reclamation p = new Reclamation();
@@ -304,10 +292,10 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
     
         }	
 	}
+    }
           
    
    
-    @FXML
     private void back(ActionEvent event) throws IOException { 
 		Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
     Stage window = (Stage) btnn.getScene().getWindow();
@@ -326,37 +314,77 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
     
  private boolean Saisi() {  
 
-//        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
-//            Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
-//            return false;
-//        } else {
-//
-//            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
-//                return false;
-//            }
-//
-//           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
-//                return false;
-//            }
-//          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
-//                return false;
-//            }
-//            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
-//                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
-//                return false;
-//            }
-//           
-//        }
+        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+            Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
+            return false;
+        } else {
+
+            if (!Pattern.matches("\\d{8}", txt_tel.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Votre Num doit etre composé de huit chiffres! ");
+                return false;
+            }
+
+           if (!Pattern.matches("[A-Za-z]*", txt_nom.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le nom ! ");
+                return false;
+            }
+          if (!Pattern.matches("[A-Za-z]*", txt_prenom.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le prenom ! ");
+                return false;
+            }
+          if (!Pattern.matches("[A-Za-z]*", txt_message.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez le mrssage de reclamation ! ");
+                return false;
+            }
+            if (!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" +"(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$", txt_email.getText())) {
+                Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier ", "Vérifiez votre email ! ");
+                return false;
+            }
+            
+       }
         return true;
          
     }
-     
+      private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * ITEMS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, listdata.getPersons().size());
+        listviewP.setItems(FXCollections.observableArrayList(listdata.getPersons().subList(fromIndex, toIndex)));
+        return listviewP;
+      }
+
+     @FXML
+private void Filtrer(ActionEvent event) throws IOException {
+    //EvenementService es = new EvenementService();
+    ObservableList<Reclamation> eventsList = FXCollections.observableArrayList();
+   // java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
+    ReclamationDao pdao = ReclamationDao.getInstance();
+    java.sql.Date startDate = java.sql.Date.valueOf(dd.getValue());
+    java.sql.Date endDate = java.sql.Date.valueOf(df.getValue());
+    List<Reclamation> filteredEvents = pdao.filtrerParDate(startDate, endDate);
+    eventsList.clear();
+    eventsList.addAll(filteredEvents);
+    listviewP.setItems(eventsList);
+}
+
+private boolean Saisi2(String attribute) {  
+
+    if (attribute.isEmpty()) {
+        Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
+        return false;
+    } else if (attributes.contains(attribute)) {
+        Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "L'attribut existe déjà !");
+        return false;
+    } else {
+        attributes.add(attribute);
+        return true;
+    }     
+}
+
+    @FXML
+    private void gomanipuler(ActionEvent event)   throws IOException {
+        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Mreclamationfront.fxml"));
+    Stage window = (Stage) manipuler.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
       
 }
