@@ -5,8 +5,11 @@
  */
 package offre.demande.belahsan.views;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +25,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import offre.demande.belahsan.entities.Offre;
 import offre.demande.belahsan.services.ServiceOffre;
@@ -59,6 +65,36 @@ public class UPDATE_offreController implements Initializable {
     private DatePicker Offre_date;
     @FXML
     private TextField fx_secteur;
+   @FXML
+    private TableView<Offre> id_liste;
+    @FXML
+    private TableColumn<Offre, String> id_metier2;
+    @FXML
+    private TableColumn<Offre, String> id_secteur;
+    @FXML
+    private TableColumn<Offre, String> id_v;
+    @FXML
+    private TableColumn<Offre, String> id_nbre_poste;
+    @FXML
+    private TableColumn<Offre, String> id_salaire;
+    @FXML
+    private TableColumn<Offre, Date> id_date;
+    @FXML
+    private Button id_liste_offre;
+    @FXML
+    private TableView<?> id_liste1;
+    @FXML
+    private TableColumn<?, ?> id_metier21;
+    @FXML
+    private TableColumn<?, ?> id_secteur1;
+    @FXML
+    private TableColumn<?, ?> id_v1;
+    @FXML
+    private TableColumn<?, ?> id_nbre_poste1;
+    @FXML
+    private TableColumn<?, ?> id_salaire1;
+    @FXML
+    private TableColumn<?, ?> id_date1;
 
     /**
      * Initializes the controller class.
@@ -74,72 +110,150 @@ public class UPDATE_offreController implements Initializable {
     // initialisation du DatePicker
     LocalDate date = LocalDate.now(); // date par défaut : aujourd'hui
     Offre_date.setValue(date);
-        // TODO
-               btn_modif_offre.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               update_offre();
-            }
-        });
-                      fx_afiche_offrePage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    redirectToAcceuil(event);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        });
+//        // TODO
+//               btn_modif_offre.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//               update_offre();
+//            }
+//        });
+//                      fx_afiche_offrePage.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                try {
+//                    redirectToAcceuil(event);
+//                } catch (Exception e) {
+//                    System.out.println(e);
+//                }
+//            }
+//        });
     }    
-
+    
     @FXML
-    private void update_offre() {
-              ServiceOffre o_Service = new ServiceOffre();
+    private void update_offre(ActionEvent event) throws IOException { 
+         
+ 
+ ServiceOffre o_Service = new ServiceOffre();
         Offre o = new Offre();
-        
-        if(id_metier_up.getText().isEmpty()|| id_sec_up.getText().isEmpty()||id_ville_up.getText().isEmpty()||id_off_up.getText().isEmpty()||id_voiture_up.getText().isEmpty()||id_duree_up.getText().isEmpty()||id_salaire_up.getText().isEmpty()){
+          Offre current = id_liste.getSelectionModel().getSelectedItem();
+            //    Offre o = new Offre(id_metier.getSelectionModel().getSelectedItem().toString(),id_ville.getSelectionModel().getSelectedItem().toString(),fx_secteur.getText()),fx_nbreposte.getText(),currentDate,fx_salaire.getText());
+
+        if(fx_nbreposte.getText().isEmpty()|| fx_salaire.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
                 alert.setHeaderText("ajouter des champs");
                 
                 alert.showAndWait();
         }else{
-        
+       
+        o.setId_offre(current.getoffre_id());
         o.setNombredeposte(String.valueOf(fx_nbreposte.getText()));
         o.setSalaire(String.valueOf(fx_salaire.getText()));
         o.setSecteur(String.valueOf(fx_secteur.getText()));
-
-            String M= id_metier.getSelectionModel().getSelectedItem(); 
-            String V= id_ville.getSelectionModel().getSelectedItem();   
+      //  o.setMetier(String.valueOf(id_metier.getText()));
+            String M= id_metier.getSelectionModel().getSelectedItem().toString(); 
+            String V= id_ville.getSelectionModel().getSelectedItem().toString();   
             o.setMetier(M);
             o.setVille(V);
-            LocalDate dateOffre = Offre_date.getValue();
-            o.setdateOffre(dateOffre);
-
-        
-        o_Service.modifier(o);
-        
-       
-        
-        
-        
-        
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            
+            o_Service.update(o);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
               alert.setTitle("Information Dialog");
               alert.setHeaderText(null);
-              alert.setContentText("Your OFFRE has been UPDATED successfully!");
+              alert.setContentText("Your OFFRE has been ADDED successfully!");
               alert.show();
-    }}
-            public void redirectToAcceuil(ActionEvent event) throws Exception {
+   
+
+        }
+        
+	}
+    
+    
+
+//    @FXML
+//    private void update_offre() {
+//              ServiceOffre o_Service = new ServiceOffre();
+//        Offre o = new Offre();
+//        
+//        if(id_metier_up.getText().isEmpty()|| id_sec_up.getText().isEmpty()||id_ville_up.getText().isEmpty()||id_off_up.getText().isEmpty()||id_voiture_up.getText().isEmpty()||id_duree_up.getText().isEmpty()||id_salaire_up.getText().isEmpty()){
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//                alert.setHeaderText("ajouter des champs");
+//                
+//                alert.showAndWait();
+//        }else{
+//        
+//        o.setNombredeposte(String.valueOf(fx_nbreposte.getText()));
+//        o.setSalaire(String.valueOf(fx_salaire.getText()));
+//        o.setSecteur(String.valueOf(fx_secteur.getText()));
+//
+//            String M= id_metier.getSelectionModel().getSelectedItem(); 
+//            String V= id_ville.getSelectionModel().getSelectedItem();   
+//            o.setMetier(M);
+//            o.setVille(V);
+//            LocalDate dateOffre = Offre_date.getValue();
+//            o.setdateOffre(dateOffre);
+//
+//        
+//        o_Service.modifier(o);
+//        
+//       
+//        
+//        
+//        
+//        
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//              alert.setTitle("Information Dialog");
+//              alert.setHeaderText(null);
+//              alert.setContentText("Your OFFRE has been UPDATED successfully!");
+//              alert.show();
+//    }}
+//            public void redirectToAcceuil(ActionEvent event) throws Exception {
+//            Parent page1 = FXMLLoader.load(getClass().getResource("/offre/demande/belahsan/views/Table_view_offre.fxml"));
+//        Scene scene = new Scene(page1);
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.show();
+//        
+//    }
+
+    @FXML
+    private void listeoffre() {
+        ServiceOffre so = new ServiceOffre();
+         ArrayList arrayList = null;
+        
+
+         arrayList = (ArrayList) so.getAllOffre();
+        ObservableList observableList = FXCollections.observableArrayList(arrayList);
+        id_liste.setItems(observableList);
+        id_metier2.setCellValueFactory(new PropertyValueFactory<>("metier"));
+        id_secteur.setCellValueFactory(new PropertyValueFactory<>("secteur"));
+        id_v.setCellValueFactory(new PropertyValueFactory<>("ville"));
+        id_nbre_poste.setCellValueFactory(new PropertyValueFactory<>("Nombredeposte"));
+        id_salaire.setCellValueFactory(new PropertyValueFactory<>("salaire"));
+        id_date.setCellValueFactory(new PropertyValueFactory<>("dateOffre"));
+
+        
+    }
+    
+// public void redirectToAcceuil(ActionEvent event) throws Exception {
+//            Parent page1 = FXMLLoader.load(getClass().getResource("/offre/demande/belahsan/views/Table_view_offre.fxml"));
+//        Scene scene = new Scene(page1);
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.show();
+// }
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
             Parent page1 = FXMLLoader.load(getClass().getResource("/offre/demande/belahsan/views/Table_view_offre.fxml"));
         Scene scene = new Scene(page1);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        
     }
-
+    
+    
 }
 
     

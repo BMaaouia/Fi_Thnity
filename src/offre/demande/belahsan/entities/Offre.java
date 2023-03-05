@@ -1,33 +1,44 @@
 package offre.demande.belahsan.entities;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
+import javafx.beans.property.SimpleObjectProperty;
 
 
 public class Offre {
  private int offre_id;
  private String metier, secteur, ville, Nombredeposte,salaire;
- private LocalDate dateOffre;
+// private LocalDate dateOffre;
+ private SimpleObjectProperty <Date> dateOffre;
 public Offre() {
     }
 
  
-    public Offre(int id_offre, String metier, String secteur, String ville, String Nombredeposte,String salaire, LocalDate dateOffre) {
+    public Offre(int id_offre, String metier, String secteur, String ville, String Nombredeposte,String salaire, Date dateOffre) {
         this.offre_id = id_offre;
         this.metier = metier;
         this.secteur = secteur;
         this.ville = ville;
         this.Nombredeposte = Nombredeposte;
-        this.dateOffre = dateOffre;
+        this.dateOffre = new SimpleObjectProperty <Date> (dateOffre);
         this.salaire = salaire;
     }
 
-    public Offre(String metier, String secteur, String ville, String Nombredeposte,String salaire,LocalDate dateOffre) {
+    public Offre(String metier, String secteur, String ville, String Nombredeposte,String salaire,Date dateOffre) {
         this.metier = metier;
         this.secteur = secteur;
         this.ville = ville;
         this.Nombredeposte = Nombredeposte;
-        this.dateOffre = dateOffre;
+        this.salaire = salaire;
+         this.dateOffre = new SimpleObjectProperty <Date> (dateOffre);
+    }
+    
+    public Offre(String metier, String secteur, String ville, String Nombredeposte,String salaire) {
+        this.metier = metier;
+        this.secteur = secteur;
+        this.ville = ville;
+        this.Nombredeposte = Nombredeposte;
         this.salaire = salaire;
     }
 
@@ -73,13 +84,28 @@ public Offre() {
 
   
 
-      public LocalDate getdateOffre() {
+//      public LocalDate getdateOffre() {
+//        return dateOffre;
+//    }
+//
+//    public void setdateOffre(LocalDate dateOffre) {
+//        this.dateOffre = dateOffre;
+//    }
+    public void setDateOffre(Date dateOffre) {
+       this.dateOffre =  new SimpleObjectProperty(dateOffre);
+       
+  }
+    
+    public Date getDateOffre() {
+       return dateOffre.get();
+   }
+    
+    public SimpleObjectProperty getDateProperty(){
         return dateOffre;
     }
-
-    public void setdateOffre(LocalDate dateOffre) {
-        this.dateOffre = dateOffre;
-    }
+    
+    
+    
 
     public String getSalaire() {
         return salaire;

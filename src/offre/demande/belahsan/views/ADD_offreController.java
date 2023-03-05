@@ -89,7 +89,7 @@ public class ADD_offreController implements Initializable {
             @Override
             public void handle(Event t) {
                 LocalDate dateOffre = Offre_date.getValue();
-                o.setdateOffre(dateOffre);
+               // o.setdateOffre(dateOffre);
             }
         });
                        Offre_date.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -105,7 +105,8 @@ public class ADD_offreController implements Initializable {
     private void ajouter_offre() {
        ServiceOffre o_Service = new ServiceOffre();
         Offre o = new Offre();
-        
+            //    Offre o = new Offre(id_metier.getSelectionModel().getSelectedItem().toString(),id_ville.getSelectionModel().getSelectedItem().toString(),fx_secteur.getText()),fx_nbreposte.getText(),currentDate,fx_salaire.getText());
+
         if(fx_nbreposte.getText().isEmpty()|| fx_salaire.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -123,8 +124,9 @@ public class ADD_offreController implements Initializable {
             o.setMetier(M);
             o.setVille(V);
             // ajout d'une réservation
-            LocalDate dateOffre = Offre_date.getValue(); // récupération de la date sélectionnée
-            o.setdateOffre(dateOffre); // affectation de la date 
+           // LocalDate dateOffre = Offre_date.getValue(); // récupération de la date sélectionnée
+           java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
+        o.setDateOffre(currentDate);
 
         
         o_Service.ajouter(o);

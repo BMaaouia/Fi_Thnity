@@ -6,6 +6,7 @@
 package offre.demande.belahsan.views;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -27,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -156,41 +158,34 @@ public class Table_view_offreController implements Initializable {
 
         
     }
-
-    @FXML
-    private void deleteoffre(ActionEvent event) throws SQLException{
-         
-                            
-                            
-            int id = Integer.valueOf(id_liste.getSelectionModel().getSelectedItem().toString().split("=")[1].substring(0, 1));
-
-            ServiceOffre e = new ServiceOffre();
-            e.supprimer(id);
-
-            id_liste.getItems().removeAll(id_liste.getSelectionModel().getSelectedItem());
-            query = "DELETE FROM `offre` WHERE offre_id  ="+Offre.getoffre_id();
-                                connection = (Connection) DataSource.getInstance();
-                                preparedStatement = connection.prepareStatement(query);
-                                preparedStatement.execute();
-                                listeoffre();
-                                
-                            
-                            }
-    
-        
     
 
+    
     @FXML
-    private void deleteoffre(javafx.scene.input.MouseEvent event) {
-        
-    }
+    private void deleteoffre(ActionEvent event) throws IOException { 
+		 ServiceOffre e = new ServiceOffre();
+     Offre selectedItem2 = id_liste.getSelectionModel().getSelectedItem();
+  
+    id_liste.getItems().remove(selectedItem2);
+      e.delete(selectedItem2);  
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Reclamation suprimée avec succés!");
+        alert.show();
+      
+		
+	}
+   
+    
+    
 
     @FXML
     private void update_offre(ActionEvent event) {
         int id = Integer.valueOf(id_liste.getSelectionModel().getSelectedItem().toString().split("=")[1].substring(0, 1));
 
             ServiceOffre e = new ServiceOffre();
-            e.modifier(Offre);
+            e.update(Offre);
 
             id_liste.getItems().removeAll(id_liste.getSelectionModel().getSelectedItem());
     

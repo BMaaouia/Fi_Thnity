@@ -11,8 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="offre.demande.belahsan.views.Table_view_offreController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offre.demande.belahsan.views.Table_view_offreController">
    <children>
       <AnchorPane id="AnchorPane" layoutY="-8.0" prefHeight="930.0" prefWidth="1319.0">
          <children>
@@ -56,7 +55,7 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="fx_delete_offre" layoutX="743.0" layoutY="746.0" mnemonicParsing="false" onAction="#deleteoffre" onMouseClicked="#deleteoffre" prefHeight="60.0" prefWidth="116.0" text="DELETE">
+                        <Button fx:id="fx_delete_offre" layoutX="743.0" layoutY="746.0" mnemonicParsing="false" onAction="#deleteoffre" prefHeight="60.0" prefWidth="116.0" text="DELETE">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>

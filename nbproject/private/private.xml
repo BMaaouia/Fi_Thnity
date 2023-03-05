@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/andol/Desktop/Fi_Thnity-gestion-offre-demande/src/offre/demande/belahsan/views/Table_view_offreController.java</file>
+            <file>file:/C:/Users/andol/Desktop/fi_thnity/Fi_Thnity/src/offre/demande/belahsan/services/ServiceOffre.java</file>
+            <file>file:/C:/Users/andol/Desktop/fi_thnity/Fi_Thnity/src/offre/demande/belahsan/entities/Offre.java</file>
+            <file>file:/C:/Users/andol/Desktop/fi_thnity/Fi_Thnity/src/offre/demande/belahsan/views/Table_view_offreController.java</file>
+            <file>file:/C:/Users/andol/Desktop/fi_thnity/Fi_Thnity/src/offre/demande/belahsan/views/UPDATE_offreController.java</file>
+            <file>file:/C:/Users/andol/Desktop/fi_thnity/Fi_Thnity/src/offre/demande/belahsan/views/ADD_offreController.java</file>
         </group>
     </open-files>
 </project-private>
