@@ -5,12 +5,15 @@
  */
 package com.fithnity.view;
 
+import com.fithnity.entities.Employée;
 import com.fithnity.services.ServiceEmployée;
 import com.fithnity.services.ServiceVehicule;
+import com.fithnity.utils.Pdf;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +27,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -46,6 +52,20 @@ public class DASHBOARD_employéeController implements Initializable {
     private Button fx_update;
     @FXML
     private AnchorPane employée_list;
+    private TableView table;
+    private ObservableList data;
+    @FXML
+    private Button print;
+    @FXML
+    private TextField p;
+    @FXML
+    private TextField firstname_text;
+    @FXML
+    private TextField lastname_text;
+    @FXML
+    private TextField email_text;
+    @FXML
+    private TextField address_text;
 
     /**
      * Initializes the controller class.
@@ -57,14 +77,12 @@ public class DASHBOARD_employéeController implements Initializable {
         ServiceEmployée es = new ServiceEmployée();
         System.out.println(es.getAllemployée().toString());
         
-        TableView table1 = new TableView();
+       table = new TableView();
         
-        ObservableList data = getInitialTableData();
-        table1.setItems(data);
+         data = getInitialTableData();
+        table.setItems(data);
 
-        TableColumn idCol = new TableColumn("ID");
-        idCol.setCellValueFactory(new PropertyValueFactory("id_employée"));
-        
+      
         
         TableColumn nameCol = new TableColumn("Firstname");
         nameCol.setCellValueFactory(new PropertyValueFactory("Firstname_employée"));
@@ -79,12 +97,12 @@ public class DASHBOARD_employéeController implements Initializable {
         TableColumn addressCol = new TableColumn("Address");
         addressCol.setCellValueFactory(new PropertyValueFactory("Address_employée"));
 
-        table1.getColumns().setAll(idCol, nameCol, lastanameCol, emailCol,addressCol);
-        table1.setPrefWidth(565);
-        table1.setPrefHeight(300);
-        table1.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.getColumns().setAll( nameCol, lastanameCol, emailCol,addressCol);
+        table.setPrefWidth(898);
+        table.setPrefHeight(376);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        employée_list.getChildren().add(table1);
+        employée_list.getChildren().add(table);
         
          fx_update.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -110,16 +128,7 @@ public class DASHBOARD_employéeController implements Initializable {
         });
             
                
-                     fx_delete.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    redirectToSuppression(event);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        });
+           
                          
                      fx_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -171,9 +180,50 @@ public class DASHBOARD_employéeController implements Initializable {
         ObservableList data = FXCollections.observableList(list);
         return data;
     }
-  
-    }    
-    
+
+    @FXML
+    private void DeleteEmploye(ActionEvent event) {
+        //int id = Integer.valueOf(table.getSelectionModel().getSelectedItem().toString().split("=")[1].substring(0, 1));
+        
+        Employée e1 = new Employée();
+        e1= (Employée) table.getSelectionModel().getSelectedItem();
+        
+            ServiceEmployée e = new ServiceEmployée();
+            e.deleteemployée(e1.getId_employée());
+
+            table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+    }
+
+   @FXML
+    private void printAction(ActionEvent event) {
+        Pdf epdf = new Pdf();
+        epdf.pdfs();
+    }  
+
+    @FXML
+    private void recherche(KeyEvent event) {
+           String searchTerm = p.getText();
+    ServiceEmployée su = new ServiceEmployée();
+    ObservableList<Employée> list = su.search2(searchTerm);
+    List<Employée> filteredList = list.stream()
+        .filter(entretient -> entretient.getFirstname_employée().toLowerCase().contains(searchTerm.toLowerCase()))
+        .collect(Collectors.toList());
+
+       table.setItems(FXCollections.observableArrayList(filteredList));
+    }
+
+    @FXML
+    private void get_employée(MouseEvent event) {
+       Employée e1 = new Employée();
+        e1= (Employée) table.getSelectionModel().getSelectedItem();
+        firstname_text.setText(e1.getFirstname_employée());
+        lastname_text.setText(e1.getLastname_employée());
+        email_text.setText(e1.getEmail_employée());
+        address_text.setText(e1.getAddress_employée());
+       
+    }
+    }
+
 
        
     

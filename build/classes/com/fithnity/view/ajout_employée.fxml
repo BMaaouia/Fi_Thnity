@@ -6,28 +6,60 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.fithnity.view.Ajout_employéeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.view.Ajout_employéeController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="-14.0" layoutY="-14.0" prefHeight="424.0" prefWidth="624.0">
+      <AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="710.0">
          <children>
-            <TextField fx:id="firstname_text" layoutX="34.0" layoutY="78.0" />
-            <TextField fx:id="lastname_text" layoutX="34.0" layoutY="148.0" />
-            <TextField fx:id="email_text" layoutX="34.0" layoutY="216.0" />
-            <TextField fx:id="address_text" layoutX="34.0" layoutY="293.0" />
-            <Button fx:id="fx_ajout" layoutX="472.0" layoutY="301.0" mnemonicParsing="false" onAction="#ajouter_emp" text="ajouter" />
-            <Label layoutX="34.0" layoutY="48.0" prefHeight="21.0" prefWidth="106.0" text="first name" />
-            <Label layoutX="34.0" layoutY="117.0" prefHeight="21.0" prefWidth="124.0" text="last name" />
-            <Label layoutX="34.0" layoutY="190.0" prefHeight="21.0" prefWidth="131.0" text="email" />
-            <Label layoutX="34.0" layoutY="264.0" prefHeight="21.0" prefWidth="144.0" text="address" />
-            <ImageView fitHeight="150.0" fitWidth="187.0" layoutX="309.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="firstname_text" layoutX="34.0" layoutY="52.0" />
+            <TextField fx:id="lastname_text" layoutX="34.0" layoutY="128.0" />
+            <TextField fx:id="email_text" layoutX="33.0" layoutY="204.0" />
+            <TextField fx:id="address_text" layoutX="32.0" layoutY="282.0" />
+            <Button fx:id="fx_ajout" layoutX="472.0" layoutY="290.0" mnemonicParsing="false" onAction="#ajouter_emp" prefHeight="64.0" prefWidth="162.0" text="Add">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font></Button>
+            <Label layoutX="34.0" layoutY="26.0" prefHeight="21.0" prefWidth="106.0" text="First Name">
+               <font>
+                  <Font name="Arial Narrow Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="34.0" layoutY="103.0" prefHeight="21.0" prefWidth="124.0" text="Last Name">
+               <font>
+                  <Font name="Arial Narrow Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="34.0" layoutY="180.0" prefHeight="21.0" prefWidth="131.0" text="Email">
+               <font>
+                  <Font name="Arial Narrow Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="34.0" layoutY="258.0" prefHeight="21.0" prefWidth="144.0" text="Ville">
+               <font>
+                  <Font name="Arial Narrow Bold" size="18.0" />
+               </font></Label>
+            <ImageView fitHeight="241.0" fitWidth="206.0" layoutX="317.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/photo1.png" />
                </image>
             </ImageView>
-            <Button fx:id="fx_back" layoutX="277.0" layoutY="301.0" mnemonicParsing="false" text="back" />
+            <Button fx:id="fx_back" layoutX="266.0" layoutY="289.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="162.0" text="Back">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font></Button>
+            <Label fx:id="Lb_err_nom" layoutX="33.0" layoutY="79.0" text="Ce champ est obligatoire" textFill="#c93030" visible="false" />
+            <Label fx:id="lb_success_add" layoutX="337.0" layoutY="382.0" text="Employé ajouté avec succès" textFill="#039c40" visible="false">
+               <font>
+                  <Font name="Arial Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lb_err_add" layoutX="329.0" layoutY="359.0" text="Il faut remplir tous les champs" textFill="#c93030" visible="false">
+               <font>
+                  <Font name="Arial Narrow Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
+      <Label fx:id="Lb_err_prenom" layoutX="33.0" layoutY="156.0" text="Ce champ est obligatoire" textFill="#c93030" visible="false" />
+      <Label fx:id="Lb_err_email" layoutX="31.0" layoutY="230.0" text="Ce champ est obligatoire" textFill="#c93030" visible="false" />
+      <Label fx:id="Lb_err_ville" layoutX="29.0" layoutY="309.0" text="Ce champ est obligatoire" textFill="#c93030" visible="false" />
    </children>
 </AnchorPane>

@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -57,22 +59,22 @@ public class ServiceEmployée {
         return list;
     }
           
-         public void deleteemployée(int id) {
+         public void deleteemployée(int id_Employée) {
         try {
             String requete = "DELETE FROM employée WHERE id_employée=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, id);
+            pst.setInt(1, id_Employée);
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
                   
-       public Employée getUniqueemployée(int id) {
+       public Employée getUniqueemployée(int id_Employée) {
         Employée e = new Employée();
 
         try {
-            String requete = "SELECT * FROM employée WHERE id_employée=" + id;
+            String requete = "SELECT * FROM employée WHERE id_employée=" + id_Employée;
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             
@@ -102,6 +104,28 @@ public class ServiceEmployée {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+    }
+       
+        public ObservableList<Employée> search2(String searchTerm) {
+        ObservableList<Employée> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement("SELECT * FROM employée");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Employée offre = new Employée(
+
+                       
+                          rs.getString(2),
+                          rs.getString(3),
+                          rs.getString(4),
+                        rs.getString(5)
+                );
+                list.add(offre);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
 

@@ -21,7 +21,7 @@ public class Employée {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-   private int  id_employée;
+   private int  id_Employée;
     private String firstname_employée;
     private String lastname_employée;
     private String email_employée;
@@ -31,7 +31,7 @@ public class Employée {
     }
 
     public Employée(int id_employée, String firstname_employée, String lastname_employée, String email_employée, String address_employée) {
-        this.id_employée = id_employée;
+        this.id_Employée = id_employée;
         this.firstname_employée = firstname_employée;
         this.lastname_employée = lastname_employée;
         this.email_employée = email_employée;
@@ -46,11 +46,11 @@ public class Employée {
     }
 
     public int getId_employée() {
-        return id_employée;
+        return id_Employée;
     }
 
     public void setId_employée(int id_employée) {
-        this.id_employée = id_employée;
+        this.id_Employée = id_employée;
     }
 
     public String getFirstname_employée() {
@@ -87,7 +87,7 @@ public class Employée {
 
     @Override
     public String toString() {
-        return "Employ\u00e9e{" + "id_employ\u00e9e=" + id_employée + ", firstname_employ\u00e9e=" + firstname_employée + ", lastname_employ\u00e9e=" + lastname_employée + ", email_employ\u00e9e=" + email_employée + ", address_employ\u00e9e=" + address_employée + '}';
+        return "Employ\u00e9e{" + "id_employ\u00e9e=" + id_Employée + ", firstname_employ\u00e9e=" + firstname_employée + ", lastname_employ\u00e9e=" + lastname_employée + ", email_employ\u00e9e=" + email_employée + ", address_employ\u00e9e=" + address_employée + '}';
     }
 
    
@@ -95,7 +95,7 @@ public class Employée {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 41 * hash + this.id_employée;
+        hash = 41 * hash + this.id_Employée;
         hash = 41 * hash + Objects.hashCode(this.firstname_employée);
         hash = 41 * hash + Objects.hashCode(this.lastname_employée);
         hash = 41 * hash + Objects.hashCode(this.email_employée);
@@ -115,7 +115,7 @@ public class Employée {
             return false;
         }
         final Employée other = (Employée) obj;
-        if (this.id_employée != other.id_employée) {
+        if (this.id_Employée != other.id_Employée) {
             return false;
         }
         if (!Objects.equals(this.firstname_employée, other.firstname_employée)) {

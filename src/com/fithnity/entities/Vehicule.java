@@ -17,19 +17,19 @@ public class Vehicule {
     private String modele;
     private String immatriculation;
     private String categorie;
-    private String etat;
+    private boolean etat;
     private String image;
    public Vehicule() {
     }
-         public Vehicule( int id,String modele, String immatriculation, String categorie, String etat) {
+         public Vehicule( int id,String modele, String immatriculation, String categorie, boolean etat) {
         this.id = id;
         this.modele = modele;
         this.immatriculation = immatriculation;
         this.categorie = categorie;
-        this.etat = etat;
+        this.etat = etat; 
       
     }
-      public Vehicule( String modele, String immatriculation, String categorie, String etat) {
+      public Vehicule( String modele, String immatriculation, String categorie, boolean etat) {
         
         this.modele = modele;
         this.immatriculation = immatriculation;
@@ -38,7 +38,7 @@ public class Vehicule {
         this.image = image;
     }
       
-    public Vehicule(int id, String modele, String immatriculation, String categorie, String etat, String image) {
+    public Vehicule(int id, String modele, String immatriculation, String categorie, boolean etat, String image) {
         this.id = id;
         this.modele = modele;
         this.immatriculation = immatriculation;
@@ -79,11 +79,11 @@ public class Vehicule {
         this.categorie = categorie;
     }
 
-    public String getEtat() {
+    public boolean getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(boolean etat) {
         this.etat = etat;
     }
 

@@ -27,6 +27,9 @@ import javafx.stage.Stage;
  *
  * @author LENOVO
  */
+
+
+
 public class DEL_VehiculeController implements Initializable {
 
     @FXML
@@ -36,9 +39,7 @@ public class DEL_VehiculeController implements Initializable {
     @FXML
     private Button btn_back;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

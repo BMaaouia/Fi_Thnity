@@ -24,7 +24,7 @@ public class FXMain extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Fi Thnity");
         
-        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/DASHBOARD_vehicule.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/DASHBOARD_employée.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

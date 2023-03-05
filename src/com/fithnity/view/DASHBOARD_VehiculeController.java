@@ -63,9 +63,7 @@ public class DASHBOARD_VehiculeController implements Initializable {
         ObservableList data = getInitialTableData();
         table.setItems(data);
 
-        TableColumn idCol = new TableColumn("ID");
-        idCol.setCellValueFactory(new PropertyValueFactory("id"));
-        
+       
         
         TableColumn modeleCol = new TableColumn("MODELE");
         modeleCol.setCellValueFactory(new PropertyValueFactory("modele"));
@@ -80,7 +78,7 @@ public class DASHBOARD_VehiculeController implements Initializable {
         TableColumn etatCol = new TableColumn("ETAT");
         etatCol.setCellValueFactory(new PropertyValueFactory("etat"));
 
-        table.getColumns().setAll(idCol, modeleCol, immatriculationCol, categorieCol,etatCol);
+        table.getColumns().setAll( modeleCol, immatriculationCol, categorieCol,etatCol);
         table.setPrefWidth(565);
         table.setPrefHeight(300);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

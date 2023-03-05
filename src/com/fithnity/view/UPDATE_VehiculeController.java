@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -35,7 +36,6 @@ public class UPDATE_VehiculeController implements Initializable {
     private TextField fx_mat_up;
     @FXML
     private TextField fx_cat_up;
-    @FXML
     private TextField fx_etat_up;
     @FXML
     private Button btn_update;
@@ -43,6 +43,10 @@ public class UPDATE_VehiculeController implements Initializable {
     private Button fx_back;
     @FXML
     private TextField fx_id_up;
+    @FXML
+    private CheckBox fx_update1;
+    @FXML
+    private CheckBox fx_update2;
 
     /**
      * Initializes the controller class.
@@ -71,22 +75,19 @@ public class UPDATE_VehiculeController implements Initializable {
 
     @FXML
     private void update_v() {
-        ServiceVehicule V_Service = new ServiceVehicule();
+          ServiceVehicule V_Service = new ServiceVehicule();
         Vehicule v = new Vehicule();
-        if(fx_id_up.getText().isEmpty()|| fx_model_up.getText().isEmpty()||fx_mat_up.getText().isEmpty()||fx_cat_up.getText().isEmpty()||fx_etat_up.getText().isEmpty()){
+        if(fx_model_up.getText().isEmpty() || fx_mat_up.getText().isEmpty() || fx_cat_up.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
-                alert.setHeaderText("ajouter des champs");
-                
-                alert.showAndWait();
-        }else{
-        
-        v.setId(Integer.valueOf(fx_id_up.getText()));
-        v.setModele(String.valueOf(fx_model_up.getText()));
-        v.setImmatriculation(String.valueOf(fx_mat_up.getText()));
-        v.setCategorie(String.valueOf(fx_cat_up.getText()));
-        v.setEtat(String.valueOf(fx_etat_up.getText()));
-        
+            alert.setHeaderText("Remplissez tous les champs");
+            alert.showAndWait();
+        } else {
+            v.setModele(fx_model_up.getText());
+            v.setImmatriculation(fx_mat_up.getText());
+            v.setCategorie(fx_cat_up.getText());
+            v.setEtat(fx_update1.isSelected());
+            v.setEtat(fx_update2.isSelected());
         V_Service.updateVehicule(v,Integer.valueOf(fx_id_up.getText()));
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

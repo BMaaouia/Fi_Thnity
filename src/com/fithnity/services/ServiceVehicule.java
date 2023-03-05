@@ -27,7 +27,7 @@ public class ServiceVehicule {
             pst.setString(1, v.getModele());
             pst.setString(2, v.getImmatriculation());
             pst.setString(3, v.getCategorie());
-            pst.setString(4, v.getEtat());
+            pst.setBoolean(4, v.getEtat());
             pst.executeUpdate();
              System.out.println("vehicule ajoutée !");
         } catch (SQLException ex) {
@@ -43,7 +43,7 @@ public class ServiceVehicule {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new Vehicule(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                list.add(new Vehicule(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getBoolean(5)));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -74,7 +74,7 @@ public class ServiceVehicule {
                 v.setModele(rs.getString("modele"));
                 v.setImmatriculation(rs.getString("immatriculation"));
                 v.setCategorie(rs.getString("categorie"));
-                v.setEtat(rs.getString("etat"));
+                v.setEtat(rs.getBoolean("etat"));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -89,7 +89,7 @@ public class ServiceVehicule {
             pst.setString(1, v.getModele());
             pst.setString(2, v.getImmatriculation());
             pst.setString(3, v.getCategorie());
-            pst.setString(4, v.getEtat());  
+            pst.setBoolean(4, v.getEtat());  
             pst.setInt(5, id);
             
             pst.executeUpdate();
