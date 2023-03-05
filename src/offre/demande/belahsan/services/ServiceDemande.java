@@ -44,14 +44,14 @@ public class ServiceDemande {
      
     public void ajouter(Demande d){
                try{ 
-         String requete = "INSERT INTO demande (nom,prenom,cin,email,tel) VALUES (?,?,?,?,?)";
+         String requete = "INSERT INTO demande (cin,cv,lettreMotivation,cartegrise,competences) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
            
-            pst.setString(1, d.getNom());
-            pst.setString(2, d.getPrenom());
-            pst.setString(3, d.getCin());
-            pst.setString(4, d.getEmail());
-            pst.setString(5, d.getNumeroTelephone());
+            pst.setString(1, d.getcin());
+            pst.setString(2, d.getcv());
+            pst.setString(3, d.getlettreMotivation());
+            pst.setString(4, d.getcartegrise());
+            pst.setString(5, d.getcompetences());
             pst.executeUpdate();
              System.out.println("Demande ajoutée !");
          }
@@ -78,16 +78,15 @@ public class ServiceDemande {
     }
    
 
-    public void modifier(Demande p, int id){
+    public void modifier(Demande d, int id){
          try {
-            String requete = "UPDATE demande SET nom=?,prenom=?,tel=?,email=?,cin=? WHERE id=?";
+            String requete = "UPDATE demande SET cin=?,cv=?,lettreMotivation=?,cartegrise=?,competences=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            
-            pst.setString(1, p.getNom());
-            pst.setString(2, p.getPrenom());
-            pst.setString(3, p.getNumeroTelephone());
-            pst.setString(4, p.getEmail());
-            pst.setString(5, p.getCin());
+            pst.setString(1, d.getcin());
+            pst.setString(2, d.getcv());
+            pst.setString(3, d.getlettreMotivation());
+            pst.setString(4, d.getcartegrise());
+            pst.setString(5, d.getcompetences());
             pst.setInt(6, id);
             
             pst.executeUpdate();

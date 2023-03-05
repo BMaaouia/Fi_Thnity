@@ -21,7 +21,7 @@ public class Main {
      */
     public static void main(String[] args) {
         DataSource DS=DataSource.getInstance();
-        Offre o=new Offre(1,"andolsi","111111","andolsi@","1122121","1122121","1122121","1122121");
+        //Offre o=new Offre(1,"andolsi","111111","andolsi@","1122121","1122121","1122121","1122121");
         
         //ServiceOffre Ds =new ServiceOffre();
        //SO.supprimer(2);

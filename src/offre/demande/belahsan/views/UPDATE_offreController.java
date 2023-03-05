@@ -6,7 +6,10 @@
 package offre.demande.belahsan.views;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +20,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import offre.demande.belahsan.entities.Offre;
@@ -29,26 +34,31 @@ import offre.demande.belahsan.services.ServiceOffre;
  */
 public class UPDATE_offreController implements Initializable {
 
-    @FXML
     private TextField id_metier_up;
-    @FXML
     private TextField id_sec_up;
-    @FXML
     private TextField id_ville_up;
     @FXML
     private Button btn_modif_offre;
-    @FXML
     private Button fx_retour_home;
-    @FXML
     private TextField id_off_up;
-    @FXML
     private TextField id_nbrposte_up;
-    @FXML
     private TextField id_voiture_up;
-    @FXML
     private TextField id_duree_up;
-    @FXML
     private TextField id_salaire_up;
+    @FXML
+    private TextField fx_nbreposte;
+    @FXML
+    private Button fx_afiche_offrePage;
+    @FXML
+    private TextField fx_salaire;
+    @FXML
+    private ComboBox<String> id_metier;
+    @FXML
+    private ComboBox<String> id_ville;
+    @FXML
+    private DatePicker Offre_date;
+    @FXML
+    private TextField fx_secteur;
 
     /**
      * Initializes the controller class.
@@ -56,6 +66,14 @@ public class UPDATE_offreController implements Initializable {
   
  @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<String> list = FXCollections.observableArrayList("Chauffeur-livreur", "Agent administratif", "Gestionnaire des vehicules", "Agent de service client");
+    id_metier.setItems(list);
+    
+    ObservableList<String> liste = FXCollections.observableArrayList("Tunis","Bizerte", "Gabès", "Gafsa", "Hammam-Lif", "Jendouba","Kairouan","Kasserine","Sousse");
+    id_ville.setItems(liste);
+    // initialisation du DatePicker
+    LocalDate date = LocalDate.now(); // date par défaut : aujourd'hui
+    Offre_date.setValue(date);
         // TODO
                btn_modif_offre.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -63,7 +81,7 @@ public class UPDATE_offreController implements Initializable {
                update_offre();
             }
         });
-                      fx_retour_home.setOnAction(new EventHandler<ActionEvent>() {
+                      fx_afiche_offrePage.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -88,17 +106,21 @@ public class UPDATE_offreController implements Initializable {
                 alert.showAndWait();
         }else{
         
-        o.setId_offre(Integer.valueOf(id_off_up.getText()));
-        o.setMetier(String.valueOf(id_metier_up.getText()));
-        o.setNombredeposte(String.valueOf(id_nbrposte_up.getText()));
-        o.setSecteur(String.valueOf(id_sec_up.getText()));
-        o.setVille(String.valueOf(id_ville_up.getText()));
-        o.setVoiture(String.valueOf(id_voiture_up.getText()));
-        o.setDuree(String.valueOf(id_duree_up.getText()));
-        o.setSalaire(String.valueOf(id_salaire_up.getText()));
+        o.setNombredeposte(String.valueOf(fx_nbreposte.getText()));
+        o.setSalaire(String.valueOf(fx_salaire.getText()));
+        o.setSecteur(String.valueOf(fx_secteur.getText()));
+
+            String M= id_metier.getSelectionModel().getSelectedItem(); 
+            String V= id_ville.getSelectionModel().getSelectedItem();   
+            o.setMetier(M);
+            o.setVille(V);
+            LocalDate dateOffre = Offre_date.getValue();
+            o.setdateOffre(dateOffre);
+
         
+        o_Service.modifier(o);
         
-        o_Service.modifier(o,Integer.valueOf(id_off_up.getText()));
+       
         
         
         

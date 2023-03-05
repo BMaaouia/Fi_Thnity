@@ -1,42 +1,42 @@
 package offre.demande.belahsan.entities;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 
 public class Offre {
- private int id_offre;
- private String metier, secteur, ville, Nombredeposte, voiture, Duree,salaire;
+ private int offre_id;
+ private String metier, secteur, ville, Nombredeposte,salaire;
+ private LocalDate dateOffre;
 public Offre() {
     }
 
  
-    public Offre(int id_offre, String metier, String secteur, String ville, String Nombredeposte, String voiture, String Duree, String salaire) {
-        this.id_offre = id_offre;
+    public Offre(int id_offre, String metier, String secteur, String ville, String Nombredeposte,String salaire, LocalDate dateOffre) {
+        this.offre_id = id_offre;
         this.metier = metier;
         this.secteur = secteur;
         this.ville = ville;
         this.Nombredeposte = Nombredeposte;
-        this.voiture = voiture;
-        this.Duree = Duree;
+        this.dateOffre = dateOffre;
         this.salaire = salaire;
     }
 
-    public Offre(String metier, String secteur, String ville, String Nombredeposte, String voiture, String Duree, String salaire) {
+    public Offre(String metier, String secteur, String ville, String Nombredeposte,String salaire,LocalDate dateOffre) {
         this.metier = metier;
         this.secteur = secteur;
         this.ville = ville;
         this.Nombredeposte = Nombredeposte;
-        this.voiture = voiture;
-        this.Duree = Duree;
+        this.dateOffre = dateOffre;
         this.salaire = salaire;
     }
 
-    public int getId_offre() {
-        return id_offre;
+    public int getoffre_id() {
+        return offre_id;
     }
 
     public void setId_offre(int id_offre) {
-        this.id_offre = id_offre;
+        this.offre_id = offre_id;
     }
 
     public String getMetier() {
@@ -71,20 +71,14 @@ public Offre() {
         this.Nombredeposte = Nombredeposte;
     }
 
-    public String getVoiture() {
-        return voiture;
+  
+
+      public LocalDate getdateOffre() {
+        return dateOffre;
     }
 
-    public void setVoiture(String voiture) {
-        this.voiture = voiture;
-    }
-
-    public String getDuree() {
-        return Duree;
-    }
-
-    public void setDuree(String Duree) {
-        this.Duree = Duree;
+    public void setdateOffre(LocalDate dateOffre) {
+        this.dateOffre = dateOffre;
     }
 
     public String getSalaire() {
@@ -98,13 +92,13 @@ public Offre() {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + this.id_offre;
+        hash = 59 * hash + this.offre_id;
         hash = 59 * hash + Objects.hashCode(this.metier);
         hash = 59 * hash + Objects.hashCode(this.secteur);
         hash = 59 * hash + Objects.hashCode(this.ville);
         hash = 59 * hash + Objects.hashCode(this.Nombredeposte);
-        hash = 59 * hash + Objects.hashCode(this.voiture);
-        hash = 59 * hash + Objects.hashCode(this.Duree);
+       
+        hash = 59 * hash + Objects.hashCode(this.dateOffre);
         hash = 59 * hash + Objects.hashCode(this.salaire);
         return hash;
     }
@@ -121,7 +115,7 @@ public Offre() {
             return false;
         }
         final Offre other = (Offre) obj;
-        if (this.id_offre != other.id_offre) {
+        if (this.offre_id != other.offre_id) {
             return false;
         }
         if (!Objects.equals(this.metier, other.metier)) {
@@ -136,10 +130,8 @@ public Offre() {
         if (!Objects.equals(this.Nombredeposte, other.Nombredeposte)) {
             return false;
         }
-        if (!Objects.equals(this.voiture, other.voiture)) {
-            return false;
-        }
-        if (!Objects.equals(this.Duree, other.Duree)) {
+        
+        if (!Objects.equals(this.dateOffre, other.dateOffre)) {
             return false;
         }
         if (!Objects.equals(this.salaire, other.salaire)) {
@@ -150,7 +142,7 @@ public Offre() {
 
     @Override
     public String toString() {
-        return "Offre{" + "id_offre=" + id_offre + ", metier=" + metier + ", secteur=" + secteur + ", ville=" + ville + ", Nombredeposte=" + Nombredeposte + ", voiture=" + voiture + ", Duree=" + Duree + ", salaire=" + salaire + '}';
+        return "Offre{" + "offre_id=" + offre_id + ", metier=" + metier + ", secteur=" + secteur + ", ville=" + ville + ", Nombredeposte=" + Nombredeposte +   ", salaire=" + salaire + ", dateOffre=" + dateOffre +'}';
     }
  
  

@@ -5,59 +5,39 @@
  */
 package offre.demande.belahsan.entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author andol
  */
 public class Demande {
  private int id;
- private String nom, prenom, Email, cv, lettreMotivation , cartegrise,NumeroTelephone, cin;
+ private String cin,cv, lettreMotivation , cartegrise,competences  ;
 
     public Demande() {
     }
     
-     public Demande(int id,String nom, String prenom, String cin, String Email, String NumeroTelephone ){
+     public Demande(int id,String cin, String cv, String lettreMotivation, String cartegrise,String competences ){
         this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.cv = cv;
+        this.lettreMotivation = lettreMotivation;
         this.cin = cin;
-        this.Email = Email;
-        this.NumeroTelephone = NumeroTelephone;
+        this.cartegrise = cartegrise;
+        this.competences = competences;
      }
     
         
+  
+     public Demande(String cin, String cv, String lettreMotivation, String cartegrise,String competences ){
         
-     public Demande(int id,String nom, String prenom, String cin, String Email, String NumeroTelephone, String cv, String lettre_Motivation, String cartegrise) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.cin = cin;
-        this.Email = Email;
-        this.NumeroTelephone = NumeroTelephone;
         this.cv = cv;
-        this.lettreMotivation = lettre_Motivation;
-        this.cartegrise = cartegrise;
-    }
-     public Demande(String nom, String prenom, String cin, String Email, String NumeroTelephone ){
-        
-        this.nom = nom;
-        this.prenom = prenom;
         this.cin = cin;
-        this.Email = Email;
-        this.NumeroTelephone = NumeroTelephone;
-     }
-     public Demande(String nom, String prenom, String cin, String Email, String NumeroTelephone, String cv, String lettre_Motivation, String cartegrise) {
-        
-        this.nom = nom;
-        this.prenom = prenom;
-        this.cin = cin;
-        this.Email = Email;
-        this.NumeroTelephone = NumeroTelephone;
-        this.cv = cv;
-        this.lettreMotivation = lettre_Motivation;
+        this.lettreMotivation = lettreMotivation;
         this.cartegrise = cartegrise;
+        this.competences = competences;
      }
-
+    
     
   
   
@@ -71,85 +51,59 @@ public class Demande {
     public void setId(int id) {
         this.id = id;
     }
-      public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getCin() {
+      public String getcin() {
         return cin;
     }
 
-    public void setCin(String cin) {
+    public void setcin(String cin) {
         this.cin = cin;
     }
 
-  
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-    
-    public String getNumeroTelephone() {
-        return NumeroTelephone;
-    }
-
-    public void setNumeroTelephone(String NumeroTelephone) {
-        this.NumeroTelephone = NumeroTelephone;
-    }
-
-    
-
-    public String getCv() {
-        return cv;
-    }
-
-    public void setCv(String cv) {
-        this.cv = cv;
-    }
-
-    public String getLettre_Motivation() {
+    public String getlettreMotivation() {
         return lettreMotivation;
     }
 
-    public void setLettre_Motivation(String lettre_Motivation) {
-        this.lettreMotivation = lettre_Motivation;
+    public void setlettreMotivation(String lettreMotivation) {
+        this.lettreMotivation = lettreMotivation;
+    }
+     public String getcv() {
+        return cv;
     }
 
-    public String getCartegrise() {
+    public void setcv(String cv) {
+        this.cv = cv;
+    }
+  
+    public String getcartegrise() {
         return cartegrise;
     }
 
-    public void setCartegrise(String cartegrise) {
+    public void setcartegrise(String cartegrise) {
         this.cartegrise = cartegrise;
     }
+    
+    public String getcompetences() {
+        return competences;
+    }
 
-    
-    
-    
-      @Override
+    public void setcompetences(String competences) {
+        this.competences = competences;
+    }
+
+    @Override
     public String toString() {
-        return "Demande{ nom=" + nom + ", prenom=" + prenom + ", Email=" + Email + ",cin=" + cin + ", " + "NumeroTelephone=" + NumeroTelephone + ",cv=" + cv + ", lettreMotivation=" + lettreMotivation + ", cartegrise=" + cartegrise + '}';
+        return "Demande{" + "id=" + id + ", cin=" + cin + ", cv=" + cv + ", lettreMotivation=" + lettreMotivation + ", cartegrise=" + cartegrise + ", competences=" + competences + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + Objects.hashCode(this.cin);
+        hash = 37 * hash + Objects.hashCode(this.cv);
+        hash = 37 * hash + Objects.hashCode(this.lettreMotivation);
+        hash = 37 * hash + Objects.hashCode(this.cartegrise);
+        hash = 37 * hash + Objects.hashCode(this.competences);
         return hash;
     }
 
@@ -168,9 +122,32 @@ public class Demande {
         if (this.id != other.id) {
             return false;
         }
+        if (!Objects.equals(this.cin, other.cin)) {
+            return false;
+        }
+        if (!Objects.equals(this.cv, other.cv)) {
+            return false;
+        }
+        if (!Objects.equals(this.lettreMotivation, other.lettreMotivation)) {
+            return false;
+        }
+        if (!Objects.equals(this.cartegrise, other.cartegrise)) {
+            return false;
+        }
+        if (!Objects.equals(this.competences, other.competences)) {
+            return false;
+        }
         return true;
-    }
+    }}
+
     
- }   
+
+ 
+    
+    
+    
+   
+
+   
     
 

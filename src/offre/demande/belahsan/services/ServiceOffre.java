@@ -6,6 +6,7 @@
 package offre.demande.belahsan.services;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,16 +47,16 @@ public class ServiceOffre {
      
      public void ajouter(Offre o){
                try{ 
-         String requete = "INSERT INTO offre (metier,secteur,ville,Nombredeposte,voiture,Duree,salaire) VALUES (?,?,?,?,?,?,?)";
+         String requete = "INSERT INTO offre (metier,secteur,ville,Nombredeposte,salaire,dateOffre) VALUES (?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
            
             pst.setString(1, o.getMetier());
             pst.setString(2, o.getSecteur());
             pst.setString(3, o.getVille());
             pst.setString(4, o.getNombredeposte());
-            pst.setString(5, o.getVoiture());
-            pst.setString(6, o.getDuree());
-            pst.setString(7, o.getSalaire());
+            pst.setString(5, o.getSalaire());
+            pst.setDate(6, Date.valueOf(o.getdateOffre()));
+            
             
 
 
@@ -78,7 +79,7 @@ public class ServiceOffre {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
            //     list.add(new Offre(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7)));
-           list.add(new Offre(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8)));
+           list.add(new Offre(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6) ,rs.getDate(7).toLocalDate()));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -89,18 +90,17 @@ public class ServiceOffre {
       
       
       
-       public void modifier(Offre o, int id_offre){
+       public void modifier(Offre o){
          try {
-            String requete = "UPDATE offre SET metier=?,secteur=?,ville=?,Nombredeposte=?,voiture=?,Duree=?,salaire=? WHERE id_offre=?";
+            String requete = "UPDATE offre SET metier=?,secteur=?,ville=?,Nombredeposte=?,dateOffre=?,salaire=? WHERE offre_id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, o.getMetier());
             pst.setString(2, o.getSecteur());
             pst.setString(3, o.getVille());
             pst.setString(4, o.getNombredeposte());
-            pst.setString(5, o.getVoiture());
-            pst.setString(6, o.getDuree());
-            pst.setString(7, o.getSalaire());
-            pst.setInt(8, id_offre);
+            pst.setDate(5, Date.valueOf(o.getdateOffre()));
+            pst.setString(6, o.getSalaire());
+           
                         
 
             pst.executeUpdate();
@@ -109,11 +109,11 @@ public class ServiceOffre {
         }
     }
 
-    public void supprimer(int id_offre){
+    public void supprimer(int offre_id){
           try {
-            String requete = "DELETE FROM offre WHERE id_offre=?";
+            String requete = "DELETE FROM offre WHERE offre_id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, id_offre);
+            pst.setInt(1, offre_id);
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
