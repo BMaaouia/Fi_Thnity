@@ -46,10 +46,21 @@ public class MenuController implements Initializable {
         loadPage("/com/fithnity/view/ajout_c");
     }    
     
-    private void loadPage(String page){          
+    void loadPage(String page){          
         Parent root = null;
         try {
-        root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(page+".fxml"));
+        root = loader.load();
+        Object controller = loader.getController();
+        if (controller instanceof Ajout_cController) {
+            Ajout_cController ajout_cController = (Ajout_cController) controller;
+            ajout_cController.setMenuController(this);
+        } else if (controller instanceof AfficheController) {
+            AfficheController afficheController = (AfficheController) controller;
+            afficheController.setMenuController(this);
+        }
+        
+        
 
         } catch (Exception ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE,null,ex);

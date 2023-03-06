@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -46,7 +47,7 @@ public class BlogDao implements Idao<Blog>{
 
     @Override
     public void insert(Blog b) {
-        String req="insert into Blog (text_blog,image_blog) values ('"+b.gettext_blog()+"','"+b.getimage_blog()+"')";
+        String req = "INSERT INTO Blog (titre_blog, text_blog, image_blog) VALUES ('" + b.gettitre_blog() + "','" + b.gettext_blog() + "','" + b.getimage_blog() + "')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -67,6 +68,7 @@ public class BlogDao implements Idao<Blog>{
         } catch (SQLException ex) {
             Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
         }else System.out.println("n'existe pas");
+         
     }
 
     @Override
@@ -79,8 +81,10 @@ public class BlogDao implements Idao<Blog>{
             while(rs.next()){
                 Blog p=new Blog();
                 p.setId_blog(rs.getInt(1));
-                p.settext_blog(rs.getString("text_blog"));
-                p.setimage_blog(rs.getString(3));
+                p.settitre_blog(rs.getString("titre_blog"));
+                p.settext_blog(rs.getString(3));
+                p.setimage_blog(rs.getString(4));
+                p.setRating(rs.getFloat(5));
                 list.add(p);
             }
             
@@ -99,8 +103,10 @@ public class BlogDao implements Idao<Blog>{
             while(rs.next()){
                 Blog p=new Blog();
                 p.setId_blog(rs.getInt(1));
-                p.settext_blog(rs.getString("text_blog"));
-                p.setimage_blog(rs.getString(3));
+                p.settitre_blog(rs.getString("titre_blog"));
+                p.settext_blog(rs.getString(3));
+                p.setimage_blog(rs.getString(4));
+                p.setRating(rs.getFloat(5));
                 list.add(p);
             }
             
@@ -117,8 +123,10 @@ public class BlogDao implements Idao<Blog>{
            // while(rs.next()){
             rs.next();
                 p.setId_blog(rs.getInt("id_blog"));
+                p.settitre_blog(rs.getString("titre_blog"));
                 p.settext_blog(rs.getString("text_blog"));
                 p.setimage_blog(rs.getString("image_blog"));
+                p.setRating(rs.getFloat(5));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,7 +136,23 @@ public class BlogDao implements Idao<Blog>{
 
     @Override
     public boolean update(Blog p) {
-        String qry = "UPDATE blog SET text_blog = '"+p.gettext_blog()+"', image_blog = '"+p.getimage_blog()+"' WHERE id_blog = "+p.getId_blog();
+        String qry = "UPDATE blog SET titre_blog = '"+p.gettitre_blog()+"',text_blog = '"+p.gettext_blog()+"', image_blog = '"+p.getimage_blog()+"' WHERE id_blog = "+p.getId_blog();
+        
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+        
+    }
+
+        public boolean RateFN(Blog p) {
+        String qry = "UPDATE blog SET rating = '"+p.getRating()+"' WHERE id_blog = "+p.getId_blog();
         
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -141,11 +165,7 @@ public class BlogDao implements Idao<Blog>{
         return false;
         
     }
-  
 
-
-   
-
-    
-    
 }
+
+

@@ -31,6 +31,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -42,16 +43,16 @@ public class Ajout_BlogController implements Initializable {
     @FXML
     private Button btn_add;
     @FXML
-    private Button affiche;
-    @FXML
     private TextField text_blog;
     private TextField image_blog;
     @FXML
     private Button btn_addi;
     @FXML
     private ImageView image;
-    Blog b = new Blog();
     
+    @FXML
+    private TextField titre_blog;
+    Blog b = new Blog();
 
     /**
      * Initializes the controller class.
@@ -115,7 +116,6 @@ if (rs.next() && rs.getInt(1) > 0) {
               Image img = new Image(file.toURI().toString());
                imageview.setImage(img);*/
       //   }   
-    @FXML
     private void show(ActionEvent event) {
          try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
@@ -152,8 +152,11 @@ if (rs.next() && rs.getInt(1) > 0) {
           
        }
         btn_add.setOnAction(e->{ 
+           
+            b.settitre_blog(titre_blog.getText());
             b.settext_blog(text_blog.getText());
-             if (text_blog.getText().isEmpty() ) {
+            
+             if (titre_blog.getText().isEmpty()||text_blog.getText().isEmpty() ) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText("Champ(s) vide(s)");
@@ -169,6 +172,7 @@ if (rs.next() && rs.getInt(1) > 0) {
         alert.setHeaderText(null);
         alert.setContentText("Blog insérée avec succés!");
         alert.show();
+        titre_blog.setText("");
         text_blog.setText("");
         btn_addi.setVisible(true);
         image.setImage(null);

@@ -18,7 +18,6 @@ public interface Idao<T> {
     public List<T> displayAll();
     public T displayByid_blog(int id_blog);
     public boolean update(T os);
-   
     
     
 }

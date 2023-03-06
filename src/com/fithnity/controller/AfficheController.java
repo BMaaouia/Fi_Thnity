@@ -76,8 +76,6 @@ public class AfficheController implements Initializable {
   
 
     @FXML
-    private Button btn_afficher;
-    @FXML
     private Button btn_supprimer;
     @FXML
     private Button ajout;
@@ -89,11 +87,16 @@ public class AfficheController implements Initializable {
     private Button btn_modif;
     @FXML
     private TextField text_blog;
+     @FXML
+    private TextField titre_blog;
     @FXML
     private TextField image_blog;
     private ImageView imageview;
     @FXML
     private ListView<Comment> list_c;
+    
+    private MenuController menuController;
+   
     
     
 
@@ -109,10 +112,6 @@ public class AfficheController implements Initializable {
 
     
 
-    @FXML
-    private void show(ActionEvent event) {
-        
-    }
 
     @FXML
     private void add(ActionEvent event) {
@@ -214,13 +213,15 @@ public class AfficheController implements Initializable {
             Blog p = new Blog();
 //            p.setId(Integer.parseInt(txt_id.getText()));
             p.setId_blog(current.getId_blog());
+            p.settitre_blog(titre_blog.getText());
             p.settext_blog(text_blog.getText());
             p.setimage_blog(image_blog.getText());
 
-             String text,image;
+             String titre,text,image;
+        titre=titre_blog.getText();
         text=text_blog.getText();
         image=image_blog.getText();
-             if (text.isEmpty() || image.isEmpty()) {
+             if (titre.isEmpty() ||text.isEmpty() || image.isEmpty()) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText("Champ(s) vide(s)");
@@ -235,13 +236,15 @@ public class AfficheController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Blog modifiée avec succés!");
         alert.show();
+        titre_blog.setText("");
             text_blog.setText("");
         image_blog.setText("");	
 	 
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
-    Stage window = (Stage) btn_modif.getScene().getWindow();
-    window.setScene(new Scene(root2));
+//Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
+//    Stage window = (Stage) btn_modif.getScene().getWindow();
+//    window.setScene(new Scene(root2));
+        menuController.loadPage("/com/fithnity/view/affiche");
 	
         
     
@@ -253,7 +256,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affic
     private void Load_Comment(MouseEvent event) {
         
                  Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
-
+                titre_blog.setText(selectedItem.gettitre_blog());
                 text_blog.setText(selectedItem.gettext_blog());
                 image_blog.setText(selectedItem.getimage_blog());
 
@@ -271,7 +274,9 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affic
         
     }
 
-   
+    public void setMenuController(MenuController menuController) {
+    this.menuController = menuController;
+    }
 
     
 }

@@ -5,6 +5,7 @@
  */
 package com.fithnity.controller;
 import javafx.scene.control.ListView;
+
 import com.fithnity.dao.BlogDao;
 import com.fithnity.dao.CommentDao;
 import com.fithnity.entity.Blog;
@@ -28,6 +29,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -42,12 +44,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -70,8 +74,6 @@ public class Ajout_cController implements Initializable {
     private TextField text_c;
     @FXML
     private javafx.scene.control.Button btn_c;
-    @FXML
-    private javafx.scene.control.Button btn_c1;
     private ListView<Blog> list_b;
     @FXML
     private ListView<Comment> list_c;
@@ -80,6 +82,7 @@ public class Ajout_cController implements Initializable {
     @FXML
     private javafx.scene.control.Button btn_dc;
     private javafx.scene.control.Button btn_up;
+    private javafx.scene.control.Button btn_rate;
     @FXML
     private javafx.scene.control.Button btn_modif;
         @FXML
@@ -87,6 +90,14 @@ public class Ajout_cController implements Initializable {
     @FXML
     private ScrollPane scroll_blog;
     private Blog selectedBlog;
+    @FXML
+    private Rating rating;
+    
+    private MenuController menuController;
+    
+   
+   
+    
       /**
      * Initializes the controller class.
      *
@@ -95,14 +106,25 @@ public class Ajout_cController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+                gridProduit.getChildren().clear();
+
+            try {
+                // TODO
+                Affichage();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+    }    
+
+    public void Affichage() throws FileNotFoundException
+    {
         
-         
-          try {
             List<Blog> blogs = bdao.displayAllList();
             int row = 0;
             int column = 0;
             for (int i = 0; i < blogs.size(); i++) {
+
                 //chargement dynamique d'une interface
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
                 AnchorPane pane = new AnchorPane();
@@ -117,19 +139,27 @@ public class Ajout_cController implements Initializable {
                 imageView.setFitHeight(200);
                 imageView.setFitWidth(200);
                 
+                Text blogTitre = new Text(blog.gettitre_blog());
+                blogTitre.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+                blogTitre.setWrappingWidth(200);
+                blogTitre.setTextAlignment(TextAlignment.CENTER);
+                
                 Text blogText = new Text(blog.gettext_blog());
                 blogText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
                 blogText.setWrappingWidth(200);
                 blogText.setTextAlignment(TextAlignment.CENTER);
 
+                Rating Rt = new Rating(5);
+                Rt.setRating(blog.getRating());
+                
                 VBox vBox = new VBox(10);
-                vBox.getChildren().addAll(imageView, blogText);
+                vBox.getChildren().addAll(blogTitre,imageView, blogText,Rt);
                 vBox.setAlignment(Pos.CENTER);
-    
-                GridPane.setConstraints(vBox,column, row);
+                
+                gridProduit.setConstraints(vBox,column, row);
                 gridProduit.getChildren().addAll(vBox);
-             
-                    pane.getChildren().addAll(gridProduit);
+                    
+                    pane.getChildren().add(gridProduit);
                     
                     vBox.setOnMouseClicked(event -> {
             // Set selected blog as a property of the VBox element
@@ -143,11 +173,7 @@ public class Ajout_cController implements Initializable {
                     row++;
                 }
             }
-        } catch ( IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }    
-
+    }
       
     
       public void getEvents() {  
@@ -165,6 +191,7 @@ public class Ajout_cController implements Initializable {
     private void add(ActionEvent event)  throws SQLException {
         
        String text,np;
+       
         text=text_c.getText();
         np=text_n.getText();
         Comment c = new Comment(text, np,Integer.valueOf(selectedBlog.getId_blog()));
@@ -195,7 +222,6 @@ public class Ajout_cController implements Initializable {
     
  
     }
-    @FXML
     private void show(ActionEvent event) {
          try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
@@ -213,7 +239,9 @@ public class Ajout_cController implements Initializable {
             //Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
                      
             //idblogselected.setText(String.valueOf(selectedItem.getId_blog()));
-            
+            Blog selectedItem = list_b.getSelectionModel().getSelectedItem();
+            System.out.println(selectedItem);
+            rating.setRating(selectedItem.getRating()); 
             list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
 
@@ -311,12 +339,36 @@ public class Ajout_cController implements Initializable {
 
     @FXML
     private void load(MouseEvent event) {
-        list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
+            list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
+                        
+            rating.setRating(selectedBlog.getRating()); 
+
     }
 
-    
 
-    
-    
-}
+
+
+    @FXML
+    private void rate(ActionEvent event) throws FileNotFoundException {
+ 
+        System.out.println ("Rating given by use:" + rating.getRating());
+         Float Somme =  ((float) rating.getRating());
+        // Float Somme =  ((float) rating.getRating() + selectedBlog.getRating())/2;
+       System.out.println ("final result " + Somme);
+       
+        selectedBlog.setRating(Somme);
+        bdao.RateFN(selectedBlog);
+            Rating Rt = new Rating(5);
+            Rt.setRating(selectedBlog.getRating());
+            
+            menuController.loadPage("/com/fithnity/view/ajout_c");
+            
+     
+    }
+
+   public void setMenuController(MenuController menuController) {
+    this.menuController = menuController;
+    }
+
+  }

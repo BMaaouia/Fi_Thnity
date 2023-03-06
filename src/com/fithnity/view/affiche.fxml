@@ -16,10 +16,12 @@
       <TextField fx:id="text_blog" layoutX="631.0" layoutY="185.0" style="-fx-background-radius: 20;" />
       <Text layoutX="643.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text layoutX="645.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
-      <TextField fx:id="image_blog" layoutX="631.0" layoutY="258.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="image_blog" layoutX="631.0" layoutY="258.0" prefHeight="31.0" prefWidth="142.0" style="-fx-background-radius: 20;" />
       <Label layoutX="36.0" layoutY="401.0" text="Commentaire" />
       <ListView fx:id="list_c" layoutX="36.0" layoutY="434.0" prefHeight="153.0" prefWidth="297.0" style="-fx-background-radius: 20;" />
       <Button layoutX="528.0" layoutY="206.0" mnemonicParsing="false" onAction="#PDFbtn" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="Pdf" textFill="#f2eeee" />
       <Label layoutX="45.0" layoutY="112.0" text="Liste Blog" />
+      <Text layoutX="642.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
+      <TextField fx:id="titre_blog" layoutX="631.0" layoutY="111.0" style="-fx-background-radius: 20;" />
    </children>
 </AnchorPane>
