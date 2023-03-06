@@ -16,29 +16,29 @@
             <Image url="@../../../images/photo1.png" />
          </image>
       </ImageView>
-      <Label fx:id="modelelabel" layoutX="46.0" layoutY="64.0" text="Model :" textFill="#5b0808">
+      <Label fx:id="modelelabel" layoutX="46.0" layoutY="37.0" text="Model :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="etatlabel" layoutX="46.0" layoutY="226.0" text="Etat :" textFill="#5b0808">
+      <Label fx:id="etatlabel" layoutX="46.0" layoutY="237.0" text="Etat :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="categorielabel" layoutX="46.0" layoutY="168.0" text="Categorie :" textFill="#5b0808">
+      <Label fx:id="categorielabel" layoutX="44.0" layoutY="180.0" text="Categorie :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="immatriculationlabel" layoutX="46.0" layoutY="113.0" text="Matricullation :" textFill="#5b0808">
+      <Label fx:id="immatriculationlabel" layoutX="27.0" layoutY="113.0" text="Matricullation :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="fx_model" layoutX="208.0" layoutY="60.0" prefHeight="31.0" prefWidth="156.0" />
+      <TextField fx:id="fx_model" layoutX="208.0" layoutY="33.0" prefHeight="31.0" prefWidth="156.0" />
       <TextField fx:id="fx_mat" layoutX="208.0" layoutY="109.0" prefHeight="31.0" prefWidth="156.0" />
-      <TextField fx:id="fx_cat" layoutX="208.0" layoutY="164.0" prefHeight="31.0" prefWidth="156.0" />
+      <TextField fx:id="fx_cat" layoutX="208.0" layoutY="176.0" prefHeight="31.0" prefWidth="156.0" />
       <Button fx:id="btn_ajout" layoutX="254.0" layoutY="313.0" mnemonicParsing="false" onAction="#ajouter_v" prefHeight="42.0" prefWidth="89.0" text="validez">
          <font>
             <Font name="Arial Black" size="16.0" />
@@ -49,16 +49,19 @@
             <Font name="Arial Black" size="16.0" />
          </font>
       </Button>
-      <CheckBox fx:id="fx_etat" layoutX="292.0" layoutY="217.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" text="OCCASION" textFill="#dd0606" textOverrun="CENTER_ELLIPSIS">
+      <CheckBox fx:id="fx_etat" layoutX="292.0" layoutY="228.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" text="OCCASION" textFill="#dd0606" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="fx_etat2" layoutX="152.0" layoutY="217.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="124.0" text="NEUF" textFill="#e10707">
+      <CheckBox fx:id="fx_etat2" layoutX="146.0" layoutY="233.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="124.0" text="NEUF" textFill="#e10707">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </CheckBox>
       <Label fx:id="fx_etatLabel" layoutX="191.0" layoutY="324.0" />
+      <Label fx:id="label_model" layoutX="219.0" layoutY="77.0" prefHeight="21.0" prefWidth="135.0" />
+      <Label fx:id="label_immatricul" layoutX="208.0" layoutY="147.0" prefHeight="21.0" prefWidth="156.0" />
+      <Label fx:id="label_categor" layoutX="208.0" layoutY="218.0" prefHeight="21.0" prefWidth="156.0" />
    </children>
 </AnchorPane>
