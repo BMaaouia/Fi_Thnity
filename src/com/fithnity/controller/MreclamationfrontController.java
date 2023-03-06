@@ -189,15 +189,7 @@ search.textProperty().addListener((observable, oldValue, newValue) -> {
  
         listviewP.setOnMouseClicked(event->{
             
-//        idLabel.setText(String.valueOf(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getId()));
-//        nomLabel.setText(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getNom());
-//        prenomLabel.setText(listdata.getPersons()
-//                .get(listviewP.getSelectionModel().getSelectedIndex())
-//                .getPrenom());
+
  java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
         Reclamation current = listviewP.getSelectionModel().getSelectedItem();
         // txt_id.setText(Integer.toString(current.getId()));
@@ -297,9 +289,9 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         alert.show();
 //            txt_nom.setText("");
   //      txt_prenom.setText("");	
-	 txt_email.setText("");
-        txt_tel.setText("");   
-txt_message.setText("");  
+//	 txt_email.setText("");
+//        txt_tel.setText("");   
+//txt_message.setText("");  
 //reload
 Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Mreclamationfront.fxml"));
     Stage window = (Stage) modif2.getScene().getWindow();

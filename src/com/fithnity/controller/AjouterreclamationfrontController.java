@@ -195,26 +195,18 @@ public class AjouterreclamationfrontController implements Initializable {
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
              ReclamationDao pdao = ReclamationDao.getInstance();
 	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate);
-            
+            	 Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
+
+         //**************************
+          if (pdao.reclamationExists(p2)) {
             pdao.insert(p);
-        
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("Reclamation insérée avec succés!");
-        alert.show();
-        
-        txt_nom.setText("");
-        txt_prenom.setText("");	
-	 txt_email.setText("");
-        txt_tel.setText("");   
-txt_message.setText("");  
-//reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
-    Stage window = (Stage) btnn.getScene().getWindow();
-    window.setScene(new Scene(root2));
-    //*************
-    String title = "Done";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Réclamation insérée avec succès!");
+            alert.show();
+            //*****************************************
+             String title = "Done";
         String message = "Reclamation created ";
         TrayNotification tray = new TrayNotification();
         AnimationType type=AnimationType.POPUP;
@@ -222,6 +214,34 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         tray.setMessage(message);
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(1000));
+
+            txt_nom.setText("");
+            txt_prenom.setText("");
+            txt_email.setText("");
+            txt_tel.setText("");
+            txt_message.setText("");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Une réclamation avec les mêmes valeurs existe déjà!");
+            alert.show();
+        }
+//            pdao.insert(p);
+//        
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Information Dialog");
+//        alert.setHeaderText(null);
+//        alert.setContentText("Reclamation insérée avec succés!");
+//        alert.show();
+        
+       
+//reload
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+    Stage window = (Stage) btnn.getScene().getWindow();
+    window.setScene(new Scene(root2));
+    //*************
+   
     //************
 	}
     }

@@ -52,7 +52,7 @@ public class ReclamationDao implements Idao<Reclamation>{
 
     @Override
     public void insert(Reclamation o) {
-        String req = "INSERT INTO Reclamation (nom, prenom, email, numTel, message, date) VALUES ('" + o.getNom() + "', '" + o.getPrenom() + "', '" + o.getEmail() + "', '" + o.getNumTel() + "', '" + o.getMessage() + "', '" + o.getDate() + "')";
+        String req = "INSERT IGNORE INTO Reclamation (nom, prenom, email, numTel, message, date) VALUES ('" + o.getNom() + "', '" + o.getPrenom() + "', '" + o.getEmail() + "', '" + o.getNumTel() + "', '" + o.getMessage() + "', '" + o.getDate() + "')";
         //String req="insert into Reclamation (nom,prenom,email,numTel,message,date) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"','"+o.getDate()+"',')";
         try {
             st.executeUpdate(req);
@@ -61,6 +61,22 @@ public class ReclamationDao implements Idao<Reclamation>{
         }
         
     }   
+    public boolean reclamationExists(Reclamation p) {
+    List<Reclamation> list = displayAllList();
+    for (Reclamation r : list) {
+        if (r.getNom().equals(p.getNom())
+                && r.getPrenom().equals(p.getPrenom())
+                && r.getEmail().equals(p.getEmail())
+                && r.getNumTel() == p.getNumTel()
+                && r.getMessage().equals(p.getMessage())
+                && r.getDate().equals(p.getDate())) {
+            return true;
+        }
+    }
+    return false;
+}
+    
+
 
     @Override
     public void delete(Reclamation o) {
@@ -78,19 +94,9 @@ public class ReclamationDao implements Idao<Reclamation>{
     }
     
        
+ 
+    
 
-    
-    
-//       public void supprimer(int id) {
-// String query = "DELETE from personne where id ='"+id+"'";
-//        try {
-//            Statement stmt = con.createStatement();
-//            stmt.executeUpdate(query);
-//            System.out.println("INFO: Produit Deleted.");
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
 
 
     @Override
