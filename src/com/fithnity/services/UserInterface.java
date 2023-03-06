@@ -19,7 +19,5 @@ public interface UserInterface<T> {
     public T displayById(int id);
     
     public boolean update(T os);
-    public boolean verif_user(String mail, String pass);
-    public T getCurrentUser(String user_email, String user_password);
-    public boolean verif_email(String email);
+    
 }

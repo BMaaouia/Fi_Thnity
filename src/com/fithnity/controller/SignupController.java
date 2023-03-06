@@ -11,6 +11,7 @@ import com.fithnity.entity.User;
 import com.fithnity.services.ServiceUser;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -37,8 +38,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 /**
@@ -68,6 +71,12 @@ public class SignupController implements Initializable {
     private PasswordField confirm_password_text;
     
     ServiceUser Us = ServiceUser.getInstance();
+    @FXML
+    private Button add_avatar;
+    @FXML
+    private ImageView avatar;
+    
+    private String selectedAvatar;
     
 
     /**
@@ -81,8 +90,9 @@ public class SignupController implements Initializable {
     @FXML
     private void signup(ActionEvent event) {
         if(validateInputs()==true){
+           
         String hashedPassword = hashPassword(password_text.getText());
-        User u = new User(firstname_text.getText(), lastname_text.getText(), email_text.getText(),hashedPassword );
+        User u = new User(firstname_text.getText(), lastname_text.getText(), email_text.getText(),hashedPassword,selectedAvatar);
             
             Us.insert(u);
         
@@ -96,6 +106,7 @@ public class SignupController implements Initializable {
         email_text.setText("");
         password_text.setText("");
         confirm_password_text.setText("");
+        avatar.setImage(null);
         
         
         Parent root;
@@ -272,6 +283,27 @@ public class SignupController implements Initializable {
             Logger.getLogger(SignupController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+
+    @FXML
+    private void add_avatar(ActionEvent event) {
+        
+        FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose File");
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            fileChooser.getExtensionFilters().add(pngFilter);
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+            Image img = new Image(selectedFile.toURI().toString());
+
+                    selectedAvatar =selectedFile.getAbsolutePath();
+                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
+                    avatar.setImage(img);
+                    
+
+           } 
     }
 
    

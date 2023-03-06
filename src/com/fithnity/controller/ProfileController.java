@@ -14,6 +14,7 @@ import com.fithnity.services.ServiceUserSubscription;
 import com.fithnity.services.UserManager;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -63,6 +64,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -121,6 +123,12 @@ public class ProfileController implements Initializable {
     private Button delete;
     @FXML
     private Button logout;
+    @FXML
+    private ImageView avatar;
+    
+    private String selectedAvatar;
+    @FXML
+    private Button choose_avatar;
    
 
     
@@ -181,6 +189,8 @@ public class ProfileController implements Initializable {
         lastname_text.setDisable(false);
         email_text.setDisable(false);
         password_text.setDisable(false);
+        avatar.setDisable(false);
+        choose_avatar.setDisable(false);
         
         update.setVisible(false);
         save.setVisible(true);
@@ -194,6 +204,7 @@ public class ProfileController implements Initializable {
             current.setUser_lastname(lastname_text.getText());
             current.setUser_email(email_text.getText());
             current.setUser_password(password_text.getText());
+            current.setUser_img(selectedAvatar);
 
             Su.update(current);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -207,6 +218,8 @@ public class ProfileController implements Initializable {
             lastname_text.setDisable(true);
             email_text.setDisable(true);
             password_text.setDisable(true);
+            avatar.setDisable(true);
+            choose_avatar.setDisable(true);
 
             save.setVisible(false);
             update.setVisible(true);
@@ -219,6 +232,9 @@ public class ProfileController implements Initializable {
         lastname_text.setText(current.getUser_lastname());
         email_text.setText(current.getUser_email());
         password_text.setText(current.getUser_password());
+        File imgFile = new File(current.getUser_img());
+        Image img = new Image(imgFile.toURI().toString());
+        avatar.setImage(img);
         
        profile.setVisible(true);
        Subscription_tilepane.setVisible(false);
@@ -467,6 +483,26 @@ public class ProfileController implements Initializable {
         }
 
         return true;
+    }
+
+    @FXML
+    private void change_avatar(ActionEvent event) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose File");
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            fileChooser.getExtensionFilters().add(pngFilter);
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+            Image img = new Image(selectedFile.toURI().toString());
+
+                    selectedAvatar =selectedFile.getAbsolutePath();
+                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
+                    avatar.setImage(img);
+                    
+
+           } 
     }
 
     

@@ -36,6 +36,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -48,6 +49,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -79,8 +81,6 @@ public class AdminPanelController implements Initializable {
     TranslateTransition slide = new TranslateTransition();
     @FXML
     private Button show_user;
-    @FXML
-    private ListView<User> list_user;
     
     private ListData listdata = new ListData();
     @FXML
@@ -114,6 +114,10 @@ public class AdminPanelController implements Initializable {
     private boolean subscriptionsDisplayed = false;
     @FXML
     private Button logout;
+    @FXML
+    private VBox userList;
+    @FXML
+    private ScrollPane scrollpane_user;
     
     
     
@@ -155,43 +159,48 @@ public class AdminPanelController implements Initializable {
 
     @FXML
     private void show_user(ActionEvent event) {
-        ContextMenu contextMenu = new ContextMenu();
-        MenuItem menuItem1 = new MenuItem("Delete");
-        MenuItem menuItem2 = new MenuItem("Ban");       
+
+        
+        List<User> users = new ArrayList<>();
+        users=SU.displayAllList();
         list.setVisible(true);
         subscription.setVisible(false);
         tilepane_subscription.setVisible(false);
-        ObservableList<User> userList = listdata.getUsers();
-        list_user.setItems(userList); 
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(100);
+        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(10));
+        scrollpane_user.setContent(gridPane);
 
-        list_user.setContextMenu(contextMenu);
-        contextMenu.getItems().clear();
-        contextMenu.getItems().addAll(menuItem1, menuItem2);
+        Label nameLabel = new Label("Name");
+        nameLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(nameLabel, 1, 0);
+
+        Label emailLabel = new Label("Email");
+        emailLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(emailLabel, 2, 0);
+
+        Label avatarLabel = new Label("Avatar");
+        avatarLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(avatarLabel, 0, 0);
+        
+        
+        for (int i = 0; i < users.size(); i++) {
             
+            User user = users.get(i);
+            File imgFile = new File(user.getUser_img());
+            Image image= new Image(imgFile.toURI().toString());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(150);
+            imageView.setFitWidth(150);
+ 
+            gridPane.add(new Label(user.getUser_firstname()), 1, i + 1);
+            gridPane.add(new Label(user.getUser_email()), 2, i + 1);
+            gridPane.add(imageView, 0, i + 1);
+
             
-            list_user.setOnMouseClicked(e -> {
-        if (e.getButton() == MouseButton.SECONDARY) { // right-click
-        User selectedUser = list_user.getSelectionModel().getSelectedItem();
-            if (selectedUser != null) {
-                contextMenu.show(list_user, e.getScreenX(), e.getScreenY());
-                menuItem1.setOnAction(e1 -> {
-                    //SU.delete(selectedUser);
-                    list_user.getItems().remove(selectedUser);
-                
-                    //System.out.println(selectedUser.getUser_id());
-               
-                System.out.println("User " + selectedUser.getUser_firstname() +" is Deleted!");
-            });
-                menuItem2.setOnAction(e1 -> {
-                // Handle option 2 action
-                System.out.println("User " + selectedUser.getUser_firstname()+" is Banned!");
-            });
-             }
         }
-        });
-            
-  
-   
+
        }
     
 

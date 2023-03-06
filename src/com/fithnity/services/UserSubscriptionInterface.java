@@ -16,7 +16,7 @@ public interface UserSubscriptionInterface<T>{
     public void delete(T o);
     public List<T> displayAll();
     public T displayById(int id);
-    public int GetNbUsers(int id);
+  
     
    
 }

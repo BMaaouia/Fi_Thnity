@@ -21,28 +21,40 @@ public class User {
     private SimpleStringProperty user_lastname;
     private SimpleStringProperty user_email;
     private SimpleStringProperty user_password;
+    private SimpleStringProperty user_img;
     private SimpleIntegerProperty IsSubscribed;
     private SimpleIntegerProperty Admin;
 
     public User() {
     }
 
-    public User(int user_id,String user_firstname, String user_lastname, String user_email, String user_password) {
+    public User(int user_id,String user_firstname, String user_lastname, String user_email, String user_password, String user_img) {
         this.user_id = new SimpleIntegerProperty(user_id);
         this.user_firstname = new SimpleStringProperty(user_firstname);
         this.user_lastname = new SimpleStringProperty(user_lastname);
         this.user_email = new SimpleStringProperty(user_email);
         this.user_password = new SimpleStringProperty(user_password);
+        this.user_img = new SimpleStringProperty(user_img);
+        
       
     }
  
     
 
+    public User(String user_firstname, String user_lastname, String user_email, String user_password, String user_img) {
+        this.user_firstname = new SimpleStringProperty(user_firstname);
+        this.user_lastname = new SimpleStringProperty(user_lastname);
+        this.user_email = new SimpleStringProperty(user_email);
+        this.user_password = new SimpleStringProperty(user_password);
+        this.user_img = new SimpleStringProperty(user_img);
+    }
+    
     public User(String user_firstname, String user_lastname, String user_email, String user_password) {
         this.user_firstname = new SimpleStringProperty(user_firstname);
         this.user_lastname = new SimpleStringProperty(user_lastname);
         this.user_email = new SimpleStringProperty(user_email);
         this.user_password = new SimpleStringProperty(user_password);
+        
     }
 
     
@@ -93,6 +105,14 @@ public class User {
         this.user_password = new SimpleStringProperty(user_password);
     }
     
+    public String getUser_img() {
+        return user_img.get();
+    }
+
+    public void setUser_img(String user_img) {
+        this.user_img = new SimpleStringProperty(user_img);
+    }
+    
     public int getIsSubscribed() {
         return IsSubscribed.get();
     }
@@ -122,6 +142,9 @@ public class User {
     }
     public SimpleStringProperty getUser_passwordProperty(){
         return user_password;
+    }
+    public SimpleStringProperty getUser_imgProperty(){
+        return user_img;
     }
 
     @Override

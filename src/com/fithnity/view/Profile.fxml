@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="889.0" style="-fx-background-color: F9F7DD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.ProfileController">
+<AnchorPane id="AnchorPane" prefHeight="707.0" prefWidth="1032.0" style="-fx-background-color: F9F7DD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.ProfileController">
    <children>
       <Text fx:id="user" layoutX="445.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="336.609375">
          <font>
@@ -22,13 +22,13 @@
          </font>
       </Text>
       <TilePane fx:id="Subscription_tilepane" layoutX="299.0" layoutY="73.0" prefHeight="470.0" prefWidth="557.0" visible="false" />
-      <AnchorPane fx:id="profile" layoutX="299.0" layoutY="99.0" prefHeight="454.0" prefWidth="547.0">
+      <AnchorPane fx:id="profile" layoutX="299.0" layoutY="102.0" prefHeight="591.0" prefWidth="711.0">
          <children>
-            <Button fx:id="update" layoutX="416.0" layoutY="229.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Edit Profile" textFill="#f9f7dd">
+            <Button fx:id="update" layoutX="497.0" layoutY="386.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Edit Profile" textFill="#f9f7dd">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font></Button>
-            <Button fx:id="save" layoutX="416.0" layoutY="229.0" mnemonicParsing="false" onAction="#save_update" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Save" textFill="#f9f7dd">
+            <Button fx:id="save" layoutX="497.0" layoutY="386.0" mnemonicParsing="false" onAction="#save_update" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Save" textFill="#f9f7dd">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font></Button>
@@ -78,7 +78,7 @@
                   <Glow />
                </effect>
             </Label>
-            <Button fx:id="delete" layoutX="181.0" layoutY="402.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Delete Account" textFill="#f9f7dd">
+            <Button fx:id="delete" layoutX="288.0" layoutY="533.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" text="Delete Account" textFill="#f9f7dd">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
@@ -88,9 +88,11 @@
                   <DropShadow />
                </effect>
             </PasswordField>
+            <ImageView fx:id="avatar" disable="true" fitHeight="150.0" fitWidth="200.0" layoutX="457.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="choose_avatar" disable="true" layoutX="481.0" layoutY="296.0" mnemonicParsing="false" onAction="#change_avatar" style="-fx-background-radius: 20;" text="Choose an avatar" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="slider" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="598.0" prefWidth="255.0" style="-fx-background-color: #BCBA95;">
+      <AnchorPane fx:id="slider" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="707.0" prefWidth="283.0" style="-fx-background-color: #BCBA95;">
          <children>
             <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true" x="230.0">
                <image>
@@ -146,7 +148,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="logout" layoutX="770.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Log Out" textFill="#f9f7dd">
+      <Button fx:id="logout" layoutX="916.0" layoutY="29.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Log Out" textFill="#f9f7dd">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
