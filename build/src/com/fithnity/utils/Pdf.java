@@ -35,7 +35,7 @@ PreparedStatement pst;
     try {
                 Document my_pdf_report = new Document(PageSize.LETTER);
 
-                PdfWriter.getInstance(my_pdf_report, new FileOutputStream("listeEmplyés.pdf"));
+                PdfWriter.getInstance(my_pdf_report, new FileOutputStream("listeEmployées.pdf"));
                 my_pdf_report.open();
                 PdfPTable my_report_table = new PdfPTable(4);
                 PdfPCell table_cell;
@@ -45,7 +45,7 @@ PreparedStatement pst;
                 my_report_table.addCell(table_cell);
                 table_cell = new PdfPCell(new Phrase("Email"));
                 my_report_table.addCell(table_cell);
-                table_cell = new PdfPCell(new Phrase("Ville"));
+                table_cell = new PdfPCell(new Phrase("Address"));
                 my_report_table.addCell(table_cell);
             
                 try {

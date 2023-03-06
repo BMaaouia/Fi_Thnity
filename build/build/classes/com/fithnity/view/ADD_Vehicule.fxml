@@ -16,22 +16,22 @@
             <Image url="@../../../images/photo1.png" />
          </image>
       </ImageView>
-      <Label layoutX="46.0" layoutY="64.0" text="Model :" textFill="#5b0808">
+      <Label fx:id="modelelabel" layoutX="46.0" layoutY="64.0" text="Model :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="226.0" text="Etat :" textFill="#5b0808">
+      <Label fx:id="etatlabel" layoutX="46.0" layoutY="226.0" text="Etat :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="168.0" text="Categorie :" textFill="#5b0808">
+      <Label fx:id="categorielabel" layoutX="46.0" layoutY="168.0" text="Categorie :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="113.0" text="Matricullation :" textFill="#5b0808">
+      <Label fx:id="immatriculationlabel" layoutX="46.0" layoutY="113.0" text="Matricullation :" textFill="#5b0808">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>

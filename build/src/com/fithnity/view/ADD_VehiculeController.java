@@ -5,6 +5,7 @@
  */
 package com.fithnity.view;
 
+
 import com.fithnity.entities.Vehicule;
 import com.fithnity.services.ServiceVehicule;
 import java.net.URL;
@@ -47,6 +48,14 @@ public class ADD_VehiculeController implements Initializable {
     private CheckBox fx_etat2;
     @FXML
     private Label fx_etatLabel;
+    @FXML
+    private Label modelelabel;
+    @FXML
+    private Label etatlabel;
+    @FXML
+    private Label categorielabel;
+    @FXML
+    private Label immatriculationlabel;
 
     /**
      * Initializes the controller class.
@@ -75,6 +84,10 @@ public class ADD_VehiculeController implements Initializable {
 
     @FXML
     private void ajouter_v() {
+         
+        
+        
+      
         ServiceVehicule V_Service = new ServiceVehicule();
         Vehicule v = new Vehicule();
         if(fx_model.getText().isEmpty() || fx_mat.getText().isEmpty() || fx_cat.getText().isEmpty()) {
@@ -122,5 +135,5 @@ public class ADD_VehiculeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     
-}
-}
+}}
+
