@@ -142,8 +142,9 @@ public class ServiceUser implements UserInterface<User>{
                 p.setUser_lastname(rs.getString("user_lastname"));
                 p.setUser_email(rs.getString(4));
                 p.setUser_password(rs.getString(5));
-                p.setAdmin(rs.getInt(6));
-                p.setIsSubscribed(rs.getInt(7));
+                p.setUser_img(rs.getString(6));
+                p.setAdmin(rs.getInt(7));
+                p.setIsSubscribed(rs.getInt(8));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);

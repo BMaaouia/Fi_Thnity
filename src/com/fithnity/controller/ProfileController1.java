@@ -6,25 +6,41 @@
 package com.fithnity.controller;
 
 import com.fithnity.entity.Subscription;
+import com.fithnity.services.ServiceUser;
 import com.fithnity.entity.User;
 import com.fithnity.entity.UserSubscription;
 import com.fithnity.services.ServiceSubscription;
-import com.fithnity.services.ServiceUser;
 import com.fithnity.services.ServiceUserSubscription;
 import com.fithnity.services.UserManager;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,42 +50,37 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
+ * FXML Controller class
  *
  * @author Maaouia
  */
-public class ProfileController implements Initializable{
+public class ProfileController1 implements Initializable {
 
     @FXML
-    private AnchorPane container;
+    private Text user;
     @FXML
-    private Button logout;
-    @FXML
-    private AnchorPane check_Subscription_pane;
-    @FXML
-    private Text time;
-    @FXML
-    private Button cancel_subscription;
+    private AnchorPane slider;
     @FXML
     private AnchorPane profile;
-    @FXML
-    private Button update;
-    @FXML
-    private Button save;
     @FXML
     private TextField firstname_text;
     @FXML
@@ -77,45 +88,60 @@ public class ProfileController implements Initializable{
     @FXML
     private TextField email_text;
     @FXML
-    private Button delete;
+    private Button update;
     @FXML
     private PasswordField password_text;
+    @FXML     
+    private Button save;
     @FXML
-    private ImageView avatar;
-    @FXML
-    private Button choose_avatar;
-    @FXML
-    private Button Subscription;
-    @FXML
-    private Button btn_acceuil;
-    @FXML
-    private Button btn_acceuil1;
-    @FXML
-    private Button btn_blog;
-    @FXML
-    private Text user;
-    @FXML
-    private TilePane Subscription_tilepane;
+    private Button show_profile;
     
+    
+    
+    TranslateTransition slide = new TranslateTransition();
     ServiceUser Su = ServiceUser.getInstance();
     User current =UserManager.getCurrentUser();
     Subscription s = new Subscription();
     ServiceSubscription Ss = ServiceSubscription.getInstance();
     UserSubscription US = new UserSubscription();
     ServiceUserSubscription SUS = ServiceUserSubscription.getInstance();
+    
+    @FXML
+    private Button Subscription;
+    @FXML
+    private TilePane Subscription_tilepane;
+    private boolean subscriptionsDisplayed = false;
     @FXML
     private Button CheckSubscription;
-    private boolean subscriptionsDisplayed = false;
-    private String selectedAvatar=current.getUser_img();
     @FXML
-    private Button show_profile;
+    private Text time;
     @FXML
-    private Button retour;
+    private AnchorPane check_Subscription_pane;
+    @FXML
+    private Button cancel_subscription;
+    @FXML
+    private Button delete;
+    @FXML
+    private Button logout;
+    @FXML
+    private ImageView avatar;
     
+    private String selectedAvatar;
+    @FXML
+    private Button choose_avatar;
+   
+
+    
+
+    
+       
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        user.setText("Welcome "+UserManager.getCurrentUser().getUser_firstname()+"!");
-       
+       slider.setTranslateX(-230);
        
        profile.setVisible(false);
        Subscription_tilepane.setVisible(false);
@@ -133,27 +159,28 @@ public class ProfileController implements Initializable{
         
     }    
 
-    @FXML
-    private void logout(ActionEvent event) {
-          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Are you sure you want to Log Out?");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Parent page1;
-            try {
-            page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-            
-            } catch (IOException ex) {
-            Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
-            }
     
-        } 
+
+    @FXML
+    private void exit(MouseEvent event) {
+        slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-230);
+            slide.play();
+
+            slider.setTranslateX(0);
+    }
+
+    @FXML
+    private void enter(MouseEvent event) {
+        slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-230);
     }
 
     @FXML
@@ -171,7 +198,7 @@ public class ProfileController implements Initializable{
 
     @FXML
     private void save_update(ActionEvent event) {
-        if(validateInputs()==true){
+       if(validateInputs()==true){
             System.out.println(current);
             current.setUser_firstname(firstname_text.getText());
             current.setUser_lastname(lastname_text.getText());
@@ -200,52 +227,30 @@ public class ProfileController implements Initializable{
     }
 
     @FXML
-    private void delete(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Are you sure you want to Delete this item?");
-        Optional<ButtonType> result = alert.showAndWait();
-                            
-        if (result.get() == ButtonType.OK){
-            Su.delete(current);
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                    Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
-            }  
-         }
+    private void show_profile(ActionEvent event) {
+        firstname_text.setText(current.getUser_firstname());
+        lastname_text.setText(current.getUser_lastname());
+        email_text.setText(current.getUser_email());
+        password_text.setText(current.getUser_password());
+        File imgFile = new File(current.getUser_img());
+        Image img = new Image(imgFile.toURI().toString());
+        avatar.setImage(img);
+        
+       profile.setVisible(true);
+       Subscription_tilepane.setVisible(false);
+       check_Subscription_pane.setVisible(false);
+       
+       update.setVisible(true);
+       save.setVisible(false);
+        
     }
 
-    @FXML
-    private void change_avatar(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Choose File");
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-            fileChooser.getExtensionFilters().add(pngFilter);
-            File selectedFile = fileChooser.showOpenDialog(null);
-
-            if (selectedFile != null) {
-            Image img = new Image(selectedFile.toURI().toString());
-
-                    selectedAvatar =selectedFile.getAbsolutePath();
-                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
-                    avatar.setImage(img);
-                    
-
-           } 
-    }
 
     @FXML
     private void Subscription_vbox(ActionEvent event) {
-        profile.setVisible(false);
+       profile.setVisible(false);
        Subscription_tilepane.setVisible(true);
        check_Subscription_pane.setVisible(false);
-       retour.setVisible(true);
        if (!subscriptionsDisplayed) {
             
             List<Subscription> items = new ArrayList<>();
@@ -300,10 +305,6 @@ public class ProfileController implements Initializable{
                         CheckSubscription.setVisible(true);
                         Subscription.setVisible(false);
                         Subscription_tilepane.setVisible(false);
-                        profile.setVisible(true);
-                        check_Subscription_pane.setVisible(false);
-                        
-                        
                         
                     });
                  
@@ -315,14 +316,14 @@ public class ProfileController implements Initializable{
                      }
             subscriptionsDisplayed = true;
         }
-    }
+        
+    }  
 
     @FXML
     private void Check_Subscription_vbox(ActionEvent event) {
         profile.setVisible(false);
         Subscription_tilepane.setVisible(false);
         check_Subscription_pane.setVisible(true);
-        retour.setVisible(false);
         
         UserSubscription a = SUS.displayById(current.getUser_id());
         Date start = a.getSubscription_start();
@@ -342,12 +343,60 @@ public class ProfileController implements Initializable{
             alert.setHeaderText(null);
             alert.setContentText("You can't cancel yet!");
             alert.show();
-            profile.setVisible(true);
-                        Subscription_tilepane.setVisible(false);
-                        check_Subscription_pane.setVisible(false);
             
         });
+   
     }
+
+    @FXML
+    private void delete(ActionEvent event) {
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to Delete this item?");
+        Optional<ButtonType> result = alert.showAndWait();
+                            
+        if (result.get() == ButtonType.OK){
+            Su.delete(current);
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+         }
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to Log Out?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Parent page1;
+            try {
+            page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            
+            } catch (IOException ex) {
+            Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+        } 
+        
+        
+    }
+    
+    
     
     public boolean validateInputs() {
     
@@ -437,41 +486,24 @@ public class ProfileController implements Initializable{
     }
 
     @FXML
-    private void show_profile(ActionEvent event) {
-        firstname_text.setText(current.getUser_firstname());
-        lastname_text.setText(current.getUser_lastname());
-        email_text.setText(current.getUser_email());
-        password_text.setText(current.getUser_password());
-        File imgFile = new File(current.getUser_img());
-        Image img = new Image(imgFile.toURI().toString());
-        avatar.setImage(img);
-        
-       profile.setVisible(true);
-       Subscription_tilepane.setVisible(false);
-       check_Subscription_pane.setVisible(false);
-       
-       update.setVisible(true);
-       save.setVisible(false);
-       retour.setVisible(false);
+    private void change_avatar(ActionEvent event) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose File");
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            fileChooser.getExtensionFilters().add(pngFilter);
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+            Image img = new Image(selectedFile.toURI().toString());
+
+                    selectedAvatar =selectedFile.getAbsolutePath();
+                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
+                    avatar.setImage(img);
+                    
+
+           } 
     }
 
-    @FXML
-    private void retour(ActionEvent event) {
-        firstname_text.setText(current.getUser_firstname());
-        lastname_text.setText(current.getUser_lastname());
-        email_text.setText(current.getUser_email());
-        password_text.setText(current.getUser_password());
-        File imgFile = new File(current.getUser_img());
-        Image img = new Image(imgFile.toURI().toString());
-        avatar.setImage(img);
-        
-       profile.setVisible(true);
-       Subscription_tilepane.setVisible(false);
-       check_Subscription_pane.setVisible(false);
-       
-       update.setVisible(true);
-       save.setVisible(false);
-       retour.setVisible(false);
-    }
     
 }
