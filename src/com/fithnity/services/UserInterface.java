@@ -19,4 +19,5 @@ public interface UserInterface<T> {
     public T displayById(int id);
     
     public boolean update(T os);
+    
 }

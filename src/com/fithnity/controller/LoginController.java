@@ -11,6 +11,8 @@ import com.fithnity.services.ServiceUser;
 import com.fithnity.services.UserManager;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,6 +75,8 @@ public class LoginController implements Initializable {
             String pass = password_text.getText();
             ServiceUser Su = ServiceUser.getInstance();
             User user = new User();
+            String hashedPassword = hashPassword(pass);
+            System.out.println(hashPassword("admin"));
             
             
             if (mail.isEmpty() || pass.isEmpty()) {
@@ -84,7 +88,7 @@ public class LoginController implements Initializable {
                 return;
             }
 
-            else if (Su.verif_user(mail,pass) == true) {
+            else if (Su.verif_user(mail,hashedPassword) == true) {
                 // Successful login
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
@@ -93,7 +97,7 @@ public class LoginController implements Initializable {
                 alert.show();
                 
                 
-                User current = Su.getCurrentUser(mail, pass);
+                User current = Su.getCurrentUser(mail, hashedPassword);
                  
                 UserManager.setCurrentUser(current);
                  
@@ -162,11 +166,33 @@ public class LoginController implements Initializable {
 
     @FXML
     private void forget_pass(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("You can't solve that yet!");
-        alert.show();
+        try {  
+            Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Forget_Pass.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+             } 
+        catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
     
     

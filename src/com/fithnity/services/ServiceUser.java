@@ -46,7 +46,7 @@ public class ServiceUser implements UserInterface<User>{
 
     @Override
     public void insert(User o) {
-        String req="insert into user (user_firstname,user_lastname,user_email,user_password) values ('"+o.getUser_firstname()+"','"+o.getUser_lastname()+"','"+o.getUser_email()+"','"+o.getUser_password()+"')";
+        String req="insert into user (user_firstname,user_lastname,user_email,user_password,user_img) values ('"+o.getUser_firstname()+"','"+o.getUser_lastname()+"','"+o.getUser_email()+"','"+o.getUser_password()+"','"+o.getUser_img()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -120,6 +120,7 @@ public class ServiceUser implements UserInterface<User>{
                 p.setUser_lastname(rs.getString(3));
                 p.setUser_email(rs.getString(4));
                 p.setUser_password(rs.getString(5));
+                p.setUser_img(rs.getString(6));
                 list.add(p);
             }
             
@@ -141,8 +142,9 @@ public class ServiceUser implements UserInterface<User>{
                 p.setUser_lastname(rs.getString("user_lastname"));
                 p.setUser_email(rs.getString(4));
                 p.setUser_password(rs.getString(5));
-                p.setAdmin(rs.getInt(6));
-                p.setIsSubscribed(rs.getInt(7));
+                p.setUser_img(rs.getString(6));
+                p.setAdmin(rs.getInt(7));
+                p.setIsSubscribed(rs.getInt(8));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,7 +154,7 @@ public class ServiceUser implements UserInterface<User>{
 
     @Override
     public boolean update(User p) {
-        String qry = "UPDATE user SET user_firstname = '"+p.getUser_firstname()+"', user_lastname = '"+p.getUser_lastname()+"', user_email = '"+p.getUser_email()+"', user_password = '"+p.getUser_password()+"' WHERE user_id = "+p.getUser_id();
+        String qry = "UPDATE user SET user_firstname = '"+p.getUser_firstname()+"', user_lastname = '"+p.getUser_lastname()+"', user_email = '"+p.getUser_email()+"', user_password = '"+p.getUser_password()+"', user_img = '"+p.getUser_img()+"' WHERE user_id = "+p.getUser_id();
         
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -203,8 +205,9 @@ public class ServiceUser implements UserInterface<User>{
                 p.setUser_lastname(rs.getString(3));
                 p.setUser_email(rs.getString(4));
                 p.setUser_password(rs.getString(5));
-                p.setAdmin(rs.getInt(6));
-                p.setIsSubscribed(rs.getInt(7));
+                p.setUser_img(rs.getString(6));
+                p.setAdmin(rs.getInt(7));
+                p.setIsSubscribed(rs.getInt(8));
      
         } catch (SQLException ex) {
             Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,13 +217,13 @@ public class ServiceUser implements UserInterface<User>{
     }
     
     public boolean verif_email(String email){
-        String qry = "SELECT COUNT(*) FROM user WHERE user_email = "+email;
+        String qry = "SELECT COUNT(*) FROM user WHERE user_email = '"+email+"'";
                 
                 try{
                 rs=st.executeQuery(qry);
                 rs.next();
                 int count = rs.getInt(1);
-                if(count==1){
+                if(count==0){
                     
                     return true;
                 }
@@ -232,6 +235,20 @@ public class ServiceUser implements UserInterface<User>{
                     Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 return false;
+    }
+    
+    public boolean update_pass(String pass, String mail) {
+        String qry = "UPDATE user SET user_password = '"+pass+"' WHERE user_email = '"+mail+"'";
+        
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
    

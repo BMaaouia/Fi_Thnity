@@ -126,7 +126,7 @@ public class ServiceUserSubscription implements UserSubscriptionInterface<UserSu
            + "WHERE user_subscription.user_id =" + id;
         
            UserSubscription us=new UserSubscription();
-           User u = new User();
+           User u = new User();       
            Subscription s=new Subscription();
            
         try {

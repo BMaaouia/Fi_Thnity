@@ -6,11 +6,18 @@
 package com.fithnity.controller;
 
 
+
 import com.fithnity.entity.User;
 import com.fithnity.services.ServiceUser;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,13 +31,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 /**
@@ -58,7 +69,14 @@ public class SignupController implements Initializable {
     private ImageView logo1;
     @FXML
     private PasswordField confirm_password_text;
+    
     ServiceUser Us = ServiceUser.getInstance();
+    @FXML
+    private Button add_avatar;
+    @FXML
+    private ImageView avatar;
+    
+    private String selectedAvatar;
     
 
     /**
@@ -72,7 +90,9 @@ public class SignupController implements Initializable {
     @FXML
     private void signup(ActionEvent event) {
         if(validateInputs()==true){
-        User u = new User(firstname_text.getText(), lastname_text.getText(), email_text.getText(), password_text.getText());
+           
+        String hashedPassword = hashPassword(password_text.getText());
+        User u = new User(firstname_text.getText(), lastname_text.getText(), email_text.getText(),hashedPassword,selectedAvatar);
             
             Us.insert(u);
         
@@ -86,7 +106,34 @@ public class SignupController implements Initializable {
         email_text.setText("");
         password_text.setText("");
         confirm_password_text.setText("");
+        avatar.setImage(null);
+        
+        
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
+       
+        Scene scene = login.getScene();
+        root.translateXProperty().set(scene.getWidth());
+
+        AnchorPane parentContainer = (AnchorPane) login.getScene().getRoot();
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0 , Interpolator.EASE_OUT);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(container);
+        });
+        timeline.play(); 
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
+        
     }
 
     @FXML
@@ -204,7 +251,7 @@ public class SignupController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText(null);
-            alert.setContentText("Missing Password!");
+            alert.setContentText("Missing Confirmed Password!");
             alert.show();
             return false;
         }
@@ -220,5 +267,48 @@ public class SignupController implements Initializable {
 
         return true;
        }
+    
+    
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SignupController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @FXML
+    private void add_avatar(ActionEvent event) {
+        
+        FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose File");
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            fileChooser.getExtensionFilters().add(pngFilter);
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+            Image img = new Image(selectedFile.toURI().toString());
+
+                    selectedAvatar =selectedFile.getAbsolutePath();
+                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
+                    avatar.setImage(img);
+                    
+
+           } 
+    }
+
+   
+  
+
+    
     
     }
