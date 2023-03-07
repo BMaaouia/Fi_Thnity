@@ -26,23 +26,27 @@ public class Employée {
     private String lastname_employée;
     private String email_employée;
     private String address_employée;
+    private int id_vehicule;
 
     public Employée() {
     }
 
-    public Employée(int id_employée, String firstname_employée, String lastname_employée, String email_employée, String address_employée) {
+    public Employée(int id_employée, String firstname_employée, String lastname_employée, String email_employée, String address_employée,int id_vehicule) {
         this.id_Employée = id_employée;
         this.firstname_employée = firstname_employée;
         this.lastname_employée = lastname_employée;
         this.email_employée = email_employée;
         this.address_employée = address_employée;
+        this.id_vehicule = id_vehicule;
     }
 
-    public Employée(String firstname_employée, String lastname_employée, String email_employée, String address_employée) {
+    public Employée(String firstname_employée, String lastname_employée, String email_employée, String address_employée,int id_vehicule) {
         this.firstname_employée = firstname_employée;
         this.lastname_employée = lastname_employée;
         this.email_employée = email_employée;
         this.address_employée = address_employée;
+        this.id_vehicule = id_vehicule;
+
     }
 
     public int getId_employée() {
@@ -51,6 +55,13 @@ public class Employée {
 
     public void setId_employée(int id_employée) {
         this.id_Employée = id_employée;
+    }
+     public int getId_vehicule() {
+        return id_vehicule;
+    }
+
+    public void setId_vehicule(int id_vehicule) {
+        this.id_vehicule = id_vehicule;
     }
 
     public String getFirstname_employée() {

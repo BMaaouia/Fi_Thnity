@@ -23,11 +23,11 @@ public class employée {
         
        DataSource c =DataSource.getInstance();
        
-       Employée p= new Employée(3,"saber","fff","hawarya","fsd");
+       //Employée p= new Employée(3,"saber","fff","hawarya","fsd");
       // produit p2= new produit(1,"saber",80,"lasvegas");
 
        ServiceEmployée SP= new ServiceEmployée();
-       SP.updateEmployée(p,3);
+      // SP.updateEmployée(p,3);
        
     }
     
