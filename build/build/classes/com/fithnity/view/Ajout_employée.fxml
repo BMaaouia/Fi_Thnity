@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.view.Ajout_employéeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.Ajout_employéeController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="710.0">
          <children>
@@ -39,7 +39,7 @@
                </font></Label>
             <ImageView fitHeight="241.0" fitWidth="206.0" layoutX="317.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/photo1.png" />
+                  <Image url="@../../../view/photo1.png" />
                </image>
             </ImageView>
             <Button fx:id="fx_back" layoutX="266.0" layoutY="289.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="162.0" text="Back">

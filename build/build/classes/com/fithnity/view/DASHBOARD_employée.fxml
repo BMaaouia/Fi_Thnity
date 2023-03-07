@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.view.DASHBOARD_employéeController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.DASHBOARD_employéeController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="employée_list" layoutX="262.0" layoutY="82.0" prefHeight="259.0" prefWidth="717.0" />
       <Button fx:id="fx_add" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" text="ADD">
