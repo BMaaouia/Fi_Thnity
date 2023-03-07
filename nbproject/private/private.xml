@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/AfficheController.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/main/ConnexionBDJavafx.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/MenuController.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/utils/Pdf.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/service/CommentDao.java</file>
             <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/Ajout_BlogController.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/service/BlogDao.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/Ajout_cController.java</file>
         </group>
     </open-files>
 </project-private>

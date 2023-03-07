@@ -52,6 +52,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -96,6 +97,16 @@ public class AfficheController implements Initializable {
     private ListView<Comment> list_c;
     
     private MenuController menuController;
+    @FXML
+    private Button retour;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
    
     
     
@@ -276,6 +287,13 @@ public class AfficheController implements Initializable {
 
     public void setMenuController(MenuController menuController) {
     this.menuController = menuController;
+    }
+
+    @FXML
+    private void goretour(ActionEvent event) throws IOException {
+             Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+    Stage window = (Stage) retour.getScene().getWindow();
+    window.setScene(new Scene(root3));
     }
 
     

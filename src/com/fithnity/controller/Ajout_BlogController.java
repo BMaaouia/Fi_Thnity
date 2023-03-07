@@ -53,6 +53,10 @@ public class Ajout_BlogController implements Initializable {
     @FXML
     private TextField titre_blog;
     Blog b = new Blog();
+    @FXML
+    private Button retour;
+    @FXML
+    private Button gaffiche;
 
     /**
      * Initializes the controller class.
@@ -187,6 +191,20 @@ if (rs.next() && rs.getInt(1) > 0) {
          
         
                 }
+
+    @FXML
+    private void retouur(ActionEvent event) throws IOException {
+            Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+    Stage window = (Stage) retour.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void goaffiche(ActionEvent event) throws IOException {
+          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
+    Stage window = (Stage) gaffiche.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
 }
 
    

@@ -76,6 +76,8 @@ public class Ajout_cController implements Initializable {
     private TextField text_c;
     @FXML
     private javafx.scene.control.Button btn_c;
+    @FXML
+    private javafx.scene.control.Button btn_aj;
     private ListView<Blog> list_b;
     @FXML
     private ListView<Comment> list_c;
@@ -98,6 +100,16 @@ public class Ajout_cController implements Initializable {
     private MenuController menuController;
     @FXML
     private TextField search;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private javafx.scene.control.Button retour;
+    @FXML
+    private javafx.scene.control.Button btn_acceuil;
+    @FXML
+    private javafx.scene.control.Button btn_user;
+    @FXML
+    private javafx.scene.control.Button btn_blog;
     
    
    
@@ -131,8 +143,10 @@ public class Ajout_cController implements Initializable {
     gridProduit.getChildren().add(scrollPane);
                 });
   
+     
+       
     }    
-
+     
     public void Affichage() throws FileNotFoundException
     {
         
@@ -392,5 +406,18 @@ public class Ajout_cController implements Initializable {
    public void setMenuController(MenuController menuController) {
     this.menuController = menuController;
     }
+
+    @FXML
+    private void goajouter(ActionEvent event) throws IOException {
+          
+       Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+    Stage window = (Stage) btn_aj.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void retouur(ActionEvent event) {
+    }
+    
 
   }
