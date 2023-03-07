@@ -7,13 +7,19 @@ package GUI;
 
 import DataBase.Mail;
 import Services.livraisonService;
+import Services.produitService;
 import Services.reservationService;
+import entity.produit;
 import entity.reservation;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +37,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,7 +66,11 @@ public class ADDreservationController implements Initializable {
      * Initializes the controller class.
      */
     reservationService sr = new reservationService() ;
+    produitService ps = new produitService();
    reservation r = new reservation() ;
+    @FXML
+    private ComboBox<produit> produit_combo;
+    int selectedModelId=0;
 
     public ADDreservationController() {
         this.sr = new reservationService();
@@ -85,6 +96,39 @@ public class ADDreservationController implements Initializable {
                        dateField.valueProperty().addListener((observable, oldValue, newValue) -> {
             // Mettre à jour l'affichage ou exécuter d'autres actions en réponse aux changements de date
         });
+                       
+                       
+                       
+         List<produit> produitList;
+        try {
+            produitList = ps.getAllProduit();
+            for(produit p : produitList) {
+    produit_combo.getItems().add(p);
+    produit_combo.setConverter(new StringConverter<produit>() {
+        @Override
+        public String toString(produit p) {
+            return p.getNom_produit();
+        }
+        @Override
+        public produit fromString(String string) {
+            return p;
+        }
+    });
+}
+ produit_combo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if(newValue != null) {
+        selectedModelId = newValue.getId_produit();
+        // Do something with the selected model id
+        System.out.println(selectedModelId);
+
+    }
+});  
+        } catch (SQLException ex) {
+            Logger.getLogger(ADDreservationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            
+                       
     }    
 
     
@@ -112,7 +156,7 @@ public class ADDreservationController implements Initializable {
      }
      else
         {
-            reservation U1 = new reservation (poids,prix,vd,va,date);
+            reservation U1 = new reservation (poids,prix,vd,va,date,selectedModelId);
             reservationService uc= new reservationService() ;
              System.out.println("Connexion réussie!");
                  String recipient = "yassine.benbelgacem@esprit.tn";

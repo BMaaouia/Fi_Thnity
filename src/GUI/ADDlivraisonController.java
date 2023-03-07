@@ -6,9 +6,16 @@
 package GUI;
 
 import Services.livraisonService;
+import Services.reservationService;
 import entity.livraison;
+import entity.produit;
+import entity.reservation;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
@@ -22,9 +29,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -56,7 +65,12 @@ public class ADDlivraisonController implements Initializable {
     private Label immatriculationlabel;
     @FXML
     private TextField label_description;
-   
+    @FXML
+    private ComboBox<reservation> reservation_combo;
+    @FXML
+    private Label etatlabel1;
+    reservationService rs = new reservationService();
+    int selectedModelId=0;
 
     /**
      * Initializes the controller class.
@@ -80,6 +94,37 @@ public class ADDlivraisonController implements Initializable {
                 }
             }
         });
+        
+        
+        List<reservation> reservationList;
+        try {
+            reservationList = rs.getAllReservation();
+            for(reservation r : reservationList) {
+    reservation_combo.getItems().add(r);
+    reservation_combo.setConverter(new StringConverter<reservation>() {
+        @Override
+        public String toString(reservation r) {
+            return Integer.toString(r.getPoids());
+        }
+        @Override
+        public reservation fromString(String string) {
+            return r;
+        }
+    });
+}
+ reservation_combo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if(newValue != null) {
+        selectedModelId = newValue.getId_r();
+        // Do something with the selected model id
+        System.out.println(selectedModelId);
+
+    }
+});  
+        } catch (SQLException ex) {
+            Logger.getLogger(ADDreservationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }  
 
     @FXML
@@ -90,7 +135,7 @@ public class ADDlivraisonController implements Initializable {
         
       
         livraisonService V_Service = new livraisonService();
-        livraison v = new livraison();
+        
         String description =String.valueOf(label_description.getText());
         if(label_description.getText().isEmpty()) {
             valid = false;
@@ -101,7 +146,7 @@ public class ADDlivraisonController implements Initializable {
         } else {
             label_description.setVisible(false);
             
-            v.setDescription(label_description.getText());
+            
           int etat = 0;
 
           if (fx_etatArriv.isSelected()) {
@@ -114,8 +159,10 @@ public class ADDlivraisonController implements Initializable {
               etat = 0;
                
           }
-
-          v.setEtat(etat);
+          livraison v = new livraison(selectedModelId,etat,label_description.getText());
+//          v.setDescription(label_description.getText());
+//          v.setEtat(etat);
+//          v.setId_r(selectedModelId);
             
           if(fx_etatAnnul.isSelected()) {
     fx_etatEncours.setText("EN Cours");

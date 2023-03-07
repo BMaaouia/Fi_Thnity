@@ -77,7 +77,7 @@ public class DASHBORDlivraisonController implements Initializable {
         livraison current = id_list2.getSelectionModel().getSelectedItem();
        
        
-         current.getId_produit();
+         //current.getId_produit();
        
        description_field.setText(current.getDescription());
                 

@@ -21,7 +21,7 @@ public class MainFX extends Application{
      @Override
     public void start(Stage primaryStage) throws Exception{
         
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/DASHBORDlivraison.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ADDlivraison.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

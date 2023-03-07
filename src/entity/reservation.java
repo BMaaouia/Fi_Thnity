@@ -13,10 +13,12 @@ import java.util.Objects;
 public class reservation {
     private int id_r;
     private int IDClient; //id de l'utisateur connecté et de type client
-    private int id_produit;
+    
     private int prix,poids;
     private LocalDate dateReser;
     private String villeDepart,villeArrive;
+    private int id_produit;
+
 
      public reservation() { 
     }
@@ -32,12 +34,13 @@ public class reservation {
         this.villeArrive = villeArrive;
     }
      
-        public reservation( int prix, int poids, LocalDate dateReser, String villeDepart, String villeArrive) {
+        public reservation( int prix, int poids, LocalDate dateReser, String villeDepart, String villeArrive, int id_produit) {
         this.prix = prix;
         this.poids = poids;
         this.dateReser = dateReser;
         this.villeDepart = villeDepart;
         this.villeArrive = villeArrive;
+        this.id_produit = id_produit;
     }
 
         public reservation(int id_r, int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser) {
@@ -49,12 +52,14 @@ public class reservation {
         this.dateReser = dateReser;
     }
 
-    public reservation(int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser) {
+    public reservation(int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser, int id_produit) {
          this.prix = prix;
         this.poids = poids;
         this.villeDepart = villeDepart;
         this.villeArrive = villeArrive;
         this.dateReser = dateReser;
+        this.id_produit = id_produit;
+
     }
 
     public reservation(int prix, int poids, String villeDepart, String villeArrive) {

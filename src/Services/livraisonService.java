@@ -28,11 +28,12 @@ public class livraisonService {
      public void addlivraison( livraison l) {    
         try {
             
-            String requete = "INSERT INTO livraison (etat,description) VALUES (?,?)";
+            String requete = "INSERT INTO livraison (etat,description,id_r) VALUES (?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setInt(1,l.getEtat());
             pst.setString(2,l.getDescription());
+            pst.setInt(3,l.getId_r());
           
             pst.executeUpdate();
              System.out.println("livraison bien livrais !");

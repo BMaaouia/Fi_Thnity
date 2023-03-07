@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ADDreservationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ADDreservationController">
    <children>
       <ImageView fitHeight="523.0" fitWidth="933.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -27,12 +27,12 @@
             <Font name="System Italic" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="285.0" layoutY="217.0" prefHeight="37.0" prefWidth="150.0" text="Ville Depart" textFill="#2dbac9">
+      <Label layoutX="237.0" layoutY="209.0" prefHeight="37.0" prefWidth="150.0" text="Ville Depart" textFill="#2dbac9">
          <font>
             <Font name="System Italic" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="515.0" layoutY="217.0" prefHeight="31.0" prefWidth="125.0" text="Ville Arrivée" textFill="#2dbac9">
+      <Label layoutX="515.0" layoutY="212.0" prefHeight="31.0" prefWidth="125.0" text="Ville Arrivée" textFill="#2dbac9">
          <font>
             <Font name="System Italic" size="21.0" />
          </font>
@@ -61,7 +61,13 @@
          </font>
       </Label>
       <Button layoutX="21.0" layoutY="21.0" mnemonicParsing="false" onAction="#back" />
-      <ComboBox fx:id="idva" layoutX="502.0" layoutY="266.0" onAction="#SelectId" prefWidth="150.0" />
-      <ComboBox fx:id="idvd" layoutX="264.0" layoutY="266.0" onAction="#SelectId" prefWidth="150.0" />
+      <ComboBox fx:id="idva" layoutX="502.0" layoutY="251.0" onAction="#SelectId" prefWidth="150.0" />
+      <ComboBox fx:id="idvd" layoutX="240.0" layoutY="251.0" onAction="#SelectId" prefWidth="150.0" />
+      <ComboBox fx:id="produit_combo" layoutX="387.0" layoutY="328.0" prefWidth="150.0" />
+      <Label layoutX="399.0" layoutY="297.0" prefHeight="31.0" prefWidth="125.0" text="Produit" textFill="#2dbac9">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

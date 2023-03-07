@@ -35,13 +35,14 @@ public class reservationService {
       
         try {
             
-            String requete = "INSERT INTO reservation (prix,poids,villeDepart,villeArrive,date_r) VALUES (?,?,?,?,?)";
+            String requete = "INSERT INTO reservation (prix,poids,villeDepart,villeArrive,date_r,id_produit) VALUES (?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, r.getPrix());
             pst.setInt(2, r.getPoids());
             pst.setString(3,r.getVilleDepart());
             pst.setString(4,r.getVilleArrive());
             pst.setDate(5, Date.valueOf(r.getDateReser()));
+            pst.setInt(6, r.getId_produit());
 
             pst.executeUpdate();
              System.out.println("Reservation ajoutée !");
