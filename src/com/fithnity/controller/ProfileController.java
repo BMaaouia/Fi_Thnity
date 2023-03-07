@@ -302,6 +302,7 @@ public class ProfileController implements Initializable{
                         Subscription_tilepane.setVisible(false);
                         profile.setVisible(true);
                         check_Subscription_pane.setVisible(false);
+                        retour.setVisible(false);
                         
                         
                         
@@ -457,21 +458,7 @@ public class ProfileController implements Initializable{
 
     @FXML
     private void retour(ActionEvent event) {
-        firstname_text.setText(current.getUser_firstname());
-        lastname_text.setText(current.getUser_lastname());
-        email_text.setText(current.getUser_email());
-        password_text.setText(current.getUser_password());
-        File imgFile = new File(current.getUser_img());
-        Image img = new Image(imgFile.toURI().toString());
-        avatar.setImage(img);
-        
-       profile.setVisible(true);
-       Subscription_tilepane.setVisible(false);
-       check_Subscription_pane.setVisible(false);
-       
-       update.setVisible(true);
-       save.setVisible(false);
-       retour.setVisible(false);
+        show_profile(event);
     }
     
 }
