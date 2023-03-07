@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AcceuilfrontController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AcceuilfrontController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="container" layoutX="3.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: F4F4F4;">
+      <AnchorPane id="AnchorPane" fx:id="container" layoutX="3.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: F4F4F4;">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="344.0" prefHeight="600.0" prefWidth="326.0" style="-fx-background-color: #05071F; -fx-border-color: #05071F; -fx-border-width: 5;">
+            <VBox alignment="TOP_CENTER" layoutX="413.0" prefHeight="800.0" prefWidth="326.0" style="-fx-background-color: #05071F; -fx-border-color: #05071F; -fx-border-width: 5;">
                <children>
                   <ImageView fitHeight="339.0" fitWidth="314.0" pickOnBounds="true" preserveRatio="true">
                      <image>

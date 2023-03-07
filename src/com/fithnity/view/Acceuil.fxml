@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="translate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: F4F4F4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AcceuilController">
+<AnchorPane fx:id="translate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: F4F4F4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.AcceuilController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="319.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
+            <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
                <children>
                   <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -140,7 +140,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <HBox alignment="CENTER_LEFT" layoutX="389.0" layoutY="132.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
+      <HBox alignment="CENTER_LEFT" layoutX="458.0" layoutY="151.0" prefHeight="75.0" prefWidth="579.0" spacing="50.0">
          <children>
             <VBox prefHeight="137.0" prefWidth="100.0">
                <children>
@@ -184,7 +184,7 @@
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="541.0" layoutY="59.0" text="Dashboard" textFill="#141313">
+      <Label layoutX="681.0" layoutY="59.0" text="Dashboard" textFill="#141313">
          <font>
             <Font size="24.0" />
          </font>

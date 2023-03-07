@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package com.fithnity.main;
-import com.fithnity.controller.AfficherPersonneController;
+
 import com.fithnity.controller.ListData;
-import com.fithnity.controller.AfficherReponseController;
+
 import com.fithnity.controller.ListDataReponse;
 import com.fithnity.controller.AjouterreclamationfrontController;
 import com.fithnity.controller.AcceuilfrontController;
@@ -41,7 +41,7 @@ public class GestionReclamation extends Application  {
         this.primaryStage.setTitle("Fi_Thnity");
         
         parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/acceuilfront.fxml"));
-        Scene scene = new Scene(parentPage);
+        Scene scene = new Scene(parentPage, 1200, 800);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
         this.primaryStage.setScene(scene);

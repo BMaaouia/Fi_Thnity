@@ -17,24 +17,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.MreclamationfrontController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.MreclamationfrontController">
    <children>
-      <AnchorPane layoutX="-4.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="-4.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;">
          <children>
-            <AnchorPane fx:id="container" layoutX="311.0" layoutY="-5.0" prefHeight="605.0" prefWidth="688.0">
+            <AnchorPane fx:id="container" layoutX="311.0" layoutY="-5.0" prefHeight="808.0" prefWidth="890.0">
                <children>
                   <Label layoutX="29.0" layoutY="26.0" text="Modifier/Supprimer Reclamation:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Separator layoutY="75.0" prefHeight="3.0" prefWidth="680.0" />
-                  <ListView fx:id="listviewP" layoutX="40.0" layoutY="229.0" prefHeight="140.0" prefWidth="606.0" stylesheets="@style.css">
+                  <Separator layoutY="77.0" prefHeight="1.0" prefWidth="890.0" />
+                  <ListView fx:id="listviewP" layoutX="40.0" layoutY="229.0" prefHeight="140.0" prefWidth="830.0" stylesheets="@style.css">
                      <effect>
                         <InnerShadow choke="0.16" color="#05071f" />
                      </effect>
                   </ListView>
-                  <Button fx:id="retour" layoutX="554.0" layoutY="27.0" mnemonicParsing="false" onAction="#retour3" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="retour" textFill="WHITE">
+                  <Button fx:id="retour" layoutX="755.0" layoutY="27.0" mnemonicParsing="false" onAction="#retour3" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="retour" textFill="WHITE">
                      <font>
                         <Font name="Franklin Gothic Medium" size="15.0" />
                      </font>
@@ -46,37 +46,37 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <TextField fx:id="txt_email" layoutX="126.0" layoutY="434.0" style="-fx-background-radius: 20;">
+                  <TextField fx:id="txt_email" layoutX="214.0" layoutY="494.0" style="-fx-background-radius: 20;">
                      <effect>
                         <DropShadow />
                      </effect>
                   </TextField>
-                  <TextField fx:id="txt_tel" layoutX="126.0" layoutY="481.0" style="-fx-background-radius: 20;">
+                  <TextField fx:id="txt_tel" layoutX="214.0" layoutY="541.0" style="-fx-background-radius: 20;">
                      <effect>
                         <DropShadow />
                      </effect>
                   </TextField>
-                  <Label layoutX="71.0" layoutY="435.0" text="email">
+                  <Label layoutX="159.0" layoutY="495.0" text="email">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="482.0" text="Tel">
+                  <Label layoutX="170.0" layoutY="542.0" text="Tel">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_message" layoutX="402.0" layoutY="434.0" prefHeight="84.0" prefWidth="187.0" style="-fx-background-radius: 20;">
+                  <TextField fx:id="txt_message" layoutX="490.0" layoutY="494.0" prefHeight="84.0" prefWidth="187.0" style="-fx-background-radius: 20;">
                      <effect>
                         <DropShadow />
                      </effect>
                   </TextField>
-                  <Label layoutX="353.0" layoutY="434.0" text="Text">
+                  <Label layoutX="441.0" layoutY="494.0" text="Text">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="modif2" layoutX="434.0" layoutY="547.0" mnemonicParsing="false" onAction="#modifier" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="modifier" textFill="WHITE">
+                  <Button fx:id="modif2" layoutX="615.0" layoutY="705.0" mnemonicParsing="false" onAction="#modifier" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="modifier" textFill="WHITE">
                      <font>
                         <Font name="Franklin Gothic Medium" size="15.0" />
                      </font>
@@ -88,7 +88,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="btn_delete" layoutX="554.0" layoutY="547.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="supprimer" textFill="WHITE">
+                  <Button fx:id="btn_delete" layoutX="735.0" layoutY="705.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="supprimer" textFill="WHITE">
                      <font>
                         <Font name="Franklin Gothic Medium" size="15.0" />
                      </font>
@@ -100,13 +100,13 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Pagination fx:id="pagination" layoutX="21.0" layoutY="229.0" prefHeight="197.0" prefWidth="628.0" />
-                  <TextField fx:id="search" layoutX="27.0" layoutY="139.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 2em;" />
-                  <DatePicker fx:id="dd" layoutX="334.0" layoutY="108.0" style="-fx-border-radius: 20;" />
-                  <DatePicker fx:id="df" layoutX="334.0" layoutY="148.0" />
-                  <Label layoutX="252.0" layoutY="120.0" text="Date Debut" />
-                  <Label layoutX="263.0" layoutY="153.0" text="Date Fin" />
-                  <Button layoutX="564.0" layoutY="125.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Filtrer" textFill="WHITE">
+                  <Pagination fx:id="pagination" layoutX="21.0" layoutY="229.0" prefHeight="197.0" prefWidth="859.0" />
+                  <TextField fx:id="search" layoutX="95.0" layoutY="142.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 2em;" />
+                  <DatePicker fx:id="dd" layoutX="402.0" layoutY="111.0" stylesheets="@style.css" />
+                  <DatePicker fx:id="df" layoutX="402.0" layoutY="151.0" stylesheets="@style.css" />
+                  <Label layoutX="320.0" layoutY="123.0" text="Date Debut" />
+                  <Label layoutX="331.0" layoutY="156.0" text="Date Fin" />
+                  <Button layoutX="632.0" layoutY="128.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Filtrer" textFill="WHITE">
                      <font>
                         <Font name="Franklin Gothic Medium" size="15.0" />
                      </font>
@@ -120,7 +120,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="613.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
+            <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
                <children>
                   <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>

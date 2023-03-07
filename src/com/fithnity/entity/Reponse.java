@@ -143,7 +143,7 @@ private SimpleObjectProperty <Reclamation> reclamation ;
 
     @Override
     public String toString() {
-        return  "emailUser=" + emailUser.get() + "  ||  " + ", messageR=" + messageR.get() + "  ||  " + ", dateReponse=" + dateReponse.get() + ' ';
+        return  "Email= " + emailUser.get() + "      " + "messageR= " + messageR.get() + "      " + "dateReponse= " + dateReponse.get() + ' ';
     }
    
 

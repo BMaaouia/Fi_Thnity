@@ -17,17 +17,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.reclamationbackController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.reclamationbackController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: F4F4F4;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: F4F4F4;">
          <children>
             <Label layoutX="348.0" layoutY="43.0" text="Liste Reclamations:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Separator layoutX="319.0" layoutY="91.0" prefHeight="3.0" prefWidth="683.0" />
-            <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="613.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
+            <Separator layoutX="319.0" layoutY="85.0" prefHeight="9.0" prefWidth="883.0" />
+            <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="806.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
                <children>
                   <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -144,14 +144,14 @@
                   </HBox>
                </children>
             </VBox>
-            <TextField fx:id="search" layoutX="341.0" layoutY="162.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 2em;" />
-            <ListView fx:id="listviewP" layoutX="330.0" layoutY="219.0" prefHeight="140.0" prefWidth="651.0" stylesheets="@style.css" />
-            <DatePicker fx:id="dd" layoutX="645.0" layoutY="133.0" style="-fx-border-radius: 20;" />
-            <DatePicker fx:id="df" layoutX="645.0" layoutY="173.0" />
-            <Pagination fx:id="pagination" layoutX="330.0" layoutY="219.0" prefHeight="211.0" prefWidth="662.0" />
-            <Label layoutX="563.0" layoutY="145.0" text="Date Debut" />
-            <Label layoutX="574.0" layoutY="178.0" text="Date Fin" />
-            <Button fx:id="btn_reponse" layoutX="720.0" layoutY="462.0" mnemonicParsing="false" onAction="#goreponse" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="répondre" textFill="WHITE">
+            <TextField fx:id="search" layoutX="428.0" layoutY="182.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 2em;" />
+            <ListView fx:id="listviewP" layoutX="348.0" layoutY="259.0" prefHeight="140.0" prefWidth="808.0" stylesheets="@style.css" />
+            <DatePicker fx:id="dd" layoutX="732.0" layoutY="153.0" stylesheets="@style.css" />
+            <DatePicker fx:id="df" layoutX="732.0" layoutY="193.0" stylesheets="@style.css" />
+            <Pagination fx:id="pagination" layoutX="348.0" layoutY="259.0" prefHeight="211.0" prefWidth="838.0" />
+            <Label layoutX="650.0" layoutY="165.0" text="Date Debut" />
+            <Label layoutX="661.0" layoutY="198.0" text="Date Fin" />
+            <Button fx:id="btn_reponse" layoutX="896.0" layoutY="694.0" mnemonicParsing="false" onAction="#goreponse" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="répondre" textFill="WHITE">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
@@ -163,7 +163,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button fx:id="pdf" layoutX="849.0" layoutY="462.0" mnemonicParsing="false" onAction="#handle" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="PDF" textFill="WHITE">
+            <Button fx:id="pdf" layoutX="1025.0" layoutY="694.0" mnemonicParsing="false" onAction="#handle" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="PDF" textFill="WHITE">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
@@ -175,7 +175,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button layoutX="879.0" layoutY="150.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Filtrer" textFill="WHITE">
+            <Button layoutX="966.0" layoutY="170.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Filtrer" textFill="WHITE">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
