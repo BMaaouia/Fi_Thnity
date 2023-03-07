@@ -5,11 +5,11 @@
  */
 package com.fithnity.controller;
 
-import com.fithnity.dao.BlogDao;
-import com.fithnity.dao.CommentDao;
+import com.fithnity.service.BlogDao;
+import com.fithnity.service.CommentDao;
 import com.fithnity.entity.Blog;
 import com.fithnity.entity.Comment;
-import com.fithnity.entity.Pdf;
+import com.fithnity.utils.Pdf;
 import com.itextpdf.text.DocumentException;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

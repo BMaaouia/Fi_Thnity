@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fithnity.dao;
+package com.fithnity.service;
 
 
 import com.fithnity.entity.Blog;
@@ -165,6 +165,15 @@ public class BlogDao implements Idao<Blog>{
         return false;
         
     }
+          public List<Blog> rechercher(String recherche) {
+    List<Blog> blogs = displayAllList().stream()
+            .filter(x -> 
+                x.gettitre_blog().contains(recherche) ||
+                x.gettext_blog().contains(recherche) 
+                )
+            .collect(Collectors.toList());
+    return blogs;       
+}        
 
 }
 

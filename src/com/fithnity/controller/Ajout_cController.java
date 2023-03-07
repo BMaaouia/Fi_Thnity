@@ -6,11 +6,11 @@
 package com.fithnity.controller;
 import javafx.scene.control.ListView;
 
-import com.fithnity.dao.BlogDao;
-import com.fithnity.dao.CommentDao;
+import com.fithnity.service.BlogDao;
+import com.fithnity.service.CommentDao;
 import com.fithnity.entity.Blog;
 import com.fithnity.entity.Comment;
-import com.fithnity.entity.Pdf;
+import com.fithnity.utils.Pdf;
 import com.itextpdf.text.DocumentException;
 import java.awt.Button;
 import java.io.FileInputStream;
@@ -23,6 +23,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,6 +52,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import static jdk.nashorn.internal.objects.NativeString.search;
 import org.controlsfx.control.Rating;
 
 /**
@@ -94,6 +96,8 @@ public class Ajout_cController implements Initializable {
     private Rating rating;
     
     private MenuController menuController;
+    @FXML
+    private TextField search;
     
    
    
@@ -111,10 +115,22 @@ public class Ajout_cController implements Initializable {
             try {
                 // TODO
                 Affichage();
+          
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+       search.textProperty().addListener((observable, oldValue, newValue) -> {
+     BlogDao bdao = BlogDao.getInstance();
+    List<Blog> b = bdao.rechercher(newValue);
+    ObservableList<Blog> BlogList = FXCollections.observableArrayList(b);
+ 
+    ScrollPane scrollPane = new ScrollPane();
+    
+    scroll_blog.setContent(list_b);
+    // Add the scroll pane to the parent container instead of the list view
+    gridProduit.getChildren().add(scrollPane);
+                });
+  
     }    
 
     public void Affichage() throws FileNotFoundException
@@ -173,10 +189,16 @@ public class Ajout_cController implements Initializable {
                     row++;
                 }
             }
-    }
-      
     
-      public void getEvents() {  
+   
+   
+            
+     
+   
+    
+              }
+    
+ public void getEvents() {  
 
         
             // TODO

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fithnity.entity;
+package com.fithnity.utils;
 
-import com.fithnity.dao.BlogDao;
+import com.fithnity.service.BlogDao;
 import com.fithnity.utils.ConnexionSingleton;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
@@ -83,7 +83,7 @@ public void add(String file) throws FileNotFoundException, SQLException, Documen
     my_pdf_report.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA, 12)));
 
     // Create the table
-    PdfPTable table = new PdfPTable(1);
+    PdfPTable table = new PdfPTable(2);
     table.setWidthPercentage(100);
     table.setHeaderRows(1);
 
@@ -91,13 +91,13 @@ public void add(String file) throws FileNotFoundException, SQLException, Documen
     Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
 
     // Add table headers
-    PdfPCell cell1 = new PdfPCell(new Phrase("Blog", headerFont));
+    PdfPCell cell1 = new PdfPCell(new Phrase("Titre", headerFont));
     cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
     table.addCell(cell1);
 
-  //  PdfPCell cell2 = new PdfPCell(new Phrase("Image", headerFont));
-   // cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
-   // table.addCell(cell2);
+      PdfPCell cell2 = new PdfPCell(new Phrase("Text", headerFont));
+     cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+     table.addCell(cell2);
 
     // Define table data font
     Font dataFont = FontFactory.getFont(FontFactory.HELVETICA, 10);
@@ -106,12 +106,14 @@ public void add(String file) throws FileNotFoundException, SQLException, Documen
     ResultSet res = st.executeQuery("select * from Blog");
     while (res.next()) {
         String title1 = res.getString(2);
+        String title2 = res.getString(3);
+        
        // String image = res.getString(3);
 
-        PdfPCell cellTitle = new PdfPCell(new Phrase(title1, dataFont));
-       // PdfPCell cellImage = new PdfPCell(new Phrase(image, dataFont));
-        table.addCell(cellTitle);
-      //  table.addCell(cellImage);
+        PdfPCell cellTitre = new PdfPCell(new Phrase(title1, dataFont));
+        PdfPCell cellText = new PdfPCell(new Phrase(title2, dataFont));
+        table.addCell(cellTitre);
+        table.addCell(cellText);
     }
 
     // Add the table to the PDF

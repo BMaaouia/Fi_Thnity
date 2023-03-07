@@ -40,7 +40,8 @@
          </content>
       </ScrollPane>
       <ListView fx:id="list_c" layoutX="500.0" layoutY="519.0" prefHeight="200.0" prefWidth="273.0" style="-fx-background-radius: 20;" />
-      <Rating fx:id="rating" layoutX="840.0" layoutY="75.0" />
-      <Button layoutX="896.0" layoutY="140.0" mnemonicParsing="false" onAction="#rate" text="Rate" />
+      <Rating fx:id="rating" layoutX="838.0" layoutY="76.0" />
+      <Button layoutX="894.0" layoutY="141.0" mnemonicParsing="false" onAction="#rate" text="Rate" />
+      <TextField fx:id="search" layoutX="851.0" layoutY="231.0" />
    </children>
 </AnchorPane>

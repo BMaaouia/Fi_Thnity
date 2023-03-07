@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/controller/MenuController.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/controller/Affiche_cController.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/controller/AfficheController.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/controller/ListData.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/dao/CommentDao.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/controller/Ajout_BlogController.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/entity/Blog.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/entity/Comment.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/dao/BlogDao.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/dao/Idao.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/view/ajout_c.fxml</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/controller/Ajout_cController.java</file>
-            <file>file:/C:/Users/user/Downloads/Fi_Thnity-GestionBlog/src/com/fithnity/test/ConnexionBDJavafx.java</file>
+            <file>file:/C:/Users/user/Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/controller/Ajout_BlogController.java</file>
         </group>
     </open-files>
 </project-private>

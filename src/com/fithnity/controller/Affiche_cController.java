@@ -6,9 +6,9 @@
  */
 package com.fithnity.controller;
 
-import com.fithnity.dao.BlogDao;
+import com.fithnity.service.BlogDao;
 import com.fithnity.controller.ListDatac;
-import com.fithnity.dao.CommentDao;
+import com.fithnity.service.CommentDao;
 import com.fithnity.entity.Blog;
 import com.fithnity.entity.Comment;
 import java.io.IOException;

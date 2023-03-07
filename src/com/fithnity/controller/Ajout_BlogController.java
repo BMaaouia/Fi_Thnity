@@ -5,7 +5,7 @@
  */
 package com.fithnity.controller;
 
-import com.fithnity.dao.BlogDao;
+import com.fithnity.service.BlogDao;
 import com.fithnity.entity.Blog;
 import java.io.File;
 import java.io.IOException;
