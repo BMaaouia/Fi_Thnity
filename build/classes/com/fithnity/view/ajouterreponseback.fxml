@@ -41,7 +41,7 @@
                      </effect>
                   </TextField>
                   <Label layoutX="182.0" layoutY="476.0" text="message" />
-                  <ListView fx:id="listviewRec" layoutX="33.0" layoutY="169.0" prefHeight="139.0" prefWidth="619.0" />
+                  <ListView fx:id="listviewRec" layoutX="33.0" layoutY="169.0" prefHeight="139.0" prefWidth="619.0" stylesheets="@style.css" />
                   <Pagination fx:id="pagination" layoutX="17.0" layoutY="169.0" prefHeight="197.0" prefWidth="651.0" />
                   <Button fx:id="btnn" layoutX="436.0" layoutY="546.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Ajouter" textFill="WHITE">
                      <font>

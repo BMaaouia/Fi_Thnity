@@ -46,7 +46,7 @@ public class GestionReclamation extends Application  {
         primaryStage.setScene(scene);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
-
+scene.getStylesheets().add("/com/fithnity/view/style.css");
     }
 
     /**

@@ -44,11 +44,14 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javax.management.Notification;
@@ -104,6 +107,9 @@ public class MreclamationfrontController implements Initializable {
     private DatePicker df;
     @FXML
     private Button retour;
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -121,11 +127,35 @@ search.textProperty().addListener((observable, oldValue, newValue) -> {
     ReclamationDao pdao = ReclamationDao.getInstance();
     List<Reclamation> r = pdao.rechercher(newValue);
     ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
-   
+   listviewP.setStyle("-fx-font-family: Arial; -fx-font-size: 14px; -fx-font-weight: bold;");
    listviewP.setItems(reclamationsList);
+//  listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
+//   
+//    protected void updateItem(String item, boolean empty) {
+//        super.updateItem(item, empty);
+//
+//        if (empty || item == null) {
+//            setText(null);
+//            setGraphic(null);
+//        } else {
+//            setText(item);
+//            setStyle("-fx-background-color: lightgray; -fx-font-size: 24px;");
+//        }
+//    }
+//
 
-
-
+listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
+    @Override
+    protected void updateItem(Reclamation item, boolean empty) {
+        super.updateItem(item, empty);
+        if (empty || item == null) {
+            setText(null);
+        } else {
+            setText(item.toString()); // or any other method that returns a string representation of the Reclamation object
+            setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        }
+    }
+});
 
 
 

@@ -64,16 +64,16 @@ public class ReclamationDao implements Idao<Reclamation>{
     public boolean reclamationExists(Reclamation p) {
     List<Reclamation> list = displayAllList();
     for (Reclamation r : list) {
-        if (r.getNom().equals(p.getNom())
-                && r.getPrenom().equals(p.getPrenom())
-                && r.getEmail().equals(p.getEmail())
-                && r.getNumTel() == p.getNumTel()
-                && r.getMessage().equals(p.getMessage())
-                && r.getDate().equals(p.getDate())) {
-            return true;
+        if (
+              
+                 r.getEmail().equals(p.getEmail())
+          
+                && r.getMessage().equals(p.getMessage()))
+              {
+            return false;
         }
     }
-    return false;
+    return true;
 }
     
 

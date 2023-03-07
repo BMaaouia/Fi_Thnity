@@ -198,7 +198,7 @@ public class AjouterreclamationfrontController implements Initializable {
             	 Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
 
          //**************************
-          if (pdao.reclamationExists(p2)) {
+          if (pdao.reclamationExists(p)) {
             pdao.insert(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -227,14 +227,7 @@ public class AjouterreclamationfrontController implements Initializable {
             alert.setContentText("Une réclamation avec les mêmes valeurs existe déjà!");
             alert.show();
         }
-//            pdao.insert(p);
-//        
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Information Dialog");
-//        alert.setHeaderText(null);
-//        alert.setContentText("Reclamation insérée avec succés!");
-//        alert.show();
-        
+
        
 //reload
 Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
