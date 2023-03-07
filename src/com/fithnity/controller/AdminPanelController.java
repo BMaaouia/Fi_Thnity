@@ -143,6 +143,8 @@ public class AdminPanelController implements Initializable {
             price_subscription.setText("");
             image.setImage(null);
             add_image.setVisible(true);
+            retour.setVisible(false);
+            show_subscription(event);
             
               }
         });
@@ -466,124 +468,8 @@ public class AdminPanelController implements Initializable {
     @FXML
     private void retour(ActionEvent event) {
         retour.setVisible(false);
-        
-        
-        subscription.setVisible(false);
-        list.setVisible(false);
-        tilepane_subscription.setVisible(true);
-        subscription_vbox.setVisible(true);
-        tilepane_subscription.getChildren().clear();
-            
-            List<Subscription> items = new ArrayList<>();
-            items=Ss.displayAllList();
-
-             for (Subscription item : items) {
-                
-                Image image;
-                try {
-                    image = new Image(new FileInputStream(item.getSubscription_img()));
-                    ImageView imageView = new ImageView(image);
-                    imageView.setFitHeight(150);
-                    imageView.setFitWidth(150);
-   
-                    Button btn = new Button("Delete");
-                    btn.setId(Integer.toString(item.getSubscription_id()));
-                    btn.setStyle("-fx-background-color: black; -fx-background-radius: 20; -fx-font-family: \"Franklin Gothic Medium\";-fx-text-fill: #F9F7DD;");
-
-                    Label nbUsers = new Label(Integer.toString(SUS.GetNbUsers(item.getSubscription_id()))+" Current Users");
-                    Label type = new Label(item.getSubscription_type());
-                    Label price = new Label(Integer.toString(item.getSubscription_price())+" DT");
-                    
-                    
-                    nbUsers.setStyle("-fx-font-family: \"Franklin Gothic Medium\";");
-                    type.setStyle("-fx-font-family: \"Franklin Gothic Medium\";");
-                    price.setStyle("-fx-font-family: \"Franklin Gothic Medium\";");
-                    
-
-                    VBox vBox = new VBox();
-                    vBox.getChildren().addAll(imageView,type,price,nbUsers,btn);
-                    vBox.setAlignment(Pos.CENTER);
-                    tilepane_subscription.getChildren().add(vBox);
-                    
-                    
-                    vBox.setOnMouseClicked(e -> {
-                        // Create a new stage to display the subscription details
-                        Stage detailsStage = new Stage();
-                        detailsStage.setTitle("Subscription Details");
-
-                        // Create text fields to display the subscription details
-                        TextField typeField = new TextField(item.getSubscription_type());
-                        typeField.setStyle("-fx-background-radius: 20; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,0,1 );");
-                        typeField.setEditable(true);
-                        TextField priceField = new TextField(Integer.toString(item.getSubscription_price()));
-                        priceField.setStyle("-fx-background-radius: 20; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,0,1 );");
-                        priceField.setEditable(true);
-
-
-                        // Add the text fields to a grid pane
-                        GridPane detailsPane = new GridPane();
-                        detailsPane.setAlignment(Pos.CENTER);
-                        detailsPane.setStyle("-fx-background-color: #F9F7DD;");
-                        detailsPane.setVgap(40);
-                        detailsPane.setHgap(20);
-                        Label typeLabel = new Label("Type: ");
-                        typeLabel.setFont(Font.font("Franklin Gothic Medium", FontWeight.NORMAL, 18));
-                        detailsPane.add(typeLabel, 0, 0);
-                        detailsPane.add(typeField, 1, 0);
-                        Label priceLabel = new Label("Price: ");
-                        priceLabel.setFont(Font.font("Franklin Gothic Medium", FontWeight.NORMAL, 18));
-                        detailsPane.add(priceLabel, 0, 1);
-                        detailsPane.add(priceField, 1, 1);
-                        Button updateButton = new Button("Update");
-                        updateButton.setStyle("-fx-background-color: black; -fx-background-radius: 20; -fx-font-family: \"Franklin Gothic Medium\"; -fx-text-fill: #F9F7DD;");
-                        detailsPane.add(updateButton, 0, 2, 2, 1);
-                        GridPane.setHalignment(updateButton, HPos.CENTER);
-                        updateButton.setOnAction(e1 -> {
-                            if(validateInputs2(typeField.getText(),priceField.getText())==true){
-                            // Update the subscription with the new details
-                            item.setSubscription_type(typeField.getText());
-                            item.setSubscription_price(Integer.parseInt(priceField.getText()));
-                            type.setText(item.getSubscription_type());
-                            price.setText(Integer.toString(item.getSubscription_price())+" DT");
-                            Ss.update(item);
-                            // Close the window
-                            detailsStage.close();
-                            }
-                        });
-
-                        // Add the grid pane to the scene
-                        Scene detailsScene = new Scene(detailsPane, 400, 300);
-                        detailsStage.setScene(detailsScene);
-
-                        // Show the stage
-                        detailsStage.show();
-                    });
-
-                    
-                    
-                    
-                    btn.setOnAction(e -> {
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setTitle("Confirmation Dialog");
-                            alert.setHeaderText("Are you sure you want to Delete this item?");
-                            Optional<ButtonType> result = alert.showAndWait();
-                            
-                            if (result.get() == ButtonType.OK){
-                                Ss.delete(item);
-                                tilepane_subscription.getChildren().remove(vBox);
-                            }
-                    });
-                 
-                } catch (FileNotFoundException ex) {
-                        Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
-                
-                    
-
-
-
-                     }
+        show_subscription(event);
+    
     }
     
 }
