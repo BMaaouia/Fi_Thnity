@@ -3,23 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/test/MainFX.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/test/GestionLivraison.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/DataBase/My_DB.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/entity/livraison.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/ModifierReservationController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/entity/reservation.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Services/produitService.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/entity/produit.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/AjoutReservationController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Inerfaces/Gallerie_produitController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Inerfaces/AjoutProduitController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/SupprimerReservationController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/SupressionProduitController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/Gallerie_reservationController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/ModifierProduitController.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Services/reservationService.java</file>
-            <file>file:/C:/Users/DELL/OneDrive/Bureau/GestionLivraison/src/Interfaces/Acueille_tacheController.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/DASHBOARDreservationController.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/DataBase/My_DB.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/test/MainFX.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/ADDproduitController.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/DASHBOARDproduitController.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/addproduit.css</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/Services/produitService.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/ADDreservationController.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/entity/reservation.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/dashboardreservation.css</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/Services/livraisonService.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/Services/reservationService.java</file>
+            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/DataBase/Pdf.java</file>
         </group>
     </open-files>
 </project-private>

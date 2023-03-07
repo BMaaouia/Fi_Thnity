@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.ADDproduitController">
+    <stylesheets>
+        <URL value="@addproduit.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="523.0" fitWidth="933.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../GestionOffres_1_2/src/Images/893d899e956a2addeb76b13cf907831dd66ef149.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="294.0" layoutY="82.0" text="Nom" textFill="#2dbac9" textOverrun="CLIP">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="290.0" layoutY="136.0" text="Poids" textFill="#2dbac9">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="290.0" layoutY="201.0" text="Description:" textFill="#2dbac9">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nomproduit" layoutX="377.0" layoutY="82.0" prefHeight="31.0" prefWidth="187.0" promptText="aaaaaa" />
+            <TextField fx:id="poidsproduit" layoutX="377.0" layoutY="136.0" promptText="00000kg" />
+            <Button fx:id="btnajoutProduit" layoutX="377.0" layoutY="453.0" mnemonicParsing="false" onAction="#ajoutproduit" prefHeight="31.0" prefWidth="88.0" text="Ajouter" textFill="#2dbac9">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnafficheproduit" layoutX="474.0" layoutY="453.0" mnemonicParsing="false" onAction="#afficheproduit" text="Afficher" textFill="#2dbac9">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="389.0" layoutY="20.0" prefHeight="45.0" prefWidth="376.0" text="Ajouter Une Produit" textFill="#7566ac">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="toHome" layoutX="21.0" layoutY="21.0" mnemonicParsing="false" onAction="#VersHome" text="&lt;&lt;" />
+            <TextField fx:id="descriptionproduit" layoutX="291.0" layoutY="232.0" prefHeight="172.0" prefWidth="277.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

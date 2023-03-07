@@ -5,45 +5,83 @@
  */
 package entity;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class reservation {
-    private int IDReservation;
+    private int id_r;
     private int IDClient; //id de l'utisateur connecté et de type client
     private int id_produit;
     private int prix,poids;
-    private String villeDepart,villeArrive,dateReser,image;
+    private LocalDate dateReser;
+    private String villeDepart,villeArrive;
 
-        public reservation() { 
+     public reservation() { 
     }
-        
-     public reservation( int prix, int poids, String villeDepart, String villeArrive, String dateReser, String image) {
-        this.prix = prix;
-        this.poids = poids;
-        this.villeDepart = villeDepart;
-        this.villeArrive = villeArrive;
-        this.dateReser = dateReser;
-        this.image = image;
-    } 
-     
-    public reservation(int IDReservation, int IDClient, int id_produit, int prix, int poids, String villeDepart, String villeArrive, String dateReser, String image) {
-        this.IDReservation = IDReservation;
+
+    public reservation(int id_r, int IDClient, int id_produit, int prix, int poids, LocalDate dateReser, String villeDepart, String villeArrive) {
+        this.id_r = id_r;
         this.IDClient = IDClient;
         this.id_produit = id_produit;
         this.prix = prix;
         this.poids = poids;
+        this.dateReser = dateReser;
+        this.villeDepart = villeDepart;
+        this.villeArrive = villeArrive;
+    }
+     
+        public reservation( int prix, int poids, LocalDate dateReser, String villeDepart, String villeArrive) {
+        this.prix = prix;
+        this.poids = poids;
+        this.dateReser = dateReser;
+        this.villeDepart = villeDepart;
+        this.villeArrive = villeArrive;
+    }
+
+        public reservation(int id_r, int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser) {
+        this.id_r = id_r;
+        this.prix = prix;
+        this.poids = poids;
         this.villeDepart = villeDepart;
         this.villeArrive = villeArrive;
         this.dateReser = dateReser;
-        this.image = image;
     }
 
-    public int getIDReservation() {
-        return IDReservation;
+    public reservation(int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser) {
+         this.prix = prix;
+        this.poids = poids;
+        this.villeDepart = villeDepart;
+        this.villeArrive = villeArrive;
+        this.dateReser = dateReser;
     }
 
-    public void setIDReservation(int IDReservation) {
-        this.IDReservation = IDReservation;
+    public reservation(int prix, int poids, String villeDepart, String villeArrive) {
+    this.prix = prix;
+    this.poids = poids;
+    this.villeDepart = villeDepart;
+    this.villeArrive = villeArrive;
+   
+}
+    
+    public reservation(int prix, int poids, String villeDepart, String villeArrive, Date dateReser) {
+          this.prix = prix;
+        this.poids = poids;
+        this.villeDepart = villeDepart;
+        this.villeArrive = villeArrive;
+    }
+
+    public reservation(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getId_r() {
+        return id_r;
+    }
+
+    public void setId_r(int id_r) {
+        this.id_r = id_r;
     }
 
     public int getIDClient() {
@@ -78,6 +116,14 @@ public class reservation {
         this.poids = poids;
     }
 
+    public LocalDate getDateReser() {
+        return dateReser;
+    }
+
+    public void setDateReser(LocalDate dateReser) {
+        this.dateReser = dateReser;
+    }
+
     public String getVilleDepart() {
         return villeDepart;
     }
@@ -94,34 +140,17 @@ public class reservation {
         this.villeArrive = villeArrive;
     }
 
-    public String getDateReser() {
-        return dateReser;
-    }
-
-    public void setDateReser(String dateReser) {
-        this.dateReser = dateReser;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + this.IDReservation;
-        hash = 13 * hash + this.IDClient;
-        hash = 13 * hash + this.id_produit;
-        hash = 13 * hash + this.prix;
-        hash = 13 * hash + this.poids;
-        hash = 13 * hash + Objects.hashCode(this.villeDepart);
-        hash = 13 * hash + Objects.hashCode(this.villeArrive);
-        hash = 13 * hash + Objects.hashCode(this.dateReser);
-        hash = 13 * hash + Objects.hashCode(this.image);
+        int hash = 7;
+        hash = 53 * hash + this.id_r;
+        hash = 53 * hash + this.IDClient;
+        hash = 53 * hash + this.id_produit;
+        hash = 53 * hash + this.prix;
+        hash = 53 * hash + this.poids;
+        hash = 53 * hash + Objects.hashCode(this.dateReser);
+        hash = 53 * hash + Objects.hashCode(this.villeDepart);
+        hash = 53 * hash + Objects.hashCode(this.villeArrive);
         return hash;
     }
 
@@ -137,7 +166,7 @@ public class reservation {
             return false;
         }
         final reservation other = (reservation) obj;
-        if (this.IDReservation != other.IDReservation) {
+        if (this.id_r != other.id_r) {
             return false;
         }
         if (this.IDClient != other.IDClient) {
@@ -161,16 +190,12 @@ public class reservation {
         if (!Objects.equals(this.dateReser, other.dateReser)) {
             return false;
         }
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "reservation{" + "IDReservation=" + IDReservation + ", IDClient=" + IDClient + ", id_produit=" + id_produit + ", prix=" + prix + ", poids=" + poids + ", villeDepart=" + villeDepart + ", villeArrive=" + villeArrive + ", dateReser=" + dateReser + ", image=" + image + '}';
+        return "reservation{" + "id_r=" + id_r + ", IDClient=" + IDClient + ", id_produit=" + id_produit + ", prix=" + prix + ", poids=" + poids + ", dateReser=" + dateReser + ", villeDepart=" + villeDepart + ", villeArrive=" + villeArrive + '}';
     }
-    
     
 }

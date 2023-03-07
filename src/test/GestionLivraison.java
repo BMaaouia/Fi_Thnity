@@ -7,7 +7,9 @@ package test;
 
 import DataBase.My_DB;
 import Services.produitService;
+import Services.reservationService;
 import entity.produit;
+import entity.reservation;
 
 /**
  *
@@ -20,13 +22,7 @@ public class GestionLivraison {
      */
     public static void main(String[] args) {
         
-      My_DB c =My_DB.getInstance();
-       produit p= new produit(1,"saber",20,"hawarya");
-       produit p2= new produit(1,"saber",80,"lasvegas");
 
-       produitService SP= new produitService();
-       SP.deleteProduit(3);
-       
     }
     
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="963.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DASHBOARDreservationController">
+    <stylesheets>
+        <URL value="@dashboardreservation.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="994.0">
+         <children>
+            <Text layoutX="47.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix">
+               <font>
+                  <Font name="Gabriola" size="31.0" />
+               </font>
+            </Text>
+            <Text layoutX="41.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier">
+               <font>
+                  <Font name="Gabriola" size="69.0" />
+               </font>
+            </Text>
+            <Line endX="688.0" layoutX="117.0" layoutY="89.0" startX="-100.0" strokeWidth="5.0" />
+            <Text layoutX="41.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="poids">
+               <font>
+                  <Font name="Gabriola" size="31.0" />
+               </font>
+            </Text>
+            <Text layoutX="39.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ville départ" wrappingWidth="112.19921875">
+               <font>
+                  <Font name="Gabriola" size="31.0" />
+               </font>
+            </Text>
+            <TextField fx:id="prix_filed" layoutX="132.0" layoutY="130.0" />
+            <TextField fx:id="poids_filed" layoutX="132.0" layoutY="201.0" />
+            <Button fx:id="supprimer" layoutX="463.0" layoutY="127.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="21.0" />
+            <Button fx:id="refresh" layoutX="282.0" layoutY="510.0" mnemonicParsing="false" text="refresh" />
+            <Label layoutX="41.0" layoutY="351.0" prefHeight="31.0" prefWidth="125.0" text="Ville Arrivée" textFill="#171717">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="417.0" text="Date réservation " textFill="#1d1e1e">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Label>
+            <Separator layoutX="394.0" layoutY="104.0" orientation="VERTICAL" prefHeight="419.0" prefWidth="0.0" />
+            <ComboBox fx:id="idvd" layoutX="176.0" layoutY="288.0" prefWidth="150.0" />
+            <ComboBox fx:id="idva" layoutX="176.0" layoutY="354.0" prefWidth="150.0" />
+            <DatePicker fx:id="dateField" layoutX="199.0" layoutY="419.0" prefHeight="26.0" prefWidth="162.0" />
+            <TextField fx:id="rech" layoutX="560.0" layoutY="127.0" onKeyReleased="#FiltrerKeyReleased3" promptText="Rechercher" />
+            <Button layoutX="13.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="22.0" />
+            <Button fx:id="supp" layoutX="748.0" layoutY="127.0" mnemonicParsing="false" onAction="#Supprimer" text="Supprimer" />
+            <Button layoutX="865.0" layoutY="127.0" mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="40.0" text="pdf" />
+            <Button fx:id="supp1" layoutX="66.0" layoutY="518.0" mnemonicParsing="false" text="update" />
+            <ListView fx:id="id_list2" layoutX="400.0" layoutY="185.0" prefHeight="367.0" prefWidth="571.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

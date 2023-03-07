@@ -22,8 +22,8 @@ public class produit {
     public produit() {
     }
     
-    public produit(int id_produit, String nom_produit, int poids,String description) {
-       this.id_produit = id_produit;
+    public produit(String nom_produit, int poids,String description) {
+       
        this.nom_produit = nom_produit;
        this.poids = poids;
        this.description = description;
@@ -37,12 +37,14 @@ public class produit {
         this.description = description;
     }
 
-       public produit( String nom_produit, int poids, String description) {
+    public produit(int id_produit, String nom_produit, int poids, String description) {
+        this.id_produit = id_produit;
         this.nom_produit = nom_produit;
         this.poids = poids;
-      
         this.description = description;
     }
+
+     
        
       public produit( String nom_produit, int poids, String photo, String description) {
         this.nom_produit = nom_produit;
