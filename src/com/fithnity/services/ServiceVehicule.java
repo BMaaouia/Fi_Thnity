@@ -5,6 +5,7 @@
  */
 package com.fithnity.services;
 
+import com.fithnity.entities.Employée;
 import com.fithnity.entities.Vehicule;
 import com.fithnity.utils.DataSource;
 import java.sql.Connection;
@@ -13,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ServiceVehicule {
      Connection cnx = DataSource.getInstance().getCnx();
@@ -97,4 +100,31 @@ public class ServiceVehicule {
             System.err.println(ex.getMessage());
         }
     }
+
+   public ObservableList<Vehicule> search1(String searchTerm) {
+        ObservableList<Vehicule> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement("SELECT * FROM vehicule");
+            ResultSet vs = preparedStatement.executeQuery();
+            while (vs.next()) {
+                Vehicule offre = new Vehicule(
+
+                       
+                          vs.getString(2),
+                          vs.getString(3),
+                          vs.getString(4),
+                        vs.getBoolean(5)
+                );
+                list.add(offre);
+            }
+        } catch (SQLException v) {
+            v.printStackTrace();
+        }
+        return list;
+    }
+
+
+   
+
+
 }

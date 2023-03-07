@@ -6,9 +6,12 @@
 package com.fithnity.view;
 
 import com.fithnity.entities.Employée;
+import com.fithnity.entities.Vehicule;
 import com.fithnity.services.ServiceEmployée;
+import com.fithnity.services.ServiceVehicule;
 import com.fithnity.utils.Mail;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,9 +25,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -57,6 +62,12 @@ public class Ajout_employéeController implements Initializable {
     private Label lb_success_add;
     @FXML
     private Label lb_err_add;
+    
+    ServiceVehicule v_Service = new ServiceVehicule();
+    @FXML
+    private ComboBox<Vehicule> vehicule_combo;
+    
+    int selectedModelId =0;
 
     /**
      * Initializes the controller class.
@@ -81,7 +92,32 @@ public class Ajout_employéeController implements Initializable {
                 }
             }
         });
-                  
+        
+                   List<Vehicule> vehiculeList = v_Service.getAllVehicule();
+
+for(Vehicule vehicule : vehiculeList) {
+    vehicule_combo.getItems().add(vehicule);
+    vehicule_combo.setConverter(new StringConverter<Vehicule>() {
+        @Override
+        public String toString(Vehicule vehicule) {
+            return vehicule.getModele();
+        }
+        @Override
+        public Vehicule fromString(String string) {
+            return vehicule;
+        }
+    });
+}
+ vehicule_combo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if(newValue != null) {
+        selectedModelId = newValue.getId();
+        // Do something with the selected model id
+        System.out.println(selectedModelId);
+
+    }
+});
+
+
                                   
     }
         
@@ -145,6 +181,7 @@ public class Ajout_employéeController implements Initializable {
         mail.envoyerMailEmploye(mailTO, e.getFirstname_employée(), e.getLastname_employée());
     }}
 */
+      
               // Vérifier que les champs obligatoires sont remplis
     if (firstname_text.getText().isEmpty() || lastname_text.getText().isEmpty()
             || email_text.getText().isEmpty() || address_text.getText().isEmpty()) {
@@ -216,19 +253,18 @@ public class Ajout_employéeController implements Initializable {
 
             lb_success_add.setVisible(true);
 
+           
+            
             ServiceEmployée e_Service = new ServiceEmployée();
-            Employée e = new Employée();
-            e.setFirstname_employée(firstname_text.getText());
-            e.setLastname_employée(lastname_text.getText());
-            e.setEmail_employée(email_text.getText());
-            e.setAddress_employée(address_text.getText());
-
+            Employée e = new Employée(firstname_text.getText(),lastname_text.getText(),email_text.getText(),address_text.getText(),selectedModelId);
+            
             e_Service.ajout_employée(e);
-
+            
             String mailTO = e.getEmail_employée();
 
-            Mail mail = new Mail();
-            mail.envoyerMailEmploye(mailTO, e.getFirstname_employée(), e.getLastname_employée());
+          Mail mail = new Mail();
+          mail.envoyerMailEmploye(mailTO, e.getFirstname_employée(), e.getLastname_employée());
+            
         }
     }
 }

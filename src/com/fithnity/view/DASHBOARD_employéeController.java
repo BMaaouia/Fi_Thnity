@@ -9,10 +9,13 @@ import com.fithnity.entities.Employée;
 import com.fithnity.services.ServiceEmployée;
 import com.fithnity.services.ServiceVehicule;
 import com.fithnity.utils.Pdf;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +27,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -52,7 +57,7 @@ public class DASHBOARD_employéeController implements Initializable {
     private Button fx_update;
     @FXML
     private AnchorPane employée_list;
-    private TableView table;
+    private ListView table;
     private ObservableList data;
     @FXML
     private Button print;
@@ -73,11 +78,12 @@ public class DASHBOARD_employéeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        
           
         ServiceEmployée es = new ServiceEmployée();
         System.out.println(es.getAllemployée().toString());
         
-       table = new TableView();
+       table = new ListView();
         
          data = getInitialTableData();
         table.setItems(data);
@@ -97,23 +103,14 @@ public class DASHBOARD_employéeController implements Initializable {
         TableColumn addressCol = new TableColumn("Address");
         addressCol.setCellValueFactory(new PropertyValueFactory("Address_employée"));
 
-        table.getColumns().setAll( nameCol, lastanameCol, emailCol,addressCol);
+       // table.getColumns().setAll( nameCol, lastanameCol, emailCol,addressCol);
         table.setPrefWidth(898);
         table.setPrefHeight(376);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+      //  table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         employée_list.getChildren().add(table);
         
-         fx_update.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    redirectToModifPersonne(event);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        });
+         
          
          
              fx_add.setOnAction(new EventHandler<ActionEvent>() {
@@ -140,15 +137,59 @@ public class DASHBOARD_employéeController implements Initializable {
                 }
             }
         });
+                     
+                     
+                     
+                     table.setOnMouseClicked(event ->{
+                            ServiceEmployée e_Service = new ServiceEmployée();
+                            Employée e1= (Employée) table.getSelectionModel().getSelectedItem();
+                            e1.getId_employée();
+                            firstname_text.setText(e1.getFirstname_employée());
+                            lastname_text.setText(e1.getLastname_employée());
+                            email_text.setText(e1.getEmail_employée());
+                            address_text.setText(e1.getAddress_employée());
+                            fx_update.setOnAction(e->{
+                            if(firstname_text.getText().isEmpty()||lastname_text.getText().isEmpty()||email_text.getText().isEmpty()||address_text.getText().isEmpty()){
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erreur");
+                                    alert.setHeaderText("ajouter des champs");
+
+                                    alert.showAndWait();
+                            }else{
+
+                            
+                                try {
+                                    e1.setFirstname_employée(String.valueOf(firstname_text.getText()));
+                                    e1.setLastname_employée(String.valueOf(lastname_text.getText()));
+                                    e1.setEmail_employée(String.valueOf(email_text.getText()));
+                                    e1.setAddress_employée(String.valueOf(address_text.getText()));
+                                    
+                                    e_Service.updateEmployée(e1,Integer.valueOf(e1.getId_employée()));
+                                    
+                                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setTitle("Information Dialog");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("Your Employe has been UPDATED successfully!");
+                                    alert.show();
+
+Parent root2 = FXMLLoader .load(getClass().getResource("/com//fithnity/view/DASHBOARD_employée.fxml"));
+Stage window = (Stage) fx_update.getScene().getWindow();
+window.setScene(new Scene(root2));
+                                } catch (IOException ex) {
+                                    Logger.getLogger(DASHBOARD_employéeController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                            });
+                     });
         // TODO
     }
-        public void redirectToModifPersonne(ActionEvent event) throws Exception {
-        Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/update_employée.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
+//        public void redirectToModifPersonne(ActionEvent event) throws Exception {
+//        Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/update_employée.fxml"));
+//        Scene scene = new Scene(page1);
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.show();
+//    }
         
         public void redirectToNewPersonne(ActionEvent event) throws Exception {
         Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_employée.fxml"));
@@ -212,16 +253,6 @@ public class DASHBOARD_employéeController implements Initializable {
        table.setItems(FXCollections.observableArrayList(filteredList));
     }
 
-    @FXML
-    private void get_employée(MouseEvent event) {
-       Employée e1 = new Employée();
-        e1= (Employée) table.getSelectionModel().getSelectedItem();
-        firstname_text.setText(e1.getFirstname_employée());
-        lastname_text.setText(e1.getLastname_employée());
-        email_text.setText(e1.getEmail_employée());
-        address_text.setText(e1.getAddress_employée());
-       
-    }
     }
 
 

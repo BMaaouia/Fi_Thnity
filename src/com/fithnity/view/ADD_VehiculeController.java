@@ -5,10 +5,13 @@
  */
 package com.fithnity.view;
 
+
 import com.fithnity.entities.Vehicule;
 import com.fithnity.services.ServiceVehicule;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -47,6 +50,20 @@ public class ADD_VehiculeController implements Initializable {
     private CheckBox fx_etat2;
     @FXML
     private Label fx_etatLabel;
+    @FXML
+    private Label modelelabel;
+    @FXML
+    private Label etatlabel;
+    @FXML
+    private Label categorielabel;
+    @FXML
+    private Label immatriculationlabel;
+    @FXML
+    private Label label_model;
+    @FXML
+    private Label label_immatricul;
+    @FXML
+    private Label label_categor;
 
     /**
      * Initializes the controller class.
@@ -75,15 +92,39 @@ public class ADD_VehiculeController implements Initializable {
 
     @FXML
     private void ajouter_v() {
+        
+        boolean valid = true;
+        
+      
         ServiceVehicule V_Service = new ServiceVehicule();
         Vehicule v = new Vehicule();
         if(fx_model.getText().isEmpty() || fx_mat.getText().isEmpty() || fx_cat.getText().isEmpty()) {
-            
+            valid = false;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Remplissez tous les champs");
             alert.showAndWait();
+        } 
+             
+        // Vérifier que les entrées sont valides
+        
+
+         String nameRegex = "^[a-zA-Zéèêëîïôöûüàäç-]+$";
+        Pattern namePattern = Pattern.compile(nameRegex);
+        Matcher categorieMatcher = namePattern.matcher(fx_cat.getText());
+       
+        if (!categorieMatcher.matches()) {
+            label_categor.setText("Catégorie invalide");
+            label_categor.setVisible(true);
+            valid = false;
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("la forme de catégorie invalide");
+            alert.showAndWait();
+            
         } else {
+            label_categor.setVisible(false);
+        
             
             v.setModele(fx_model.getText());
             v.setImmatriculation(fx_mat.getText());
@@ -92,9 +133,9 @@ public class ADD_VehiculeController implements Initializable {
             v.setEtat(fx_etat2.isSelected());
             
           if(fx_etat.isSelected()) {
-    fx_etatLabel.setText("Neuf");
-} else {
     fx_etatLabel.setText("Occasion");
+} else {
+    fx_etatLabel.setText("Neuf");
 }
             
             try {
@@ -122,5 +163,5 @@ public class ADD_VehiculeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     
-}
-}
+}}
+

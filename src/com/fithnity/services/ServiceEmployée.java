@@ -29,13 +29,14 @@ public class ServiceEmployée {
             
         try {
             
-            String requete = "INSERT INTO employée (firstname_employée,lastname_employée,email_employée,address_employée) VALUES (?,?,?,?)";
+            String requete = "INSERT INTO employée (firstname_employée,lastname_employée,email_employée,address_employée,id_vehicule) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setString(1, e.getFirstname_employée());
             pst.setString(2, e.getLastname_employée());
             pst.setString(3, e.getEmail_employée());
             pst.setString(4, e.getAddress_employée());
+            pst.setInt(5, e.getId_vehicule());
             pst.executeUpdate();
              System.out.println("employée ajoutée !");
         } catch (SQLException ex) {
@@ -51,7 +52,7 @@ public class ServiceEmployée {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new Employée(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                list.add(new Employée(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6)));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -118,7 +119,8 @@ public class ServiceEmployée {
                           rs.getString(2),
                           rs.getString(3),
                           rs.getString(4),
-                        rs.getString(5)
+                        rs.getString(5),
+                        rs.getInt(6)
                 );
                 list.add(offre);
             }
