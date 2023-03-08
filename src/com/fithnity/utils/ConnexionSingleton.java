@@ -13,37 +13,34 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author wiemhjiri
+ * @author abdelazizmezri
  */
 public class ConnexionSingleton {
     
-    private String url="jdbc:mysql://127.0.0.1:3306/fi_thnity";
-    private String login="root";
-    private String pwd="";
     private Connection cnx;
     private static ConnexionSingleton instance;
+    
+    private final String USER = "root";
+    private final String PWD = "";
+    private final String URL = "jdbc:mysql://localhost:3306/fi_thnity";
+
+    private ConnexionSingleton() {
+        try {
+            cnx = DriverManager.getConnection(URL, USER, PWD);
+            System.out.println("Connected !");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public static ConnexionSingleton getInstance() {
+        if(instance == null)
+            instance = new ConnexionSingleton();
+        return instance;
+    }
 
     public Connection getCnx() {
         return cnx;
     }
-    
-    
-    private ConnexionSingleton() {
-        try {
-            cnx=DriverManager.getConnection(url, login, pwd);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnexionSingleton.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-   public static ConnexionSingleton getInstance(){
-       
-       if(instance==null)
-           instance=new ConnexionSingleton();
-       return instance;
-   }
-    
-    
-    
     
 }

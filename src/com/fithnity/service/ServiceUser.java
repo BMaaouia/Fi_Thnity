@@ -8,7 +8,7 @@ package com.fithnity.service;
 
 import com.fithnity.entity.Subscription;
 import com.fithnity.entity.User;
-import com.fithnity.utils.DataSource;
+import com.fithnity.utils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,7 +30,7 @@ public class ServiceUser implements UserInterface<User>{
     private ResultSet rs,rs1;
     
     private ServiceUser() {
-        DataSource cs=DataSource.getInstance();
+        ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {
