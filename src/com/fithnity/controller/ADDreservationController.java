@@ -36,6 +36,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javax.swing.JOptionPane;
@@ -51,8 +52,6 @@ public class ADDreservationController implements Initializable {
     private TextField catField;
     @FXML
     private TextField poidsField;
-    @FXML
-    private Button btn1;
     @FXML
     private DatePicker dateField;
     @FXML
@@ -71,6 +70,16 @@ public class ADDreservationController implements Initializable {
     @FXML
     private ComboBox<produit> produit_combo;
     int selectedModelId=0;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
+    @FXML
+    private Button btn1;
 
     public ADDreservationController() {
         this.sr = new reservationService();
@@ -196,9 +205,6 @@ public class ADDreservationController implements Initializable {
     }
 
 
-    @FXML
-    private void SelectId(ActionEvent event) {
-    }
 
     @FXML
     private void back(ActionEvent event) throws IOException {

@@ -44,6 +44,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.C;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -78,6 +79,14 @@ public class DASHBOARDreservationController implements Initializable {
     private ListView<reservation> id_list2;
     @FXML
     private Button back_reservation;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -244,11 +253,14 @@ id_list2.setOnKeyPressed(event -> {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-               Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+//               Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
+//        Scene scene = new Scene(page1);
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.show();
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
+    Stage window = (Stage) back_reservation.getScene().getWindow();
+    window.setScene(new Scene(root3));
     }
 
 
