@@ -7,8 +7,8 @@ package com.fithnity.controller;
 
 
 import com.fithnity.entity.User;
-import com.fithnity.services.ServiceUser;
-import com.fithnity.services.UserManager;
+import com.fithnity.service.ServiceUser;
+import com.fithnity.service.UserManager;
 import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;

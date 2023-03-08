@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="646.0" prefWidth="944.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.Ajout_BlogController">
+   <children>
+      <AnchorPane layoutX="6.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane fx:id="container" layoutX="311.0" layoutY="-5.0" prefHeight="808.0" prefWidth="890.0">
+               <children>
+                  <Label layoutX="29.0" layoutY="26.0" text="Ajout Blog:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutY="77.0" prefHeight="1.0" prefWidth="890.0" />
+                  <Label layoutX="-227.0" layoutY="480.0" text="Commentaire" />
+                  <Label layoutX="-218.0" layoutY="191.0" text="Liste Blog" />
+                  <Button fx:id="btn_add" layoutX="301.0" layoutY="452.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Ajouter" textFill="#dddbdb" />
+                  <Text layoutX="83.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <TextField fx:id="text_blog" layoutX="60.0" layoutY="238.0" prefHeight="150.0" prefWidth="446.0" style="-fx-background-radius: 20;" />
+                  <Text layoutX="71.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
+                  <Button fx:id="btn_addi" layoutX="295.0" layoutY="502.0" mnemonicParsing="false" onAction="#add_image" style="-fx-background-color: black; -fx-background-radius: 20;" text="Ajouter image" textFill="#dddbdb" />
+                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text layoutX="82.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
+                  <TextField fx:id="titre_blog" layoutX="71.0" layoutY="135.0" style="-fx-background-radius: 20;" />
+                  <Button fx:id="retour" layoutX="792.0" layoutY="28.0" mnemonicParsing="false" onAction="#retouur" text="retour" />
+                  <Button fx:id="gaffiche" layoutX="639.0" layoutY="373.0" mnemonicParsing="false" onAction="#goaffiche" text="affiche" />
+               </children>
+            </AnchorPane>
+            <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
+               <children>
+                  <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Dashboard" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Home_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Person_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Open_Envelope_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="28.0">
+                                 <image>
+                                    <Image url="@images/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Slider__32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="46.0" prefWidth="319.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@../../../../../../../Downloads/Fi_Thnity-GestionReclamation/Fi_Thnity-GestionReclamation/src/com/fithnity/view/style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
