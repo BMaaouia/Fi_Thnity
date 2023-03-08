@@ -2,23 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ListDatac.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/BlogDao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/Comment.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/CommentDao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/utils/Pdf.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AfficheController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/Ajout_BlogController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/LoginController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ListData.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/MenuController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/Idao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/utils/ConnexionSingleton.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/Ajout_cController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/Affiche_cController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/Blog.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/Idaoc.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
