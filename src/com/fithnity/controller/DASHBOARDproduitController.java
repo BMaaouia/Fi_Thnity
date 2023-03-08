@@ -112,9 +112,9 @@ public class DASHBOARDproduitController implements Initializable {
        nom_filled.setText(current.getNom_produit());
        poids_field.setText(Integer.toString(current.getPoids()));
        description_field.setText(current.getDescription());
-                
+                System.out.println(current);
                  supp1.setOnAction(e->{
-            
+            System.out.println(current);
              produitService o_Service = new produitService();
                          
                          

@@ -129,7 +129,8 @@ public class produitService {
 //prix,poids,villeDepart,villeArrive,date_r
     //  String qry = "UPDATE reservation SET metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+"', Nombredeposte = '"+p.getNombredeposte()+"', salaire = '"+p.getSalaire()+"' WHERE offre_id = "+p.getoffre_id();
  //   String qry = "UPDATE reservation SET prix = '"+p.getPrix()+"', poids = '"+p.getPoids()+"', villeDepart = '"+p.getVilleDepart()+"', villeArrive = '"+p.getVilleArrive()+"'' WHERE id_r = "+p.getId_r();   
-String qry = "UPDATE produit SET nom_produit = '"+p.getNom_produit()+"', poids = '"+p.getPoids()+"', description = '"+p.getDescription()+"';";
+String qry = "UPDATE produit SET nom_produit = '" + p.getNom_produit() + "', poids = '" + p.getPoids() + "', description = '" + p.getDescription() + "' WHERE id_produit = '" + p.getId_produit() + "';";
+
    
  PreparedStatement st = cnx.prepareStatement(qry);
       try {

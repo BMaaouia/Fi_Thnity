@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/DASHBOARDreservationController.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/DataBase/My_DB.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/test/MainFX.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/ADDproduitController.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/DASHBOARDproduitController.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/addproduit.css</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/Services/produitService.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/ADDreservationController.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/entity/reservation.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/GUI/dashboardreservation.css</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/Services/livraisonService.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/Services/reservationService.java</file>
-            <file>file:/C:/Users/mahmo/Desktop/NetBeansProjects/moi/src/DataBase/Pdf.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Bureau/moi/src/com/fithnity/controller/ADDlivraisonController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Bureau/moi/src/com/fithnity/main/MainFX.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Bureau/moi/src/com/fithnity/controller/DASHBORDlivraisonController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Bureau/moi/src/com/fithnity/controller/ADDproduitController.java</file>
         </group>
     </open-files>
 </project-private>

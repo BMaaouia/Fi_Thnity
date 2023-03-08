@@ -94,15 +94,16 @@ public class DASHBORDlivraisonController implements Initializable {
        
        
          //current.getId_produit();
-       
+            System.out.println(current.getId_livraison());
        description_field.setText(current.getDescription());
                 
                  supp1.setOnAction(e->{
             
              livraisonService o_Service = new livraisonService();
                      
-                          current.setDescription(description_field.getText());
+                          
                           try {
+                              current.setDescription(description_field.getText());
                 o_Service.update(current);
             } catch (SQLException ex) {
                 Logger.getLogger(DASHBORDlivraisonController.class.getName()).log(Level.SEVERE, null, ex);

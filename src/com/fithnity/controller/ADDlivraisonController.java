@@ -32,6 +32,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -71,6 +72,14 @@ public class ADDlivraisonController implements Initializable {
     private Label etatlabel1;
     reservationService rs = new reservationService();
     int selectedModelId=0;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -137,7 +146,9 @@ public class ADDlivraisonController implements Initializable {
         livraisonService V_Service = new livraisonService();
         
         String description =String.valueOf(label_description.getText());
-        if(label_description.getText().isEmpty()) {
+        if(label_description.getText().isEmpty())
+        
+        {
             valid = false;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -159,7 +170,7 @@ public class ADDlivraisonController implements Initializable {
               etat = 0;
                
           }
-          livraison v = new livraison(selectedModelId,etat,label_description.getText());
+          livraison v = new livraison(etat,label_description.getText(),selectedModelId);
 //          v.setDescription(label_description.getText());
 //          v.setEtat(etat);
 //          v.setId_r(selectedModelId);

@@ -19,7 +19,7 @@ public class livraison {
     public livraison() {
     }
 
-    public livraison(int id_livraison,  int id_r, int etat,String description) {
+    public livraison(int id_livraison,   int etat,String description,int id_r) {
         this.id_livraison = id_livraison;
         
         this.id_r = id_r;
@@ -27,7 +27,7 @@ public class livraison {
         this.description=description;
     }
 
-    public livraison( int id_r, int etat,String description) {
+    public livraison(  int etat,String description,int id_r) {
         
         this.id_r = id_r;
         this.etat = etat;
@@ -102,7 +102,7 @@ public class livraison {
 
     @Override
     public String toString() {
-        return "livraison{" + "id_livraison=" + id_livraison +  ", id_r=" + id_r + ", etat=" + etat + ", description=" + description + '}';
+        return "livraison{" +" etat=" + etat + ", description=" + description + '}';
     }
 
   

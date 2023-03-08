@@ -50,7 +50,7 @@ public class livraisonService {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new livraison(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+                list.add(new livraison(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getInt(4) ));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -144,7 +144,7 @@ public class livraisonService {
 //prix,poids,villeDepart,villeArrive,date_r
     //  String qry = "UPDATE reservation SET metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+"', Nombredeposte = '"+p.getNombredeposte()+"', salaire = '"+p.getSalaire()+"' WHERE offre_id = "+p.getoffre_id();
  //   String qry = "UPDATE reservation SET prix = '"+p.getPrix()+"', poids = '"+p.getPoids()+"', villeDepart = '"+p.getVilleDepart()+"', villeArrive = '"+p.getVilleArrive()+"'' WHERE id_r = "+p.getId_r();   
-String qry = "UPDATE livraison SET etat = '"+p.getEtat()+"', description = '"+p.getDescription()+"' WHERE id_livraison = "+p.getId_livraison();
+String qry = "UPDATE livraison SET etat = '" + p.getEtat() + "', description = '" + p.getDescription() + "' WHERE id_livraison = '" + p.getId_livraison() + "';";
    
  PreparedStatement st = cnx.prepareStatement(qry);
       try {

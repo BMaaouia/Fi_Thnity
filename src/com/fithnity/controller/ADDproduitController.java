@@ -9,10 +9,12 @@ import com.fithnity.service.produitService;
 import com.fithnity.service.reservationService;
 import com.fithnity.entity.produit;
 import com.fithnity.entity.reservation;
+import static java.awt.SystemColor.text;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -107,27 +110,45 @@ public class ADDproduitController implements Initializable {
 
     @FXML
     private void ajoutproduit(ActionEvent event) {
-        int  poids =Integer.valueOf(poidsproduit.getText());
-        String nom_produit =String.valueOf(nomproduit.getText());
-        String description_produit =String.valueOf(descriptionproduit.getText());
-   
-  
+    String nom_produit = nomproduit.getText().trim();
+    String description_produit = descriptionproduit.getText().trim();
 
-      if(poidsproduit.getText().isEmpty() || nomproduit.getText().isEmpty()|| descriptionproduit.getText().isEmpty())
-     {
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-             alert.setHeaderText("Veuillez remplir tous les champs");
-             alert.showAndWait();
-     }
-     else
-        {
-            produit p = new produit (nom_produit,poids,description_produit);
-            produitService ps= new produitService() ;
-             ps.addProduit(p);
-            JOptionPane.showMessageDialog(null,"Succés de création ");
-        
-        }
+    // Vérifier que les champs ne sont pas vides
+    if (poidsproduit.getText().isEmpty() || nom_produit.isEmpty() || description_produit.isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Veuillez remplir tous les champs");
+        alert.showAndWait();
+        return;
     }
+
+    // Vérifier que le poids est un nombre positif
+    int poids = 0;
+    try {
+        poids = (int) Double.parseDouble(poidsproduit.getText());
+        if (poids <= 0) {
+            throw new NumberFormatException();
+        }
+    } catch (NumberFormatException e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Le poids doit être un nombre positif");
+        alert.showAndWait();
+        return;
+    }
+
+    // Vérifier que le nom du produit et la description sont des chaînes de caractères
+    if (!nom_produit.matches("[a-zA-Z]+") || !description_produit.matches("[a-zA-Z]+")) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Le nom du produit et la description doivent être des chaînes de caractères");
+        alert.showAndWait();
+        return;
+    }
+
+    // Si la validation de saisie est OK, créer le produit
+    produit p = new produit(nom_produit, poids, description_produit);
+    produitService ps = new produitService();
+    ps.addProduit(p);
+    JOptionPane.showMessageDialog(null, "Succés de création");
+}
 
     @FXML
     private void afficheproduit(ActionEvent event) throws IOException {

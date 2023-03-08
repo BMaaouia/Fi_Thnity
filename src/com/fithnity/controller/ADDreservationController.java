@@ -167,8 +167,12 @@ public class ADDreservationController implements Initializable {
          
 //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 //String formattedDate = date.format(formatter); 
- 
-      if(poidsField.getText().isEmpty() || catField.getText().isEmpty())
+    if (poids <= 0) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setHeaderText("Le poids doit être supérieur à zéro.");
+    alert.showAndWait();
+    }
+    else if(poidsField.getText().isEmpty() || catField.getText().isEmpty())
      {
              Alert alert = new Alert(Alert.AlertType.ERROR);
              alert.setHeaderText("Veuillez remplir tous les champs");
