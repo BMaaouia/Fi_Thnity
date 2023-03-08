@@ -3,18 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/ADD_VehiculeController.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/tests/employée.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/main/FXMain.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/entity/Employée.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/controller/DASHBOARD_vehiculeController.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/service/ServiceVehicule.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/photo1.png</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/controller/ADD_VehiculeController.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/Ajout_employée.fxml</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/DASHBOARD_employée.fxml</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/entity/Vehicule.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/utils/DataSource.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/controller/DASHBOARD_employéeController.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/utils/Mail.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/utils/Pdf.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/tests/FXMain.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/entities/Employée.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/entities/Vehicule.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/DASHBOARD_vehiculeController.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/services/ServiceEmployée.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/services/ServiceVehicule.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/controller/Ajout_employéeController.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/ADD_Vehicule.fxml</file>
             <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/DASHBOARD_vehicule.fxml</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/Ajout_employéeController.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/view/DASHBOARD_employéeController.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/service/ServiceEmployée.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/Saber/employée/src/com/fithnity/main/employée.java</file>
         </group>
     </open-files>
 </project-private>
