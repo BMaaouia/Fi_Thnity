@@ -72,9 +72,7 @@ public class MreclamationfrontController implements Initializable {
     private ListView<Reclamation> listviewP;
     @FXML
     private Button btn_delete;
-    @FXML
     private TextField txt_nom;
-    @FXML
     private TextField txt_prenom;
     private Button btnn;
     @FXML
@@ -107,6 +105,8 @@ public class MreclamationfrontController implements Initializable {
     private DatePicker df;
     @FXML
     private Button retour;
+    @FXML
+    private ComboBox<String> txt_type;
     
     
     
@@ -115,7 +115,8 @@ public class MreclamationfrontController implements Initializable {
         // TODO
         
         //***********************
-        
+        ObservableList<String> liste = FXCollections.observableArrayList("Tunis", "Sousse","Hammemet","Monastir") ;
+        txt_type.setItems(liste);
         //***********************
         
   int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
@@ -241,7 +242,7 @@ txt_message.setText(current.getMessage());
         {
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
              ReclamationDao pdao = ReclamationDao.getInstance();
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate);
+	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
             
             pdao.insert(p);
         

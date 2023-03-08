@@ -103,6 +103,8 @@ public class AjouterreclamationfrontController implements Initializable {
     @FXML
     private Button manipuler;
     private Set<String> attributes = new HashSet<>();
+    @FXML
+    private ComboBox<String> txt_type;
     /**
      * Initializes the controller class.
      */
@@ -120,6 +122,8 @@ public class AjouterreclamationfrontController implements Initializable {
 //    ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
 //    listviewP.setItems(reclamationsList);
 //});
+ObservableList<String> liste = FXCollections.observableArrayList("Tunis", "Sousse","Hammemet","Monastir") ;
+        txt_type.setItems(liste);
         //***************
           btn_acceuil.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
@@ -185,7 +189,7 @@ public class AjouterreclamationfrontController implements Initializable {
             
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
              ReclamationDao pdao = ReclamationDao.getInstance();
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate);
+	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
             	 Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
 
          //**************************

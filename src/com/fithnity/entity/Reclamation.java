@@ -24,7 +24,7 @@ public class Reclamation {
      private SimpleStringProperty email;
       private SimpleStringProperty message;
 private SimpleObjectProperty <Date> date ;
-
+  private SimpleStringProperty typeR;
     public Reclamation() {
     }
 
@@ -32,25 +32,27 @@ private SimpleObjectProperty <Date> date ;
         this.id = new SimpleIntegerProperty(id);
     }
     
-    public Reclamation(int id, String nom, String prenom,String email,int numTel,String message) {
+    public Reclamation(int id, String nom, String prenom,String email,int numTel,String message,String typeR) {
         this.id = new SimpleIntegerProperty(id);
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
         this.numTel = new SimpleIntegerProperty(numTel);
         this.message = new SimpleStringProperty(message);
         this.email = new SimpleStringProperty(email);
+          this.typeR = new SimpleStringProperty(typeR);
     }
 
-     public Reclamation( String nom, String prenom,String email,int numTel,String message) {
+     public Reclamation( String nom, String prenom,String email,int numTel,String message,String typeR) {
        
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
         this.numTel = new SimpleIntegerProperty(numTel);
         this.message = new SimpleStringProperty(message);
         this.email = new SimpleStringProperty(email);
+         this.typeR = new SimpleStringProperty(typeR);
     }
      
-      public Reclamation( String nom, String prenom,String email,int numTel,String message, Date date) {
+      public Reclamation( String nom, String prenom,String email,int numTel,String message, Date date,String typeR) {
        
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
@@ -58,6 +60,7 @@ private SimpleObjectProperty <Date> date ;
         this.message = new SimpleStringProperty(message);
         this.email = new SimpleStringProperty(email);
          this.date=new SimpleObjectProperty <Date> (date);
+          this.typeR = new SimpleStringProperty(typeR);
     }
     
     public Reclamation(String nom, String prenom) {
@@ -86,6 +89,10 @@ private SimpleObjectProperty <Date> date ;
     public void setMessage(String message) {
         this.message = new SimpleStringProperty(message);
     }
+    
+     public void setTypeR(String typeR) {
+        this.typeR = new SimpleStringProperty(typeR);
+    }
 
     public int getNumTel() {
         return numTel.get();
@@ -101,6 +108,10 @@ private SimpleObjectProperty <Date> date ;
 
     public String getMessage() {
         return message.get();
+    }
+    
+     public String getTypeR() {
+        return typeR.get();
     }
 
     public String getNom() {
@@ -127,6 +138,9 @@ private SimpleObjectProperty <Date> date ;
     public SimpleStringProperty getMessageProperty(){
         return message;
     }
+    public SimpleStringProperty gettypeRProperty(){
+        return typeR;
+    }
     public SimpleIntegerProperty getNumTelProperty(){
         return numTel;
     }
@@ -142,7 +156,7 @@ private SimpleObjectProperty <Date> date ;
 
     @Override
     public String toString() {
-        return  " Nom= " + nom.get() + "      " + " Prenom= " + prenom.get() + "      " + " Email= " + email.get() + "      " + " Tel= " + numTel.get() + "      " + " Message= " + message.get() + "      "+ " date= " + date.get() + ' ';
+        return  " Nom= " + nom.get() + "      " + " Prenom= " + prenom.get() + "      " + " Email= " + email.get() + "      " + " Tel= " + numTel.get() + "      " + " Message= " + message.get() + "      "+ " date= " + date.get() + " typeR= " + typeR.get()+ ' ';
      //return   nom.get()   +  "          "+ prenom.get()+  "        "+ email.get() +  "       "+ numTel.get()   +  "            "+ message.get() +  "         " + date.get() + ' ';
     }
 

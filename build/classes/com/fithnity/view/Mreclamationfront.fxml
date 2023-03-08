@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -118,6 +119,8 @@
                         </DropShadow>
                      </effect>
                   </Button>
+                  <ComboBox fx:id="txt_type" layoutX="221.0" layoutY="624.0" prefWidth="150.0" />
+                  <Label layoutX="53.0" layoutY="618.0" text="type Reclamation" />
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">

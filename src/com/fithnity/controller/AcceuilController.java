@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,8 +67,8 @@ public class AcceuilController implements Initializable {
      private static ReclamationDao instance;
     private Statement st;
     private ResultSet rs;
-    ConnexionSingleton cs;
-    
+   // ConnexionSingleton cs;
+      ConnexionSingleton cs=ConnexionSingleton.getInstance();
     /**
      * Initializes the controller class.
      */
@@ -147,49 +148,70 @@ public class AcceuilController implements Initializable {
 //            new PieChart.Data("Orange", 1)
 //        );
 //             
-//             stat();
+//         //    stat();
 //        piechart.setData(data);
-//          
-//piechart.setLegendVisible(false); // hide the legend
-//piechart.setLabelsVisible(true); // show labels for each slice
-//piechart.setLabelLineLength(10); // adjust the length of the label lines
-//piechart.setStartAngle(180); // adjust the starting angle of the pie chart
-//piechart.setAnimated(true);
-//
-//Timeline timeline = new Timeline();
-//DoubleProperty startAngleProperty = new SimpleDoubleProperty(180);
-//piechart.startAngleProperty().bind(startAngleProperty);
-//timeline.getKeyFrames().addAll(
-//    new KeyFrame(Duration.ZERO, new KeyValue(startAngleProperty, 180)),
-//    new KeyFrame(Duration.seconds(3.0), new KeyValue(startAngleProperty, 0))
-//);
-//timeline.play(); 
-//
-//for (PieChart.Data slice : piechart.getData()) {
-//    Node node = slice.getNode();
-//    node.setOnMouseEntered(event -> {
-//        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(100), node);
-//        scaleTransition.setToX(1.1);
-//        scaleTransition.setToY(1.1);
-//        scaleTransition.play();
-//    });
-//    node.setOnMouseExited(event -> {
-//        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(100), node);
-//        scaleTransition.setToX(1.0);
-//        scaleTransition.setToY(1.0);
-//        scaleTransition.play();
-//    });
-//}
+  ReclamationDao pdao = ReclamationDao.getInstance();
+ HashMap<String, Integer> counts = new HashMap<>();
+        pdao. displayAllList().stream()
+                .forEach(p -> counts.put(p.getTypeR(), counts.getOrDefault(p.getTypeR(), 0) + 1));
+        piechart.getData().clear();
+          
+piechart.setLegendVisible(false); // hide the legend
+piechart.setLabelsVisible(true); // show labels for each slice
+piechart.setLabelLineLength(10); // adjust the length of the label lines
+piechart.setStartAngle(180); // adjust the starting angle of the pie chart
+piechart.setAnimated(true);
+  counts.forEach((role, count) -> piechart.getData().add(new PieChart.Data(role+" : "+count, count)));
+//*************************************************
+Timeline timeline = new Timeline();
+DoubleProperty startAngleProperty = new SimpleDoubleProperty(180);
+piechart.startAngleProperty().bind(startAngleProperty);
+timeline.getKeyFrames().addAll(
+    new KeyFrame(Duration.ZERO, new KeyValue(startAngleProperty, 180)),
+    new KeyFrame(Duration.seconds(3.0), new KeyValue(startAngleProperty, 0))
+);
+timeline.play(); 
+
+for (PieChart.Data slice : piechart.getData()) {
+    Node node = slice.getNode();
+    node.setOnMouseEntered(event -> {
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(100), node);
+        scaleTransition.setToX(1.1);
+        scaleTransition.setToY(1.1);
+        scaleTransition.play();
+    });
+    node.setOnMouseExited(event -> {
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(100), node);
+        scaleTransition.setToX(1.0);
+        scaleTransition.setToY(1.0);
+        scaleTransition.play();
+    });
+}
     }
     
-    
+//     public void populateChart() {
+//        HashMap<String, Integer> counts = new HashMap<>();
+//        utilisateurService.afficherUtilisateurs().stream()
+//                .filter(user -> !user.getRole().equals("Admin"))
+//                .forEach(user -> counts.put(user.getRole(), counts.getOrDefault(user.getRole(), 0) + 1));
+//        pieChart.getData().clear();
+//        pieChart.setLegendVisible(false);
+//        pieChart.setStartAngle(90);
+//        pieChart.setLabelsVisible(true);
+//        pieChart.setClockwise(false);
+//        pieChart.setAnimated(true);
+//
+//
+//        counts.forEach((role, count) -> pieChart.getData().add(new PieChart.Data(role+" : "+count, count)));
+//       
+//    }
 //     private void stat()
 //    {
 //         // Connection con = DBConnection.getInstance().getCon();
 //            ObservableList<PieChart.Data>data=FXCollections.observableArrayList();
 //      try {
 //           
-//          String query = "select quantite As Qtn,nomProduit As nom from produit group by nomProduit" ;
+//       //   String query = "select quantite As Qtn,nomProduit As nom from produit group by nomProduit" ;
 //       
 //    
 //          rs=st.executeQuery(query);    
@@ -207,7 +229,7 @@ public class AcceuilController implements Initializable {
 ////        piechart.setData(data);
 //    
 //    }
-//    
+    
 //    
 //    
 

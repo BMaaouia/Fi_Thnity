@@ -190,6 +190,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <PieChart layoutX="477.0" layoutY="312.0" />
+      <PieChart fx:id="piechart" layoutX="477.0" layoutY="312.0" />
    </children>
 </AnchorPane>

@@ -29,10 +29,11 @@ public class ReponseDao implements Idao<Reponse>{
     private static ReponseDao instance;
     private Statement st;
     private ResultSet rs;
-    ConnexionSingleton cs;
+  //  ConnexionSingleton cs;
+      ConnexionSingleton cs=ConnexionSingleton.getInstance();
     
     private ReponseDao() {
-        ConnexionSingleton cs=ConnexionSingleton.getInstance();
+       // ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {
