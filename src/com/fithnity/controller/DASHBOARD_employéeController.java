@@ -71,6 +71,14 @@ public class DASHBOARD_employéeController implements Initializable {
     private TextField email_text;
     @FXML
     private TextField address_text;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -104,7 +112,7 @@ public class DASHBOARD_employéeController implements Initializable {
         addressCol.setCellValueFactory(new PropertyValueFactory("Address_employée"));
 
        // table.getColumns().setAll( nameCol, lastanameCol, emailCol,addressCol);
-        table.setPrefWidth(898);
+        table.setPrefWidth(700);
         table.setPrefHeight(376);
       //  table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 

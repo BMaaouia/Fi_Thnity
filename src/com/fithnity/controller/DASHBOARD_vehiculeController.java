@@ -101,7 +101,7 @@ public class DASHBOARD_vehiculeController implements Initializable {
         addressCol.setCellValueFactory(new PropertyValueFactory("etat"));
 
        // table.getColumns().setAll( nameCol, lastanameCol, emailCol,addressCol);
-        table.setPrefWidth(898);
+        table.setPrefWidth(700);
         table.setPrefHeight(376);
       //  table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 

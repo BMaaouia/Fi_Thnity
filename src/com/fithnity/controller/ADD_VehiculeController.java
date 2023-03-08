@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -66,6 +67,16 @@ public class ADD_VehiculeController implements Initializable {
     private Label label_immatricul;
     @FXML
     private Label label_categor;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private AnchorPane employée_list;
 
     /**
      * Initializes the controller class.
