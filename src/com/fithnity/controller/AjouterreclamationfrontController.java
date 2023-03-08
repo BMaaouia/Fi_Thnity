@@ -221,7 +221,7 @@ public class AjouterreclamationfrontController implements Initializable {
 
        
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
     Stage window = (Stage) btnn.getScene().getWindow();
     window.setScene(new Scene(root2));
     //*************
@@ -280,7 +280,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         txt_tel.setText("");   
 txt_message.setText("");  
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
     Stage window = (Stage) modif2.getScene().getWindow();
     window.setScene(new Scene(root2));
      String title = "Done";

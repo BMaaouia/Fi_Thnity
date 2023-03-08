@@ -37,7 +37,7 @@ public class ReclamationDao implements Idao<Reclamation>{
     private static ReclamationDao instance;
     private Statement st;
     private ResultSet rs;
-    ConnexionSingleton cs;
+    ConnexionSingleton cs=ConnexionSingleton.getInstance();
     
     private ReclamationDao() {
         

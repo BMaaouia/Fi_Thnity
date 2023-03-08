@@ -153,7 +153,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                    <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
