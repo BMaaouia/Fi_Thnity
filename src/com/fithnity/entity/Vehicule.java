@@ -18,23 +18,25 @@ public class Vehicule {
     private String immatriculation;
     private String categorie;
     private boolean etat;
-    //private String image;
+    private String image_vehicule;
    public Vehicule() {
     }
-         public Vehicule( int id,String modele, String immatriculation, String categorie, boolean etat) {
+         public Vehicule( int id,String modele, String immatriculation, String categorie, boolean etat,String image_vehicule) {
         this.id = id;
         this.modele = modele;
         this.immatriculation = immatriculation;
         this.categorie = categorie;
         this.etat = etat; 
+         this.image_vehicule = image_vehicule; 
       
     }
-      public Vehicule( String modele, String immatriculation, String categorie, boolean etat) {
+      public Vehicule( String modele, String immatriculation, String categorie, boolean etat,String image_vehicule) {
         
         this.modele = modele;
         this.immatriculation = immatriculation;
         this.categorie = categorie;
         this.etat = etat;
+         this.image_vehicule = image_vehicule; 
        
     }
       
@@ -87,13 +89,13 @@ public class Vehicule {
         this.etat = etat;
     }
 
-//    public String getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(String image) {
-//        this.image = image;
-//    }
+   public String getImage() {
+        return image_vehicule;
+    }
+
+    public void setImage(String image_vehicule) {
+        this.image_vehicule = image_vehicule;
+    }
 
     @Override
     public int hashCode() {
@@ -103,7 +105,7 @@ public class Vehicule {
         hash = 47 * hash + Objects.hashCode(this.immatriculation);
         hash = 47 * hash + Objects.hashCode(this.categorie);
         hash = 47 * hash + Objects.hashCode(this.etat);
-        //hash = 47 * hash + Objects.hashCode(this.image);
+        hash = 47 * hash + Objects.hashCode(this.image_vehicule);
         return hash;
     }
 

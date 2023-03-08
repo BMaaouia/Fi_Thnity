@@ -24,13 +24,14 @@ public class ServiceVehicule {
             
         try {
             
-            String requete = "INSERT INTO vehicule (modele,immatriculation,categorie,etat) VALUES (?,?,?,?)";
+            String requete = "INSERT INTO vehicule (modele,immatriculation,categorie,etat,image_vehicule) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setString(1, v.getModele());
             pst.setString(2, v.getImmatriculation());
             pst.setString(3, v.getCategorie());
             pst.setBoolean(4, v.getEtat());
+            pst.setString(5, v.getImage());
             pst.executeUpdate();
              System.out.println("vehicule ajoutée !");
         } catch (SQLException ex) {
@@ -46,7 +47,7 @@ public class ServiceVehicule {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new Vehicule(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getBoolean(5)));
+                list.add(new Vehicule(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getBoolean(5), rs.getString(6)));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -113,7 +114,8 @@ public class ServiceVehicule {
                           vs.getString(2),
                           vs.getString(3),
                           vs.getString(4),
-                        vs.getBoolean(5)
+                        vs.getBoolean(5),
+                        vs.getString(6)
                 );
                 list.add(offre);
             }

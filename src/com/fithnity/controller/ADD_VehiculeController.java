@@ -10,6 +10,7 @@ package com.fithnity.controller;
 
 import com.fithnity.entity.Vehicule;
 import com.fithnity.service.ServiceVehicule;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -27,7 +28,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -76,7 +80,11 @@ public class ADD_VehiculeController implements Initializable {
     @FXML
     private AnchorPane container;
     @FXML
-    private AnchorPane employée_list;
+    private Button choose_image;
+    @FXML
+    private ImageView image_vehicule;
+    
+     private String selectedImage;
 
     /**
      * Initializes the controller class.
@@ -144,6 +152,7 @@ public class ADD_VehiculeController implements Initializable {
             v.setCategorie(fx_cat.getText());
             v.setEtat(fx_etat.isSelected());
             v.setEtat(fx_etat2.isSelected());
+            v.setImage(selectedImage);
             
           if(fx_etat.isSelected()) {
     fx_etatLabel.setText("Occasion");
@@ -176,5 +185,26 @@ public class ADD_VehiculeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     
-}}
+}
+
+    @FXML
+    private void choose_image(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose File");
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            fileChooser.getExtensionFilters().add(pngFilter);
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+            Image img = new Image(selectedFile.toURI().toString());
+
+                    selectedImage =selectedFile.getAbsolutePath();
+                    selectedImage = selectedImage.replace(File.separator, "/");
+                    image_vehicule.setImage(img);
+                    
+
+           }
+    }
+}
 

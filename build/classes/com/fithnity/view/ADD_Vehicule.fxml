@@ -202,6 +202,8 @@
             <Label fx:id="label_immatricul" layoutX="268.0" layoutY="201.0" prefHeight="21.0" prefWidth="156.0" />
             <Label fx:id="label_categor" layoutX="268.0" layoutY="283.0" prefHeight="21.0" prefWidth="156.0" />
             <Separator layoutX="248.0" layoutY="120.0" orientation="VERTICAL" prefHeight="509.0" prefWidth="0.0" />
+            <Button fx:id="choose_image" layoutX="658.0" layoutY="417.0" mnemonicParsing="false" onAction="#choose_image" text="Choose Image" />
+            <ImageView fx:id="image_vehicule" fitHeight="150.0" fitWidth="200.0" layoutX="630.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
