@@ -27,27 +27,30 @@
                         </Label>
                         <Separator layoutY="77.0" prefHeight="1.0" prefWidth="890.0" />
                         <AnchorPane id="AnchorPane" fx:id="véhicule_list" layoutX="29.0" layoutY="123.0" prefHeight="259.0" prefWidth="607.0" />
-                        <Button fx:id="fx_addv" layoutX="778.0" layoutY="163.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="ADD_vehicule" textFill="#ebe9e9">
-                           <font>
-                              <Font name="System Bold" size="19.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="fx_updatev" layoutX="778.0" layoutY="231.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="UPDATE_vehicule" textFill="#ebe9e9">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="fx_deletev" layoutX="778.0" layoutY="316.0" mnemonicParsing="false" onAction="#DeleteEmploye" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="DELETE_vehicule" textFill="#ebe9e9">
+                        <Button fx:id="fx_addv" layoutX="744.0" layoutY="163.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="ADD_vehicule" textFill="#ebe9e9">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="fx_backv" layoutX="779.0" layoutY="108.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="refresh" textFill="#ebe9e9">
+                        <Button fx:id="fx_updatev" layoutX="744.0" layoutY="232.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="UPDATE_vehicule" textFill="#ebe9e9">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="T" layoutX="672.0" layoutY="535.0" onKeyReleased="#recherche" promptText="recherche" style="-fx-background-radius: 20; -fx-background-color: black;" />
+                        <Button fx:id="fx_deletev" layoutX="744.0" layoutY="301.0" mnemonicParsing="false" onAction="#DeleteEmploye" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="DELETE_vehicule" textFill="#ebe9e9">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="fx_backv" layoutX="744.0" layoutY="97.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="refresh" textFill="#ebe9e9">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="T" alignment="CENTER" layoutX="672.0" layoutY="535.0" onKeyReleased="#recherche" promptText="Recherche" style="-fx-background-radius: 20; -fx-background-color: black;">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></TextField>
                         <TextField fx:id="modèle_text" layoutX="193.0" layoutY="627.0" style="-fx-background-radius: 20;" />
                         <TextField fx:id="catégorie_text" layoutX="194.0" layoutY="720.0" style="-fx-background-radius: 20;" />
                         <TextField fx:id="immatriculation_text" layoutX="437.0" layoutY="627.0" style="-fx-background-radius: 20;" />
@@ -73,6 +76,8 @@
                            </font>
                         </Label>
                         <Separator layoutX="672.0" layoutY="97.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="0.0" />
+                        <Button fx:id="dashboard_employé" layoutX="672.0" layoutY="720.0" mnemonicParsing="false" onAction="#dashboard_employé" style="-fx-background-color: black; -fx-background-radius: 20;" text="Vers Dashboard Employé" textFill="#f2eaea" />
+                        <Separator layoutX="406.0" layoutY="580.0" orientation="VERTICAL" prefHeight="200.0" />
                      </children>
                   </AnchorPane>
                   <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">

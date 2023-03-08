@@ -70,6 +70,16 @@ public class DASHBOARD_vehiculeController implements Initializable {
     private Button fx_deletev;
     @FXML
     private Button fx_backv;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button dashboard_employé;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -240,6 +250,20 @@ public class DASHBOARD_vehiculeController implements Initializable {
         .collect(Collectors.toList());
 
        table.setItems(FXCollections.observableArrayList(filteredList));
+    }
+
+    @FXML
+    private void dashboard_employé(ActionEvent event) {
+        Parent page1;
+        try {
+            page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/DASHBOARD_employée.fxml"));
+            Scene scene = new Scene(page1);
+                              Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                              stage.setScene(scene);
+                              stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DASHBOARD_employéeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
