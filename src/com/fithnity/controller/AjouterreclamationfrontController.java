@@ -50,6 +50,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -71,24 +72,20 @@ import tray.notification.TrayNotification;
  */
 public class AjouterreclamationfrontController implements Initializable {
 
-    @FXML
     private ListView<Reclamation> listviewP;
-    @FXML
-    private Button btn_delete;
     @FXML
     private TextField txt_nom;
     @FXML
     private TextField txt_prenom;
     @FXML
     private Button btnn;
-    @FXML
     private Button modif2;
     @FXML
     private TextField txt_email;
     @FXML
     private TextField txt_tel;
     @FXML
-    private TextField txt_message;
+    private TextArea txt_message;
     @FXML
     private Button btn_acceuil;
     @FXML
@@ -99,15 +96,9 @@ public class AjouterreclamationfrontController implements Initializable {
       private ListData listdata = new ListData();
     @FXML
     private AnchorPane container;
-    @FXML
-    private Pagination pagination;
 
     private final int ITEMS_PER_PAGE = 5;
-    @FXML
-    private TextField search;
-    @FXML
     private DatePicker dd;
-    @FXML
     private DatePicker df;
     @FXML
     private Button manipuler;
@@ -239,7 +230,6 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
 	}
     }
     
-    @FXML
     private void delete(ActionEvent event) throws IOException { 
 		 ReclamationDao pdao = ReclamationDao.getInstance();
      Reclamation selectedItem2 = listviewP.getSelectionModel().getSelectedItem();
@@ -263,7 +253,6 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
 		
 	}
     
-    @FXML
     private void modifier(ActionEvent event) throws IOException { 
           if (Saisi() == true)
         {
@@ -365,7 +354,6 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         return listviewP;
       }
 
-     @FXML
 private void Filtrer(ActionEvent event) throws IOException {
     //EvenementService es = new EvenementService();
     ObservableList<Reclamation> eventsList = FXCollections.observableArrayList();

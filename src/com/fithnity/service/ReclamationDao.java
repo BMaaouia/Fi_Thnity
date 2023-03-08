@@ -11,7 +11,9 @@ package com.fithnity.service;
  */
 import com.fithnity.entity.Reclamation;
 import com.fithnity.utils.ConnexionSingleton;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +25,8 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Side;
+import javafx.scene.chart.PieChart;
 
 /**
  *
@@ -36,7 +40,7 @@ public class ReclamationDao implements Idao<Reclamation>{
     ConnexionSingleton cs;
     
     private ReclamationDao() {
-        ConnexionSingleton cs=ConnexionSingleton.getInstance();
+        
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {
@@ -238,8 +242,7 @@ public class ReclamationDao implements Idao<Reclamation>{
 }
     
 
-  
-    
+   
     
 }
 

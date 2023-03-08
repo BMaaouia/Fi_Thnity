@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -78,11 +79,6 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_message" layoutX="323.0" layoutY="414.0" prefHeight="108.0" prefWidth="252.0" style="-fx-background-radius: 20;">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </TextField>
                   <Label layoutX="231.0" layoutY="407.0" text="Text">
                      <font>
                         <Font size="24.0" />
@@ -100,6 +96,11 @@
                         </DropShadow>
                      </effect>
                   </Button>
+                  <TextArea fx:id="txt_message" layoutX="326.0" layoutY="425.0" prefHeight="200.0" prefWidth="252.0" style="-fx-background-radius: 40;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextArea>
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="814.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
