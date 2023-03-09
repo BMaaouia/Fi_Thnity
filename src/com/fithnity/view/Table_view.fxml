@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -163,7 +161,7 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <JFXButton fx:id="download" layoutX="409.0" layoutY="119.0" onAction="#downloadListViewContents" prefHeight="32.0" prefWidth="197.0" style="-fx-border-radius: 20; -fx-background-radius: 10; -fx-background-color: #fa9dc9;" text="download" />
+            <JFXButton fx:id="download" layoutX="409.0" layoutY="119.0" onAction="#downloadListViewContents" prefHeight="32.0" prefWidth="197.0" style="-fx-border-radius: 20; -fx-background-radius: 10; -fx-background-color: white;" text="download" textFill="#fffbfb" />
             <Button fx:id="fx_ajouter_dem" layoutX="856.0" layoutY="593.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-radius: 20; -fx-background-color: BLACK;" text="ADD" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
@@ -174,24 +172,28 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="id_liste_demande" layoutX="320.0" layoutY="84.0" mnemonicParsing="false" onAction="#listedemande" prefHeight="34.0" prefWidth="31.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;">
+            <Button fx:id="id_liste_demande" layoutX="320.0" layoutY="102.0" mnemonicParsing="false" onAction="#listedemande" prefHeight="34.0" prefWidth="31.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold" size="3.0" />
                </font>
             </Button>
             <ListView fx:id="id_liste2" layoutX="354.0" layoutY="201.0" prefHeight="362.0" prefWidth="822.0" />
-            <TextField fx:id="filterField" alignment="CENTER" layoutX="969.0" layoutY="120.0" promptText="Search" style="-fx-background-color: #e85f5f; -fx-background-radius: 20 20 20 20;">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <FontAwesomeIconView fill="#907878" glyphName="SEARCH" layoutX="990.0" layoutY="143.0" size="22" text="" />
             <Label layoutX="335.0" layoutY="31.0" text="DASHBOARD DEMANDES" textFill="#1b1a1a">
                <font>
                   <Font name="Dubai Bold" size="21.0" />
                </font>
             </Label>
             <Separator layoutX="318.0" layoutY="86.0" prefHeight="3.0" prefWidth="882.0" />
+            <Button fx:id="vers_dashboard_offre" layoutX="642.0" layoutY="700.0" mnemonicParsing="false" onAction="#vers_dashboard_offre" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="VERS DASHBOARD OFFRE" textAlignment="CENTER" textFill="#f5eaea">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="vers_stat" layoutX="1019.0" layoutY="120.0" mnemonicParsing="false" onAction="#vers_stat" style="-fx-background-color: black; -fx-background-radius: 20;" text="GET Statistique" textFill="#f2ecec">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

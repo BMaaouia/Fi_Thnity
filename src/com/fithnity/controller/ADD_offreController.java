@@ -40,6 +40,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class ADD_offreController implements Initializable {
 
+    public TextField fx_demande;
     @FXML
     private TextField fx_nbreposte;
     @FXML

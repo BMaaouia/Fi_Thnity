@@ -80,6 +80,14 @@ public class Table_view_offreController implements Initializable {
     private ListView<Offre> id_liste2;
     @FXML
     private TextField p;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
+    @FXML
+    private Button vers_dashboard_demande;
     /**
      * Initializes the controller class.
      */
@@ -227,6 +235,15 @@ public class Table_view_offreController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(ServiceOffre.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+
+    @FXML
+    private void vers_dashboard_demande(ActionEvent event) throws IOException {
+           Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Table_view.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
         
     }

@@ -6,6 +6,7 @@ import animatefx.animation.FadeIn;
 import offre.demande.belahsan.animations.*;
 import com.jfoenix.controls.JFXPopup;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
+import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,7 +22,12 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class StatisticsController implements Initializable {
 
@@ -61,6 +67,8 @@ public class StatisticsController implements Initializable {
     private Button btn_user;
     @FXML
     private Button btn_blog;
+    @FXML
+    private Button vers_demande;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -162,5 +170,15 @@ public class StatisticsController implements Initializable {
             }
             pieChart.setData(data);
         });
+    }
+
+    @FXML
+    private void vers_demande(ActionEvent event) throws IOException {
+        
+                   Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Table_view.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

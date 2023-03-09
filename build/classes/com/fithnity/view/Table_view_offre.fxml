@@ -191,6 +191,11 @@
                   <Font name="Dubai Bold" size="21.0" />
                </font>
             </Label>
+            <Button fx:id="vers_dashboard_demande" layoutX="615.0" layoutY="734.0" mnemonicParsing="false" onAction="#vers_dashboard_demande" prefHeight="31.0" prefWidth="267.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="VERS DASHBOARD Demandes" textFill="#dad2d2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

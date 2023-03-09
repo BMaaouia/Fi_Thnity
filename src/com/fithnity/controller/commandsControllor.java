@@ -27,7 +27,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,6 +51,9 @@ public class commandsControllor implements Initializable {
     public Button buttonCV;
     public JFXListView id_list_commande;
     public Button backing;
+    public TextField txt_offre;
+    @FXML
+    public TextField txt_offer;
     String imagePath = null;
     String imagePathForCV=null;
     String imagePathForLM=null;
@@ -73,25 +75,32 @@ public class commandsControllor implements Initializable {
     private Button button;
 
 
+    @FXML
     private TableView<Demande> table_commands;
 
     private TableColumn<Demande, Integer> col_id;
 
-    private TableColumn<Demande, String> fname;
+    @FXML
+    private TableColumn<Demande, String> cin;
 
+    @FXML
     private TableColumn<Demande, String> lname;
 
 
+    @FXML
     private TableColumn<Demande, String> ville;
 
+    @FXML
     private TableColumn<Demande, String> codepostal;
 
 
+    @FXML
     private TableColumn<Demande, String> face;
 
 
 
 
+    @FXML
     private TextField filterField;
 
 
@@ -123,21 +132,7 @@ public class commandsControllor implements Initializable {
     @FXML
     private Button btn_blog;
 
-    private boolean validateSkills(){
-        Pattern p = Pattern.compile("[a-zA-Z\\s]+");
-        Matcher m = p.matcher(txt_ln.getText());
-        if(m.find() && m.group().equals(txt_ln.getText())){
-            return true;
-        }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate your skills");
-            alert.setHeaderText(null);
-            alert.setContentText("Please Enter Valid skills");
-            alert.showAndWait();
-
-            return false;
-        }
-    }
+   
     private boolean validatecin(){
         Pattern p = Pattern.compile("[1-9]+[1-9]+[1-9]+[1-9]+[1-9]+[1-9]+[1-9]+[1-9]");
         Matcher m = p.matcher(txt_fn.getText());
@@ -154,60 +149,71 @@ public class commandsControllor implements Initializable {
         }
     }
 
-    private boolean Emailvalide(){
-        Pattern p = Pattern.compile( "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
-                + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$");
-        Matcher m = p.matcher(txt_mail.getText());
-        if(m.find() && m.group().equals(txt_mail.getText())){
+
+    private boolean validateSkills(){
+        Pattern p = Pattern.compile("[a-zA-Z\\s]+");
+        Matcher m = p.matcher(txt_ln.getText());
+        if(m.find() && m.group().equals(txt_ln.getText())){
             return true;
         }else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate email");
+            alert.setTitle("Validate your skills");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter Valid email");
+            alert.setContentText("Please Enter Valid skills");
             alert.showAndWait();
 
             return false;
         }
     }
 
+
     @FXML
     public void Add_demands() throws SQLException {
 
         if (validatecin()&& validateSkills()){
 
-            if(txt_fn.getText().isEmpty()
+            if(txt_fn.getText().isEmpty() || txt_offer.getText().isEmpty()
 
-                || txt_ln.getText().isEmpty()
+                    || txt_ln.getText().isEmpty()
 
-                || imagePathForLM== null
-                || imagePathForCV== null
-                || imagePath== null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Insert Failed, information missing");
-            alert.show();
+                    || imagePathForLM== null
+                    || imagePathForCV== null
+                    || imagePath== null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Insert Failed, information missing");
+                alert.show();
+            }
+            else{
+                Demande t = new Demande(null,
+                        txt_fn.getText(),
+                        imagePathForCV,
+                        imagePathForLM,
+                        imagePath,
+                        txt_ln.getText(),
+                        txt_offer.getText());
+
+                try{
+
+
+                ServiceDemande st= new ServiceDemande();
+                st.add(t);
+               }catch (SQLException ex){
+                   System.out.println("ici----"+ex);
+               }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Ajout succes");
+                alert.show();
+                UpdateTable();
+                search_bycinorcompetences();
+            }
+            /**********************************added*************************************/
+
         }
-        else{
-            Demande t = new Demande(null,
-                    txt_fn.getText(),
-                    imagePathForCV,
-                    imagePathForLM,
-                    imagePath,
-                    txt_ln.getText());
-            ServiceDemande st= new ServiceDemande();
-            st.add(t);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Ajout succes");
-            alert.show();
-            UpdateTable();
-            search_bycinorcompetences();
-        }
-        /**********************************added*************************************/
-
     }
-}
+
 
     //////// methode select users ///////
+    @FXML
     void getSelected (MouseEvent event){
         index = table_commands.getSelectionModel().getSelectedIndex();
         if (index <= -1){
@@ -215,7 +221,7 @@ public class commandsControllor implements Initializable {
             return;
         }
         
-        txt_fn.setText(fname.getCellData(index));
+        txt_fn.setText(cin.getCellData(index));
         txt_ln.setText(lname.getCellData(index));
 
 
@@ -286,8 +292,8 @@ public class commandsControllor implements Initializable {
 
 
     public void UpdateTable(){
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        fname.setCellValueFactory(new PropertyValueFactory<>("cin"));
+       // col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        cin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         ville.setCellValueFactory(new PropertyValueFactory<>("cv"));
         codepostal.setCellValueFactory(new PropertyValueFactory<>("lettreMotivation"));
         face.setCellValueFactory(new PropertyValueFactory<>("cartegrise"));
@@ -302,7 +308,7 @@ public class commandsControllor implements Initializable {
 
     @FXML
     void search_bycinorcompetences() {
-        fname.setCellValueFactory(new PropertyValueFactory<Demande,String>("cin"));
+        cin.setCellValueFactory(new PropertyValueFactory<Demande,String>("cin"));
         codepostal.setCellValueFactory(new PropertyValueFactory<Demande,String>("competences"));
 
         dataList = DataSource.getDatausers();
@@ -372,17 +378,11 @@ public class commandsControllor implements Initializable {
 
 
     public void addAttachment(ActionEvent event ) throws Exception {
-        Parent root  = FXMLLoader.load(getClass().getResource("../gui/ProductView.fxml"));
 
-        Stage window =(Stage) toaddfile.getScene().getWindow();
-        window.setScene(new Scene(root, 1064, 600));
     }
 
     public void showHandleBtn(ActionEvent event) throws Exception {
-        Parent root  = FXMLLoader.load(getClass().getResource("../gui/plateformeUI.fxml"));
 
-        Stage window =(Stage) showRelatedFiles.getScene().getWindow();
-        window.setScene(new Scene(root, 1500, 1700));
     }
 
 
@@ -391,7 +391,7 @@ public class commandsControllor implements Initializable {
 
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop"));
+        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop\\Fi_Thnity-gestion-offre-demandeSSS\\src\\com\\fithnity\\view\\images"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpeg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
@@ -412,7 +412,7 @@ public class commandsControllor implements Initializable {
     public String FilechooserLM(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop"));
+        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop\\Fi_Thnity-gestion-offre-demandeSSS\\src\\com\\fithnity\\view\\images"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpeg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("pdf Files", "*.pdf"));
@@ -431,7 +431,7 @@ public class commandsControllor implements Initializable {
     public String FilechooserCV(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop"));
+        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop\\Fi_Thnity-gestion-offre-demandeSSS\\src\\com\\fithnity\\view\\images"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpeg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("video Files", "*.mp4"));

@@ -14,6 +14,8 @@ import java.util.Objects;
 public class Demande {
  private Integer id;
  private String cin,cv, lettreMotivation , cartegrise,competences ;
+ private Integer id_offre;
+
 
     public Demande() {
     }
@@ -38,6 +40,8 @@ public class Demande {
         this.competences = competences;
      }
 
+
+
     public Demande(Integer id, String cin, String cv, String lettreMotivation, String cartegrise, String competences) {
         this.id=id;
         this.cin=cin;
@@ -45,6 +49,37 @@ public class Demande {
         this.lettreMotivation=lettreMotivation;
         this.cartegrise=cartegrise;
         this.competences=competences;
+    }
+
+    public Demande(Integer id, String cin, String cv, String lettreMotivation, String cartegrise, String competences, String id_offre) {
+
+        this.id=id;
+        this.cin=cin;
+        this.cv=cv;
+        this.lettreMotivation=lettreMotivation;
+        this.cartegrise=cartegrise;
+        this.competences=competences;
+        this.id_offre= Integer.valueOf(id_offre);
+    }
+
+
+
+    public Integer getId_offre() {
+        return id_offre;
+    }
+
+    public void setId_offre(Integer id_offre) {
+        this.id_offre = id_offre;
+    }
+
+    public Demande(Integer id, String cin, String cv, String lettreMotivation, String cartegrise, String competences, Integer id_offre) {
+        this.id=id;
+        this.cin=cin;
+        this.cv=cv;
+        this.lettreMotivation=lettreMotivation;
+        this.cartegrise=cartegrise;
+        this.competences=competences;
+        this.id_offre=id_offre;
     }
 
 

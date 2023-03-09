@@ -39,6 +39,7 @@ import com.fithnity.entity.Offre;
 import com.fithnity.service.ServiceDemande;
 import com.fithnity.service.ServiceOffre;
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -71,6 +72,10 @@ public class Table_viewController implements Initializable {
     private Button btn_user;
     @FXML
     private Button btn_blog;
+    @FXML
+    private Button vers_dashboard_offre;
+    @FXML
+    private Button vers_stat;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -229,6 +234,27 @@ public class Table_viewController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    private void vers_dashboard_offre(ActionEvent event) throws IOException {
+         Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Table_view_offre.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+        
+        
+        
+    }
+
+    @FXML
+    private void vers_stat(ActionEvent event) throws IOException {
+           Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/StatisticsView.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 

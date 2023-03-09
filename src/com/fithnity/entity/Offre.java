@@ -25,6 +25,8 @@ public Offre() {
         this.salaire = salaire;
     }
 
+
+
     public Offre(String metier, String secteur, String ville, String Nombredeposte,String salaire,Date dateOffre) {
         this.metier = metier;
         this.secteur = secteur;
@@ -128,6 +130,7 @@ public Offre() {
         hash = 59 * hash + Objects.hashCode(this.salaire);
         return hash;
     }
+
 
     @Override
     public boolean equals(Object obj) {
