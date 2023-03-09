@@ -181,6 +181,7 @@ if (rs.next() && rs.getInt(1) > 0) {
         btn_addi.setVisible(true);
         image.setImage(null);
      }
+             
         });
         
 

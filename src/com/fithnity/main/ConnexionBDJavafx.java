@@ -29,17 +29,18 @@ public class ConnexionBDJavafx extends Application {
     private Stage primaryStage;
     private Parent parentPage;
    
-    @Override
+     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Fi_Thnity");
         
-        
-       parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
-     //   parentPage = FXMLLoader.load(getClass().getResource("\"/com/fithnity/view/ajout_c\""));
-        Scene scene = new Scene(parentPage);
+        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+        Scene scene = new Scene(parentPage, 1200, 800);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
-
+//scene.getStylesheets().add("/com/fithnity/view/style.css");
     }
 
     /**

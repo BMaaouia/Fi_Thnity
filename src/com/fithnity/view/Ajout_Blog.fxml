@@ -157,7 +157,7 @@
                   <HBox prefHeight="46.0" prefWidth="319.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@../../../../../../../Downloads/Fi_Thnity-GestionReclamation/Fi_Thnity-GestionReclamation/src/com/fithnity/view/style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

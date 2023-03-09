@@ -252,10 +252,10 @@ public class AfficheController implements Initializable {
         image_blog.setText("");	
 	 
 //reload
-//Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
-//    Stage window = (Stage) btn_modif.getScene().getWindow();
-//    window.setScene(new Scene(root2));
-        menuController.loadPage("/com/fithnity/view/affiche");
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
+   Stage window = (Stage) btn_modif.getScene().getWindow();
+    window.setScene(new Scene(root2));
+//menuController.loadPage("/com/fithnity/view/affiche");
 	
         
     

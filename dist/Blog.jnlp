@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Blog.jar" size="178201" download="eager" />
+    <jar href="Blog.jar" size="178162" download="eager" />
     <jar href="lib\controlsfx-8.40.15.jar" size="1185934" download="eager" />
     <jar href="lib\itextpdf-5.1.0.jar" size="1614453" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />

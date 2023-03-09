@@ -165,9 +165,9 @@ public class Affiche_cController implements Initializable {
         
 	 
 //reload
-Parent root2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
-    Stage window = (Stage) btn_up.getScene().getWindow();
-    window.setScene(new Scene(root2));
+//Parent root2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
+   // Stage window = (Stage) btn_up.getScene().getWindow();
+   // window.setScene(new Scene(root2));
     }
     }
   public void getEvents() {  

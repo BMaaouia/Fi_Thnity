@@ -138,10 +138,12 @@ public class Ajout_cController implements Initializable {
  
     ScrollPane scrollPane = new ScrollPane();
     
-    scroll_blog.setContent(list_b);
+    scroll_blog.setContent((Node) BlogList);
     // Add the scroll pane to the parent container instead of the list view
     gridProduit.getChildren().add(scrollPane);
+   
                 });
+      
   
      
        
@@ -251,16 +253,22 @@ public class Ajout_cController implements Initializable {
         alert.show();
         text_c.setText("");
         text_n.setText("");
+           try {
+               Affichage();
+           } catch (FileNotFoundException ex) {
+               Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
              list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
+            
 
     
  
     }
-    private void show(ActionEvent event) {
+    private void refresh(ActionEvent event) {
          try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -398,7 +406,8 @@ public class Ajout_cController implements Initializable {
             Rating Rt = new Rating(5);
             Rt.setRating(selectedBlog.getRating());
             
-            menuController.loadPage("/com/fithnity/view/ajout_c");
+            refresh(event);
+//            menuController.loadPage("/com/fithnity/view/ajout_c");
             
      
     }
