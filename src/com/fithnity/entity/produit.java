@@ -15,21 +15,21 @@ public class produit {
     
     private int id_produit;
     private String nom_produit;
-    private int poids; //0: non loué, 1: loué
+    private float poids; //0: non loué, 1: loué
     private String photo;
     private String description;
     
     public produit() {
     }
     
-    public produit(String nom_produit, int poids,String description) {
+    public produit(String nom_produit, float poids,String description) {
        
        this.nom_produit = nom_produit;
        this.poids = poids;
        this.description = description;
     }
 
-    public produit(int id_produit, String nom_produit, int poids, String photo, String description) {
+    public produit(int id_produit, String nom_produit, float poids, String photo, String description) {
         this.id_produit = id_produit;
         this.nom_produit = nom_produit;
         this.poids = poids;
@@ -37,7 +37,7 @@ public class produit {
         this.description = description;
     }
 
-    public produit(int id_produit, String nom_produit, int poids, String description) {
+    public produit(int id_produit, String nom_produit, float poids, String description) {
         this.id_produit = id_produit;
         this.nom_produit = nom_produit;
         this.poids = poids;
@@ -46,7 +46,7 @@ public class produit {
 
      
        
-      public produit( String nom_produit, int poids, String photo, String description) {
+      public produit( String nom_produit, float poids, String photo, String description) {
         this.nom_produit = nom_produit;
         this.poids = poids;
         this.photo = photo;
@@ -69,7 +69,7 @@ public class produit {
         this.nom_produit = nom_produit;
     }
 
-    public int getPoids() {
+    public float getPoids() {
         return poids;
     }
 
@@ -95,14 +95,12 @@ public class produit {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + this.id_produit;
-        hash = 37 * hash + Objects.hashCode(this.nom_produit);
-        hash = 37 * hash + this.poids;
-        hash = 37 * hash + Objects.hashCode(this.photo);
-        hash = 37 * hash + Objects.hashCode(this.description);
+        int hash = 7;
+        hash = 29 * hash + this.id_produit;
+        hash = 29 * hash + Float.floatToIntBits(this.poids);
         return hash;
     }
+
 
     @Override
     public boolean equals(Object obj) {

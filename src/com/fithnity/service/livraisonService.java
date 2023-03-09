@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -157,4 +159,28 @@ String qry = "UPDATE livraison SET etat = '" + p.getEtat() + "', description = '
         }
         return false;
     }
+      
+       public ObservableList<livraison> searchent2(String searchTerm) {
+        ObservableList<livraison> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement("SELECT * FROM livraison");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                livraison offre = new livraison(
+                          rs.getInt(2), 
+                          rs.getString(3)   
+                        
+                      
+                );
+                list.add(offre);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+      
+      
+      
+      
 }

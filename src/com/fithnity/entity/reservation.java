@@ -13,8 +13,8 @@ import java.util.Objects;
 public class reservation {
     private int id_r;
     private int IDClient; //id de l'utisateur connecté et de type client
-    
-    private int prix,poids;
+    private String reference;
+    private float prix,poids;
     private LocalDate dateReser;
     private String villeDepart,villeArrive;
     private int id_produit;
@@ -23,7 +23,7 @@ public class reservation {
      public reservation() { 
     }
 
-    public reservation(int id_r, int IDClient, int id_produit, int prix, int poids, LocalDate dateReser, String villeDepart, String villeArrive) {
+    public reservation(int id_r, int IDClient, int id_produit, float prix, float poids, LocalDate dateReser, String villeDepart, String villeArrive) {
         this.id_r = id_r;
         this.IDClient = IDClient;
         this.id_produit = id_produit;
@@ -34,7 +34,8 @@ public class reservation {
         this.villeArrive = villeArrive;
     }
      
-        public reservation( int prix, int poids, LocalDate dateReser, String villeDepart, String villeArrive, int id_produit) {
+        public reservation( String reference,float prix, float poids, LocalDate dateReser, String villeDepart, String villeArrive, int id_produit) {
+        this.reference = reference;
         this.prix = prix;
         this.poids = poids;
         this.dateReser = dateReser;
@@ -43,8 +44,9 @@ public class reservation {
         this.id_produit = id_produit;
     }
 
-        public reservation(int id_r, int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser) {
+        public reservation(int id_r,String reference, float prix, float poids, String villeDepart, String villeArrive, LocalDate dateReser) {
         this.id_r = id_r;
+        this.reference = reference;
         this.prix = prix;
         this.poids = poids;
         this.villeDepart = villeDepart;
@@ -52,8 +54,9 @@ public class reservation {
         this.dateReser = dateReser;
     }
 
-    public reservation(int prix, int poids, String villeDepart, String villeArrive, LocalDate dateReser, int id_produit) {
-         this.prix = prix;
+    public reservation(String reference,float prix, float poids, String villeDepart, String villeArrive, LocalDate dateReser, int id_produit) {
+        this.reference = reference;
+        this.prix = prix;
         this.poids = poids;
         this.villeDepart = villeDepart;
         this.villeArrive = villeArrive;
@@ -62,7 +65,7 @@ public class reservation {
 
     }
 
-    public reservation(int prix, int poids, String villeDepart, String villeArrive) {
+    public reservation(float prix, float poids, String villeDepart, String villeArrive) {
     this.prix = prix;
     this.poids = poids;
     this.villeDepart = villeDepart;
@@ -70,7 +73,7 @@ public class reservation {
    
 }
     
-    public reservation(int prix, int poids, String villeDepart, String villeArrive, Date dateReser) {
+    public reservation(float prix, float poids, String villeDepart, String villeArrive, Date dateReser) {
           this.prix = prix;
         this.poids = poids;
         this.villeDepart = villeDepart;
@@ -105,19 +108,19 @@ public class reservation {
         this.id_produit = id_produit;
     }
 
-    public int getPrix() {
+    public float getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(float prix) {
         this.prix = prix;
     }
 
-    public int getPoids() {
+    public float getPoids() {
         return poids;
     }
 
-    public void setPoids(int poids) {
+    public void setPoids(float poids) {
         this.poids = poids;
     }
 
@@ -136,6 +139,14 @@ public class reservation {
     public void setVilleDepart(String villeDepart) {
         this.villeDepart = villeDepart;
     }
+    
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
     public String getVilleArrive() {
         return villeArrive;
@@ -148,16 +159,16 @@ public class reservation {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + this.id_r;
         hash = 53 * hash + this.IDClient;
-        hash = 53 * hash + this.id_produit;
-        hash = 53 * hash + this.prix;
-        hash = 53 * hash + this.poids;
+        hash = 53 * hash + Float.floatToIntBits(this.prix);
+        hash = 53 * hash + Float.floatToIntBits(this.poids);
         hash = 53 * hash + Objects.hashCode(this.dateReser);
         hash = 53 * hash + Objects.hashCode(this.villeDepart);
         hash = 53 * hash + Objects.hashCode(this.villeArrive);
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -200,7 +211,7 @@ public class reservation {
 
     @Override
     public String toString() {
-        return "reservation{" + "id_r=" + id_r + ", IDClient=" + IDClient + ", id_produit=" + id_produit + ", prix=" + prix + ", poids=" + poids + ", dateReser=" + dateReser + ", villeDepart=" + villeDepart + ", villeArrive=" + villeArrive + '}';
+        return "reservation{" + "id_r=" + id_r + ", IDClient=" + IDClient + ", Reference=" + reference+ ", id_produit=" + id_produit + ", prix=" + prix + ", poids=" + poids + ", dateReser=" + dateReser + ", villeDepart=" + villeDepart + ", villeArrive=" + villeArrive + '}';
     }
     
 }

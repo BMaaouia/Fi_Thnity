@@ -35,7 +35,7 @@ public class produitService {
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setString(1, p.getNom_produit());
-            pst.setInt(2, p.getPoids());
+            pst.setFloat(2, p.getPoids());
             pst.setString(3, p.getDescription());
             pst.executeUpdate();
              System.out.println("produit ajoutée !");
@@ -52,7 +52,7 @@ public class produitService {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new produit(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4)));
+                list.add(new produit(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getString(4)));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -80,7 +80,7 @@ public class produitService {
            // while(rs.next()){
             rs.next();
                 p.setNom_produit(rs.getString("nom_produit"));
-                p.setPoids(rs.getInt("poids"));
+                p.setPoids((int) rs.getFloat("poids"));
                 p.setDescription(rs.getString("description"));
                 
               //  p.setDateReser(rs.getDate("date_r").toLocalDate());
@@ -117,7 +117,7 @@ public class produitService {
             
             while (rs.next()) {
                 p.setNom_produit(rs.getString("nom_produit"));
-                p.setPoids(rs.getInt("poids"));
+                p.setPoids((int) rs.getFloat("poids"));
                 p.setDescription(rs.getString("description"));
             }
         } catch (SQLException ex) {
@@ -153,7 +153,7 @@ String qry = "UPDATE produit SET nom_produit = '" + p.getNom_produit() + "', poi
             while (rs.next()) {
                 produit offre = new produit(
                           rs.getString(2), 
-                          rs.getInt(3),   
+                          rs.getFloat(3),   
                         rs.getString(4)
                 );
                 list.add(offre);
@@ -170,7 +170,7 @@ String qry = "UPDATE produit SET nom_produit = '" + p.getNom_produit() + "', poi
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setString(1, p.getNom_produit());
-            pst.setInt(2, p.getPoids());
+            pst.setFloat(2, p.getPoids());
             pst.setString(3, p.getDescription());
                         
             pst.executeUpdate();

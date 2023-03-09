@@ -24,7 +24,7 @@
    <children>
       <AnchorPane layoutX="5.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;">
          <children>
-            <AnchorPane fx:id="container" layoutX="311.0" layoutY="-5.0" prefHeight="808.0" prefWidth="890.0">
+            <AnchorPane fx:id="container" layoutX="312.0" layoutY="-4.0" prefHeight="808.0" prefWidth="890.0">
                <children>
                   <Label layoutX="29.0" layoutY="26.0" text="Modifier/Supprimer Reservation:">
                      <font>
@@ -34,7 +34,7 @@
                   <Separator layoutY="77.0" prefHeight="1.0" prefWidth="890.0" />
                   <Label layoutX="-227.0" layoutY="480.0" text="Commentaire" />
                   <Label layoutX="-218.0" layoutY="191.0" text="Liste Blog" />
-                  <Button fx:id="back_reservation" layoutX="810.0" layoutY="28.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="22.0" style="-fx-background-color: black; -fx-background-radius: 20;" textFill="#fcfafa" />
+                  <Button fx:id="back_reservation" layoutX="401.0" layoutY="28.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: black; -fx-background-radius: 20;" textFill="#fcfafa" />
                   <Text layoutX="85.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix">
                      <font>
                         <Font name="Arial" size="19.0" />
@@ -50,9 +50,8 @@
                         <Font name="Arial" size="19.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="prix_filed" layoutX="170.0" layoutY="131.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="prix_filed" editable="false" layoutX="170.0" layoutY="131.0" style="-fx-background-radius: 20;" />
                   <TextField fx:id="poids_filed" layoutX="170.0" layoutY="202.0" style="-fx-background-radius: 20;" />
-                  <Button fx:id="supprimer" layoutX="501.0" layoutY="128.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="21.0" style="-fx-background-color: black; -fx-background-radius: 20;" textFill="#fcfafa" />
                   <Button fx:id="refresh" layoutX="320.0" layoutY="511.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 20;" text="refresh" textFill="#fcfafa" />
                   <Label layoutX="79.0" layoutY="352.0" prefHeight="31.0" prefWidth="125.0" text="Ville Arrivée" textFill="#171717">
                      <font>
@@ -64,15 +63,15 @@
                         <Font name="Arial" size="19.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="432.0" layoutY="105.0" orientation="VERTICAL" prefHeight="419.0" prefWidth="0.0" />
+                  <Separator layoutX="429.0" layoutY="105.0" orientation="VERTICAL" prefHeight="599.0" prefWidth="9.0" />
                   <ComboBox fx:id="idvd" layoutX="214.0" layoutY="289.0" prefWidth="150.0" style="-fx-background-color: black; -fx-background-radius: 20;" />
                   <ComboBox fx:id="idva" layoutX="214.0" layoutY="355.0" prefWidth="150.0" style="-fx-background-color: black; -fx-background-radius: 20;" />
                   <DatePicker fx:id="dateField" layoutX="237.0" layoutY="420.0" prefHeight="26.0" prefWidth="162.0" />
-                  <TextField fx:id="rech" layoutX="598.0" layoutY="128.0" onKeyReleased="#FiltrerKeyReleased3" promptText="Rechercher" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="rech" layoutX="530.0" layoutY="128.0" onKeyReleased="#FiltrerKeyReleased3" promptText="Rechercher" style="-fx-background-radius: 20;" />
                   <Button fx:id="supp" layoutX="786.0" layoutY="128.0" mnemonicParsing="false" onAction="#Supprimer" style="-fx-background-color: black; -fx-background-radius: 20;" text="Supprimer" textFill="#fcfafa" />
-                  <Button layoutX="801.0" layoutY="80.0" mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="40.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="pdf" textFill="#fcfafa" />
+                  <Button layoutX="777.0" layoutY="80.0" mnemonicParsing="false" onAction="#pdf" prefHeight="31.0" prefWidth="64.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="pdf" textFill="#fcfafa" />
                   <Button fx:id="supp1" layoutX="104.0" layoutY="519.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 20;" text="update" textFill="#fcfafa" />
-                  <ListView fx:id="id_list2" layoutX="438.0" layoutY="186.0" prefHeight="367.0" prefWidth="420.0" style="-fx-background-radius: 20;" />
+                  <ListView fx:id="id_list2" layoutX="438.0" layoutY="186.0" prefHeight="420.0" prefWidth="432.0" style="-fx-background-radius: 20;" />
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">

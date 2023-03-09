@@ -35,14 +35,15 @@ public class reservationService {
       
         try {
             
-            String requete = "INSERT INTO reservation (prix,poids,villeDepart,villeArrive,date_r,id_produit) VALUES (?,?,?,?,?,?)";
+            String requete = "INSERT INTO reservation (reference,prix,poids,villeDepart,villeArrive,date_r,id_produit) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, r.getPrix());
-            pst.setInt(2, r.getPoids());
-            pst.setString(3,r.getVilleDepart());
-            pst.setString(4,r.getVilleArrive());
-            pst.setDate(5, Date.valueOf(r.getDateReser()));
-            pst.setInt(6, r.getId_produit());
+            pst.setString(1, r.getReference());
+            pst.setFloat(2, r.getPrix());
+            pst.setFloat(3, r.getPoids());
+            pst.setString(4,r.getVilleDepart());
+            pst.setString(5,r.getVilleArrive());
+            pst.setDate(6, Date.valueOf(r.getDateReser()));
+            pst.setInt(7, r.getId_produit());
 
             pst.executeUpdate();
              System.out.println("Reservation ajoutée !");
@@ -55,8 +56,8 @@ public class reservationService {
             String requete = "UPDATE reservation SET prix=?,poids=?,villeDepart=?,villeArrive=?,date_r=? WHERE id_r=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
-            pst.setInt(1, r.getPrix());
-            pst.setInt(2, r.getPoids());
+            pst.setFloat(1, r.getPrix());
+            pst.setFloat(2, r.getPoids());
             pst.setString(3,r.getVilleDepart());
             pst.setString(4,r.getVilleArrive());
             pst.setDate(5, Date.valueOf(r.getDateReser()));
@@ -72,8 +73,8 @@ public class reservationService {
             String requete = "UPDATE reservation SET prix=?,poids=?,villeDepart=?,villeArrive=?,date_r=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
-            pst.setInt(1, r.getPrix());
-            pst.setInt(2, r.getPoids());
+            pst.setFloat(1, r.getPrix());
+            pst.setFloat(2, r.getPoids());
             pst.setString(3,r.getVilleDepart());
             pst.setString(4,r.getVilleArrive());
             pst.setDate(5,Date.valueOf(r.getDateReser()));
@@ -102,7 +103,7 @@ public class reservationService {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new reservation(rs.getInt(1),rs.getInt(2),rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6).toLocalDate()));
+                list.add(new reservation(rs.getInt(1),rs.getString(2),rs.getFloat(3),rs.getFloat(4), rs.getString(5), rs.getString(6), rs.getDate(7).toLocalDate()));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -116,8 +117,9 @@ public class reservationService {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 reservation offre = new reservation(
-                          rs.getInt(2), 
-                          rs.getInt(3),   
+                          
+                            rs.getFloat(2), 
+                          rs.getFloat(3),   
                         rs.getString(4),
                         rs.getString(5),
                           rs.getDate(6)
@@ -150,8 +152,8 @@ public class reservationService {
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
-                p.setPrix(rs.getInt("prix"));
-                p.setPoids(rs.getInt("poids"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setPoids(rs.getFloat("poids"));
                 p.setVilleDepart(rs.getString("VilleDepart"));
                 p.setVilleArrive(rs.getString("VilleArrive"));
                 p.setDateReser(rs.getDate("date_r").toLocalDate());
@@ -175,8 +177,8 @@ public class reservationService {
            ResultSet rs = pst.executeQuery();
            // while(rs.next()){
             rs.next();
-                     p.setPrix(rs.getInt("prix"));
-                p.setPoids(rs.getInt("poids"));
+                     p.setPrix(rs.getFloat("prix"));
+                p.setPoids(rs.getFloat("poids"));
                 p.setVilleDepart(rs.getString("VilleDepart"));
                 p.setVilleArrive(rs.getString("VilleArrive"));
               //  p.setDateReser(rs.getDate("date_r").toLocalDate());

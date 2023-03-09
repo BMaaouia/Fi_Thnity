@@ -131,8 +131,10 @@ public class DASHBOARDreservationController implements Initializable {
        
          current.getId_r();
 
-      prix_filed.setText(Integer.toString(current.getPrix()));
-       poids_filed.setText(Integer.toString(current.getPoids()));
+      prix_filed.setText(Float.toString(current.getPrix()));
+       poids_filed.setText(Float.toString(current.getPoids()));
+       idvd.setValue(current.getVilleDepart());
+       idva.setValue(current.getVilleArrive());
     
         supp1.setOnAction(e->{
             
@@ -140,8 +142,8 @@ public class DASHBOARDreservationController implements Initializable {
      
         
    
-       current.setPrix(Integer.parseInt(prix_filed.getText()));
-        current.setPoids(Integer.parseInt(poids_filed.getText()));
+       current.setPrix(Float.parseFloat(prix_filed.getText()));
+        current.setPoids(Float.parseFloat(poids_filed.getText()));
    
             String M= idvd.getSelectionModel().getSelectedItem().toString(); 
             String V= idva.getSelectionModel().getSelectedItem().toString();   
@@ -181,8 +183,8 @@ public class DASHBOARDreservationController implements Initializable {
       
         String vd = offreSelectionnee.getVilleDepart();
         String va = offreSelectionnee.getVilleArrive();
-        int prix = offreSelectionnee.getPrix();
-        int poids= offreSelectionnee.getPoids();
+        float prix = offreSelectionnee.getPrix();
+        float poids= offreSelectionnee.getPoids();
 
         // Faire quelque chose avec ces données (par exemple les afficher dans une boîte de dialogue)
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -245,7 +247,7 @@ id_list2.setOnKeyPressed(event -> {
     reservationService su = new reservationService();
     ObservableList<reservation> list = su.searchent2(searchTerm);
     List<reservation> filteredList = list.stream()
-        .filter(entretient -> entretient.getVilleDepart().toLowerCase().contains(searchTerm.toLowerCase()))
+        .filter(reservation -> reservation.getVilleDepart().toLowerCase().contains(searchTerm.toLowerCase()))
         .collect(Collectors.toList());
    id_list2.setItems(FXCollections.observableArrayList(filteredList));
     }

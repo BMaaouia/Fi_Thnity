@@ -9,13 +9,17 @@ import com.fithnity.service.livraisonService;
 import com.fithnity.service.produitService;
 import com.fithnity.entity.livraison;
 import com.fithnity.entity.produit;
+import com.fithnity.entity.reservation;
+import com.fithnity.service.reservationService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,6 +36,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -59,6 +64,14 @@ public class DASHBORDlivraisonController implements Initializable {
     private CheckBox fx_etatAnnul;
     @FXML
     private Button back_livraison;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -147,6 +160,17 @@ public class DASHBORDlivraisonController implements Initializable {
 
     @FXML
     private void FiltrerKeyReleased3(KeyEvent event) {
+           
+           String searchTerm = rech.getText();
+    livraisonService su = new  livraisonService();
+    ObservableList<livraison> list = su.searchent2(searchTerm);
+    List<livraison> filteredList;
+        filteredList = list.stream()
+                .filter(livraison -> livraison.getDescription().toLowerCase().contains(searchTerm.toLowerCase()))
+                .collect(Collectors.toList());
+   id_list2.setItems(FXCollections.observableArrayList(filteredList));
+    
+
     }
 
     @FXML

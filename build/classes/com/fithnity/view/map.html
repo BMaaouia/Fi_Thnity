@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/opencage-api-client/1.2.2/opencage.min.js"></script>
+    <script>
+      var map;
+      var geocoder;
+      
+      function initMap() {
+        map = L.map('map').setView([0, 0], 2);
+
+        var apiKey = "6550afa4c4e4494b94e7a58c52844fa1";
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        geocoder = new OpenCageGeocoder({key: apiKey});
+
+        map.on('click', function(e) {
+          var latlng = e.latlng;
+          var lat = latlng.lat;
+          var lng = latlng.lng;
+
+          geocoder.reverse({q: lat + ',' + lng}).then(function(result) {
+            if (result.results.length > 0) {
+              var city = result.results[0].components.city;
+              var message = lat + ',' + lng + ',' + city;
+              console.log(message); // Print message to console
+              javaConnector.processLocation(message); // Call Java method
+            } else {
+              console.log('No city found at:', lat, lng);
+            }
+          }).catch(function(error) {
+            console.log('Error: ' + error.message);
+          });
+        });
+      }
+
+      function search() {
+  var query = document.getElementById('searchInput').value;
+  if (query.length > 0) {
+    geocoder.geocode({q: query}).then(function(results) {
+      if (results.length > 0) {
+        var result = results[0];
+        var lat = result.geometry.lat;
+        var lng = result.geometry.lng;
+        var city = result.components.city;
+        var message = lat + ',' + lng + ',' + city;
+        console.log(message); // Print message to console
+        javaConnector.processLocation(message); // Call Java method
+        map.setView([lat, lng], 10); // Center map on result location
+      } else {
+        console.log('No results found for query:', query);
+      }
+    }).catch(function(error) {
+      console.log('Error: ' + error.message);
+    });
+  }
+}
+
+    </script>
+    <style>
+      #map {
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body onload="initMap()">
+    <div id="map"></div>
+    <input type="text" id="searchInput" placeholder="Search for a town">
+    <button onclick="search()">Search</button>
+  </body>
+</html>

@@ -20,7 +20,7 @@
          <children>
             <AnchorPane fx:id="container" layoutX="312.0" layoutY="-4.0" prefHeight="808.0" prefWidth="890.0">
                <children>
-                  <Label layoutX="29.0" layoutY="26.0" text="Modifier/Supprimer Reservation:">
+                  <Label layoutX="29.0" layoutY="26.0" text="Modifier/Supprimer Livraison :">
                      <font>
                         <Font size="24.0" />
                      </font>

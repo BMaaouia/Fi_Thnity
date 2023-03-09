@@ -113,7 +113,7 @@ public class ADDlivraisonController implements Initializable {
     reservation_combo.setConverter(new StringConverter<reservation>() {
         @Override
         public String toString(reservation r) {
-            return Integer.toString(r.getPoids());
+             return r.getReference();
         }
         @Override
         public reservation fromString(String string) {
@@ -142,18 +142,20 @@ public class ADDlivraisonController implements Initializable {
         
         boolean valid = true;
         
-      
+        String regex = "^[a-zA-Z ]+$"; //expression régulière pour accepter uniquement des lettres et espaces
+        Pattern pattern = Pattern.compile(regex);
         livraisonService V_Service = new livraisonService();
         
         String description =String.valueOf(label_description.getText());
-        if(label_description.getText().isEmpty())
-        
-        {
-            valid = false;
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Remplissez tous les champs");
-            alert.showAndWait();
+        if (label_description.getText().isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Veuillez remplir le champ description.");
+        alert.showAndWait();
+    } else if (!pattern.matcher(label_description.getText()).matches()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Le champ description doit contenir uniquement des lettres et des espaces.");
+        alert.showAndWait();
+    
         } else {
             label_description.setVisible(false);
             

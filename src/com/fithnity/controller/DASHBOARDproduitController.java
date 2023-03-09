@@ -41,6 +41,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -72,6 +73,14 @@ public class DASHBOARDproduitController implements Initializable {
     private Button supp;
     @FXML
     private Button back_produit;
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -110,7 +119,7 @@ public class DASHBOARDproduitController implements Initializable {
        
          current.getId_produit();
        nom_filled.setText(current.getNom_produit());
-       poids_field.setText(Integer.toString(current.getPoids()));
+       poids_field.setText(Float.toString(current.getPoids()));
        description_field.setText(current.getDescription());
                 System.out.println(current);
                  supp1.setOnAction(e->{
@@ -120,7 +129,7 @@ public class DASHBOARDproduitController implements Initializable {
                          
                          
                          current.setNom_produit(nom_filled.getText());
-        current.setPoids(Integer.parseInt(poids_field.getText()));
+        current.setPoids((int) Float.parseFloat(poids_field.getText()));
                           current.setDescription(description_field.getText());
                           try {
                 o_Service.update(current);
@@ -159,7 +168,7 @@ public class DASHBOARDproduitController implements Initializable {
         
       
         String nom = offreSelectionnee.getNom_produit();
-        int poids= offreSelectionnee.getPoids();
+        float poids= offreSelectionnee.getPoids();
         String description = offreSelectionnee.getDescription();
 
         // Faire quelque chose avec ces données (par exemple les afficher dans une boîte de dialogue)
@@ -245,20 +254,13 @@ id_list2.setOnKeyPressed(event -> {
     }
     
 
-//    @FXML
-//    private void FiltrerKeyReleased3()
-//{
-
-    @FXML
-    private void supprimer(ActionEvent event) {
-    }
 
     @FXML
     private void FiltrerKeyReleased3(KeyEvent event) {String searchTerm = rech.getText();
     produitService su = new produitService();
     ObservableList<produit> list = su.searchent3(searchTerm);
     List<produit> filteredList = list.stream()
-        .filter(entretient -> entretient.getNom_produit().toLowerCase().contains(searchTerm.toLowerCase()))
+        .filter(produit -> produit.getNom_produit().toLowerCase().contains(searchTerm.toLowerCase()))
         .collect(Collectors.toList());
    id_list2.setItems(FXCollections.observableArrayList(filteredList));
     }
