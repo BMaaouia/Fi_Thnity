@@ -62,6 +62,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -79,7 +80,7 @@ public class MreponseController implements Initializable {
     @FXML
     private TextField txt_emailU;
     @FXML
-    private TextField txt_messageR;
+    private TextArea txt_messageR;
     @FXML
     private Button btn_acceuil;
     @FXML
@@ -97,7 +98,7 @@ public class MreponseController implements Initializable {
     
      private ListDataReponse listdata = new ListDataReponse();
   
-    private ListData listdata2 = new ListData();
+    private ListDataReclamation listdata2 = new ListDataReclamation();
     @FXML
     private Pagination pagination;
     private final int ITEMS_PER_PAGE = 5;
@@ -159,7 +160,7 @@ txt_messageR.setText(current.getMessageR());
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
+//                controller.setListData(new ListDataReclamation());
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -178,7 +179,7 @@ txt_messageR.setText(current.getMessageR());
 //                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherPersonne.fxml"));
 //                // Give the controller access to the main app.
 ////                AfficherPersonneController controller =loader.getController();
-////                controller.setListData(new ListData());
+////                controller.setListData(new ListDataReclamation());
 //                Scene scene = new Scene(page2);
 //                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //                stage.setScene(scene);
@@ -197,7 +198,7 @@ txt_messageR.setText(current.getMessageR());
 //                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AfficherReponse.fxml"));
 //                // Give the controller access to the main app.
 ////                AfficherPersonneController controller =loader.getController();
-////                controller.setListData(new ListData());
+////                controller.setListData(new ListDataReclamation());
 //                Scene scene = new Scene(page2);
 //                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //                stage.setScene(scene);
@@ -216,7 +217,7 @@ txt_messageR.setText(current.getMessageR());
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/blog.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
+//                controller.setListData(new ListDataReclamation());
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

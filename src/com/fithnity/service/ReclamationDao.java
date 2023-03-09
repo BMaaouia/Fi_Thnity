@@ -32,7 +32,7 @@ import javafx.scene.chart.PieChart;
  *
  * @author wiemhjiri
  */
-public class ReclamationDao implements Idao<Reclamation>{
+public class ReclamationDao implements IdaoR<Reclamation>{
     
     private static ReclamationDao instance;
     private Statement st;

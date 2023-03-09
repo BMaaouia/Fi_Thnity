@@ -93,7 +93,7 @@ public class AjouterreclamationfrontController implements Initializable {
     @FXML
     private Button btn_blog;
     
-      private ListData listdata = new ListData();
+      private ListDataReclamation listdata = new ListDataReclamation();
     @FXML
     private AnchorPane container;
 
@@ -122,7 +122,7 @@ public class AjouterreclamationfrontController implements Initializable {
 //    ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
 //    listviewP.setItems(reclamationsList);
 //});
-ObservableList<String> liste = FXCollections.observableArrayList("Tunis", "Sousse","Hammemet","Monastir") ;
+ObservableList<String> liste = FXCollections.observableArrayList("Article perdue", "probléme avec le transporteur","Colis endomagés") ;
         txt_type.setItems(liste);
         //***************
           btn_acceuil.setOnAction(event -> {
@@ -131,7 +131,7 @@ ObservableList<String> liste = FXCollections.observableArrayList("Tunis", "Souss
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/acceuilfront.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
+//                controller.setListData(new ListDataReclamation());
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -320,7 +320,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout
     
  private boolean Saisi() {  
 
-        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()||  txt_type.getValue() == null) {
             Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
             return false;
         } else {

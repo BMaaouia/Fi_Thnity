@@ -160,6 +160,7 @@ piechart.setLegendVisible(false); // hide the legend
 piechart.setLabelsVisible(true); // show labels for each slice
 piechart.setLabelLineLength(10); // adjust the length of the label lines
 piechart.setStartAngle(180); // adjust the starting angle of the pie chart
+piechart.setPrefSize(800, 500); // adjust the width and height of the chart
 piechart.setAnimated(true);
   counts.forEach((role, count) -> piechart.getData().add(new PieChart.Data(role+" : "+count, count)));
 //*************************************************

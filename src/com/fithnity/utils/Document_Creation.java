@@ -202,24 +202,15 @@ public class Document_Creation  {
 			throws IOException {
 		
 		final int rows = articles.size()+1;
-		final int cols = 6;
+		final int cols = 7;
 		final float rowHeight = 20f;
 		final float tableWidth = 517;
 		final float tableHeight = rowHeight * rows;
 		final float colWidth = tableWidth/(float)cols;
-		final float cellMargin=5f;
+ final float emailColWidth = 2*colWidth; 
+                final float cellMargin=8f;
                 
-                
-//                PDFont font3 = PDType1Font.COURIER_BOLD;
-//                contentStream.setNonStrokingColor(Color.black);
-//                String client="Reclamations:";
-//                PDFont font5 = PDType1Font.TIMES_BOLD_ITALIC;
-//                contentStream.beginText();
-//                contentStream.setFont(font3, 15);
-//                contentStream.setLeading(14.5f);
-//                contentStream.newLineAtOffset(52, 375);
-//                contentStream.showText(client);
-//                contentStream.endText();
+
                 
 		//draw the rows
 		float nexty = y ;
@@ -234,7 +225,8 @@ public class Document_Creation  {
 		for (int i = 0; i <= cols; i++) {
 		contentStream.drawLine(nextx,y,nextx,y-tableHeight);
 		nextx += colWidth;
-		}
+		// nextx += colWidth[i];
+                }
 		
 		//now add the text
 		contentStream.setFont(PDType1Font.HELVETICA_BOLD,11);
@@ -242,7 +234,7 @@ public class Document_Creation  {
 		float textx = margin+cellMargin;
 		float texty = y-15;
 		
-		String[] list = {"nom","Prenom", "email","tel", "message","Date"};
+		String[] list = {"nom","Prenom", "email","tel", "message","Date","typeR"};
 		
 		contentStream.setNonStrokingColor(Color.RED);
 		for(int i=0; i<list.length; i++){
@@ -305,6 +297,13 @@ public class Document_Creation  {
 				contentStream.drawString(text6);
 				contentStream.endText();
 				textx += colWidth;
+				//////////////////////
+                                  String text7 = ""+cons.getTypeR();
+				contentStream.beginText();
+				contentStream.moveTextPositionByAmount(textx,texty);
+				contentStream.drawString(text7);
+				contentStream.endText();
+				textx += emailColWidth;
 				//////////////////////
 //                                String text7 = ""+cons.getNumtel();
 //				contentStream.beginText();

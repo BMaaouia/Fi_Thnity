@@ -69,7 +69,7 @@ public class ManipulReponseController implements Initializable {
     
   private ListDataReponse listdata = new ListDataReponse();
   
-    private ListData listdata2 = new ListData();
+    private ListDataReclamation listdata2 = new ListDataReclamation();
     /**
      * Initializes the controller class.
      */

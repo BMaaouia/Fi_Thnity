@@ -59,7 +59,7 @@ public class reclamationbackController implements Initializable {
     @FXML
     private Button btn_acceuil;
 
-    private ListData listdata = new ListData();
+    private ListDataReclamation listdata = new ListDataReclamation();
     @FXML
     private Button btn_reponse;
     @FXML
@@ -96,7 +96,7 @@ public class reclamationbackController implements Initializable {
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
+//                controller.setListData(new ListDataReclamation());
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -116,7 +116,7 @@ public class reclamationbackController implements Initializable {
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
+//                controller.setListData(new ListDataReclamation());
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

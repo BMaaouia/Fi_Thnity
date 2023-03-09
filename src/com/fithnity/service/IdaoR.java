@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author wiemhjiri
  */
-public interface Idao<T> {
+public interface IdaoR<T> {
     public void insert(T o);
     public void delete(T o);
     public List<T> displayAll();

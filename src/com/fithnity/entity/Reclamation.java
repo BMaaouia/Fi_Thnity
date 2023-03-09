@@ -156,7 +156,7 @@ private SimpleObjectProperty <Date> date ;
 
     @Override
     public String toString() {
-        return  " Nom= " + nom.get() + "      " + " Prenom= " + prenom.get() + "      " + " Email= " + email.get() + "      " + " Tel= " + numTel.get() + "      " + " Message= " + message.get() + "      "+ " date= " + date.get() + " typeR= " + typeR.get()+ ' ';
+        return  " Nom= " + nom.get() + "      " + " Prenom= " + prenom.get() + "      " + " Email= " + email.get() + "      " + " Tel= " + numTel.get() + "      " + " Message= " + message.get() + "      "+ " date= " + date.get() +"      "+ " typeR= " + typeR.get()+ ' ';
      //return   nom.get()   +  "          "+ prenom.get()+  "        "+ email.get() +  "       "+ numTel.get()   +  "            "+ message.get() +  "         " + date.get() + ' ';
     }
 

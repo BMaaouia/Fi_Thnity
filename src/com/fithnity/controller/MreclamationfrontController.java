@@ -49,6 +49,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -82,7 +83,7 @@ public class MreclamationfrontController implements Initializable {
     @FXML
     private TextField txt_tel;
     @FXML
-    private TextField txt_message;
+    private TextArea txt_message;
     @FXML
     private Button btn_acceuil;
     @FXML
@@ -90,13 +91,13 @@ public class MreclamationfrontController implements Initializable {
     @FXML
     private Button btn_blog;
     
-      private ListData listdata = new ListData();
+      private ListDataReclamation listdata = new ListDataReclamation();
     @FXML
     private AnchorPane container;
     @FXML
     private Pagination pagination;
 
-    private final int ITEMS_PER_PAGE = 5;
+    private final int ITEMS_PER_PAGE = 4;
     @FXML
     private TextField search;
     @FXML
@@ -115,7 +116,7 @@ public class MreclamationfrontController implements Initializable {
         // TODO
         
         //***********************
-        ObservableList<String> liste = FXCollections.observableArrayList("Tunis", "Sousse","Hammemet","Monastir") ;
+        ObservableList<String> liste = FXCollections.observableArrayList("Article perdue", "probléme avec le transporteur","Colis endomagés") ;
         txt_type.setItems(liste);
         //***********************
         
@@ -169,7 +170,7 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/acceuilfront.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListData());
+//                controller.setListData(new ListDataReclamation());
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -218,7 +219,7 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
         listviewP.setItems(listdata.getPersons()); 
          
  
-        listviewP.setOnMouseClicked(event->{
+        listviewP.setOnMouseClicked((MouseEvent event)->{
             
 
  java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
@@ -230,8 +231,10 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
     //    txt_prenom.setText(current.getPrenom());
         txt_email.setText(current.getEmail());
         txt_tel.setText(Integer.toString(current.getNumTel()));   
-txt_message.setText(current.getMessage());        
-
+txt_message.setText(current.getMessage());   
+txt_type.setValue(current.getTypeR());
+//txt_type.setText(current.getTypeR());
+//*************************************************************************************************************************************
     });
           
         
@@ -311,6 +314,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
             p.setEmail(txt_email.getText());
             p.setNumTel(Integer.parseInt(txt_tel.getText()));
              p.setMessage(txt_message.getText());
+             p.setTypeR(txt_type.getSelectionModel().getSelectedItem());
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.update(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -359,7 +363,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Mrecl
     
  private boolean Saisi() {  
 
-        if ( txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+        if ( txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()||  txt_type.getValue() == null) {
             Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
             return false;
         } else {

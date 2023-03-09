@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
  *
  * @author MSI
  */
-public class ReponseDao implements Idao<Reponse>{
+public class ReponseDao implements IdaoR<Reponse>{
     
     private static ReponseDao instance;
     private Statement st;

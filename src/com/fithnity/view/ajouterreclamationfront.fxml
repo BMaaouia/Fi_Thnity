@@ -80,7 +80,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="231.0" layoutY="407.0" text="Text">
+                  <Label layoutX="232.0" layoutY="418.0" text="Text">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -102,8 +102,12 @@
                         <DropShadow />
                      </effect>
                   </TextArea>
-                  <ComboBox fx:id="txt_type" layoutX="388.0" layoutY="139.0" prefWidth="150.0" />
-                  <Label layoutX="220.0" layoutY="133.0" text="type Reclamation" />
+                  <ComboBox fx:id="txt_type" layoutX="330.0" layoutY="139.0" prefHeight="37.0" prefWidth="242.0" stylesheets="@style.css" />
+                  <Label layoutX="130.0" layoutY="140.0" text="type Reclamation">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="814.0" prefWidth="319.0" style="-fx-background-color: #05071F;">

@@ -66,6 +66,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -91,7 +92,7 @@ public class AjouterreponsebackController implements Initializable {
     @FXML
     private TextField txt_emailU;
     @FXML
-    private TextField txt_messageR;
+    private TextArea txt_messageR;
     @FXML
     private ListView<Reclamation> listviewRec;
     private ListView<Reponse> listviewR;
@@ -104,7 +105,7 @@ public class AjouterreponsebackController implements Initializable {
     @FXML
     private Button btn_blog;
 
-     private ListData listdata2 = new ListData();
+     private ListDataReclamation listdata2 = new ListDataReclamation();
     @FXML
     private Pagination pagination;
     private final int ITEMS_PER_PAGE = 5;

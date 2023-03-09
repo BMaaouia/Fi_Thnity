@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author wiemhjiri
  */
-public class ListData {
+public class ListDataReclamation {
     
      /**
      * The data as an observable list of Persons.
@@ -28,7 +28,7 @@ public class ListData {
     
     private ObservableList<Reclamation> persons=FXCollections.observableArrayList();
 
-    public ListData() {
+    public ListDataReclamation() {
         
         ReclamationDao pdao=ReclamationDao.getInstance();
         persons= pdao.displayAll();
