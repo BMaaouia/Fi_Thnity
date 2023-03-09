@@ -135,8 +135,8 @@ public class ADD_VehiculeController implements Initializable {
         Matcher categorieMatcher = namePattern.matcher(fx_cat.getText());
        
         if (!categorieMatcher.matches()) {
-            label_categor.setText("Catégorie invalide");
-            label_categor.setVisible(true);
+            categorielabel.setText("Catégorie invalide");
+            categorielabel.setVisible(true);
             valid = false;
              Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -144,7 +144,7 @@ public class ADD_VehiculeController implements Initializable {
             alert.showAndWait();
             
         } else {
-            label_categor.setVisible(false);
+            categorielabel.setVisible(false);
         
             
             v.setModele(fx_model.getText());

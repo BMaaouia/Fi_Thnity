@@ -198,12 +198,21 @@
                </font>
             </CheckBox>
             <Label fx:id="fx_etatLabel" layoutX="251.0" layoutY="366.0" />
-            <Label fx:id="label_model" layoutX="279.0" layoutY="119.0" prefHeight="21.0" prefWidth="135.0" />
-            <Label fx:id="label_immatricul" layoutX="268.0" layoutY="201.0" prefHeight="21.0" prefWidth="156.0" />
-            <Label fx:id="label_categor" layoutX="268.0" layoutY="283.0" prefHeight="21.0" prefWidth="156.0" />
+            <Label fx:id="label_modele_err" layoutX="280.0" layoutY="202.0" prefHeight="21.0" prefWidth="135.0" />
+            <Label fx:id="label_immatricul_err" layoutX="269.0" layoutY="287.0" prefHeight="21.0" prefWidth="156.0" />
+            <Label fx:id="label_categor_err" layoutX="269.0" layoutY="370.0" prefHeight="21.0" prefWidth="156.0" />
             <Separator layoutX="248.0" layoutY="120.0" orientation="VERTICAL" prefHeight="509.0" prefWidth="0.0" />
-            <Button fx:id="choose_image" layoutX="658.0" layoutY="417.0" mnemonicParsing="false" onAction="#choose_image" text="Choose Image" />
-            <ImageView fx:id="image_vehicule" fitHeight="150.0" fitWidth="200.0" layoutX="630.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="choose_image" layoutX="658.0" layoutY="417.0" mnemonicParsing="false" onAction="#choose_image" style="-fx-background-radius: 20; -fx-background-color: black;" text="Choose Image" textFill="#ebe3e3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <ImageView fx:id="image_vehicule" fitHeight="239.0" fitWidth="281.0" layoutX="569.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="234.0" fitWidth="200.0" layoutX="601.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@camion-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_erreur_ajout" layoutX="337.0" layoutY="619.0" prefHeight="21.0" prefWidth="143.0" text="            erreur" textFill="#c92525" visible="false" />
          </children>
       </AnchorPane>
    </children>

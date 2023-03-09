@@ -243,6 +243,17 @@ for(Vehicule vehicule : vehiculeList) {
         } else {
             Lb_err_prenom.setVisible(false);
         }
+        
+         String villeRegex = "^[a-zA-Zéèêëîïôöûüàäç-]+$";
+         Pattern villePattern = Pattern.compile(villeRegex);
+         Matcher villeMatcher = villePattern.matcher(address_text.getText());    
+        if (!villeMatcher.matches()) {
+            Lb_err_ville.setText("Ville invalide");
+            Lb_err_ville.setVisible(true);
+            valid = false;
+        } else {
+            Lb_err_ville.setVisible(false);
+        }
 
         if (valid) {
             lb_err_add.setVisible(false);
@@ -308,8 +319,8 @@ for(Vehicule vehicule : vehiculeList) {
             lb_success_add.setVisible(true);
             */
                 
-         ServiceEmployée e_Service = new ServiceEmployée();
-        Employée e = new Employée();
+        ServiceEmployée e_Service = new ServiceEmployée();
+       Employée e = new Employée();
       
     public void redirectToMyGallerie(ActionEvent event) throws Exception {
         Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/DASHBOARD_employée.fxml"));

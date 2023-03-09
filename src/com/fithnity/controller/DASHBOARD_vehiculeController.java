@@ -68,16 +68,6 @@ public class DASHBOARD_vehiculeController implements Initializable {
     private ListView table;
     private ObservableList data;
     @FXML
-    private TextField T;
-    @FXML
-    private TextField modèle_text;
-    @FXML
-    private TextField catégorie_text;
-    @FXML
-    private TextField immatriculation_text;
-    @FXML
-    private TextField etat_text;
-    @FXML
     private Button fx_addv;
     @FXML
     private Button fx_updatev;
@@ -411,17 +401,6 @@ public class DASHBOARD_vehiculeController implements Initializable {
 
    
 
-    @FXML
-    private void recherche(KeyEvent event) {
-//          String searchTerm = T.getText();
-//    ServiceVehicule su = new ServiceVehicule();
-//    ObservableList<Vehicule> list = su.search1(searchTerm);
-//    List<Vehicule> filteredList = list.stream()
-//        .filter(entretient -> entretient.getModele().toLowerCase().contains(searchTerm.toLowerCase()))
-//        .collect(Collectors.toList());
-//
-//       table.setItems(FXCollections.observableArrayList(filteredList));
-    }
 
     @FXML
     private void dashboard_employé(ActionEvent event) {
