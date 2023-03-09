@@ -70,10 +70,6 @@ public class DASHBOARD_vehiculeController implements Initializable {
     @FXML
     private Button fx_addv;
     @FXML
-    private Button fx_updatev;
-    @FXML
-    private Button fx_deletev;
-    @FXML
     private Button fx_backv;
     @FXML
     private AnchorPane container;
@@ -386,18 +382,6 @@ public class DASHBOARD_vehiculeController implements Initializable {
     }
 
         // TODO
-    
-
-    @FXML
-    private void DeleteEmploye(ActionEvent event) {
-//        Vehicule v1 = new Vehicule();
-//        v1= (Vehicule) table.getSelectionModel().getSelectedItem();
-//        
-//            ServiceVehicule v = new ServiceVehicule();
-//            v.deleteVehicule(v1.getId());
-//
-//            table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
-    }
 
    
 

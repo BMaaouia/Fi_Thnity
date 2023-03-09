@@ -32,16 +32,6 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="fx_updatev" layoutX="744.0" layoutY="232.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="UPDATE_vehicule" textFill="#ebe9e9">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="fx_deletev" layoutX="744.0" layoutY="301.0" mnemonicParsing="false" onAction="#DeleteEmploye" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="DELETE_vehicule" textFill="#ebe9e9">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="fx_backv" layoutX="744.0" layoutY="97.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="refresh" textFill="#ebe9e9">
                            <font>
                               <Font name="System Bold" size="13.0" />
