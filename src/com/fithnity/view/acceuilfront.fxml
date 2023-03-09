@@ -17,7 +17,7 @@
                <children>
                   <ImageView fitHeight="339.0" fitWidth="314.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btn_acceuil" mnemonicParsing="false" prefHeight="49.0" prefWidth="130.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Welcome" textFill="WHITE">

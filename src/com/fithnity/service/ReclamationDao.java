@@ -39,8 +39,9 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
     private ResultSet rs;
     ConnexionSingleton cs;
     
+    
     private ReclamationDao() {
-        
+        ConnexionSingleton cs = ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {

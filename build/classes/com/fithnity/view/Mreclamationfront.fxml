@@ -124,7 +124,7 @@
                <children>
                   <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="50.0" prefWidth="319.0">
