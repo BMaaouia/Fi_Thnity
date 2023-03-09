@@ -37,11 +37,10 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
     private static ReclamationDao instance;
     private Statement st;
     private ResultSet rs;
-    ConnexionSingleton cs;
-    
+    ConnexionSingleton cs=ConnexionSingleton.getInstance();
     
     private ReclamationDao() {
-        ConnexionSingleton cs = ConnexionSingleton.getInstance();
+        
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {
@@ -57,7 +56,7 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
 
     @Override
     public void insert(Reclamation o) {
-        String req = "INSERT IGNORE INTO Reclamation (nom, prenom, email, numTel, message, date) VALUES ('" + o.getNom() + "', '" + o.getPrenom() + "', '" + o.getEmail() + "', '" + o.getNumTel() + "', '" + o.getMessage() + "', '" + o.getDate() + "')";
+        String req = "INSERT IGNORE INTO Reclamation (nom, prenom, email, numTel, message, date, typeR) VALUES ('" + o.getNom() + "', '" + o.getPrenom() + "', '" + o.getEmail() + "', '" + o.getNumTel() + "', '" + o.getMessage() + "', '" + o.getDate()+ "', '" + o.getTypeR() + "')";
         //String req="insert into Reclamation (nom,prenom,email,numTel,message,date) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"','"+o.getDate()+"',')";
         try {
             st.executeUpdate(req);
@@ -120,6 +119,7 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
                 p.setNumTel(rs.getInt(5));
                 p.setMessage(rs.getString(6));
                 p.setDate(rs.getDate(7));
+                  p.setTypeR(rs.getString(8));
                 list.add(p);
             }
             
@@ -144,6 +144,7 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
                 p.setNumTel(rs.getInt(5));
                 p.setMessage(rs.getString(6));
                 p.setDate(rs.getDate(7));
+                 p.setTypeR(rs.getString(8));
                 list.add(p);
             }
             
@@ -166,6 +167,7 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
                 p.setEmail(rs.getString(4));
                 p.setNumTel(rs.getInt(5));
                 p.setMessage(rs.getString(6));
+                  p.setTypeR(rs.getString(7));
                // p.setDate(rs.getDate(7));
             //}  
         } catch (SQLException ex) {
@@ -203,7 +205,7 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
     @Override
     public boolean update(Reclamation p) {
        // String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
-         String qry = "UPDATE Reclamation SET  email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
+         String qry = "UPDATE Reclamation SET  email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"', typeR = '"+p.getTypeR()+"' WHERE id = "+p.getId();
         try {
             if (st.executeUpdate(qry) > 0) {
                 return true;

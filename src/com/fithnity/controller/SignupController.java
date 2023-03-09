@@ -264,6 +264,15 @@ public class SignupController implements Initializable {
             alert.show();
             return false;
         }
+        
+        if (avatar.getImage() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText(null);
+            alert.setContentText("Missing Avatar!");
+            alert.show();
+            return false;
+        }
 
         return true;
        }

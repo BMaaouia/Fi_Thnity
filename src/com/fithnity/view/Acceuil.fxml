@@ -19,7 +19,7 @@
                <children>
                   <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo.png" />
+                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="50.0" prefWidth="319.0">
@@ -43,7 +43,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_userback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -65,7 +65,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -84,7 +84,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_blog2" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_blogback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -190,6 +190,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <PieChart fx:id="piechart" layoutX="477.0" layoutY="312.0" />
+      <PieChart fx:id="piechart" layoutX="422.0" layoutY="249.0" />
    </children>
 </AnchorPane>

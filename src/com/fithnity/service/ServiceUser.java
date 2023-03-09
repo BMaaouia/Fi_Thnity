@@ -250,6 +250,21 @@ public class ServiceUser implements UserInterface<User>{
         }
         return false;
     }
+    
+    
+    public void cancel_subscription(User p) {
+        String qry1 = "UPDATE User SET IsSubscribed = 0 WHERE user_id = '" + p.getUser_id() + "'";
+        String qry2 = "DELETE FROM user_subscription WHERE user_id = " + p.getUser_id();
+
+        try {
+            st.executeUpdate(qry1);
+            st.executeUpdate(qry2);
+        } catch (SQLException ex) {
+            System.err.println("Error executing SQL queries: " + ex.getMessage());
+            ex.printStackTrace();
+        } 
+}
+
 
    
     

@@ -49,6 +49,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -72,9 +73,7 @@ public class MreclamationfrontController implements Initializable {
     private ListView<Reclamation> listviewP;
     @FXML
     private Button btn_delete;
-    @FXML
     private TextField txt_nom;
-    @FXML
     private TextField txt_prenom;
     private Button btnn;
     @FXML
@@ -84,12 +83,11 @@ public class MreclamationfrontController implements Initializable {
     @FXML
     private TextField txt_tel;
     @FXML
-    private TextField txt_message;
+    private TextArea txt_message;
     @FXML
     private Button btn_acceuil;
     @FXML
     private Button btn_user;
-    @FXML
     private Button btn_blog;
     
       private ListDataReclamation listdata = new ListDataReclamation();
@@ -98,7 +96,7 @@ public class MreclamationfrontController implements Initializable {
     @FXML
     private Pagination pagination;
 
-    private final int ITEMS_PER_PAGE = 5;
+    private final int ITEMS_PER_PAGE = 4;
     @FXML
     private TextField search;
     @FXML
@@ -107,6 +105,12 @@ public class MreclamationfrontController implements Initializable {
     private DatePicker df;
     @FXML
     private Button retour;
+    @FXML
+    private ComboBox<String> txt_type;
+    @FXML
+    private Button btn_blog2;
+    @FXML
+    private Button btn_admin;
     
     
     
@@ -115,7 +119,8 @@ public class MreclamationfrontController implements Initializable {
         // TODO
         
         //***********************
-        
+        ObservableList<String> liste = FXCollections.observableArrayList("Article perdue", "probléme avec le transporteur","Colis endomagés") ;
+        txt_type.setItems(liste);
         //***********************
         
   int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
@@ -182,7 +187,7 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
         });
 
 
-          btn_blog.setOnAction(event -> {
+          btn_admin.setOnAction(event -> {
             
                
              try {
@@ -217,7 +222,7 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
         listviewP.setItems(listdata.getPersons()); 
          
  
-        listviewP.setOnMouseClicked(event->{
+        listviewP.setOnMouseClicked((MouseEvent event)->{
             
 
  java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
@@ -229,8 +234,10 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
     //    txt_prenom.setText(current.getPrenom());
         txt_email.setText(current.getEmail());
         txt_tel.setText(Integer.toString(current.getNumTel()));   
-txt_message.setText(current.getMessage());        
-
+txt_message.setText(current.getMessage());   
+txt_type.setValue(current.getTypeR());
+//txt_type.setText(current.getTypeR());
+//*************************************************************************************************************************************
     });
           
         
@@ -241,7 +248,7 @@ txt_message.setText(current.getMessage());
         {
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
              ReclamationDao pdao = ReclamationDao.getInstance();
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate);
+	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
             
             pdao.insert(p);
         
@@ -310,6 +317,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
             p.setEmail(txt_email.getText());
             p.setNumTel(Integer.parseInt(txt_tel.getText()));
              p.setMessage(txt_message.getText());
+             p.setTypeR(txt_type.getSelectionModel().getSelectedItem());
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.update(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -358,7 +366,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Mrecl
     
  private boolean Saisi() {  
 
-        if ( txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+        if ( txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()||  txt_type.getValue() == null) {
             Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
             return false;
         } else {
@@ -405,9 +413,24 @@ private void Filtrer(ActionEvent event) throws IOException {
 
     @FXML
     private void retour3(ActionEvent event)throws IOException {
-        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root3));
     }
+
+     @FXML
+    private void goo_user(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Profile.fxml"));
+    Stage window = (Stage) btn_user.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void go_blogfront(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+    Stage window = (Stage) btn_blog2.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
     
 }

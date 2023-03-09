@@ -28,11 +28,11 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Fi Thnity");
         
-        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajouterreponseback.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Login.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
-
+     scene.getStylesheets().add("/com/fithnity/view/style.css");
     }
 
     /**

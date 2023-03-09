@@ -106,7 +106,11 @@ public class AfficheController implements Initializable {
     @FXML
     private Button btn_user;
     @FXML
-    private Button btn_blog;
+    private Button btn_reclamation;
+    @FXML
+    private Button btn_employe;
+    @FXML
+    private Button btn_reservation;
    
     
     
@@ -291,9 +295,55 @@ public class AfficheController implements Initializable {
 
     @FXML
     private void goretour(ActionEvent event) throws IOException {
-             Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root3));
+    } 
+        
+    @FXML
+    private void go_userback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AdminPanel.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_dashboardback(ActionEvent event) throws IOException {
+        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_reclamation.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void go_reclamationback(ActionEvent event) throws IOException {
+ Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
+    Stage window = (Stage) btn_reclamation.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    
+
+    @FXML
+    private void go_employeback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_reservationback(ActionEvent event) {
     }
 
     

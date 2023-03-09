@@ -59,8 +59,6 @@ public class AdminPanelController implements Initializable {
     @FXML
     private Button btn_acceuil;
     @FXML
-    private Button btn_acceuil2;
-    @FXML
     private Button btn_blog;
     @FXML
     private AnchorPane subscription;
@@ -97,6 +95,16 @@ public class AdminPanelController implements Initializable {
     private Button subscription_vbox;
     @FXML
     private Button retour;
+    @FXML
+    private Button btn_reclamation;
+    @FXML
+    private Button btn_employe;
+    @FXML
+    private Button btn_reservation;
+    @FXML
+    private Button show_users_btn;
+    @FXML
+    private Button show_sub;
 
     /**
      * Initializes the controller class.
@@ -105,6 +113,9 @@ public class AdminPanelController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         subscription_vbox.setVisible(false);
         retour.setVisible(false);
+        show_sub.setVisible(true);
+        show_users_btn.setVisible(true);
+        show_user(null);
     }    
 
     @FXML
@@ -203,13 +214,18 @@ public class AdminPanelController implements Initializable {
         for (int i = 0; i < users.size(); i++) {
             
             User user = users.get(i);
+            
+            if(user.getUser_firstname().equals("admin")) {
+                continue;
+            }
+            
             File imgFile = new File(user.getUser_img());
             Image image= new Image(imgFile.toURI().toString());
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(150);
             imageView.setFitWidth(150);
  
-            gridPane.add(new Label(user.getUser_firstname()), 1, i + 1);
+            gridPane.add(new Label(user.getUser_firstname()+" "+user.getUser_lastname()), 1, i + 1);
             gridPane.add(new Label(user.getUser_email()), 2, i + 1);
             gridPane.add(imageView, 0, i + 1);
 
@@ -259,7 +275,7 @@ public class AdminPanelController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("ERROR!");
         alert.setHeaderText(null);
-        alert.setContentText("Invalid subscription price! Only numeric characters are allowed.");
+        alert.setContentText("Invalid subscription price! Only positive numeric characters are allowed.");
         alert.show();
         return false;
     }
@@ -315,7 +331,7 @@ public class AdminPanelController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("ERROR!");
         alert.setHeaderText(null);
-        alert.setContentText("Invalid subscription price! Only numeric characters are allowed.");
+        alert.setContentText("Invalid subscription price! Only positive numeric characters are allowed.");
         alert.show();
         return false;
     }
@@ -470,6 +486,69 @@ public class AdminPanelController implements Initializable {
         retour.setVisible(false);
         show_subscription(event);
     
+    }
+
+
+
+    @FXML
+    private void show_reclamation(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void show_blog(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void show_employe(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void show_reservation(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void show_users_btn(ActionEvent event) {
+        show_sub.setVisible(true);
+        show_users_btn.setVisible(false);
+        retour.setVisible(false);
+        subscription_vbox.setVisible(false);
+        show_user(event);
+    }
+
+    @FXML
+    private void show_sub(ActionEvent event) {
+        show_sub.setVisible(false);
+        show_users_btn.setVisible(true);
+        retour.setVisible(false);
+        show_subscription(event);
     }
     
 }

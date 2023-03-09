@@ -3,47 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/ajouterreclamationfront.fxml</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AcceuilController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ListDataReponse.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/reclamationbackController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/ajouterreponseback.fxml</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AdminPanelController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/ReponseDao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/utils/JavaMail.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/MenuController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/utils/ConnexionSingleton.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/Ajout_cController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/style.css</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AcceuilController.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/reclamationbackController.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/test/Main.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AcceuilfrontController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/Idaoc.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/IdaoReclamation.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AjouterreclamationfrontController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/acceuilfront.fxml</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ListDatac.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/BlogDao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/ReclamationDao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/Comment.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/CommentDao.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ManipulReponseController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/Reponse.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/utils/Pdf.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AfficheController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/SignupController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/Ajout_BlogController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/utils/Document_Creation.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/LoginController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ListData.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/ajout_c1.fxml</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AdminPanelController.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ProfileController.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/ajout_c.fxml</file>
             <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/MreponseController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/service/Idao.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/view/ajouterreponseback.fxml</file>
             <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AjouterreponsebackController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/Reclamation.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/User.java</file>
             <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/MreclamationfrontController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/ListDataReclamation.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/Affiche_cController.java</file>
-            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/entity/Blog.java</file>
+            <file>file:/C:/Users/Maaouia/Desktop/Fi%20thnity%20Integration/Fi_Thnity/src/com/fithnity/controller/AjouterreclamationfrontController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.DASHBOARD_employéeController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane fx:id="container" layoutX="310.0" prefHeight="808.0" prefWidth="890.0">
+               <children>
+                  <Label layoutX="29.0" layoutY="26.0" text="DASHBOARD Employée">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutY="77.0" prefHeight="1.0" prefWidth="890.0" />
+                  <Label layoutX="-227.0" layoutY="480.0" text="Commentaire" />
+                  <Label layoutX="-218.0" layoutY="191.0" text="Liste Blog" />
+                  <Button fx:id="fx_add" layoutX="757.0" layoutY="154.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="ADD" textFill="#fcf3f3">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fx_update" layoutX="757.0" layoutY="210.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="UPDATE" textFill="#fcf3f3">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fx_delete" layoutX="757.0" layoutY="270.0" mnemonicParsing="false" onAction="#DeleteEmploye" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="DELETE" textFill="#fcf3f3">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fx_back" layoutX="757.0" layoutY="102.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="BACK" textFill="#fcf3f3">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="print" layoutX="750.0" layoutY="718.0" mnemonicParsing="false" onAction="#printAction" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Imprimer" textFill="#fcf3f3">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="p" layoutX="664.0" layoutY="535.0" onKeyReleased="#recherche" promptText="recherche" style="-fx-background-radius: 20; -fx-background-color: black;" />
+                  <TextField fx:id="firstname_text" layoutX="45.0" layoutY="532.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="lastname_text" layoutX="45.0" layoutY="625.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="email_text" layoutX="287.0" layoutY="532.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="address_text" layoutX="287.0" layoutY="625.0" style="-fx-background-radius: 20;" />
+                  <Label layoutX="44.0" layoutY="478.0" text="First_name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="45.0" layoutY="583.0" text="Last_name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="287.0" layoutY="478.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="287.0" layoutY="583.0" text="Address">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="21.0" orientation="VERTICAL" prefHeight="648.0" prefWidth="0.0" />
+                  <AnchorPane id="AnchorPane" fx:id="employée_list" layoutX="21.0" layoutY="91.0" prefHeight="259.0" prefWidth="200.0" />
+                  <Button fx:id="dashboard_vehicule" layoutX="388.0" layoutY="724.0" mnemonicParsing="false" onAction="#dashboard_vehicule" style="-fx-background-radius: 20; -fx-background-color: black;" text="Vers Dashboard vehicule" textFill="#f5eeee" />
+                  <Separator layoutX="249.0" layoutY="478.0" orientation="VERTICAL" prefHeight="200.0" />
+               </children>
+            </AnchorPane>
+            <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
+               <children>
+                  <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Dashboard" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Home_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_userback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Person_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reclamationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Open_Envelope_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_blogback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="28.0">
+                                 <image>
+                                    <Image url="@images/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Slider__32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_reservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reservationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="46.0" prefWidth="319.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

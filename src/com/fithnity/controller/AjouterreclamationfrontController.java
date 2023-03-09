@@ -8,6 +8,8 @@ package com.fithnity.controller;
 
 import com.fithnity.service.ReclamationDao;
 import com.fithnity.entity.Reclamation;
+import com.fithnity.entity.User;
+import com.fithnity.service.UserManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -90,7 +92,6 @@ public class AjouterreclamationfrontController implements Initializable {
     private Button btn_acceuil;
     @FXML
     private Button btn_user;
-    @FXML
     private Button btn_blog;
     
       private ListDataReclamation listdata = new ListDataReclamation();
@@ -103,11 +104,25 @@ public class AjouterreclamationfrontController implements Initializable {
     @FXML
     private Button manipuler;
     private Set<String> attributes = new HashSet<>();
+    @FXML
+    private ComboBox<String> txt_type;
+    
+    User current =UserManager.getCurrentUser();
+    @FXML
+    private Button btn_blog2;
+    @FXML
+    private Button btn_admin;
+    @FXML
+    private Button btn_Employe;
+    @FXML
+    private Button btn_reservation;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         // TODO
 //        int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
 //        pagination.setPageCount(pageCount);
@@ -120,6 +135,8 @@ public class AjouterreclamationfrontController implements Initializable {
 //    ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
 //    listviewP.setItems(reclamationsList);
 //});
+ObservableList<String> liste = FXCollections.observableArrayList("Article perdue", "probléme avec le transporteur","Colis endomagés") ;
+        txt_type.setItems(liste);
         //***************
           btn_acceuil.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
@@ -139,11 +156,12 @@ public class AjouterreclamationfrontController implements Initializable {
                 Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+          
+       
 
-//**********************
- 
-  //      **************
-          btn_blog.setOnAction(event -> {
+
+
+          btn_admin.setOnAction(event -> {
             
                
              try {
@@ -174,7 +192,9 @@ public class AjouterreclamationfrontController implements Initializable {
             }
         });
           //********************************************************************************
-        
+            txt_nom.setText(current.getUser_lastname());
+            txt_prenom.setText(current.getUser_firstname());
+            txt_email.setText(current.getUser_email());
   
     }    
 
@@ -185,8 +205,10 @@ public class AjouterreclamationfrontController implements Initializable {
             
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
              ReclamationDao pdao = ReclamationDao.getInstance();
-	 Reclamation p = new Reclamation(txt_nom.getText(), txt_prenom.getText(), txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate);
-            	 Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
+//	 Reclamation p = new Reclamation(current.getUser_lastname(), current.getUser_firstname(), current.getUser_email(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
+	 Reclamation p = new Reclamation(txt_nom.getText(),txt_prenom.getText(),txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
+            
+Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
 
          //**************************
           if (pdao.reclamationExists(p)) {
@@ -221,7 +243,7 @@ public class AjouterreclamationfrontController implements Initializable {
 
        
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
     Stage window = (Stage) btnn.getScene().getWindow();
     window.setScene(new Scene(root2));
     //*************
@@ -280,7 +302,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
         txt_tel.setText("");   
 txt_message.setText("");  
 //reload
-Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
     Stage window = (Stage) modif2.getScene().getWindow();
     window.setScene(new Scene(root2));
      String title = "Done";
@@ -316,7 +338,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout
     
  private boolean Saisi() {  
 
-        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()) {
+        if (txt_nom.getText().isEmpty() || txt_prenom.getText().isEmpty() || txt_email.getText().isEmpty() || txt_tel.getText().isEmpty() || txt_message.getText().isEmpty()||  txt_type.getValue() == null) {
             Alert(Alert.AlertType.ERROR, "Données invalides", "Verifier !!", "Veuillez bien remplir tous les champs !");
             return false;
         } else {
@@ -387,5 +409,30 @@ private boolean Saisi2(String attribute) {
     Stage window = (Stage) manipuler.getScene().getWindow();
     window.setScene(new Scene(root3));
     }
+
+    @FXML
+    private void goo_user(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Profile.fxml"));
+    Stage window = (Stage) btn_user.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void go_blogfront(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+    Stage window = (Stage) btn_blog2.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void go_Employefront(ActionEvent event) {
+    }
+
+    @FXML
+    private void go_Reservationfront(ActionEvent event) {
+    }
+    
+    
+
       
 }

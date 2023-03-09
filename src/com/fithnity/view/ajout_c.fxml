@@ -43,7 +43,6 @@
                   <Button fx:id="btn_dc" layoutX="661.0" layoutY="670.0" mnemonicParsing="false" onAction="#supprime" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Supprimer" textFill="#eeebeb" />
                   <Button fx:id="btn_c" layoutX="661.0" layoutY="572.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Commenter" textFill="#f5f4f4" />
                   <Button fx:id="btn_modif" layoutX="661.0" layoutY="623.0" mnemonicParsing="false" onAction="#modif" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Modifier" textFill="#f5f4f4" />
-                  <Button fx:id="btn_aj" layoutX="759.0" layoutY="26.0" mnemonicParsing="false" onAction="#goajouter" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Ajouter Blog" textFill="#f2ecec" />
                   <ScrollPane fx:id="scroll_blog" hmax="11.0" hmin="5.0" hvalue="1.0" layoutX="29.0" layoutY="80.0" onMouseClicked="#load" prefHeight="399.0" prefWidth="658.0">
                      <content>
                         <GridPane fx:id="gridProduit" prefHeight="397.0" prefWidth="655.0">
@@ -59,7 +58,7 @@
                      </content>
                   </ScrollPane>
                   <ListView fx:id="list_c" layoutX="29.0" layoutY="533.0" prefHeight="185.0" prefWidth="391.0" style="-fx-background-radius: 20;" />
-                  <Button layoutX="803.0" layoutY="741.0" mnemonicParsing="false" onAction="#PDFbtn" style="-fx-background-color: black; -fx-background-radius: 20;" text="Pdf" textFill="#f8f5f5" />
+                  <Button fx:id="pdfBtn" layoutX="803.0" layoutY="741.0" mnemonicParsing="false" onAction="#PDFbtn" style="-fx-background-color: black; -fx-background-radius: 20;" text="Pdf" textFill="#f8f5f5" />
                   <Label layoutX="64.0" layoutY="496.0" text="Commentaire" />
                   <TextField fx:id="text_c" layoutX="449.0" layoutY="648.0" prefHeight="70.0" prefWidth="195.0" style="-fx-background-radius: 20;" />
                   <TextField fx:id="text_n" layoutX="457.0" layoutY="570.0" prefHeight="21.0" prefWidth="148.0" style="-fx-background-radius: 20;" />
@@ -100,7 +99,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goo_user" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Profile" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -125,7 +124,7 @@
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_rec" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#bara_rec" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -157,7 +156,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_em" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go__employe" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -173,7 +172,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_reser" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reser" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -190,7 +189,7 @@
                   <HBox prefHeight="46.0" prefWidth="319.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@../../../../../../../Downloads/Fi_Thnity-GestionReclamation/Fi_Thnity-GestionReclamation/src/com/fithnity/view/style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#admin_blog" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@../../../../../../../Downloads/Fi_Thnity-GestionReclamation/Fi_Thnity-GestionReclamation/src/com/fithnity/view/style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

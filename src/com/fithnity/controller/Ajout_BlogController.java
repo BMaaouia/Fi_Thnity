@@ -29,6 +29,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //import org.controlsfx.control.Rating;
@@ -53,10 +54,21 @@ public class Ajout_BlogController implements Initializable {
     @FXML
     private TextField titre_blog;
     Blog b = new Blog();
-    @FXML
     private Button retour;
     @FXML
+    private AnchorPane container;
+    @FXML
+    private Button btn_acceuil;
+    @FXML
+    private Button btn_user;
+    @FXML
     private Button gaffiche;
+    @FXML
+    private Button btn_reclamation;
+    @FXML
+    private Button btn_Employe;
+    @FXML
+    private Button btn_Reservation;
 
     /**
      * Initializes the controller class.
@@ -192,18 +204,65 @@ if (rs.next() && rs.getInt(1) > 0) {
         
                 }
 
+//   
+
     @FXML
-    private void retouur(ActionEvent event) throws IOException {
-            Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
-    Stage window = (Stage) retour.getScene().getWindow();
+    private void goaffiche(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
+    Stage window = (Stage) gaffiche.getScene().getWindow();
+    window.setScene(new Scene(root3));
+
+//    @FXML
+//    private void go_userback(ActionEvent event) {
+//         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+//    Stage window = (Stage) retour.getScene().getWindow();
+//    window.setScene(new Scene(root3));
+//    }
+    }
+
+    @FXML
+    private void go_reclamationback(ActionEvent event) throws IOException {
+ Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
+    Stage window = (Stage) btn_reclamation.getScene().getWindow();
     window.setScene(new Scene(root3));
     }
 
     @FXML
-    private void goaffiche(ActionEvent event) throws IOException {
-          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/affiche.fxml"));
-    Stage window = (Stage) gaffiche.getScene().getWindow();
+    private void go_userback(ActionEvent event) throws IOException {
+                 try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AdminPanel.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_dashboardback(ActionEvent event) throws IOException {
+        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_reclamation.getScene().getWindow();
     window.setScene(new Scene(root3));
+    }
+
+
+    @FXML
+    private void go_employeeback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_reservationback(ActionEvent event) {
     }
 }
 

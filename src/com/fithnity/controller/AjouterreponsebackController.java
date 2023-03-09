@@ -27,7 +27,9 @@ import com.fithnity.utils.JavaMail;
 import com.fithnity.entity.Reclamation;
 import com.fithnity.service.ReponseDao;
 import com.fithnity.entity.Reponse;
+import com.fithnity.entity.User;
 import com.fithnity.service.ReclamationDao;
+import com.fithnity.service.UserManager;
 import java.io.IOException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
@@ -66,6 +68,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -91,7 +94,7 @@ public class AjouterreponsebackController implements Initializable {
     @FXML
     private TextField txt_emailU;
     @FXML
-    private TextField txt_messageR;
+    private TextArea txt_messageR;
     @FXML
     private ListView<Reclamation> listviewRec;
     private ListView<Reponse> listviewR;
@@ -114,9 +117,16 @@ public class AjouterreponsebackController implements Initializable {
     private DatePicker dd;
     @FXML
     private DatePicker df;
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Button btn_blog2;
+    @FXML
+    private Button btn_employe;
+    @FXML
+    private Button btn_reservation;
+    
+    
+   
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -313,4 +323,49 @@ private void Filtrer(ActionEvent event) throws IOException {
     eventsList.addAll(filteredEvents);
     listviewRec.setItems(eventsList);
 }
+
+   
+
+      @FXML
+    private void go_userback(ActionEvent event) throws IOException {
+      try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AdminPanel.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    
+    
+
+    @FXML
+    private void go_blogback(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+    Stage window = (Stage) btn_blog2.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+  
+
+    @FXML
+    private void go_employeback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_reservationback(ActionEvent event) {
+    }
+
 }

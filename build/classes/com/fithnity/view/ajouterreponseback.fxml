@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -34,13 +35,10 @@
                         <DropShadow />
                      </effect>
                   </TextField>
-                  <Label layoutX="265.0" layoutY="494.0" prefHeight="21.0" prefWidth="76.0" text="emailUser" />
-                  <TextField fx:id="txt_messageR" layoutX="368.0" layoutY="541.0" prefHeight="99.0" prefWidth="187.0" style="-fx-background-radius: 20;">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </TextField>
-                  <Label layoutX="283.0" layoutY="580.0" text="message" />
+                  <Label layoutX="242.0" layoutY="487.0" prefHeight="35.0" prefWidth="126.0" text="emailUser">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
                   <ListView fx:id="listviewRec" layoutX="47.0" layoutY="248.0" prefHeight="139.0" prefWidth="809.0" stylesheets="@style.css" />
                   <Pagination fx:id="pagination" layoutX="31.0" layoutY="248.0" prefHeight="197.0" prefWidth="862.0" />
                   <Button fx:id="btnn" layoutX="613.0" layoutY="704.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Ajouter" textFill="WHITE">
@@ -68,11 +66,17 @@
                      </effect>
                   </Button>
                   <TextField fx:id="search" layoutX="95.0" layoutY="155.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 2em;" />
-                  <DatePicker fx:id="dd" layoutX="399.0" layoutY="126.0" stylesheets="@style.css" />
-                  <DatePicker fx:id="df" layoutX="399.0" layoutY="166.0" stylesheets="@style.css" />
-                  <Label layoutX="317.0" layoutY="138.0" text="Date Debut" />
-                  <Label layoutX="328.0" layoutY="171.0" text="Date Fin" />
-                  <Button layoutX="633.0" layoutY="143.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Filtrer" textFill="WHITE">
+                  <DatePicker fx:id="dd" layoutX="452.0" layoutY="124.0" stylesheets="@style.css" />
+                  <DatePicker fx:id="df" layoutX="452.0" layoutY="164.0" stylesheets="@style.css" />
+                  <Label layoutX="323.0" layoutY="130.0" text="Date Debut">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Label layoutX="334.0" layoutY="163.0" text="Date Fin">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Button layoutX="686.0" layoutY="141.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #05071F; -fx-background-radius: 20;" text="Filtrer" textFill="WHITE">
                      <font>
                         <Font name="Franklin Gothic Medium" size="15.0" />
                      </font>
@@ -84,13 +88,23 @@
                         </DropShadow>
                      </effect>
                   </Button>
+                  <Label layoutX="278.0" layoutY="546.0" text="Text">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txt_messageR" layoutX="368.0" layoutY="546.0" prefHeight="164.0" prefWidth="187.0" style="-fx-background-radius: 40;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextArea>
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="-5.0" prefHeight="806.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
                <children>
                   <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo.png" />
+                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="50.0" prefWidth="319.0">
@@ -113,14 +127,14 @@
                      </VBox.margin>
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                      <children>
-                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_userback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
                            <graphic>
                               <ImageView>
                                  <image>
@@ -130,9 +144,6 @@
                            </graphic>
                         </Button>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
@@ -155,7 +166,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_blog2" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_blogback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -171,7 +182,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_employe" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_employeback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -187,7 +198,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_reservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reservationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>

@@ -62,6 +62,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -79,7 +80,7 @@ public class MreponseController implements Initializable {
     @FXML
     private TextField txt_emailU;
     @FXML
-    private TextField txt_messageR;
+    private TextArea txt_messageR;
     @FXML
     private Button btn_acceuil;
     @FXML
@@ -107,6 +108,12 @@ public class MreponseController implements Initializable {
     private DatePicker dd;
     @FXML
     private DatePicker df;
+    @FXML
+    private Button btn_blog2;
+    @FXML
+    private Button btn_employe;
+    @FXML
+    private Button btn_reservation;
 
     /**
      * Initializes the controller class.
@@ -153,24 +160,24 @@ txt_messageR.setText(current.getMessageR());
         
         
         //**************************************************************************
-         btn_acceuil.setOnAction(event -> {
-            try {//FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
-                // Give the controller access to the main app.
-//                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListDataReclamation());
-                Scene scene = new Scene(page2);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-                  btn_acceuil.setStyle("-fx-background-color : #1620A1");
-            btn_acceuil.toFront();
-             btn_blog.setStyle("-fx-background-color :  #05071F");
-            } catch (IOException ex) {
-                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+//         btn_acceuil.setOnAction(event -> {
+//            try {//FXMLLoader loader = new FXMLLoader();
+//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+//                // Give the controller access to the main app.
+////                AfficherPersonneController controller =loader.getController();
+////                controller.setListData(new ListDataReclamation());
+//                Scene scene = new Scene(page2);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.show();
+//                  btn_acceuil.setStyle("-fx-background-color : #1620A1");
+//            btn_acceuil.toFront();
+//             btn_blog.setStyle("-fx-background-color :  #05071F");
+//            } catch (IOException ex) {
+//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
 
 //        btn_display.setOnAction(event -> {
 //            try {//FXMLLoader loader = new FXMLLoader();
@@ -294,7 +301,7 @@ Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Mrepo
    
     @FXML
     private void back(ActionEvent event) throws IOException { 
-		Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreponseback.fxml"));
+		Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreponseback.fxml"));
     Stage window = (Stage) retourr.getScene().getWindow();
     window.setScene(new Scene(root3));
 		
@@ -354,4 +361,47 @@ private void Filtrer(ActionEvent event) throws IOException {
     eventsList.addAll(filteredEvents);
     listviewR.setItems(eventsList);
 }
+
+       @FXML
+    private void go_userback(ActionEvent event) throws IOException {
+    try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AdminPanel.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    
+    
+
+    @FXML
+    private void go_blogback(ActionEvent event) throws IOException {
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+    Stage window = (Stage) btn_blog2.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+   
+
+    @FXML
+    private void go_employeback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_reservationback(ActionEvent event) {
+    }
+
 }

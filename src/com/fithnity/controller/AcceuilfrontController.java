@@ -49,7 +49,7 @@ public class AcceuilfrontController implements Initializable {
 //                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //                stage.setScene(scene);
 //                stage.show();
-              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
        
         Scene scene = btn_acceuil.getScene();
         root.translateXProperty().set(-scene.getWidth());

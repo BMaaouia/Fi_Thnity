@@ -10,6 +10,8 @@ import com.fithnity.service.BlogDao;
 import com.fithnity.service.CommentDao;
 import com.fithnity.entity.Blog;
 import com.fithnity.entity.Comment;
+import com.fithnity.entity.User;
+import com.fithnity.service.UserManager;
 import com.fithnity.utils.Pdf;
 import com.itextpdf.text.DocumentException;
 import java.awt.Button;
@@ -76,7 +78,6 @@ public class Ajout_cController implements Initializable {
     private TextField text_c;
     @FXML
     private javafx.scene.control.Button btn_c;
-    @FXML
     private javafx.scene.control.Button btn_aj;
     private ListView<Blog> list_b;
     @FXML
@@ -103,14 +104,20 @@ public class Ajout_cController implements Initializable {
     @FXML
     private AnchorPane container;
     @FXML
-    private javafx.scene.control.Button retour;
-    @FXML
     private javafx.scene.control.Button btn_acceuil;
     @FXML
     private javafx.scene.control.Button btn_user;
     @FXML
     private javafx.scene.control.Button btn_blog;
-    
+    @FXML
+    private javafx.scene.control.Button pdfBtn;
+    @FXML
+    private javafx.scene.control.Button btn_rec;
+    @FXML
+    private javafx.scene.control.Button btn_em;
+    @FXML
+    private javafx.scene.control.Button btn_reser;
+    User current =UserManager.getCurrentUser();
    
    
     
@@ -138,10 +145,14 @@ public class Ajout_cController implements Initializable {
  
     ScrollPane scrollPane = new ScrollPane();
     
-    scroll_blog.setContent(list_b);
+    scroll_blog.setContent((Node) BlogList);
     // Add the scroll pane to the parent container instead of the list view
     gridProduit.getChildren().add(scrollPane);
+    
+    
+   
                 });
+      
   
      
        
@@ -150,6 +161,7 @@ public class Ajout_cController implements Initializable {
     public void Affichage() throws FileNotFoundException
     {
         
+            text_n.setText(current.getUser_firstname()+" "+current.getUser_lastname());
             List<Blog> blogs = bdao.displayAllList();
             int row = 0;
             int column = 0;
@@ -251,16 +263,31 @@ public class Ajout_cController implements Initializable {
         alert.show();
         text_c.setText("");
         text_n.setText("");
+           try {
+               Affichage();
+           } catch (FileNotFoundException ex) {
+               Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
              list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
+             try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
 
     
  
     }
-    private void show(ActionEvent event) {
+    private void refresh(ActionEvent event) {
          try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/affiche_c.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -398,7 +425,8 @@ public class Ajout_cController implements Initializable {
             Rating Rt = new Rating(5);
             Rt.setRating(selectedBlog.getRating());
             
-            menuController.loadPage("/com/fithnity/view/ajout_c");
+            refresh(event);
+//            menuController.loadPage("/com/fithnity/view/ajout_c");
             
      
     }
@@ -407,17 +435,51 @@ public class Ajout_cController implements Initializable {
     this.menuController = menuController;
     }
 
+//    private void goajouter(ActionEvent event) throws IOException {
+//          
+//       Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
+//    Stage window = (Stage) btn_aj.getScene().getWindow();
+//    window.setScene(new Scene(root3));
+//    }
+
     @FXML
-    private void goajouter(ActionEvent event) throws IOException {
-          
-       Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
-    Stage window = (Stage) btn_aj.getScene().getWindow();
-    window.setScene(new Scene(root3));
+    private void goo_user(ActionEvent event)  {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Profile.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     @FXML
-    private void retouur(ActionEvent event) {
+    private void bara_rec(ActionEvent event)  {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(Ajout_cController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
+
+    @FXML
+    private void go__employe(ActionEvent event) {
+    }
+
+    @FXML
+    private void go_reser(ActionEvent event) {
+    }
+
+    @FXML
+    private void admin_blog(ActionEvent event) {
+    }
+
     
 
   }
