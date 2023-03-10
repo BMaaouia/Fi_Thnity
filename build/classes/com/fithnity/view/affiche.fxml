@@ -40,7 +40,7 @@
                   <Label layoutX="-218.0" layoutY="191.0" text="Liste Blog" />
                   <Text layoutX="637.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
                   <TextField fx:id="titre_blog" layoutX="626.0" layoutY="463.0" style="-fx-background-radius: 20;" />
-                  <Button fx:id="retour" layoutX="782.0" layoutY="28.0" mnemonicParsing="false" onAction="#goretour" text="retour" />
+                  <Button fx:id="retour" layoutX="782.0" layoutY="28.0" mnemonicParsing="false" onAction="#goretour" style="-fx-background-color: black; -fx-background-radius: 20;" text="retour" textFill="#e8e4e4" />
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
@@ -161,7 +161,7 @@
                   <HBox prefHeight="46.0" prefWidth="319.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@../../../../../../../Downloads/Fi_Thnity-GestionReclamation/Fi_Thnity-GestionReclamation/src/com/fithnity/view/style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

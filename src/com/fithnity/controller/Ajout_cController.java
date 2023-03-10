@@ -249,7 +249,7 @@ public class Ajout_cController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Blog insérée avec succés!");
+        alert.setContentText("Comment insérée avec succés!");
         alert.show();
         text_c.setText("");
         text_n.setText("");
@@ -261,7 +261,7 @@ public class Ajout_cController implements Initializable {
     }
              list_c.setItems(bdaoC.displayById_Blog(selectedBlog.getId_blog()));
             datac=FXCollections.observableArrayList();
-            
+            refresh(event);
 
     
  
