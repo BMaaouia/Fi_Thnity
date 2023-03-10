@@ -35,7 +35,15 @@ public class ListDataReclamation {
         System.out.println(persons);
     }
     
+    
+    
     public ObservableList<Reclamation> getPersons(){
+        return persons;
+    }
+    
+    public ObservableList<Reclamation> getPersons2(String email){
+        ReclamationDao pdao=ReclamationDao.getInstance();
+        persons= pdao.displayAllListFront(email);
         return persons;
     }
    

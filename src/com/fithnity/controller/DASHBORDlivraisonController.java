@@ -257,5 +257,12 @@ public class DASHBORDlivraisonController implements Initializable {
                     Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+
+    @FXML
+    private void go_acceuil(ActionEvent event) throws IOException {
+          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_acceuil.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
     
 }

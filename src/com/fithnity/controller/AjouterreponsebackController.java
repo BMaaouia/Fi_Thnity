@@ -241,7 +241,7 @@ listviewRec.setItems(listdata2.getPersons());
 	 txt_emailU.setText("");
         txt_messageR.setText("");  	
         //reload
-        Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajouterreponseback.fxml"));
+        Parent root2 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajouterreponseback.fxml"));
     Stage window = (Stage) btnn.getScene().getWindow();
     window.setScene(new Scene(root2));
   

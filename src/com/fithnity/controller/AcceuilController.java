@@ -52,11 +52,10 @@ public class AcceuilController implements Initializable {
     private Stage primaryStage;
     @FXML
     private Button btn_user;
+    @FXML
     private Button btn_blog;
     @FXML
     private Button btn_acceuil;
-    @FXML
-    private Button btn_front;
     @FXML
     private AnchorPane translate;
     @FXML
@@ -68,12 +67,17 @@ public class AcceuilController implements Initializable {
     private ResultSet rs;
    // ConnexionSingleton cs;
       ConnexionSingleton cs=ConnexionSingleton.getInstance();
-    @FXML
     private Button btn_blog2;
     @FXML
     private Button btn_reclamation;
     @FXML
     private Button btn_employe;
+    @FXML
+    private Button btn_reservation;
+    @FXML
+    private Button btn_offre;
+    @FXML
+    private Button btn_blog1;
     /**
      * Initializes the controller class.
      */
@@ -98,34 +102,34 @@ public class AcceuilController implements Initializable {
                 Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-            btn_front.setOnAction(event -> {
-            try {//FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
-
-                  Scene scene = btn_front.getScene();
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-               page2.translateXProperty().set(-scene.getWidth());
-
-        AnchorPane parentContainer = (AnchorPane) btn_front.getScene().getRoot();
-
-        parentContainer.getChildren().add(page2);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(page2.translateXProperty(), 0, Interpolator.EASE_OUT);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(translate);
-        });
-        timeline.play(); 
-            } catch (IOException ex) {
-                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        });
+//            btn_front.setOnAction(event -> {
+//            try {//FXMLLoader loader = new FXMLLoader();
+//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
+//
+//                  Scene scene = btn_front.getScene();
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.show();
+//               page2.translateXProperty().set(-scene.getWidth());
+//
+//        AnchorPane parentContainer = (AnchorPane) btn_front.getScene().getRoot();
+//
+//        parentContainer.getChildren().add(page2);
+//
+//        Timeline timeline = new Timeline();
+//        KeyValue kv = new KeyValue(page2.translateXProperty(), 0, Interpolator.EASE_OUT);
+//        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+//        timeline.getKeyFrames().add(kf);
+//        timeline.setOnFinished(t -> {
+//            parentContainer.getChildren().remove(translate);
+//        });
+//        timeline.play(); 
+//            } catch (IOException ex) {
+//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//        });
 
 //             btn_user.setOnAction(event -> {
 //            try {//FXMLLoader loader = new FXMLLoader();
@@ -226,14 +230,42 @@ for (PieChart.Data slice : piechart.getData()) {
     @FXML
     private void go_blogback(ActionEvent event) throws IOException {
          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
-    Stage window = (Stage) btn_blog2.getScene().getWindow();
+    Stage window = (Stage) btn_blog.getScene().getWindow();
     window.setScene(new Scene(root3));
     }
 
-      @FXML
-    private void go_employeback(ActionEvent event) {
-        try {
+    
+
+    @FXML
+    private void show_employe(ActionEvent event) {
+         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void show_reservation(ActionEvent event) {
+         try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDlivraison.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_offreback(ActionEvent event) {
+         try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/commands.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

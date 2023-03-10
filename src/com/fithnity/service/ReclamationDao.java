@@ -10,6 +10,7 @@ package com.fithnity.service;
  * @author MSI
  */
 import com.fithnity.entity.Reclamation;
+import com.fithnity.entity.User;
 import com.fithnity.utils.ConnexionSingleton;
 import java.sql.Connection;
 import java.sql.Date;
@@ -107,7 +108,8 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
     public ObservableList<Reclamation> displayAll() {
         String req="select * from Reclamation";
         ObservableList<Reclamation> list=FXCollections.observableArrayList();       
-        
+         User current =UserManager.getCurrentUser();
+         //current.getUser_lastname(), current.getUser_firstname(), current.getUser_email(),
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
@@ -153,6 +155,33 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
         }
         return list;
     }
+    
+    
+    public ObservableList<Reclamation> displayAllListFront(String email) {
+        String req="select * from Reclamation where email='"+email+"'";
+        ObservableList<Reclamation> list=FXCollections.observableArrayList();
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                Reclamation p=new Reclamation();
+                p.setId(rs.getInt(1));
+                p.setNom(rs.getString("nom"));
+                p.setPrenom(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setNumTel(rs.getInt(5));
+                p.setMessage(rs.getString(6));
+                p.setDate(rs.getDate(7));
+                 p.setTypeR(rs.getString(8));
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
     @Override
     public Reclamation displayById(int id) {
            String req="select * from Reclamation where id ="+id;

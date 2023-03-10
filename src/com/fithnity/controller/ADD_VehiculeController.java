@@ -295,5 +295,12 @@ public class ADD_VehiculeController implements Initializable {
             }
         
     }
+
+    @FXML
+    private void go_accueil(ActionEvent event) throws IOException {
+          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_acceuil.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
 }
 

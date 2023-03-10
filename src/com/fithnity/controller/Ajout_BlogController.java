@@ -71,6 +71,8 @@ public class Ajout_BlogController implements Initializable {
     private Button btn_Reservation;
     @FXML
     private Button btn_offre;
+    @FXML
+    private Button btn_blog;
 
     /**
      * Initializes the controller class.
@@ -244,8 +246,8 @@ if (rs.next() && rs.getInt(1) > 0) {
 
     @FXML
     private void go_dashboardback(ActionEvent event) throws IOException {
-        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
-    Stage window = (Stage) btn_reclamation.getScene().getWindow();
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_acceuil.getScene().getWindow();
     window.setScene(new Scene(root3));
     }
 

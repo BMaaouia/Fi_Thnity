@@ -59,9 +59,9 @@
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="27.0">
                            <image>
-                              <Image url="@images/icons8_Home_32px.png" />
+                              <Image url="@icones/dashboard.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -76,14 +76,14 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_userback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                  <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_userback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Profile" textAlignment="CENTER" textFill="#e7e5e5">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@images/icons8_Person_32px.png" />
+                              <Image url="@icones/User.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -95,14 +95,14 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reclamationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                  <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reclamationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Reclamation" textAlignment="CENTER" textFill="#e7e5e5">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="33.0" fitWidth="33.0">
                            <image>
-                              <Image url="@images/icons8_Open_Envelope_32px.png" />
+                              <Image url="@icones/gestion%20reclamation.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -111,14 +111,14 @@
             </HBox>
             <HBox prefHeight="50.0" prefWidth="319.0">
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="28.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
                            <image>
-                              <Image url="@images/icons8_Search_52px.png" />
+                              <Image url="@icones/gestion%20Blog.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -132,9 +132,9 @@
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0">
                            <image>
-                              <Image url="@images/icons8_Slider__32px.png" />
+                              <Image url="@icones/Gestion%20Employe.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -143,14 +143,14 @@
             </HBox>
             <HBox prefHeight="50.0" prefWidth="319.0">
                <children>
-                  <Button fx:id="btn_reservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reservationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                  <Button fx:id="btn_reservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reservationback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Reservation" textAlignment="CENTER" textFill="#e7e5e5">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="33.0" fitWidth="33.0">
                            <image>
-                              <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                              <Image url="@icones/Gestion%20reservation.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -164,9 +164,9 @@
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="33.0" fitWidth="33.0">
                            <image>
-                              <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                              <Image url="@icones/Offer.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -174,7 +174,14 @@
                </children>
             </HBox>
             <HBox prefHeight="46.0" prefWidth="319.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children></HBox>
          </children>
       </VBox>
    </children>

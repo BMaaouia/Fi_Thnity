@@ -5,7 +5,7 @@
  */
 package com.fithnity.controller;
 
-import com.fithnity.utils.Mail;
+import com.fithnity.utils.Mail_Reservation;
 import com.fithnity.service.livraisonService;
 import com.fithnity.service.produitService;
 import com.fithnity.service.reservationService;
@@ -312,26 +312,8 @@ webengine = map.getEngine();
     alert.setHeaderText("Le poids doit être supérieur à zéro.");
     alert.showAndWait();
     }
-    else if(poidsField.getText().isEmpty() || catField.getText().isEmpty())
-     {
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-             alert.setHeaderText("Veuillez remplir tous les champs");
-             alert.showAndWait();
-     }  
-    else if (!pattern.matcher(catField.getText()).matches())
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("Le champ de prix n'est pas valides.");
-        alert.showAndWait();
+  
     
-        }
-    else if (!pattern.matcher(poidsField.getText()).matches())
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("Le champ de poids n'est pas valides..");
-        alert.showAndWait();
-    
-        }
      else
         {
             reservation U1 = new reservation (ref_field.getText(),poids,prix,vd,va,date,selectedModelId);

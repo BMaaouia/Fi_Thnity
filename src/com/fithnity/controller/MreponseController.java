@@ -116,6 +116,8 @@ public class MreponseController implements Initializable {
     private Button btn_reservation;
     @FXML
     private Button btn_offre;
+    @FXML
+    private Button btn_blog1;
 
     /**
      * Initializes the controller class.
@@ -426,6 +428,13 @@ private void Filtrer(ActionEvent event) throws IOException {
             } catch (IOException ex) {
                     Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+
+    @FXML
+    private void go_accueil(ActionEvent event) throws IOException  {
+          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_acceuil.getScene().getWindow();
+    window.setScene(new Scene(root3));
     }
 
 }

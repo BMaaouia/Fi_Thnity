@@ -99,24 +99,24 @@ public class reclamationbackController implements Initializable {
         listviewP.setItems(listdata.getPersons());
         
         //**************************************************************************************
-        btn_acceuil.setOnAction(event -> {
-            try {//FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
-                // Give the controller access to the main app.
-//                AfficherPersonneController controller =loader.getController();
-//                controller.setListData(new ListDataReclamation());
-                Scene scene = new Scene(page2);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-                  btn_acceuil.setStyle("-fx-background-color : #1620A1");
-            btn_acceuil.toFront();
-             btn_reclamation.setStyle("-fx-background-color :  #05071F");
-            } catch (IOException ex) {
-                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+//        btn_acceuil.setOnAction(event -> {
+//            try {//FXMLLoader loader = new FXMLLoader();
+//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+//                // Give the controller access to the main app.
+////                AfficherPersonneController controller =loader.getController();
+////                controller.setListData(new ListDataReclamation());
+//                Scene scene = new Scene(page2);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.show();
+//                  btn_acceuil.setStyle("-fx-background-color : #1620A1");
+//            btn_acceuil.toFront();
+//             btn_reclamation.setStyle("-fx-background-color :  #05071F");
+//            } catch (IOException ex) {
+//                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
 
 
           btn_reclamation.setOnAction(event -> {
@@ -284,6 +284,13 @@ private void Filtrer(ActionEvent event) throws IOException {
             } catch (IOException ex) {
                     Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+
+    @FXML
+    private void go_acceuil(ActionEvent event) throws IOException {
+           Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_acceuil.getScene().getWindow();
+    window.setScene(new Scene(root3));
     }
 
     

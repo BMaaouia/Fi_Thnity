@@ -107,7 +107,7 @@ public class AjouterreclamationfrontController implements Initializable {
     @FXML
     private ComboBox<String> txt_type;
     
-    User current =UserManager.getCurrentUser();
+    User current2 =UserManager.getCurrentUser();
     @FXML
     private Button btn_blog2;
     @FXML
@@ -122,7 +122,7 @@ public class AjouterreclamationfrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
+        System.out.println(current2.getUser_email());
         // TODO
 //        int pageCount = (int) Math.ceil(listdata.getPersons().size() * 1.0 / ITEMS_PER_PAGE);
 //        pagination.setPageCount(pageCount);
@@ -161,41 +161,41 @@ ObservableList<String> liste = FXCollections.observableArrayList("Article perdue
 
 
 
-          btn_admin.setOnAction(event -> {
-            
-               
-             try {
-//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
-//                Scene scene = new Scene(page2);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.show();
-              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
-       
-        Scene scene = btn_acceuil.getScene();
-        root.translateXProperty().set(-scene.getWidth());
-
-        AnchorPane parentContainer = (AnchorPane) btn_acceuil.getScene().getRoot();
-
-        parentContainer.getChildren().add(root);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(container);
-        });
-        timeline.play();
-            } catch (IOException ex) {
-                Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-          //********************************************************************************
-            txt_nom.setText(current.getUser_lastname());
-            txt_prenom.setText(current.getUser_firstname());
-            txt_email.setText(current.getUser_email());
-  
+//          btn_admin.setOnAction(event -> {
+//            
+//               
+//             try {
+////                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+////                Scene scene = new Scene(page2);
+////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+////                stage.setScene(scene);
+////                stage.show();
+//              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+//       
+//        Scene scene = btn_acceuil.getScene();
+//        root.translateXProperty().set(-scene.getWidth());
+//
+//        AnchorPane parentContainer = (AnchorPane) btn_acceuil.getScene().getRoot();
+//
+//        parentContainer.getChildren().add(root);
+//
+//        Timeline timeline = new Timeline();
+//        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+//        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+//        timeline.getKeyFrames().add(kf);
+//        timeline.setOnFinished(t -> {
+//            parentContainer.getChildren().remove(container);
+//        });
+//        timeline.play();
+//            } catch (IOException ex) {
+//                Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
+//          //********************************************************************************
+            txt_nom.setText(current2.getUser_lastname());
+            txt_prenom.setText(current2.getUser_firstname());
+            txt_email.setText(current2.getUser_email());
+//  
     }    
 
      @FXML
@@ -205,10 +205,10 @@ ObservableList<String> liste = FXCollections.observableArrayList("Article perdue
             
             java.sql.Date currentDate = new java.sql.Date( System.currentTimeMillis() );
              ReclamationDao pdao = ReclamationDao.getInstance();
-//	 Reclamation p = new Reclamation(current.getUser_lastname(), current.getUser_firstname(), current.getUser_email(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
-	 Reclamation p = new Reclamation(txt_nom.getText(),txt_prenom.getText(),txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
+	 Reclamation p = new Reclamation(current2.getUser_lastname(), current2.getUser_firstname(), current2.getUser_email(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
+	//*************************************************************** Reclamation p = new Reclamation(txt_nom.getText(),txt_prenom.getText(),txt_email.getText(), Integer.parseInt(txt_tel.getText()), pdao.bad_words(txt_message.getText()),currentDate,txt_type.getSelectionModel().getSelectedItem());
             
-Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
+//Reclamation p2 = new Reclamation( txt_email.getText(), pdao.bad_words(txt_message.getText()));
 
          //**************************
           if (pdao.reclamationExists(p)) {

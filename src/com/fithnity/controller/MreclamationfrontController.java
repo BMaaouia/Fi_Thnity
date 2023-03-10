@@ -8,6 +8,8 @@ package com.fithnity.controller;
 
 import com.fithnity.service.ReclamationDao;
 import com.fithnity.entity.Reclamation;
+import com.fithnity.entity.User;
+import com.fithnity.service.UserManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -114,7 +116,7 @@ public class MreclamationfrontController implements Initializable {
     @FXML
     private Button btn_reservation;
     
-    
+    User current2 =UserManager.getCurrentUser();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -189,39 +191,39 @@ listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
         });
 
 
-          btn_admin.setOnAction(event -> {
-            
-               
-             try {
-//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
-//                Scene scene = new Scene(page2);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.show();
-              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
-       
-        Scene scene = btn_acceuil.getScene();
-        root.translateXProperty().set(-scene.getWidth());
-
-        AnchorPane parentContainer = (AnchorPane) btn_acceuil.getScene().getRoot();
-
-        parentContainer.getChildren().add(root);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(container);
-        });
-        timeline.play();
-            } catch (IOException ex) {
-                Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+//          btn_admin.setOnAction(event -> {
+//            
+//               
+//             try {
+////                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajouterreclamationfront.fxml"));
+////                Scene scene = new Scene(page2);
+////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+////                stage.setScene(scene);
+////                stage.show();
+//              Parent root = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+//       
+//        Scene scene = btn_acceuil.getScene();
+//        root.translateXProperty().set(-scene.getWidth());
+//
+//        AnchorPane parentContainer = (AnchorPane) btn_acceuil.getScene().getRoot();
+//
+//        parentContainer.getChildren().add(root);
+//
+//        Timeline timeline = new Timeline();
+//        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+//        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+//        timeline.getKeyFrames().add(kf);
+//        timeline.setOnFinished(t -> {
+//            parentContainer.getChildren().remove(container);
+//        });
+//        timeline.play();
+//            } catch (IOException ex) {
+//                Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
           //********************************************************************************
-        
-        listviewP.setItems(listdata.getPersons()); 
+        System.out.println(current2.getUser_email());
+        listviewP.setItems(listdata.getPersons2(current2.getUser_email())); 
          
  
         listviewP.setOnMouseClicked((MouseEvent event)->{
