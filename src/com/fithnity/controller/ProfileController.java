@@ -233,8 +233,8 @@ public class ProfileController implements Initializable{
         FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Choose File");
             fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-            fileChooser.getExtensionFilters().add(pngFilter);
+            //FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            //fileChooser.getExtensionFilters().add(pngFilter);
             File selectedFile = fileChooser.showOpenDialog(null);
 
             if (selectedFile != null) {

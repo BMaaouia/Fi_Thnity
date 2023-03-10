@@ -398,7 +398,7 @@ public class commandsControllor implements Initializable {
 
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop\\Fi_Thnity-gestion-offre-demandeSSS\\src\\com\\fithnity\\view\\images"));
+        fc.setInitialDirectory(new File("C:\\Users\\Maaouia\\Desktop\\Fi thnity Integration\\Fi_Thnity\\src\\images"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpeg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
@@ -419,7 +419,7 @@ public class commandsControllor implements Initializable {
     public String FilechooserLM(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop\\Fi_Thnity-gestion-offre-demandeSSS\\src\\com\\fithnity\\view\\images"));
+        fc.setInitialDirectory(new File("C:\\Users\\Maaouia\\Desktop\\Fi thnity Integration\\Fi_Thnity\\src\\images"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpeg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("pdf Files", "*.pdf"));
@@ -438,7 +438,7 @@ public class commandsControllor implements Initializable {
     public String FilechooserCV(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("C:\\Users\\andol\\Desktop\\Fi_Thnity-gestion-offre-demandeSSS\\src\\com\\fithnity\\view\\images"));
+        fc.setInitialDirectory(new File("C:\\Users\\Maaouia\\Desktop\\Fi thnity Integration\\Fi_Thnity\\src\\images"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpeg"));
 //        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("video Files", "*.mp4"));

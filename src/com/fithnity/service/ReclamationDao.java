@@ -249,7 +249,7 @@ public class ReclamationDao implements IdaoReclamation<Reclamation>{
   
     public String bad_words(String badWord) {
 
-    List<String> badListW = Arrays.asList("zebi", "sorem","nayek","asba lik","zabour","9ahba","khahba","fuck","putin");
+    List<String> badListW = Arrays.asList("bitch", "motherfucker","especedecanard","fuck","putain");
     String[] words = badWord.split("\\s+");
     StringBuilder sb = new StringBuilder();
     for (String word : words) {

@@ -123,8 +123,8 @@ public class AdminPanelController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-        FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(pngFilter);
+        //FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        //fileChooser.getExtensionFilters().add(pngFilter);
         File selectedFile = fileChooser.showOpenDialog(null);
         
         if (selectedFile != null) {
@@ -373,6 +373,7 @@ public class AdminPanelController implements Initializable {
                     btn.setId(Integer.toString(item.getSubscription_id()));
                     btn.setStyle("-fx-background-color: black; -fx-background-radius: 20; -fx-font-family: \"Franklin Gothic Medium\";-fx-text-fill: #F9F7DD;");
 
+                    
                     Label nbUsers = new Label(Integer.toString(SUS.GetNbUsers(item.getSubscription_id()))+" Current Users");
                     Label type = new Label(item.getSubscription_type());
                     Label price = new Label(Integer.toString(item.getSubscription_price())+" DT");
