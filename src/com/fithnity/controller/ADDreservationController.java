@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
@@ -295,6 +296,10 @@ webengine = map.getEngine();
     String vd= idvd.getSelectionModel().getSelectedItem();
     String va= idva.getSelectionModel().getSelectedItem();
     LocalDate date = dateField.getValue();
+    
+    
+        
+       
          
 //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 //String formattedDate = date.format(formatter); 
@@ -303,12 +308,11 @@ webengine = map.getEngine();
     alert.setHeaderText("Le poids doit être supérieur à zéro.");
     alert.showAndWait();
     }
-    else if(poidsField.getText().isEmpty() || catField.getText().isEmpty())
-     {
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-             alert.setHeaderText("Veuillez remplir tous les champs");
-             alert.showAndWait();
-     }
+    
+   
+   
+    
+        
      else
         {
             reservation U1 = new reservation (ref_field.getText(),poids,prix,vd,va,date,selectedModelId);

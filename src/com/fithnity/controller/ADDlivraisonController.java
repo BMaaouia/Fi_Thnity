@@ -10,6 +10,8 @@ import com.fithnity.service.reservationService;
 import com.fithnity.entity.livraison;
 import com.fithnity.entity.produit;
 import com.fithnity.entity.reservation;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static javafx.beans.binding.Bindings.isEmpty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -161,6 +164,29 @@ public class ADDlivraisonController implements Initializable {
             
             
           int etat = 0;
+         
+
+// Check that only one checkbox is selected
+if (fx_etatArriv.isSelected() && (fx_etatAnnul.isSelected() || fx_etatEncours.isSelected())) {
+  {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Veuillez remplir le champ Etat.");
+        alert.showAndWait();
+    } 
+} else if (fx_etatArriv.isSelected() && (fx_etatAnnul.isSelected() || fx_etatEncours.isSelected())) {
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Veuillez remplir le champ Etat.");
+        alert.showAndWait();
+    } 
+} else if (fx_etatArriv.isSelected() && (fx_etatAnnul.isSelected() || fx_etatEncours.isSelected())) {
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Veuillez remplir le champ Etat.");
+        alert.showAndWait();
+    } 
+}
+          
 
           if (fx_etatArriv.isSelected()) {
               etat = 1;
@@ -189,7 +215,7 @@ public class ADDlivraisonController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
-                alert.setContentText("Le véhicule a été ajouté avec succès !");
+                alert.setContentText("La livraison a été ajouté avec succès !");
                 alert.show();
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

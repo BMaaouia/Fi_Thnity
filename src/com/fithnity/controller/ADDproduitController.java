@@ -136,6 +136,7 @@ public class ADDproduitController implements Initializable {
     }
 
     // Vérifier que le nom du produit et la description sont des chaînes de caractères
+    if (!nom_produit.isEmpty() || !description_produit.isEmpty())
     if (!nom_produit.matches("[a-zA-Z]+") || !description_produit.matches("[a-zA-Z]+")) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText("Le nom du produit et la description doivent être des chaînes de caractères");
