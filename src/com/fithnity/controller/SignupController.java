@@ -8,7 +8,7 @@ package com.fithnity.controller;
 
 
 import com.fithnity.entity.User;
-import com.fithnity.services.ServiceUser;
+import com.fithnity.service.ServiceUser;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.io.File;

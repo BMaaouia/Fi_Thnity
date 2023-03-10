@@ -5,7 +5,7 @@
  */
 package com.fithnity.controller;
 
-import com.fithnity.services.ServiceUser;
+import com.fithnity.service.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;

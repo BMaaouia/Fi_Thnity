@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fithnity.services;
+package com.fithnity.service;
 
 
 import com.fithnity.entity.Subscription;
 import com.fithnity.entity.User;
-import com.fithnity.utils.DataSource;
+import com.fithnity.utils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,7 +30,7 @@ public class ServiceUser implements UserInterface<User>{
     private ResultSet rs,rs1;
     
     private ServiceUser() {
-        DataSource cs=DataSource.getInstance();
+        ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {
@@ -250,6 +250,21 @@ public class ServiceUser implements UserInterface<User>{
         }
         return false;
     }
+    
+    
+    public void cancel_subscription(User p) {
+        String qry1 = "UPDATE User SET IsSubscribed = 0 WHERE user_id = '" + p.getUser_id() + "'";
+        String qry2 = "DELETE FROM user_subscription WHERE user_id = " + p.getUser_id();
+
+        try {
+            st.executeUpdate(qry1);
+            st.executeUpdate(qry2);
+        } catch (SQLException ex) {
+            System.err.println("Error executing SQL queries: " + ex.getMessage());
+            ex.printStackTrace();
+        } 
+}
+
 
    
     

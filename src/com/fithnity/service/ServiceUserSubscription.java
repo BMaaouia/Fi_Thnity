@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fithnity.services;
+package com.fithnity.service;
 
 import com.fithnity.entity.Subscription;
 import com.fithnity.entity.User;
 import com.fithnity.entity.UserSubscription;
 
-import com.fithnity.utils.DataSource;
+import com.fithnity.utils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,7 +31,7 @@ public class ServiceUserSubscription implements UserSubscriptionInterface<UserSu
     private ResultSet rs;
     
     private ServiceUserSubscription() {
-        DataSource cs=DataSource.getInstance();
+        ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {

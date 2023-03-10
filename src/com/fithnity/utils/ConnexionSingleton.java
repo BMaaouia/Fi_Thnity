@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  *
  * @author abdelazizmezri
  */
-public class DataSource {
+public class ConnexionSingleton {
     
     private Connection cnx;
-    private static DataSource instance;
+    private static ConnexionSingleton instance;
     
     private final String USER = "root";
     private final String PWD = "";
     private final String URL = "jdbc:mysql://localhost:3306/fi_thnity";
 
-    private DataSource() {
+    private ConnexionSingleton() {
         try {
             cnx = DriverManager.getConnection(URL, USER, PWD);
             System.out.println("Connected !");
@@ -33,9 +33,9 @@ public class DataSource {
         }
     }
 
-    public static DataSource getInstance() {
+    public static ConnexionSingleton getInstance() {
         if(instance == null)
-            instance = new DataSource();
+            instance = new ConnexionSingleton();
         return instance;
     }
 

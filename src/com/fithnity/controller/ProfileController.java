@@ -8,15 +8,17 @@ package com.fithnity.controller;
 import com.fithnity.entity.Subscription;
 import com.fithnity.entity.User;
 import com.fithnity.entity.UserSubscription;
-import com.fithnity.services.ServiceSubscription;
-import com.fithnity.services.ServiceUser;
-import com.fithnity.services.ServiceUserSubscription;
-import com.fithnity.services.UserManager;
+import com.fithnity.service.ServiceSubscription;
+import com.fithnity.service.ServiceUser;
+import com.fithnity.service.ServiceUserSubscription;
+import com.fithnity.service.UserManager;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -89,8 +91,6 @@ public class ProfileController implements Initializable{
     @FXML
     private Button btn_acceuil;
     @FXML
-    private Button btn_acceuil1;
-    @FXML
     private Button btn_blog;
     @FXML
     private Text user;
@@ -111,13 +111,19 @@ public class ProfileController implements Initializable{
     private Button show_profile;
     @FXML
     private Button retour;
+    @FXML
+    private Button btn_reclamation;
+    @FXML
+    private Button btn_employe;
+    @FXML
+    private Button btn_reservation;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        user.setText("Welcome "+UserManager.getCurrentUser().getUser_firstname()+"!");
        
        
-       profile.setVisible(false);
+       profile.setVisible(true);
        Subscription_tilepane.setVisible(false);
        check_Subscription_pane.setVisible(false);
        Subscription_tilepane.setPrefColumns(4);
@@ -129,8 +135,9 @@ public class ProfileController implements Initializable{
        CheckSubscription.setVisible(false);
        Subscription.setVisible(true);
        }
-       
         
+       show_profile(null);
+       
     }    
 
     @FXML
@@ -150,7 +157,7 @@ public class ProfileController implements Initializable{
             stage.show();
             
             } catch (IOException ex) {
-            Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
     
         } 
@@ -172,11 +179,12 @@ public class ProfileController implements Initializable{
     @FXML
     private void save_update(ActionEvent event) {
         if(validateInputs()==true){
-            System.out.println(current);
+            String hashedPassword = hashPassword(password_text.getText());
+            //System.out.println(current);
             current.setUser_firstname(firstname_text.getText());
             current.setUser_lastname(lastname_text.getText());
             current.setUser_email(email_text.getText());
-            current.setUser_password(password_text.getText());
+            current.setUser_password(hashedPassword);
             current.setUser_img(selectedAvatar);
 
             Su.update(current);
@@ -215,7 +223,7 @@ public class ProfileController implements Initializable{
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                    Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }  
          }
     }
@@ -292,10 +300,10 @@ public class ProfileController implements Initializable{
                         US.setSubscription_end(oneMonthLaterDate);
                         SUS.insert(US, current.getUser_id(), subscriptionId);
                         
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Information Dialog");
                         alert.setHeaderText(null);
-                        alert.setContentText("You can't pay yet!");
+                        alert.setContentText("You are now subscribed to "+ item.getSubscription_type()+" !");
                         alert.show();
                         CheckSubscription.setVisible(true);
                         Subscription.setVisible(false);
@@ -309,7 +317,7 @@ public class ProfileController implements Initializable{
                     });
                  
                 } catch (FileNotFoundException ex) {
-                        Logger.getLogger(ProfileController1.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
 
@@ -338,14 +346,26 @@ public class ProfileController implements Initializable{
         
         
         cancel_subscription.setOnAction(e -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("You can't cancel yet!");
-            alert.show();
+            
+            
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to Cancel your subscription?");
+        Optional<ButtonType> result = alert.showAndWait();
+                            
+        if (result.get() == ButtonType.OK){
+            Su.cancel_subscription(current);
             profile.setVisible(true);
-                        Subscription_tilepane.setVisible(false);
-                        check_Subscription_pane.setVisible(false);
+            CheckSubscription.setVisible(false);
+            Subscription.setVisible(true);
+            Subscription_tilepane.setVisible(false);
+            check_Subscription_pane.setVisible(false);
+             
+         }
+            
+            
+            
             
         });
     }
@@ -433,6 +453,15 @@ public class ProfileController implements Initializable{
             alert.show();
             return false;
         }
+        
+        if (avatar == null) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR!");
+        alert.setHeaderText(null);
+        alert.setContentText("Missing Avatar!");
+        alert.show();
+        return false;
+        }
 
         return true;
     }
@@ -442,7 +471,7 @@ public class ProfileController implements Initializable{
         firstname_text.setText(current.getUser_firstname());
         lastname_text.setText(current.getUser_lastname());
         email_text.setText(current.getUser_email());
-        password_text.setText(current.getUser_password());
+        //password_text.setText(current.getUser_password());
         File imgFile = new File(current.getUser_img());
         Image img = new Image(imgFile.toURI().toString());
         avatar.setImage(img);
@@ -460,5 +489,64 @@ public class ProfileController implements Initializable{
     private void retour(ActionEvent event) {
         show_profile(event);
     }
+
+    @FXML
+    private void btn_reclamation(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajouterreclamationfront.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void btn_blog(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void btn_employe(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void btn_reservation(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
     
+     private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

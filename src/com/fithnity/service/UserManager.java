@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fithnity.services;
+package com.fithnity.service;
 
 import com.fithnity.entity.User;
-import com.fithnity.services.UserInterface;
+import com.fithnity.service.UserInterface;
 
 /**
  *

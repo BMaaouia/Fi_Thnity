@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -29,7 +28,7 @@
                   </ImageView>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button fx:id="btn_acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" text="Dashboard" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="btn_acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_acceuil" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Dashboard" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -40,10 +39,6 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <stylesheets>
-                              <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                              <URL value="@style.css" />
-                           </stylesheets>
                         </Button>
                      </children>
                      <VBox.margin>
@@ -52,7 +47,7 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="319.0">
                      <children>
-                        <Button fx:id="show_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_user" prefHeight="50.0" prefWidth="319.0" text="Gestion User" textAlignment="CENTER" textFill="#e7e5e5">
+                        <Button fx:id="show_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_user" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="Gestion User" textAlignment="CENTER" textFill="#e7e5e5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -66,104 +61,17 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <stylesheets>
-                              <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                              <URL value="@style.css" />
-                           </stylesheets>
                         </Button>
                      </children>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="50.0" prefWidth="319.0">
-                     <children>
-                        <Button fx:id="show_subscription_vbox" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_subscription" prefHeight="50.0" prefWidth="319.0" text="Gestion Subscription" textAlignment="CENTER" textFill="#e7e5e5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView>
-                                 <image>
-                                    <Image url="@images/icons8_Open_Envelope_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <stylesheets>
-                              <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                              <URL value="@style.css" />
-                           </stylesheets>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="50.0" prefWidth="319.0">
-                     <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="28.0">
-                                 <image>
-                                    <Image url="@images/icons8_Slider__32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <stylesheets>
-                              <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                              <URL value="@style.css" />
-                           </stylesheets>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="50.0" prefWidth="319.0">
-                     <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView>
-                                 <image>
-                                    <Image url="@images/icons8_Person_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <stylesheets>
-                              <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                              <URL value="@style.css" />
-                           </stylesheets>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="50.0" prefWidth="319.0">
-                     <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView>
-                                 <image>
-                                    <Image url="@images/icons8_Xbox_Menu_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <stylesheets>
-                              <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                              <URL value="@style.css" />
-                           </stylesheets>
-                        </Button>
-                     </children>
                   </HBox>
                   <HBox prefHeight="46.0" prefWidth="319.0">
                      <children>
                         <HBox prefHeight="50.0" prefWidth="319.0">
                            <children>
-                              <Button fx:id="btn_acceuil2" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" text="Gestion Reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                              <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_reclamation" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Reclamation" textAlignment="CENTER" textFill="#e7e5e5">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -174,21 +82,79 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
-                                 <stylesheets>
-                                    <URL value="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" />
-                                    <URL value="@style.css" />
-                                 </stylesheets>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_blog" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="28.0">
+                                 <image>
+                                    <Image url="@images/icons8_Slider__32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_employe" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_employe" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Person_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_reservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#show_reservation" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="319.0" />
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <HBox prefHeight="46.0" prefWidth="319.0">
+                           <children>
+                              <Button fx:id="btn_offre" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_offreback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion offre demande" textAlignment="CENTER" textFill="#e7e5e5">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="38.0" fitWidth="35.0">
+                                       <image>
+                                          <Image url="@images/icons8-chercheur-de-remises-80.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                            </children>
                         </HBox>
                      </children></HBox>
-                  <HBox prefHeight="0.0" prefWidth="319.0" />
-                  <HBox prefHeight="50.0" prefWidth="319.0" />
-                  <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@../../../../../Desktop/Fi_thnity/Fi_Thnity/src/com/fithnity/view/style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
                </children>
             </VBox>
             <AnchorPane fx:id="subscription" layoutX="419.0" layoutY="122.0" prefHeight="487.0" prefWidth="642.0" visible="false">
@@ -253,7 +219,21 @@
          </font>
       </Button>
       <TilePane fx:id="tilepane_subscription" layoutX="363.0" layoutY="128.0" prefHeight="538.0" prefWidth="725.0" />
-      <Button fx:id="subscription_vbox" layoutX="659.0" layoutY="694.0" mnemonicParsing="false" onAction="#subscription_vbox" text="Add Subscription" />
-      <Button fx:id="retour" layoutX="695.0" layoutY="694.0" mnemonicParsing="false" onAction="#retour" text="retour" visible="false" />
+      <Button fx:id="subscription_vbox" layoutX="659.0" layoutY="694.0" mnemonicParsing="false" onAction="#subscription_vbox" style="-fx-background-color: black; -fx-background-radius: 20;" text="Add Subscription" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="retour" layoutX="695.0" layoutY="694.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: black; -fx-background-radius: 20;" text="retour" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="show_users_btn" layoutX="847.0" layoutY="694.0" mnemonicParsing="false" onAction="#show_users_btn" style="-fx-background-color: black; -fx-background-radius: 20;" text="Show Users" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="show_sub" layoutX="847.0" layoutY="694.0" mnemonicParsing="false" onAction="#show_sub" style="-fx-background-color: black; -fx-background-radius: 20;" text="Show Subscription" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>
