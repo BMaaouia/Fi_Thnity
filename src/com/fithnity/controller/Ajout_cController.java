@@ -474,6 +474,15 @@ public class Ajout_cController implements Initializable {
 
     @FXML
     private void go_reser(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     @FXML

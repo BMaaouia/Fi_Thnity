@@ -523,6 +523,15 @@ public class ProfileController implements Initializable{
 
     @FXML
     private void btn_reservation(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
      private String hashPassword(String password) {

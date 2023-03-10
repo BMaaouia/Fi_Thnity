@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fithnity.controller.DASHBOARDproduitController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1200.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@dashboardreservation.css" />
+         </stylesheets>
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane fx:id="container" layoutX="311.0" layoutY="-5.0" prefHeight="808.0" prefWidth="890.0">
+               <children>
+                  <Label layoutX="29.0" layoutY="26.0" text="Modifier/Supprimer Produit :">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutY="77.0" prefHeight="1.0" prefWidth="890.0" />
+                  <Label layoutX="-227.0" layoutY="480.0" text="Commentaire" />
+                  <Label layoutX="-218.0" layoutY="191.0" text="Liste Blog" />
+                  <Text layoutX="21.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom produit :">
+                     <font>
+                        <Font name="Gabriola" size="31.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="84.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="poids :">
+                     <font>
+                        <Font name="Gabriola" size="31.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="nom_filled" layoutX="164.0" layoutY="186.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="poids_field" layoutX="164.0" layoutY="257.0" style="-fx-background-radius: 20;" />
+                  <Button fx:id="supp1" layoutX="53.0" layoutY="574.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="152.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Mettre a jour" textFill="#fcf9f9" />
+                  <Button fx:id="id_liste" layoutX="288.0" layoutY="568.0" mnemonicParsing="false" onAction="#lister" style="-fx-background-color: black; -fx-background-radius: 20;" text="refresh" textFill="#fcf9f9" />
+                  <Label layoutX="20.0" layoutY="322.0" text="Description :" textFill="#1d1e1e">
+                     <font>
+                        <Font name="System Italic" size="21.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="388.0" layoutY="162.0" orientation="VERTICAL" prefHeight="419.0" prefWidth="0.0" />
+                  <Button layoutX="503.0" layoutY="185.0" mnemonicParsing="false" onAction="#pdf" style="-fx-background-color: black; -fx-background-radius: 20;" text="pdf" textFill="#fcf9f9" />
+                  <TextField fx:id="rech" layoutX="566.0" layoutY="185.0" onKeyReleased="#FiltrerKeyReleased3" promptText="Rechercher" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="description_field" layoutX="71.0" layoutY="372.0" prefHeight="189.0" prefWidth="275.0" style="-fx-background-radius: 20;" />
+                  <ListView fx:id="id_list2" layoutX="441.0" layoutY="241.0" prefHeight="273.0" prefWidth="430.0" style="-fx-background-radius: 20;" />
+                  <Button fx:id="supp" layoutX="762.0" layoutY="185.0" mnemonicParsing="false" onAction="#Supprimer" style="-fx-background-color: black; -fx-background-radius: 20;" text="Supprimer" textFill="#fcf9f9" />
+                  <Button fx:id="back_produit" layoutX="394.0" layoutY="28.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="..." textFill="#fcf9f9" />
+                  <Button layoutX="428.0" layoutY="682.0" mnemonicParsing="false" onAction="#add_reservation" style="-fx-background-color: black; -fx-background-radius: 20;" text="Add reservation" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="820.0" prefWidth="319.0" style="-fx-background-color: #05071F;">
+               <children>
+                  <ImageView fitHeight="304.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@324513863_1012082136863041_1779742244522422592_n.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Dashboard" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Home_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_user" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="gestion user" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Person_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_reclamation" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion reclamation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Open_Envelope_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_blog" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Blog" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="28.0">
+                                 <image>
+                                    <Image url="@images/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Employe" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Slider__32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="gestion Reservation" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="46.0" prefWidth="319.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btn_blog" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #10165F;" stylesheets="@style.css" text="               Admin" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

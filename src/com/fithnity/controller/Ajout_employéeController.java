@@ -90,6 +90,8 @@ public class Ajout_employéeController implements Initializable {
     private Button btn_blog;
     @FXML
     private Button btn_reservation;
+    @FXML
+    private Button btn_offre;
 
     /**
      * Initializes the controller class.
@@ -139,7 +141,24 @@ for(Vehicule vehicule : vehiculeList) {
     }
 });
 
-
+ btn_acceuil.setOnAction(event -> {
+            try {//FXMLLoader loader = new FXMLLoader();
+                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+                // Give the controller access to the main app.
+//                AfficherPersonneController controller =loader.getController();
+//                controller.setListData(new ListDataReclamation());
+                Scene scene = new Scene(page2);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+                  btn_acceuil.setStyle("-fx-background-color : #1620A1");
+            btn_acceuil.toFront();
+             btn_reclamation.setStyle("-fx-background-color :  #05071F");
+            } catch (IOException ex) {
+                Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
                                   
     }
         
@@ -396,6 +415,28 @@ for(Vehicule vehicule : vehiculeList) {
 
     @FXML
     private void go_reservationback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDlivraison.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_offreback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/commands.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 }
 

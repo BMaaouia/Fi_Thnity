@@ -111,6 +111,8 @@ public class MreclamationfrontController implements Initializable {
     private Button btn_blog2;
     @FXML
     private Button btn_admin;
+    @FXML
+    private Button btn_reservation;
     
     
     
@@ -430,6 +432,19 @@ private void Filtrer(ActionEvent event) throws IOException {
          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/ajout_c.fxml"));
     Stage window = (Stage) btn_blog2.getScene().getWindow();
     window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void go_reservation(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDreservation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     

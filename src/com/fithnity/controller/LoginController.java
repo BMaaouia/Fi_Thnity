@@ -66,11 +66,12 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
     }    
 
     @FXML
     private void login(ActionEvent event) {
+        
             String mail = email_text.getText();
             String pass = password_text.getText();
             ServiceUser Su = ServiceUser.getInstance();

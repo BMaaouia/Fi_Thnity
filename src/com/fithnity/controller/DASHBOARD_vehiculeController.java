@@ -87,11 +87,11 @@ public class DASHBOARD_vehiculeController implements Initializable {
     @FXML
     private TilePane véhicule_list_tile;
     @FXML
-    private Button btn_user1;
-    @FXML
     private Button btn_reclamation;
     @FXML
     private Button btn_reservation;
+    @FXML
+    private Button btn_offre;
 
     /**
      * Initializes the controller class.
@@ -419,7 +419,6 @@ public class DASHBOARD_vehiculeController implements Initializable {
             }
     }
 
-    @FXML
     private void go_userback1(ActionEvent event) {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/AdminPanel.fxml"));
@@ -460,6 +459,29 @@ public class DASHBOARD_vehiculeController implements Initializable {
 
     @FXML
     private void go_reservationback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDlivraison.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void go_offreback(ActionEvent event) {
+         try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/commands.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }
     
     

@@ -150,6 +150,22 @@
                         </Button>
                      </children>
                   </HBox>
+                  <HBox prefHeight="50.0" prefWidth="319.0">
+                     <children>
+                        <Button fx:id="btn_offre" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#go_offreback" prefHeight="50.0" prefWidth="319.0" stylesheets="@style.css" text="Gestion Offre Demande" textAlignment="CENTER" textFill="#e7e5e5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView>
+                                 <image>
+                                    <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                   <HBox prefHeight="46.0" prefWidth="319.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>

@@ -72,6 +72,8 @@ public class AcceuilController implements Initializable {
     private Button btn_blog2;
     @FXML
     private Button btn_reclamation;
+    @FXML
+    private Button btn_employe;
     /**
      * Initializes the controller class.
      */
@@ -125,23 +127,23 @@ public class AcceuilController implements Initializable {
 
         });
 
-             btn_user.setOnAction(event -> {
-            try {//FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
- 
-                Scene scene = new Scene(page2);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-                  btn_user.setStyle("-fx-background-color : #1620A1");
-           btn_user.toFront();
-          
-            
-            } catch (IOException ex) {
-                Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+//             btn_user.setOnAction(event -> {
+//            try {//FXMLLoader loader = new FXMLLoader();
+//                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+//                Parent page2 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/reclamationback.fxml"));
+// 
+//                Scene scene = new Scene(page2);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.show();
+//                  btn_user.setStyle("-fx-background-color : #1620A1");
+//           btn_user.toFront();
+//          
+//            
+//            } catch (IOException ex) {
+//                Logger.getLogger(reclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
 
 
           btn_reclamation.setOnAction(event -> {
@@ -213,9 +215,9 @@ for (PieChart.Data slice : piechart.getData()) {
     @FXML
     private void go_userback(ActionEvent event) throws IOException {
      
-//         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Profile.fxml"));
-//    Stage window = (Stage) btn_user.getScene().getWindow();
-//    window.setScene(new Scene(root3));
+         Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/AdminPanel.fxml"));
+    Stage window = (Stage) btn_user.getScene().getWindow();
+    window.setScene(new Scene(root3));
     }
 
     
@@ -226,6 +228,19 @@ for (PieChart.Data slice : piechart.getData()) {
          Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Ajout_Blog.fxml"));
     Stage window = (Stage) btn_blog2.getScene().getWindow();
     window.setScene(new Scene(root3));
+    }
+
+      @FXML
+    private void go_employeback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/Ajout_employée.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
 

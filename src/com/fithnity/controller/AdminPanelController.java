@@ -90,8 +90,6 @@ public class AdminPanelController implements Initializable {
     UserSubscription Us = new UserSubscription();
     ServiceUserSubscription SUS = ServiceUserSubscription.getInstance();
     @FXML
-    private Button show_subscription_vbox;
-    @FXML
     private Button subscription_vbox;
     @FXML
     private Button retour;
@@ -105,6 +103,8 @@ public class AdminPanelController implements Initializable {
     private Button show_users_btn;
     @FXML
     private Button show_sub;
+    @FXML
+    private Button btn_offre;
 
     /**
      * Initializes the controller class.
@@ -349,7 +349,6 @@ public class AdminPanelController implements Initializable {
     return true;
     }
 
-    @FXML
     private void show_subscription(ActionEvent event) {
         
         subscription.setVisible(false);
@@ -531,6 +530,15 @@ public class AdminPanelController implements Initializable {
 
     @FXML
     private void show_reservation(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/ADDlivraison.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
     }
 
@@ -549,6 +557,27 @@ public class AdminPanelController implements Initializable {
         show_users_btn.setVisible(true);
         retour.setVisible(false);
         show_subscription(event);
+    }
+
+    @FXML
+    private void go_acceuil(ActionEvent event) throws IOException {
+        Parent root3 = FXMLLoader .load(getClass().getResource("/com/fithnity/view/Acceuil.fxml"));
+    Stage window = (Stage) btn_acceuil.getScene().getWindow();
+    window.setScene(new Scene(root3));
+    }
+
+    @FXML
+    private void go_offreback(ActionEvent event) {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/fithnity/view/commands.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }
     
 }

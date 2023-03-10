@@ -8,38 +8,36 @@ package com.fithnity.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 /**
  *
- * @author lenovo
+ * @author DELL
  */
 public class ConnexionSingleton {
-    
+
     private static ConnexionSingleton instance;
-    
     private Connection cnx;
-    
-    private final String USER = "root";
-    private final String PASSWORD = "";
+
     private final String URL = "jdbc:mysql://localhost:3306/fi_thnity";
+    private final String LOGIN = "root";
+    private final String PASSWORD = "";
 
     private ConnexionSingleton() {
         try {
-            cnx = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("DB Connected !");
+            cnx = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+            System.out.println("Conncting !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
 
     public static ConnexionSingleton getInstance() {
-        if(instance == null)
+        if (instance == null) {
             instance = new ConnexionSingleton();
+        }
         return instance;
     }
 
     public Connection getCnx() {
         return cnx;
     }
-    
 }
