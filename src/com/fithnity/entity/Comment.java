@@ -77,7 +77,7 @@ public class Comment {
     }
    @Override
     public String toString() {
-         return "Comment{" + "id=" + id_comment.get() + ", text_comment=" + text_comment.get() + ", nom_prenom=" + nom_prenom.get() + '}';
+         return "Comment{" + " text_comment=" + text_comment.get() + ", nom_prenom=" + nom_prenom.get() + '}';
     }
 @Override
     public int hashCode() {

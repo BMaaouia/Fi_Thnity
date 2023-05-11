@@ -219,7 +219,7 @@ public class AdminPanelController implements Initializable {
                 continue;
             }
             
-            File imgFile = new File(user.getUser_img());
+            File imgFile = new File("C:/xampp/htdocs/GestionUser/GestionUser/public/uploads/user_images/"+user.getUser_img());
             Image image= new Image(imgFile.toURI().toString());
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(150);

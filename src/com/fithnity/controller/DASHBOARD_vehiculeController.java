@@ -139,7 +139,7 @@ public class DASHBOARD_vehiculeController implements Initializable {
                 
                 Image image;
                 try {
-                    image = new Image(new FileInputStream(item.getImage()));
+                    image = new Image(new FileInputStream("C:/xampp/htdocs/integrationFFFF/3a14-mindbenders_3a14/public/uploads/images/"+item.getImage()));
                     ImageView imageView = new ImageView(image);
                     imageView.setFitHeight(150);
                     imageView.setFitWidth(150);

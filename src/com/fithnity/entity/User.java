@@ -6,6 +6,7 @@
 package com.fithnity.entity;
 
 import java.util.Objects;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,6 +25,8 @@ public class User {
     private SimpleStringProperty user_img;
     private SimpleIntegerProperty IsSubscribed;
     private SimpleIntegerProperty Admin;
+    private SimpleIntegerProperty is_banned;
+    private SimpleBooleanProperty is_verified;
 
     public User() {
     }
@@ -127,6 +130,21 @@ public class User {
 
     public void setAdmin(int Admin) {
         this.Admin = new SimpleIntegerProperty(Admin);
+    }
+    
+    public int getIs_bannned() {
+        return is_banned.get();
+    }
+
+    public void setIs_banned(int is_banned) {
+        this.is_banned = new SimpleIntegerProperty(is_banned);
+    }
+    public boolean getIs_verified() {
+        return is_verified.get();
+    }
+
+    public void setIs_verified(boolean is_verified) {
+        this.is_verified = new SimpleBooleanProperty(is_verified);
     }
     
     

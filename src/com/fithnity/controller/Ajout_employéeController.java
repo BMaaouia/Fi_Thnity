@@ -312,10 +312,10 @@ for(Vehicule vehicule : vehiculeList) {
             
             e_Service.ajout_employée(e);
             
-            String mailTO = e.getEmail_employée();
+            String mailTO = e.getEmail_employee();
 
           Mail mail = new Mail();
-          mail.envoyerMailEmploye(mailTO, e.getFirstname_employée(), e.getLastname_employée());
+          mail.envoyerMailEmploye(mailTO, e.getFirstname_employee(), e.getLastname_employee());
             
         }
     }

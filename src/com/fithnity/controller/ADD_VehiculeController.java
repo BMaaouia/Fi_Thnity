@@ -202,16 +202,16 @@ public class ADD_VehiculeController implements Initializable {
     private void choose_image(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Choose File");
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-            FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-            fileChooser.getExtensionFilters().add(pngFilter);
+            fileChooser.setInitialDirectory(new File("C:/xampp/htdocs/integrationFFFF/3a14-mindbenders_3a14/public/uploads/images"));
+            //FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+            //fileChooser.getExtensionFilters().add(pngFilter);
             File selectedFile = fileChooser.showOpenDialog(null);
 
             if (selectedFile != null) {
             Image img = new Image(selectedFile.toURI().toString());
 
-                    selectedImage =selectedFile.getAbsolutePath();
-                    selectedImage = selectedImage.replace(File.separator, "/");
+                    selectedImage =selectedFile.getName();
+                    //selectedImage = selectedImage.replace(File.separator, "/");
                     image_vehicule.setImage(img);
                     
 

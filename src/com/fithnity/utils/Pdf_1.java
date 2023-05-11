@@ -49,10 +49,10 @@ PreparedStatement pst;
          for(Employée u:list)
         {
             
-        document.add(new Paragraph("First_name:"+u.getFirstname_employée()));
-        document.add(new Paragraph("Last_name :"+u.getLastname_employée()));
-         document.add(new Paragraph("Email :"+u.getEmail_employée()));
-          document.add(new Paragraph("Address :"+u.getAddress_employée()));
+        document.add(new Paragraph("First_name:"+u.getFirstname_employee()));
+        document.add(new Paragraph("Last_name :"+u.getLastname_employee()));
+         document.add(new Paragraph("Email :"+u.getEmail_employee()));
+          document.add(new Paragraph("Address :"+u.getAddress_employee()));
                
         
         

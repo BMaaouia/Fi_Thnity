@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -46,7 +47,7 @@ public class ServiceUser implements UserInterface<User>{
 
     @Override
     public void insert(User o) {
-        String req="insert into user (user_firstname,user_lastname,user_email,user_password,user_img) values ('"+o.getUser_firstname()+"','"+o.getUser_lastname()+"','"+o.getUser_email()+"','"+o.getUser_password()+"','"+o.getUser_img()+"')";
+        String req="insert into user (user_firstname,user_lastname,user_email,user_password,user_img,Admin) values ('"+o.getUser_firstname()+"','"+o.getUser_lastname()+"','"+o.getUser_email()+"','"+o.getUser_password()+"','"+o.getUser_img()+"','"+0+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -154,7 +155,7 @@ public class ServiceUser implements UserInterface<User>{
 
     @Override
     public boolean update(User p) {
-        String qry = "UPDATE user SET user_firstname = '"+p.getUser_firstname()+"', user_lastname = '"+p.getUser_lastname()+"', user_email = '"+p.getUser_email()+"', user_password = '"+p.getUser_password()+"', user_img = '"+p.getUser_img()+"' WHERE user_id = "+p.getUser_id();
+        String qry = "UPDATE user SET user_firstname = '"+p.getUser_firstname()+"', user_lastname = '"+p.getUser_lastname()+"', user_email = '"+p.getUser_email()+"', user_img = '"+p.getUser_img()+"' WHERE user_id = "+p.getUser_id();
         
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -169,31 +170,36 @@ public class ServiceUser implements UserInterface<User>{
 
     public boolean verif_user(String mail, String pass){
 
-                // Check if the username and user_password match
-                String qry = "SELECT COUNT(*) FROM user WHERE user_email = '"+mail+"' AND user_password = '"+pass+"'";
-                
-                try{
-                rs=st.executeQuery(qry);
-                rs.next();
-                int count = rs.getInt(1);
-                if(count==1){
-                    
-                    return true;
-                }
-                else{
-                    return false;
-                }
-                
-                }catch (SQLException ex) {
-                    Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                return false;
+                String qry = "SELECT * FROM user WHERE user_email = '"+mail+"' ";
+        User p=new User();
+     
+        try {
+            rs=st.executeQuery(qry);
+           
+            rs.next();
+                p.setUser_id(rs.getInt("user_id"));
+                p.setUser_firstname(rs.getString("user_firstname"));
+                p.setUser_lastname(rs.getString("user_lastname"));
+                p.setUser_email(rs.getString("user_email"));
+                p.setUser_password(rs.getString("user_password"));
+                p.setUser_img(rs.getString("user_img"));
+                p.setAdmin(rs.getInt("Admin"));
+                p.setIsSubscribed(rs.getInt("IsSubscribed"));
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(p);
+        if(BCrypt.checkpw(pass, p.getUser_password())==true){
+    return true;
+        }
+        return false;
                 
     }
     
-    public User getCurrentUser(String user_email, String user_password){
+    public User getCurrentUser(String user_email){
      
-        String qry = "SELECT * FROM user WHERE user_email = '"+user_email+"' AND user_password = '"+user_password+"'";
+        String qry = "SELECT * FROM user WHERE user_email = '"+user_email+"' ";
         User p=new User();
      
         try {
@@ -208,11 +214,13 @@ public class ServiceUser implements UserInterface<User>{
                 p.setUser_img(rs.getString(6));
                 p.setAdmin(rs.getInt(7));
                 p.setIsSubscribed(rs.getInt(8));
+                p.setIs_banned(rs.getInt(9));
+                p.setIs_verified(rs.getBoolean(10));
      
         } catch (SQLException ex) {
             Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        System.out.println(p);
     return p;
     }
     

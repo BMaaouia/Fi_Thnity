@@ -63,14 +63,14 @@ public class Demande {
     }
 
 
-
-    public Integer getId_offre() {
-        return id_offre;
-    }
-
-    public void setId_offre(Integer id_offre) {
-        this.id_offre = id_offre;
-    }
+//
+//    public Integer getId_offre() {
+//        return id_offre;
+//    }
+//
+//    public void setId_offre(Integer id_offre) {
+//        this.id_offre = id_offre;
+//    }
 
     public Demande(Integer id, String cin, String cv, String lettreMotivation, String cartegrise, String competences, Integer id_offre) {
         this.id=id;
@@ -115,6 +115,14 @@ public class Demande {
   
     public String getcartegrise() {
         return cartegrise;
+    }
+
+    public Integer getId_offre() {
+        return id_offre;
+    }
+
+    public void setId_offre(Integer id_offre) {
+        this.id_offre = id_offre;
     }
 
     public void setcartegrise(String cartegrise) {

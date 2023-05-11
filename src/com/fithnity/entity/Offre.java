@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleObjectProperty;
 
 
 public class Offre {
- private int offre_id;
+ private int id;
  private String metier, secteur, ville, Nombredeposte,salaire;
 // private LocalDate dateOffre;
  private SimpleObjectProperty <Date> dateOffre;
@@ -15,8 +15,8 @@ public Offre() {
     }
 
  
-    public Offre(int id_offre, String metier, String secteur, String ville, String Nombredeposte,String salaire, Date dateOffre) {
-        this.offre_id = id_offre;
+    public Offre(int id, String metier, String secteur, String ville, String Nombredeposte,String salaire, Date dateOffre) {
+        this.id = id;
         this.metier = metier;
         this.secteur = secteur;
         this.ville = ville;
@@ -45,11 +45,11 @@ public Offre() {
     }
 
     public int getoffre_id() {
-        return offre_id;
+        return id;
     }
 
-    public void setId_offre(int id_offre) {
-        this.offre_id = offre_id;
+    public void setId_offre(int id) {
+        this.id = id;
     }
 
     public String getMetier() {
@@ -120,7 +120,7 @@ public Offre() {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + this.offre_id;
+        hash = 59 * hash + this.id;
         hash = 59 * hash + Objects.hashCode(this.metier);
         hash = 59 * hash + Objects.hashCode(this.secteur);
         hash = 59 * hash + Objects.hashCode(this.ville);
@@ -144,7 +144,7 @@ public Offre() {
             return false;
         }
         final Offre other = (Offre) obj;
-        if (this.offre_id != other.offre_id) {
+        if (this.id != other.id) {
             return false;
         }
         if (!Objects.equals(this.metier, other.metier)) {

@@ -50,7 +50,7 @@ public class ReponseDao implements IdaoReclamation<Reponse>{
     @Override
     public void insert(Reponse o) {
        
-        String req = "INSERT IGNORE INTO Reponse (dateReponse, emailUser, messageR,idReclamation) VALUES ('" +  o.getDateReponse() + "', '"  + o.getEmailUser() + "', '" + o.getMessageR() +"', '" + o.getReclamation().getId() + "')";
+        String req = "INSERT IGNORE INTO Reponse (dateReponse, emailUser, messageR,idreclamation_id) VALUES ('" +  o.getDateReponse() + "', '"  + o.getEmailUser() + "', '" + o.getMessageR() +"', '" + o.getReclamation().getId() + "')";
         //String req="insert into Reclamation (nom,prenom,email,numTel,message,date) values ('"+o.getNom()+"','"+o.getPrenom()+"','"+o.getEmail()+"','"+o.getNumTel()+"','"+o.getMessage()+"','"+o.getDate()+"',')";
         try {
             st.executeUpdate(req);

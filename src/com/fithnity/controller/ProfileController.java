@@ -81,8 +81,6 @@ public class ProfileController implements Initializable{
     @FXML
     private Button delete;
     @FXML
-    private PasswordField password_text;
-    @FXML
     private ImageView avatar;
     @FXML
     private Button choose_avatar;
@@ -113,8 +111,6 @@ public class ProfileController implements Initializable{
     private Button retour;
     @FXML
     private Button btn_reclamation;
-    @FXML
-    private Button btn_employe;
     @FXML
     private Button btn_reservation;
     
@@ -168,7 +164,6 @@ public class ProfileController implements Initializable{
         firstname_text.setDisable(false);
         lastname_text.setDisable(false);
         email_text.setDisable(false);
-        password_text.setDisable(false);
         avatar.setDisable(false);
         choose_avatar.setDisable(false);
         
@@ -179,12 +174,11 @@ public class ProfileController implements Initializable{
     @FXML
     private void save_update(ActionEvent event) {
         if(validateInputs()==true){
-            String hashedPassword = hashPassword(password_text.getText());
+            
             //System.out.println(current);
             current.setUser_firstname(firstname_text.getText());
             current.setUser_lastname(lastname_text.getText());
             current.setUser_email(email_text.getText());
-            current.setUser_password(hashedPassword);
             current.setUser_img(selectedAvatar);
 
             Su.update(current);
@@ -198,7 +192,6 @@ public class ProfileController implements Initializable{
             firstname_text.setDisable(true);
             lastname_text.setDisable(true);
             email_text.setDisable(true);
-            password_text.setDisable(true);
             avatar.setDisable(true);
             choose_avatar.setDisable(true);
 
@@ -231,22 +224,20 @@ public class ProfileController implements Initializable{
     @FXML
     private void change_avatar(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Choose File");
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-            //FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-            //fileChooser.getExtensionFilters().add(pngFilter);
-            File selectedFile = fileChooser.showOpenDialog(null);
+        fileChooser.setTitle("Choose File");
+        fileChooser.setInitialDirectory(new File("C:/xampp/htdocs/GestionUser/GestionUser/public/uploads/user_images/"));
 
-            if (selectedFile != null) {
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            String fileName = selectedFile.getName(); // Get the file name
             Image img = new Image(selectedFile.toURI().toString());
 
-                    selectedAvatar =selectedFile.getAbsolutePath();
-                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
-                    avatar.setImage(img);
-                    
-
-           } 
+            selectedAvatar = fileName; // Save the file name only
+            avatar.setImage(img);
+        }
     }
+
 
     @FXML
     private void Subscription_vbox(ActionEvent event) {
@@ -436,23 +427,7 @@ public class ProfileController implements Initializable{
 
         }
 
-        if (password_text.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText(null);
-            alert.setContentText("Missing Password!");
-            alert.show();
-            return false;
-        }
-
-        if (!password_text.getText().matches("^(?=.*[0-9]).{8,}$")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText(null);
-            alert.setContentText("Password should be at least 8 characters and contain at least one digit [0-9] only!");
-            alert.show();
-            return false;
-        }
+        
         
         if (avatar == null) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -472,7 +447,7 @@ public class ProfileController implements Initializable{
         lastname_text.setText(current.getUser_lastname());
         email_text.setText(current.getUser_email());
         //password_text.setText(current.getUser_password());
-        File imgFile = new File(current.getUser_img());
+        File imgFile = new File("C:/xampp/htdocs/GestionUser/GestionUser/public/uploads/user_images/"+current.getUser_img());
         Image img = new Image(imgFile.toURI().toString());
         avatar.setImage(img);
         
@@ -516,10 +491,6 @@ public class ProfileController implements Initializable{
             }
     }
 
-    @FXML
-    private void btn_employe(ActionEvent event) {
-        
-    }
 
     @FXML
     private void btn_reservation(ActionEvent event) {
@@ -534,19 +505,5 @@ public class ProfileController implements Initializable{
             }
     }
     
-     private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
+     
 }

@@ -35,7 +35,7 @@
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" />
                   <Text layoutX="82.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
                   <TextField fx:id="titre_blog" layoutX="71.0" layoutY="135.0" style="-fx-background-radius: 20;" />
-                  <Button fx:id="gaffiche" layoutX="639.0" layoutY="373.0" mnemonicParsing="false" onAction="#goaffiche" text="affiche" />
+                  <Button fx:id="gaffiche" layoutX="639.0" layoutY="373.0" mnemonicParsing="false" onAction="#goaffiche" style="-fx-background-color: black; -fx-background-radius: 20;" text="Affiche" textFill="#f2f0f0" />
                </children>
             </AnchorPane>
             <VBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-10.0" prefHeight="816.0" prefWidth="319.0" style="-fx-background-color: #05071F;">

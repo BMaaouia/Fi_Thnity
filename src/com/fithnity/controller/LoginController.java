@@ -40,6 +40,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * FXML Controller class
@@ -77,7 +78,7 @@ public class LoginController implements Initializable {
             ServiceUser Su = ServiceUser.getInstance();
             User user = new User();
             String hashedPassword = hashPassword(pass);
-            System.out.println(hashPassword("admin"));
+            System.out.println(hashPassword(pass));
             
             
             if (mail.isEmpty() || pass.isEmpty()) {
@@ -89,7 +90,7 @@ public class LoginController implements Initializable {
                 return;
             }
 
-            else if (Su.verif_user(mail,hashedPassword) == true) {
+            else if (Su.verif_user(mail,pass) == true) {
                 // Successful login
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
@@ -98,7 +99,7 @@ public class LoginController implements Initializable {
                 alert.show();
                 
                 
-                User current = Su.getCurrentUser(mail, hashedPassword);
+                User current = Su.getCurrentUser(mail);
                  
                 UserManager.setCurrentUser(current);
                  
@@ -181,20 +182,11 @@ public class LoginController implements Initializable {
     
     
     private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        return hashedPassword;
     }
+    
+   
     
     
 

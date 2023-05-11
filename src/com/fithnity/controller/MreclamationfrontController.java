@@ -138,6 +138,7 @@ search.textProperty().addListener((observable, oldValue, newValue) -> {
     ObservableList<Reclamation> reclamationsList = FXCollections.observableArrayList(r);
    listviewP.setStyle("-fx-font-family: Arial; -fx-font-size: 14px; -fx-font-weight: bold;");
    listviewP.setItems(reclamationsList);
+  // listviewP.setItems(listdata.getPersons2(current2.getUser_email())); 
 //  listviewP.setCellFactory(param -> new ListCell<Reclamation>() {
 //   
 //    protected void updateItem(String item, boolean empty) {

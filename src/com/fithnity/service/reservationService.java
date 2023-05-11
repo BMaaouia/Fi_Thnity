@@ -35,15 +35,17 @@ public class reservationService {
       
         try {
             
-            String requete = "INSERT INTO reservation (reference,prix,poids,villeDepart,villeArrive,date_r,id_produit) VALUES (?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO reservation (reference,prix,poids,date_r,id_produit,ville_depart,ville_arrive) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, r.getReference());
             pst.setFloat(2, r.getPrix());
             pst.setFloat(3, r.getPoids());
-            pst.setString(4,r.getVilleDepart());
-            pst.setString(5,r.getVilleArrive());
-            pst.setDate(6, Date.valueOf(r.getDateReser()));
-            pst.setInt(7, r.getId_produit());
+            pst.setDate(4, Date.valueOf(r.getDateReser()));
+            pst.setInt(5, r.getId_produit());
+
+            pst.setString(6,r.getVilleDepart());
+            pst.setString(7,r.getVilleArrive());
+            
 
             pst.executeUpdate();
              System.out.println("Reservation ajoutée !");
@@ -53,7 +55,7 @@ public class reservationService {
     }
   public void updateReservation(reservation r, int id_r) {
         try {
-            String requete = "UPDATE reservation SET prix=?,poids=?,villeDepart=?,villeArrive=?,date_r=? WHERE id_r=?";
+            String requete = "UPDATE reservation SET prix=?,poids=?,ville_depart=?,ville_arrive=?,date_r=? WHERE id_r=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setFloat(1, r.getPrix());
@@ -70,7 +72,7 @@ public class reservationService {
   
   public void updateR(reservation r) {
         try {
-            String requete = "UPDATE reservation SET prix=?,poids=?,villeDepart=?,villeArrive=?,date_r=?";
+            String requete = "UPDATE reservation SET prix=?,poids=?,ville_depart=?,ville_arrive=?,date_r=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setFloat(1, r.getPrix());
@@ -103,7 +105,7 @@ public class reservationService {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new reservation(rs.getInt(1),rs.getString(2),rs.getFloat(3),rs.getFloat(4), rs.getString(5), rs.getString(6), rs.getDate(7).toLocalDate()));
+                list.add(new reservation(rs.getInt(1),rs.getString(2),rs.getFloat(3),rs.getFloat(4), rs.getDate(5).toLocalDate(),rs.getInt(6), rs.getString(7), rs.getString(8)));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -154,8 +156,8 @@ public class reservationService {
             while (rs.next()) {
                 p.setPrix(rs.getFloat("prix"));
                 p.setPoids(rs.getFloat("poids"));
-                p.setVilleDepart(rs.getString("VilleDepart"));
-                p.setVilleArrive(rs.getString("VilleArrive"));
+                p.setVilleDepart(rs.getString("ville_depart"));
+                p.setVilleArrive(rs.getString("ville_arrive"));
                 p.setDateReser(rs.getDate("date_r").toLocalDate());
             }
         } catch (SQLException ex) {
@@ -179,8 +181,8 @@ public class reservationService {
             rs.next();
                      p.setPrix(rs.getFloat("prix"));
                 p.setPoids(rs.getFloat("poids"));
-                p.setVilleDepart(rs.getString("VilleDepart"));
-                p.setVilleArrive(rs.getString("VilleArrive"));
+                p.setVilleDepart(rs.getString("ville_depart"));
+                p.setVilleArrive(rs.getString("ville_arrive"));
               //  p.setDateReser(rs.getDate("date_r").toLocalDate());
             //}  
         } catch (SQLException ex) {
@@ -190,7 +192,7 @@ public class reservationService {
     }
       
       public void delete(reservation o) throws SQLException {
-        String req1="delete from reservation where id_r="+o.getId_r();
+        String req1="delete from reservation where reference="+o.getId_r();
         reservation p=displayById(o.getId_r());
          PreparedStatement st = cnx.prepareStatement(req1);
           if(p!=null)
@@ -208,7 +210,7 @@ public class reservationService {
 //prix,poids,villeDepart,villeArrive,date_r
     //  String qry = "UPDATE reservation SET metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+"', Nombredeposte = '"+p.getNombredeposte()+"', salaire = '"+p.getSalaire()+"' WHERE offre_id = "+p.getoffre_id();
  //   String qry = "UPDATE reservation SET prix = '"+p.getPrix()+"', poids = '"+p.getPoids()+"', villeDepart = '"+p.getVilleDepart()+"', villeArrive = '"+p.getVilleArrive()+"'' WHERE id_r = "+p.getId_r();   
-String qry = "UPDATE reservation SET prix = '"+p.getPrix()+"', poids = '"+p.getPoids()+"', villeDepart = '"+p.getVilleDepart()+"', villeArrive = '"+p.getVilleArrive()+"' WHERE id_r = "+p.getId_r();
+String qry = "UPDATE reservation SET prix = '"+p.getPrix()+"', poids = '"+p.getPoids()+"', ville_depart = '"+p.getVilleDepart()+"', ville_arrive = '"+p.getVilleArrive()+"' WHERE id_r = "+p.getId_r();
    
  PreparedStatement st = cnx.prepareStatement(qry);
       try {

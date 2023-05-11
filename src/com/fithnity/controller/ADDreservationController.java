@@ -316,7 +316,7 @@ webengine = map.getEngine();
     
      else
         {
-            reservation U1 = new reservation (ref_field.getText(),poids,prix,vd,va,date,selectedModelId);
+            reservation U1 = new reservation (ref_field.getText(),poids,prix,date,selectedModelId,vd,va);
             reservationService uc= new reservationService() ;
              System.out.println("Connexion réussie!");
                  String recipient = "yassine.benbelgacem@esprit.tn";

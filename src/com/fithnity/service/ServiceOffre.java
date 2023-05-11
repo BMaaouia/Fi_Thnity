@@ -94,7 +94,7 @@ public class ServiceOffre {
        // String qry = "UPDATE Reclamation SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', email = '"+p.getEmail()+"', numTel = '"+p.getNumTel()+"', message = '"+p.getMessage()+"' WHERE id = "+p.getId();
        //  String qry = "UPDATE Offre SET  metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+", Nombredeposte = '"+p.getNombredeposte()+"',salaire = '"+p.getSalaire()+"'' WHERE offre_id = "+p.getoffre_id();
       // String qry = "UPDATE Offre SET metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+"', Nombredeposte = '"+p.getNombredeposte()+"', salaire = '"+p.getSalaire()+"' WHERE offre_id = "+p.getoffre_id();
-      String qry = "UPDATE offre SET metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+"', Nombredeposte = '"+p.getNombredeposte()+"', salaire = '"+p.getSalaire()+"' WHERE offre_id = "+p.getoffre_id();
+      String qry = "UPDATE offre SET metier = '"+p.getMetier()+"', secteur = '"+p.getSecteur()+"', ville = '"+p.getVille()+"', Nombredeposte = '"+p.getNombredeposte()+"', salaire = '"+p.getSalaire()+"' WHERE id = "+p.getoffre_id();
       try {
             if (st.executeUpdate(qry) > 0) {
                 return true;
@@ -135,7 +135,7 @@ public class ServiceOffre {
       
 
       public Offre displayById(int id) {
-           String req="select * from Offre where offre_id ="+id;
+           String req="select * from Offre where id ="+id;
            Offre p=new Offre();
         try {
             rs=st.executeQuery(req);
@@ -157,7 +157,7 @@ public class ServiceOffre {
        
       
     public void delete(Offre o) {
-        String req="delete from offre where offre_id="+o.getoffre_id();
+        String req="delete from offre where id="+o.getoffre_id();
         Offre p=displayById(o.getoffre_id());
         
           if(p!=null)

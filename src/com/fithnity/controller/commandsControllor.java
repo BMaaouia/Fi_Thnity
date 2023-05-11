@@ -53,8 +53,7 @@ public class commandsControllor implements Initializable {
     public JFXListView id_list_commande;
     public Button backing;
     public TextField txt_offre;
-    @FXML
-    public TextField txt_offer;
+  
     String imagePath = null;
     String imagePathForCV=null;
     String imagePathForLM=null;
@@ -138,6 +137,8 @@ public class commandsControllor implements Initializable {
     private Button btn_employe;
     @FXML
     private Button btn_reservation;
+    @FXML
+    private TextField txt_offer;
 
    
     private boolean validatecin(){
@@ -179,8 +180,8 @@ public class commandsControllor implements Initializable {
 
         if (validatecin()&& validateSkills()){
 
-            if(txt_fn.getText().isEmpty() || txt_offer.getText().isEmpty()
-
+            if(txt_fn.getText().isEmpty() 
+ || txt_offer.getText().isEmpty()
                     || txt_ln.getText().isEmpty()
 
                     || imagePathForLM== null

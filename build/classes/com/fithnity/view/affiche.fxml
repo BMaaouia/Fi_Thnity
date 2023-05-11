@@ -29,18 +29,18 @@
                   <Button fx:id="btn_supprimer" layoutX="728.0" layoutY="706.0" mnemonicParsing="false" onAction="#click" style="-fx-background-color: black; -fx-background-radius: 20;" text="Suprimer" textFill="#f2eaea" />
                   <Button fx:id="ajout" layoutX="505.0" layoutY="698.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: black; -fx-background-radius: 20;" text="Ajout" textFill="#e8dfdf" />
                   <ListView fx:id="list_b" layoutX="428.0" layoutY="182.0" onMouseClicked="#Load_Comment" prefHeight="200.0" prefWidth="445.0" style="-fx-background-radius: 20;" />
-                  <Button fx:id="btn_modif" layoutX="588.0" layoutY="698.0" mnemonicParsing="false" onAction="#modifier2" style="-fx-background-color: black; -fx-background-radius: 20;" text="modifier" textFill="#eee7e7" />
-                  <TextField fx:id="text_blog" layoutX="218.0" layoutY="127.0" style="-fx-background-radius: 20;" />
+                  <Button fx:id="btn_modif" layoutX="588.0" layoutY="698.0" mnemonicParsing="false" onAction="#modifier2" style="-fx-background-color: black; -fx-background-radius: 20;" text="Modifier" textFill="#eee7e7" />
+                  <TextField fx:id="text_blog" layoutX="626.0" layoutY="535.0" style="-fx-background-radius: 20;" />
                   <Text layoutX="638.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <Text layoutX="640.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="51.220703125" />
                   <TextField fx:id="image_blog" layoutX="626.0" layoutY="610.0" prefHeight="31.0" prefWidth="142.0" style="-fx-background-radius: 20;" />
-                  <Label layoutX="282.0" layoutY="550.0" text="Commentaire" />
+                  <Label layoutX="100.0" layoutY="172.0" text="Commentaires:" />
                   <ListView fx:id="list_c" layoutX="84.0" layoutY="206.0" prefHeight="153.0" prefWidth="297.0" style="-fx-background-radius: 20;" />
                   <Button layoutX="414.0" layoutY="698.0" mnemonicParsing="false" onAction="#PDFbtn" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="Pdf" textFill="#f2eeee" />
-                  <Label layoutX="295.0" layoutY="496.0" text="Liste Blog" />
+                  <Label layoutX="456.0" layoutY="144.0" text="Liste Blog" />
                   <Text layoutX="637.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
                   <TextField fx:id="titre_blog" layoutX="626.0" layoutY="463.0" style="-fx-background-radius: 20;" />
-                  <Button fx:id="retour" layoutX="782.0" layoutY="28.0" mnemonicParsing="false" onAction="#goretour" text="retour" />
+                  <Button fx:id="retour" layoutX="782.0" layoutY="28.0" mnemonicParsing="false" onAction="#goretour" style="-fx-background-color: black; -fx-background-radius: 20;" text="Retour" textFill="#e1e0e0" />
                </children>
             </AnchorPane>
          </children>

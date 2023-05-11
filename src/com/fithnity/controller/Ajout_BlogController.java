@@ -155,7 +155,7 @@ if (rs.next() && rs.getInt(1) > 0) {
         
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
+        fileChooser.setInitialDirectory(new File("C:/xampp/htdocs/integrationFFFF/3a14-mindbenders_3a14/public/uploads/images"));
         FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
         fileChooser.getExtensionFilters().add(pngFilter);
         File selectedFile = fileChooser.showOpenDialog(null);
@@ -164,8 +164,8 @@ if (rs.next() && rs.getInt(1) > 0) {
            // 
         Image img = new Image(selectedFile.toURI().toString());
   
-                String selected =selectedFile.getAbsolutePath();
-                selected = selected.replace(File.separator, "/");
+                String selected =selectedFile.getName();
+                //selected = selected.replace(File.separator, "/");
                 image.setImage(img);
                 btn_addi.setVisible(false);
                 b.setimage_blog(selected);         

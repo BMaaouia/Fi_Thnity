@@ -29,16 +29,16 @@ public class ServiceEmployée {
             
         try {
             
-            String requete = "INSERT INTO employée (firstname_employée,lastname_employée,email_employée,address_employée,id_vehicule) VALUES (?,?,?,?,?)";
+            String requete = "INSERT INTO employee (firstname_employee,lastname_employee,email_employee,address_employee,id_v) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
-            pst.setString(1, e.getFirstname_employée());
-            pst.setString(2, e.getLastname_employée());
-            pst.setString(3, e.getEmail_employée());
-            pst.setString(4, e.getAddress_employée());
+            pst.setString(1, e.getFirstname_employee());
+            pst.setString(2, e.getLastname_employee());
+            pst.setString(3, e.getEmail_employee());
+            pst.setString(4, e.getAddress_employee());
             pst.setInt(5, e.getId_vehicule());
             pst.executeUpdate();
-             System.out.println("employée ajoutée !");
+             System.out.println("employee ajoutée !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -48,7 +48,7 @@ public class ServiceEmployée {
         List<Employée> list = new ArrayList<>();
 
         try {
-            String requete = "SELECT * FROM employée";
+            String requete = "SELECT * FROM employee";
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -62,7 +62,7 @@ public class ServiceEmployée {
           
          public void deleteemployée(int id_Employée) {
         try {
-            String requete = "DELETE FROM employée WHERE id_employée=?";
+            String requete = "DELETE FROM employee WHERE id_employee=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, id_Employée);
             pst.executeUpdate();
@@ -75,15 +75,15 @@ public class ServiceEmployée {
         Employée e = new Employée();
 
         try {
-            String requete = "SELECT * FROM employée WHERE id_employée=" + id_Employée;
+            String requete = "SELECT * FROM employee WHERE id_employee=" + id_Employée;
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
-                e.setFirstname_employée(rs.getString("firstname_employée"));
-                e.setLastname_employée(rs.getString("lastname_employée"));
-                e.setEmail_employée(rs.getString("email_employée"));
-                e.setAddress_employée(rs.getString("address_employée"));
+                e.setFirstname_employee(rs.getString("firstname_employee"));
+                e.setLastname_employee(rs.getString("lastname_employee"));
+                e.setEmail_employee(rs.getString("email_employee"));
+                e.setAddress_employee(rs.getString("address_employee"));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -92,13 +92,13 @@ public class ServiceEmployée {
     }
        public void updateEmployée(Employée e, int id) {
         try {
-            String requete = "UPDATE employée SET firstname_employée=?,lastname_employée=?,email_employée=?,address_employée=? WHERE id_employée=?";
+            String requete = "UPDATE employee SET firstname_employee=?,lastname_employee=?,email_employee=?,address_employee=? WHERE id_employee=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             
-            pst.setString(1, e.getFirstname_employée());
-            pst.setString(2, e.getLastname_employée());
-            pst.setString(3, e.getEmail_employée());
-            pst.setString(4, e.getAddress_employée());  
+            pst.setString(1, e.getFirstname_employee());
+            pst.setString(2, e.getLastname_employee());
+            pst.setString(3, e.getEmail_employee());
+            pst.setString(4, e.getAddress_employee());  
             pst.setInt(5, id);
             
             pst.executeUpdate();
@@ -110,7 +110,7 @@ public class ServiceEmployée {
         public ObservableList<Employée> search2(String searchTerm) {
         ObservableList<Employée> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement preparedStatement = cnx.prepareStatement("SELECT * FROM employée");
+            PreparedStatement preparedStatement = cnx.prepareStatement("SELECT * FROM employee");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Employée offre = new Employée(

@@ -159,11 +159,11 @@ public class DASHBOARD_employéeController implements Initializable {
                      table.setOnMouseClicked(event ->{
                             ServiceEmployée e_Service = new ServiceEmployée();
                             Employée e1= (Employée) table.getSelectionModel().getSelectedItem();
-                            e1.getId_employée();
-                            firstname_text.setText(e1.getFirstname_employée());
-                            lastname_text.setText(e1.getLastname_employée());
-                            email_text.setText(e1.getEmail_employée());
-                            address_text.setText(e1.getAddress_employée());
+                            e1.getId_employee();
+                            firstname_text.setText(e1.getFirstname_employee());
+                            lastname_text.setText(e1.getLastname_employee());
+                            email_text.setText(e1.getEmail_employee());
+                            address_text.setText(e1.getAddress_employee());
                             fx_update.setOnAction(e->{
                             if(firstname_text.getText().isEmpty()||lastname_text.getText().isEmpty()||email_text.getText().isEmpty()||address_text.getText().isEmpty()){
                                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -175,12 +175,12 @@ public class DASHBOARD_employéeController implements Initializable {
 
                             
                                 try {
-                                    e1.setFirstname_employée(String.valueOf(firstname_text.getText()));
-                                    e1.setLastname_employée(String.valueOf(lastname_text.getText()));
-                                    e1.setEmail_employée(String.valueOf(email_text.getText()));
-                                    e1.setAddress_employée(String.valueOf(address_text.getText()));
+                                    e1.setFirstname_employee(String.valueOf(firstname_text.getText()));
+                                    e1.setLastname_employee(String.valueOf(lastname_text.getText()));
+                                    e1.setEmail_employee(String.valueOf(email_text.getText()));
+                                    e1.setAddress_employee(String.valueOf(address_text.getText()));
                                     
-                                    e_Service.updateEmployée(e1,Integer.valueOf(e1.getId_employée()));
+                                    e_Service.updateEmployée(e1,Integer.valueOf(e1.getId_employee()));
                                     
                                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                     alert.setTitle("Information Dialog");
@@ -246,7 +246,7 @@ window.setScene(new Scene(root2));
         e1= (Employée) table.getSelectionModel().getSelectedItem();
         
             ServiceEmployée e = new ServiceEmployée();
-            e.deleteemployée(e1.getId_employée());
+            e.deleteemployée(e1.getId_employee());
 
             table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
     }
@@ -270,7 +270,7 @@ window.setScene(new Scene(root2));
     ServiceEmployée su = new ServiceEmployée();
     ObservableList<Employée> list = su.search2(searchTerm);
     List<Employée> filteredList = list.stream()
-        .filter(entretient -> entretient.getFirstname_employée().toLowerCase().contains(searchTerm.toLowerCase()))
+        .filter(entretient -> entretient.getFirstname_employee().toLowerCase().contains(searchTerm.toLowerCase()))
         .collect(Collectors.toList());
 
        table.setItems(FXCollections.observableArrayList(filteredList));

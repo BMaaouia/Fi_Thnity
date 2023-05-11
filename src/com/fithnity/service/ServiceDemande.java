@@ -150,8 +150,10 @@ public class ServiceDemande implements IServiceDemande <Demande> {
 
         try {
             Statement st = cnx.createStatement();
-            String query = "insert into demande (id,cin,cv,lettreMotivation,cartegrise,competences,id_offre)values(NULL, '" +t.getcin()+ "', '" + t.getcv() +"','"+t.getlettreMotivation()+ "','" + t.getcartegrise() + "','" + t.getcompetences() + "','"+t.getId_offre()+"')";
-            st.executeUpdate(query);
+       //     String query = "insert into demande (id,cin,cv,lettreMotivation,cartegrise,competences,id)values(NULL, '" +t.getcin()+ "', '" + t.getcv() +"','"+t.getlettreMotivation()+ "','" + t.getcartegrise() + "','" + t.getcompetences() + "','"+"')";
+       String query = "INSERT INTO demande (cin,cv,lettreMotivation,cartegrise,competences,offre_id) VALUES ('" + t.getcin() + "', '" + t.getcv() + "', '" + t.getlettreMotivation() + "', '" + t.getcartegrise() + "', '" + t.getcompetences() + "', NULL)";
+
+       st.executeUpdate(query);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Added Successfully!");
             alert.show();

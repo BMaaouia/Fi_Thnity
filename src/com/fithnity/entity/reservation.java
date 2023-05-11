@@ -23,15 +23,16 @@ public class reservation {
      public reservation() { 
     }
 
-    public reservation(int id_r, int IDClient, int id_produit, float prix, float poids, LocalDate dateReser, String villeDepart, String villeArrive) {
+    public reservation(int id_r,String reference,float prix, float poids, LocalDate dateReser, int id_produit, String villeDepart, String villeArrive) {
         this.id_r = id_r;
-        this.IDClient = IDClient;
-        this.id_produit = id_produit;
+        this.reference = reference;
         this.prix = prix;
         this.poids = poids;
-        this.dateReser = dateReser;
         this.villeDepart = villeDepart;
         this.villeArrive = villeArrive;
+        this.dateReser = dateReser;
+        this.id_produit = id_produit;
+
     }
      
         public reservation( String reference,float prix, float poids, LocalDate dateReser, String villeDepart, String villeArrive, int id_produit) {
@@ -44,7 +45,7 @@ public class reservation {
         this.id_produit = id_produit;
     }
 
-        public reservation(int id_r,String reference, float prix, float poids, String villeDepart, String villeArrive, LocalDate dateReser) {
+        public reservation(int id_r,String reference, float prix, float poids, LocalDate dateReser, String villeDepart, String villeArrive) {
         this.id_r = id_r;
         this.reference = reference;
         this.prix = prix;
@@ -54,7 +55,7 @@ public class reservation {
         this.dateReser = dateReser;
     }
 
-    public reservation(String reference,float prix, float poids, String villeDepart, String villeArrive, LocalDate dateReser, int id_produit) {
+    public reservation(String reference,float prix, float poids, LocalDate dateReser, int id_produit, String villeDepart, String villeArrive) {
         this.reference = reference;
         this.prix = prix;
         this.poids = poids;
@@ -211,7 +212,7 @@ public class reservation {
 
     @Override
     public String toString() {
-        return "reservation{" + "id_r=" + id_r + ", IDClient=" + IDClient + ", Reference=" + reference+ ", id_produit=" + id_produit + ", prix=" + prix + ", poids=" + poids + ", dateReser=" + dateReser + ", villeDepart=" + villeDepart + ", villeArrive=" + villeArrive + '}';
+        return "reservation{" +"id_r=" + id_r+  "Reference=" + reference+  ", prix=" + prix + ", poids=" + poids + ", dateReser=" + dateReser + ", id_produit=" + id_produit +", villeDepart=" + villeDepart + ", villeArrive=" + villeArrive + '}';
     }
     
 }

@@ -43,6 +43,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * FXML Controller class
@@ -95,7 +96,7 @@ public class SignupController implements Initializable {
         User u = new User(firstname_text.getText(), lastname_text.getText(), email_text.getText(),hashedPassword,selectedAvatar);
             
             Us.insert(u);
-        
+            System.out.println(u);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
@@ -174,7 +175,7 @@ public class SignupController implements Initializable {
             return false;
         }
 
-        if (!firstname_text.getText().matches("[a-zA-Z]+")) {
+        if (!firstname_text.getText().matches("[a-zA-Z\\s]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText(null);
@@ -192,7 +193,7 @@ public class SignupController implements Initializable {
             return false;
         }
 
-        if (!lastname_text.getText().matches("[a-zA-Z]+")) {
+        if (!lastname_text.getText().matches("[a-zA-Z\\s]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText(null);
@@ -279,40 +280,27 @@ public class SignupController implements Initializable {
     
     
     private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(SignupController.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        return hashedPassword;
     }
 
     @FXML
     private void add_avatar(ActionEvent event) {
         
         FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Choose File");
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-            //FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-            //fileChooser.getExtensionFilters().add(pngFilter);
-            File selectedFile = fileChooser.showOpenDialog(null);
+        fileChooser.setTitle("Choose File");
+        fileChooser.setInitialDirectory(new File("C:/xampp/htdocs/GestionUser/GestionUser/public/uploads/user_images/"));
 
-            if (selectedFile != null) {
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            String fileName = selectedFile.getName(); // Get the file name
             Image img = new Image(selectedFile.toURI().toString());
 
-                    selectedAvatar =selectedFile.getAbsolutePath();
-                    selectedAvatar = selectedAvatar.replace(File.separator, "/");
-                    avatar.setImage(img);
-                    
-
-           } 
+            selectedAvatar = fileName; // Save the file name only
+            avatar.setImage(img);
+        }
+    
     }
 
    

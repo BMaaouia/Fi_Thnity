@@ -20,8 +20,8 @@ import javax.mail.internet.MimeMessage;
  */
 public class Mail {
 
-    private String username = "saber.melki@esprit.tn";
-    private String password = "221SMT0228";
+    private String username = "brmaaouia@gmail.com";
+    private String password = "zufsoqnjziwwpwrn";
 
 //    public void envoyerMailReservation(String email, int reservationID, String dateDebut, String dateFin) {
 //        Properties props = new Properties();

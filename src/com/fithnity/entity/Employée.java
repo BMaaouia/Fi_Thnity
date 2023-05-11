@@ -22,39 +22,39 @@ public class Employée {
     }
     
    private int  id_Employée;
-    private String firstname_employée;
-    private String lastname_employée;
-    private String email_employée;
-    private String address_employée;
+    private String firstname_employee;
+    private String lastname_employee;
+    private String email_employee;
+    private String address_employee;
     private int id_vehicule;
 
     public Employée() {
     }
 
-    public Employée(int id_employée, String firstname_employée, String lastname_employée, String email_employée, String address_employée,int id_vehicule) {
-        this.id_Employée = id_employée;
-        this.firstname_employée = firstname_employée;
-        this.lastname_employée = lastname_employée;
-        this.email_employée = email_employée;
-        this.address_employée = address_employée;
+    public Employée(int id_employee, String firstname_employee, String lastname_employee, String email_employee, String address_employee,int id_vehicule) {
+        this.id_Employée = id_employee;
+        this.firstname_employee = firstname_employee;
+        this.lastname_employee = lastname_employee;
+        this.email_employee = email_employee;
+        this.address_employee = address_employee;
         this.id_vehicule = id_vehicule;
     }
 
-    public Employée(String firstname_employée, String lastname_employée, String email_employée, String address_employée,int id_vehicule) {
-        this.firstname_employée = firstname_employée;
-        this.lastname_employée = lastname_employée;
-        this.email_employée = email_employée;
-        this.address_employée = address_employée;
+    public Employée(String firstname_employee, String lastname_employee, String email_employee, String address_employee,int id_vehicule) {
+        this.firstname_employee = firstname_employee;
+        this.lastname_employee = lastname_employee;
+        this.email_employee = email_employee;
+        this.address_employee = address_employee;
         this.id_vehicule = id_vehicule;
 
     }
 
-    public int getId_employée() {
+    public int getId_employee() {
         return id_Employée;
     }
 
-    public void setId_employée(int id_employée) {
-        this.id_Employée = id_employée;
+    public void setId_employee(int id_employee) {
+        this.id_Employée = id_employee;
     }
      public int getId_vehicule() {
         return id_vehicule;
@@ -64,41 +64,41 @@ public class Employée {
         this.id_vehicule = id_vehicule;
     }
 
-    public String getFirstname_employée() {
-        return firstname_employée;
+    public String getFirstname_employee() {
+        return firstname_employee;
     }
 
-    public void setFirstname_employée(String firstname_employée) {
-        this.firstname_employée = firstname_employée;
+    public void setFirstname_employee(String firstname_employee) {
+        this.firstname_employee = firstname_employee;
     }
 
-    public String getLastname_employée() {
-        return lastname_employée;
+    public String getLastname_employee() {
+        return lastname_employee;
     }
 
-    public void setLastname_employée(String lastname_employée) {
-        this.lastname_employée = lastname_employée;
+    public void setLastname_employee(String lastname_employee) {
+        this.lastname_employee = lastname_employee;
     }
 
-    public String getEmail_employée() {
-        return email_employée;
+    public String getEmail_employee() {
+        return email_employee;
     }
 
-    public void setEmail_employée(String email_employée) {
-        this.email_employée = email_employée;
+    public void setEmail_employee(String email_employee) {
+        this.email_employee = email_employee;
     }
 
-    public String getAddress_employée() {
-        return address_employée;
+    public String getAddress_employee() {
+        return address_employee;
     }
 
-    public void setAddress_employée(String address_employée) {
-        this.address_employée =address_employée;
+    public void setAddress_employee(String address_employee) {
+        this.address_employee =address_employee;
     }
 
     @Override
     public String toString() {
-        return " id_employée = " + id_Employée + " || firstname_employée= " + firstname_employée + " || lastname_employée= " + lastname_employée + " || email_employée= " + email_employée + " || address_employée= " + address_employée ;
+        return " id_employee = " + id_Employée + " || firstname_employee= " + firstname_employee + " || lastname_employee= " + lastname_employee + " || email_employee= " + email_employee + " || address_employee= " + address_employee ;
     }
 
    
@@ -107,10 +107,10 @@ public class Employée {
     public int hashCode() {
         int hash = 5;
         hash = 41 * hash + this.id_Employée;
-        hash = 41 * hash + Objects.hashCode(this.firstname_employée);
-        hash = 41 * hash + Objects.hashCode(this.lastname_employée);
-        hash = 41 * hash + Objects.hashCode(this.email_employée);
-        hash = 41 * hash + Objects.hashCode(this.address_employée);
+        hash = 41 * hash + Objects.hashCode(this.firstname_employee);
+        hash = 41 * hash + Objects.hashCode(this.lastname_employee);
+        hash = 41 * hash + Objects.hashCode(this.email_employee);
+        hash = 41 * hash + Objects.hashCode(this.address_employee);
         return hash;
     }
 
@@ -129,16 +129,16 @@ public class Employée {
         if (this.id_Employée != other.id_Employée) {
             return false;
         }
-        if (!Objects.equals(this.firstname_employée, other.firstname_employée)) {
+        if (!Objects.equals(this.firstname_employee, other.firstname_employee)) {
             return false;
         }
-        if (!Objects.equals(this.lastname_employée, other.lastname_employée)) {
+        if (!Objects.equals(this.lastname_employee, other.lastname_employee)) {
             return false;
         }
-        if (!Objects.equals(this.email_employée, other.email_employée)) {
+        if (!Objects.equals(this.email_employee, other.email_employee)) {
             return false;
         }
-        if (!Objects.equals(this.address_employée, other.address_employée)) {
+        if (!Objects.equals(this.address_employee, other.address_employee)) {
             return false;
         }
         return true;

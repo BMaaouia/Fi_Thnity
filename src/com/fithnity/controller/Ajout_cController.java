@@ -175,7 +175,7 @@ public class Ajout_cController implements Initializable {
                 Blog blog = blogs.get(i);
                 String imagePath = blog.getimage_blog();
               
-                FileInputStream input = new FileInputStream(imagePath);
+                FileInputStream input = new FileInputStream("C:/xampp/htdocs/integrationFFFF/3a14-mindbenders_3a14/public/uploads/images/"+imagePath);
                 Image image = new Image(input);
                 ImageView imageView = new ImageView(image);
                 imageView.setFitHeight(200);
